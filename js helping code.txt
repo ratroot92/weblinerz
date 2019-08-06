@@ -1,0 +1,708 @@
+add this file to include bootstrap in prject
+<script src="{{ asset('js/app.js') }}"></script>
+
+and this file to write jquery javascriprt
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+
+
+
+<!-- how to buld navigation button clicked page opened --->
+
+
+Route::get('/home', function () {
+    return view('home');
+})->name('home');
+
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
+
+Route::get('/gallery', function () {
+    return view('gallery');
+})->name('gallery');
+
+
+Route::get('/admin', function () {
+    return view('admin');
+})->name('admin');
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+
+
+always add this at top of master page
+
+ <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
+
+
+
+secondly
+
+ <a class="nav-link" href="{{route('gallery')}}">
+ <a class="nav-link" href="{{route('contact')}}">
+ <a class="nav-link" href="{{route('home')}}">
+
+
+
+<!-- how to buld navigation button clicked page opened --->
+csrf token must for making post request
+<input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+ <input type="hidden" name="_token" value="{{ csrf_token() }}">
+<!-- how to buld navigation button clicked page opened --->
+
+
+
+<!-- start of navigating after form submission -->
+in form write this
+<form action="{{ route('patientlogin') }}" method="post">
+
+route should be like this
+Route::post('/patientlogin', function () {
+    echo "patient login";
+    })->name('patientlogin');
+
+<!-- end of navigation after form submision -->
+
+
+if u get error in controller
+"Class App\Http\Controllers\Request does not exist"
+use this
+use Illuminate\Http\Request;
+
+
+<!-- validate login credentaioals -->
+
+include in controller
+use Validator;
+
+ $validator = Validator::make($request->all(), [
+            'adminemail' => 'required|max:30|min:5',
+            'adminpassword' => 'required|max:30|min:5',
+        ]);
+
+        if ($validator->fails()) {
+                return redirect('/')
+                            ->withErrors($validator)
+                            ->withInput();
+            }
+
+
+display error using
+
+
+ <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                    @if(count($errors)>0)
+
+                        <ul class="alert alert-danger ">
+                            @foreach($errors->all() as $error)
+                        <li class="text-danger font-weight-bold pl-3 ">{{$error}}</li>
+                            @endforeach
+                        </ul>
+
+                @endif
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+
+<!-- end of validating login credentials -->
+
+<!-- installing font-awesome --.
+
+modify webpack.mix
+const mix = require('laravel-mix');
+
+/*
+ |--------------------------------------------------------------------------
+ | Mix Asset Management
+ |--------------------------------------------------------------------------
+ |
+ | Mix provides a clean, fluent API for defining some Webpack build steps
+ | for your Laravel application. By default, we are compiling the Sass
+ | file for the application as well as bundling up all the JS files.
+ |
+ */
+
+mix.js('resources/js/app.js', 'public/js')
+    .sass('resources/sass/app.scss', 'public/css');
+mix.setPublicPath('public');
+mix.setResourceRoot('../');
+
+run this command
+npm install @fortawesome/fontawesome-free --save
+
+
+add these in app.scss located in resources/scss/app.scss// Font Awesome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+
+put this reference in your view.blade.php
+<link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+run command
+npm run dev
+
+
+<!-- end of installing font-wesome in laravel -->
+
+
+
+
+storing values in session where request goes
+//storing values in session
+$request->session()->put('name',$name);
+$request->session()->put('email',$email);
+$request->session()->put('mobile',$mobile);
+$request->session()->put('password',$password);
+
+passing values to view
+return view ('view ')->with('data' ,$ession->get($name,$email,$mobile,$password)
+
+
+storing values in session gl;obally
+{!! session('doctorName') !!}  --- displaying global session values
+
+storing global session values
+session(['name' => $name]);
+session(['email' => $email]);
+session(['mobile' => $mobile]);
+session(['password' => $password]);
+$data=array(['name'=>$name,'email'=>$email,'mobile'=>$mobile,'password'=>$password]);
+DB::table('student')->insert($data);
+return view('student')->with('s',$request->session());
+
+
+displayin error for multiple forms in laravel
+ @if($errors->has('spassword'))
+
+ <div class=" alert alert-danger  font-weight-bold ">&spades;{{ $errors->first('spassword') }}</div>
+
+@endif
+  @if($errors->has('semail'))
+
+ <div class=" alert alert-danger  font-weight-bold">&spades;{{ $errors->first('semail') }}</div>
+
+@endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+a simple tempelate form
+<form action="addstudent" method="post">
+
+
+
+<!-- start of input row -->
+<div class="row mt-5">
+<div class="col-md-4">
+<label class="form-control">Student Name :</label>
+</div>
+<div class="col-md-8">
+<input type="text" name="name" value="{{old('name')}}" class="form-control" required />
+
+  @if($errors->has('name'))
+
+ <p class="  text-danger mb-0 mt-1  font-weight-bold">&spades;{{ $errors->first('name') }}</p>
+
+@endif
+</div>
+</div>
+<!-- end  of input row -->
+
+<!-- start of submit for form -->
+ <div class="row">
+ <div class="col-md-4">
+</div>
+<div class="col-md-8">
+<input type="submit" name="submit" value="submit" class="btn btn-block btn-success" >
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
+</div>
+ </div>
+<!-- end of submit for form -->
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+ public function addstudent(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:30|min:8|unique:student,name',
+            'email' => 'required|max:30|min:8|unique:student,email',
+            'mobile' => 'required|max:30|min:8|unique:student,mobile',
+            'password' => 'required|max:30|min:8|unique:student,password',
+            'confirmpassword' => 'required|max:30|min:8|same:password',
+
+
+        ]);
+
+        if ($validator->fails()) {
+                return redirect('login')
+                            ->withErrors($validator)
+                            ->withInput();
+            }
+
+
+$name=$request->input('name');
+$email=$request->input('email');
+$mobile=$request->input('mobile');
+$password=$request->input('password');
+//storing values in session
+
+
+
+$data=array(['name'=>$name,'email'=>$email,'mobile'=>$mobile,'password'=>$password]);
+DB::table('student')->insert($data);
+return view('student');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ public function loginasstudent(Request $request)
+    {
+
+ $validator = Validator::make($request->all(), [
+
+            'semail' => 'required|max:30|min:8',
+            'spassword' => 'required|max:30|min:8',
+
+
+        ]);
+
+        if ($validator->fails()) {
+                return redirect('login')
+                            ->withErrors($validator)
+                            ->withInput();
+            }
+
+
+        $s_email=$request->input('semail');
+    $s_password=$request->input('spassword');
+
+$checklogin=DB::table('student')->where(['email'=>$s_email,'password'=>$s_password])->get();
+    if(count($checklogin)>0){
+
+$credentials = DB::table('student')->where('email', $s_email)->first();
+$session_id=$credentials->id;
+$session_name=$credentials->name;
+$session_email=$credentials->email;
+$session_mobile=$credentials->mobile;
+$session_password=$credentials->password;
+session(['id' => $session_id]);
+session(['name' => $session_name]);
+session(['email' => $session_email]);
+session(['mobile' => $session_mobile]);
+session(['password' => $session_password]);
+
+        return view ('student')->with('session',$request->session());
+
+}
+else{
+     return view('login');
+     }
+    }
+
+
+
+
+Use \Carbon\Carbon;
+$date = Carbon::now();
+
+echo $date->toRfc850String();
+
+Output will be like this
+
+Saturday, 11-May-19 06:28:04 UTC
+
+
+-- displays date in input (php)
+<input type="text" name="date" value="<?php echo date('Y-m-d'); ?>" />
+
+
+
+
+
+
+
+Display data in tables
+
+<!-- starrt of view patients tab -->
+                    <div class="conatiner-fluid">
+                        <div class="row m-0 p-0">
+                                <table class="table border border-danger" style="font-size:9px;">
+                                        <thead class="thead-dark">
+                                          <tr>
+                                            <th scope="col">Patient ID</th>
+                                            <th scope="col">Patient Name</th>
+                                            <th scope="col">Patient Email</th>
+                                            <th scope="col">Patient Mobile</th>
+                                            <th scope="col">Patient Password</th>
+                                            <th scope="col">Patient Country</th>
+                                            <th scope="col">Created At</th>
+
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach ($patients as $a)
+
+
+                                            <tr>
+                                            <th scope="row">{{$a->id}}</th>
+                                            <th scope="row">{{$a->name}}</th>
+                                            <th scope="row">{{$a->email}}</th>
+                                            <th scope="row">{{$a->mobile}}</th>
+                                            <th scope="row">{{$a->password}}</th>
+                                            <th scope="row">{{$a->country}}</th>
+                                            <th scope="row">{{$a->created_at}}</th>
+
+
+
+
+
+
+
+                                          </tr>
+                                         @endforeach
+
+                                        </tbody>
+                                      </table>
+
+
+                        </div>
+                    </div>
+					Query
+					$attendence = DB::select('select * from mark');
+		return view('student',compact('attendence'));
+
+
+
+
+
+		laravel unique query ruule with two fields (one man can mark attendnce once in a day )
+		Validator::extend('uniqueFirstAndLastName', function ($attribute, $value, $parameters, $validator) {
+    $count = DB::table('people')->where('firstName', $value)
+                                ->where('lastName', $parameters[0])
+                                ->count();
+
+    return $count === 0;
+});
+Validator::extend('uniqueFirstAndLastName', function ($attribute, $value, $parameters, $validator) {
+    $count = DB::table('people')->where('firstName', $value)
+                                ->where('lastName', $parameters[0])
+                                ->count();
+
+    return $count === 0;
+});
+
+
+working example
+Validator::extend('uniqueNameAndDate', function ($attribute, $value, $parameters, $validator) {
+    $count = DB::table('mark')->where('markedby', $value)
+                                ->where('marked_date', $parameters[0])
+                                ->count();
+
+    return $count === 0;
+});
+
+  $validator = Validator::make($request->all(), [
+          'name' => "uniqueNameAndDate:{$request->marked_date}"
+
+
+        ]);
+
+        if ($validator->fails()) {
+                return redirect('student')
+                            ->withErrors($validator)
+                            ->withInput();
+            }
+
+
+
+
+
+
+
+
+
+
+
+			code for displaying messages success failure
+
+
+			<!-- start of alert -->
+@if(session('message'))
+
+
+<div class="row">
+<div class="col-md-12 text-danger font-weight-bold text-white alert alert-danger text-center" style="font-size: 25px;">
+     {{session('message')}}
+</div>
+</div>
+@endif
+<!-- end of alert -->
+
+return messages using
+
+if($affectedrow>0){
+
+
+ return redirect()->route("admin")->with('message','Succcessfully Registered Admin');
+}
+else{
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public function attendencebyname(Request $request){
+
+$studentname=$request->input('studentname');
+$default="Select Student Name";
+
+
+  $leaves = DB::select('select * from leaves');
+
+
+ $attendence = DB::select('select * from mark');
+
+
+$name_records = DB::select('select DISTINCT markedby from mark');
+
+
+
+ $specficattendence = DB::table('mark')->where('markedby', '=', $studentname)
+    ->orderBy('marked_date', 'asc')
+    ->get();
+
+
+
+$totalpreasents = DB::table('mark')->where([['markedby', '=', $studentname],['status', '=', 'PRESENT']])->get();
+$countpreasents=count($totalpreasents) ;
+
+$totalabsents = DB::table('mark')->where([['markedby', '=', $studentname],['status', '=', 'ABSENT']])->get();
+$countabsents=count($totalabsents) ;
+
+$totalleaves = DB::table('mark')->where([['markedby', '=', $studentname],['status', '=', 'LEAVE']])->get();
+$countleaves=count($totalleaves) ;
+
+
+
+return view('StudentAttendenceReport',compact('leaves','attendence','name_records','specficattendence','countpreasents','countabsents','countleaves'));
+
+}
+
+
+
+
+		  bootstrap older version that supports glyphicon
+
+		  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+
+	background image
+
+
+
+
+		  style="background-image: url({{ URL::asset('images/pic1.jpg')}});
+															background-repeat:no-repeat;
+															background-position: cover;
+															height: 250px;" >
+
+
+
+
+hiding scroll bar on web page
+
+ ::-webkit-scrollbar {
+    display: none;
+}
+
+#dotted overlay above picture
+
+<!-- start of background image span -->
+<span style=" background-image: url('../images/pattern.png' );
+        background-repeat: repeat;
+         background-size:cover;
+         position: fixed;
+        width: 100%;
+        height: 100%;
+       ">
+
+</span>
+
+
+
+
+
+custom.js
+
+{
+
+
+
+
+
+
+
+ var e_name=document.getElementById('employee_name').value;
+  var e_email=document.getElementById('employee_email').value;
+  var e_designation=document.getElementById('employee_designation').value;
+  var e_mobile=document.getElementById('employee_phone').value;
+  var e_status=document.getElementById('employee_status').value;
+  var e_cpassword=document.getElementById('employee_c_password').value;
+  var e_password=document.getElementById('employee_password').value;
+
+
+
+var employee_form_submit_btn=document.getElementById('submit_e_form');
+employee_form_submit_btn.addEventListener('click',function(e){
+
+
+
+
+
+
+if( e_password.length>14 || e_password.length<8){
+document.getElementById("password_err").innerHTML="PASSWORDS SHOULD BE BETWEEN 8-14 CHARACHTERS ";
+  e.preventDefault();
+
+
+  }
+
+
+else if( e_password!=e_cpassword  ){
+document.getElementById("cpassword_err").innerHTML="PASSWORDS MUST MATCH ";
+  e.preventDefault();
+
+
+  }
+
+
+
+else if( e_name.length>15 || e_name.length<5){
+document.getElementById("name_err").innerHTML="NAME SHOULD BE BETWEEN 6-15 CHARACHTERS ";
+  e.preventDefault();
+
+
+  }
+
+
+
+ else if( e_mobile.length==0){
+document.getElementById("mobile_err").innerHTML="Mobile is Required ";
+  e.preventDefault();
+
+
+  }
+
+  else if( e_mobile.length>11 || e_mobile.length<11){
+document.getElementById("mobile_err").innerHTML="11 Chrachters Required  ";
+  e.preventDefault();
+
+
+  }
+
+
+   else if( e_email.length==0){
+document.getElementById("email_err").innerHTML="Email is Required ";
+  e.preventDefault();
+
+
+  }
+
+
+  else if( e_designation=="SELECT DESIGNATION"){
+document.getElementById("designation_err").innerHTML="Select your Designation ";
+  e.preventDefault();
+
+
+  }
+
+
+  else if( e_status=="SELECT STATUS"){
+document.getElementById("status_err").innerHTML="Select your Status ";
+  e.preventDefault();
+
+
+  }
+
+
+
+
+
+
+  else{
+
+  }
+},false);
+
+
+}
+
+
+
+
+display error message on view
+@if (Session::has('message'))
+               <div class="alert alert-success alert-dismissable text-center">
+                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                   <p>{{ Session::get('message') }}</p>
+               </div>
+           @endif
