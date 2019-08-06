@@ -60,7 +60,7 @@ height:60px;
 border-radius: 50%;
 width: 50%;
 height:80px;
-border: 1px solid white !important;
+
  background-image: url('../images/profile.png' );
         background-repeat: no-repeat;
          background-size:cover;
@@ -73,9 +73,9 @@ border: 1px solid white !important;
 border-radius: 3px;
   }
 .nav_tab:hover{
-background-color: cyan;
+background-color: #9933CC;
 
-border:1px solid black;
+
 }
 
 
@@ -116,7 +116,7 @@ border:1px solid black;
         </div>
 
         <div class="dropdown show ml-2 mt-3">
-  <a class="btn btn-sm btn-outline-primary dropdown-toggle"  href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <a class="btn btn-sm btn-outline-secondary dropdown-toggle"  href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
    Fisal Shehzad
   </a>
 
@@ -141,11 +141,11 @@ border:1px solid black;
     <!-- start of side bar -->
     <div class="col-md-2 bg-dark ">
       <!-- start of row 1-->
-     <div class="row">
+     <div class="row p-1">
        <div class="col-md-12 ">
          <div class="row pt-3">
            <div class="col-md-12 d-flex flex-row justify-content-center text-center">
-              <div class="circle_sidebar">
+              <div class="circle_sidebar border border-warning">
         
       </div>
            </div>
@@ -156,9 +156,9 @@ border:1px solid black;
 
 
        <!-- start of row2 -->
-      <div class="row">
-        <div class="col-md-12 text-center">
-           <p class="font-weight-bold text-white text-center ">Faisal Shehzad</p>
+      <div class="row mt-3 p-1">
+        <div class="col-md-12 text-center border-white border">
+           <p class="font-weight-bold text-white text-center my-auto ">Faisal Shehzad</p>
         </div>
        
       </div>
@@ -166,7 +166,7 @@ border:1px solid black;
 
 <i class="fas fa-file-spreadsheet"></i>
 
-      <div class="row" >
+      <div class="row " >
         <div class="col-md-12 m-0 p-1">
           <ul class="nav  d-flex flex-column m-0 p-0 ">
 
@@ -180,7 +180,7 @@ border:1px solid black;
 
 
              <!-- start of tabs -->
-            <li class=" m-0 mt-1 p-0 nav_tab" style="width:100%; float:left;">
+            <li class=" m-0 mt-4 p-0 nav_tab" style="width:100%; float:left;">
               <a class="nav-link text-white font-weight-bold m-0 p-0"href="#hr_employees" data-toggle="tab"   title="" style="font-size: 16px;">
                 <i class="fas fa-male font-weight-bold text-white p-2 mr-3 m-0 p-0 "></i>
              <span class="text-center">  &nbsp; Employees </span>
@@ -190,7 +190,7 @@ border:1px solid black;
 
 
              <!-- start of tabs -->
-            <li class=" m-0 mt-1 p-0 nav_tab" style="width:100%; float:left;">
+            <li class=" m-0 mt-4 p-0 nav_tab" style="width:100%; float:left;">
               <a class="nav-link text-white font-weight-bold m-0 p-0" href="#hr_careers" data-toggle="tab"  title="" style="font-size: 16px;">
                 <i class="fab fa-angular font-weight-bold text-white p-2 mr-3 m-0 p-0 "></i>
                <span class="text-center">  Careers </span>
@@ -200,7 +200,7 @@ border:1px solid black;
 <i class=""></i>
 
              <!-- start of tabs -->
-            <li class=" m-0 mt-1 p-0 nav_tab" style="width:100%; float:left;">
+            <li class=" m-0 mt-4 p-0 nav_tab" style="width:100%; float:left;">
               <a class="nav-link text-white font-weight-bold m-0 p-0"href="#hr_expense" data-toggle="tab" title="" style="font-size: 16px;">
                 <i class="far fa-file-excel font-weight-bold text-white p-2 mr-3 m-0 p-0 "></i>
                 <span class="text-center">  Expense </span>
@@ -209,7 +209,7 @@ border:1px solid black;
 
 
              <!-- start of tabs -->
-            <li class="  m-0 mt-1 p-0 nav_tab" style="width:100%; float:left;">
+            <li class="  m-0 mt-4 p-0 nav_tab" style="width:100%; float:left;">
               <a class="nav-link text-white font-weight-bold m-0 p-0" href="#hr_reports" data-toggle="tab" title="" style="font-size: 16px;">
                 <i class="fas fa-american-sign-language-interpreting font-weight-bold text-white p-2 mr-2 m-0 p-0 "></i>
                   <span class="text-center"> Reports </span>
@@ -232,7 +232,7 @@ border:1px solid black;
     
       <div class="row">  <!-- start of row 1-->
         <div class="col-md-12 pt-3 pb-3">
-         <p class="text-dark font-weight-bold my-auto" style="font-weight: bold;"> HOME / DASHBOARD</p>  
+         <p class="text-dark font-weight-bold my-auto" style="font-weight: bold;"> home / dashboard</p>  
           </div>           
           </div><!-- end of row 1-->
 
@@ -241,8 +241,8 @@ border:1px solid black;
             <div class="col-md-3  ">
              <div class="row p-1 ">
                <div class="col-md-12 bg-danger custom_badge text-center">
-             <!-- 
-                   <img class="logo mt-3 " src="{{url('../icons/1.png' )}}" width="80" height="80" style="opacity: 1;"> -->
+             
+                   <img class="logo mt-3 " src="{{url('../icons/1-min.png' )}}" width="55" height="55" style="opacity: 1;">
          
      
                <p class="font-weight-bold text-white">Emoployees</p>
@@ -255,7 +255,7 @@ border:1px solid black;
               <div class="col-md-3  ">
              <div class="row p-1 ">
                <div class="col-md-12 bg-primary custom_badge text-center">
-                      <!--    <img class="logo mt-3 " src="{{url('../icons/2.png' )}}" width="80" height="80" style="opacity: 1;"> -->
+                          <img class="logo mt-3 " src="{{url('../icons/2-min.png' )}}" width="55" height="55" style="opacity: 1;">
                <p class="font-weight-bold text-white">Carriers</p>
              </div>
             </div>
@@ -266,7 +266,7 @@ border:1px solid black;
  <div class="col-md-3  ">
              <div class="row p-1 ">
                <div class="col-md-12 bg-warning custom_badge text-center">
-                     <!--    <img class="logo mt-3 " src="{{url('../icons/3.png' )}}" width="80" height="80" style="opacity: 1;"> -->
+                       <img class="logo mt-3 " src="{{url('../icons/3-min.png' )}}" width="55" height="55" style="opacity: 1;">
                <p class="font-weight-bold text-white">Expense</p>
              </div>
             </div>
@@ -277,7 +277,7 @@ border:1px solid black;
  <div class="col-md-3  ">
              <div class="row p-1 ">
                <div class="col-md-12 bg-secondary custom_badge text-center">
-                       <!--   <img class="logo mt-3 " src="{{url('../icons/4.png' )}}" width="80" height="80" style="opacity: 1;"> -->
+                          <img class="logo mt-3 " src="{{url('../icons/4-min.png' )}}" width="55" height="55" style="opacity: 1;">
                <p class="font-weight-bold text-white">Reports</p>
              </div>
             </div>
@@ -422,8 +422,7 @@ border:1px solid black;
             <div class="col-md-3  ">
              <div class="row p-1 ">
                <div class="col-md-12 bg-danger custom_badge text-center">
-             <!-- 
-                   <img class="logo mt-3 " src="{{url('../icons/1.png' )}}" width="80" height="80" style="opacity: 1;"> -->
+            <img class="logo mt-3 " src="{{url('../icons/e-1.png' )}}" width="55" height="55" style="opacity: 1;">
          
      
                <p class="font-weight-bold text-white">Contracts</p>
@@ -436,7 +435,7 @@ border:1px solid black;
               <div class="col-md-3  ">
              <div class="row p-1 ">
                <div class="col-md-12 bg-primary custom_badge text-center">
-                      <!--    <img class="logo mt-3 " src="{{url('../icons/2.png' )}}" width="80" height="80" style="opacity: 1;"> -->
+                       <img class="logo mt-3 " src="{{url('../icons/e_2.png' )}}" width="55" height="55" style="opacity: 1;">
                <p class="font-weight-bold text-white">Salaries</p>
              </div>
             </div>
@@ -447,7 +446,7 @@ border:1px solid black;
  <div class="col-md-3  ">
              <div class="row p-1 ">
                <div class="col-md-12 bg-warning custom_badge text-center">
-                     <!--    <img class="logo mt-3 " src="{{url('../icons/3.png' )}}" width="80" height="80" style="opacity: 1;"> -->
+                     <img class="logo mt-3 " src="{{url('../icons/e_3.png' )}}" width="55" height="55" style="opacity: 1;">
                <p class="font-weight-bold text-white">Complaints</p>
              </div>
             </div>
@@ -458,7 +457,7 @@ border:1px solid black;
  <div class="col-md-3  ">
              <div class="row p-1 ">
                <div class="col-md-12 bg-secondary custom_badge text-center">
-                       <!--   <img class="logo mt-3 " src="{{url('../icons/4.png' )}}" width="80" height="80" style="opacity: 1;"> -->
+                       <img class="logo mt-3 " src="{{url('../icons/e_4.png' )}}" width="55" height="55" style="opacity: 1;">
                <p class="font-weight-bold text-white">Attendence</p>
              </div>
             </div>
@@ -472,7 +471,7 @@ border:1px solid black;
 
             <div class="row mt-4">
               <div class="col-md-12">
-              <button type="button" class="btn btn-outline-dark font-weight-bold" id="navigatable_btn_1" style="border:none;"> <i class="fas fa-sort-down text-danger font-weight-bold mr-5 m-0 p-0"></i>All Employee</button>
+              <button type="button" class="btn btn-outline-dark font-weight-bold" id="navigatable_btn_3" style="border:none;"> <i class="fas fa-sort-down text-danger font-weight-bold mr-5 m-0 p-0"></i>All Employee</button>
               </div>
             </div>
           <!-- start of row -->
@@ -509,7 +508,7 @@ border:1px solid black;
 
            <!-- startr of row -->
 
-           <div class="row mt-4" id="navigatable_div_1" name="navigatable_div_1">
+           <div class="row mt-4" id="navigatable_div_3" name="navigatable_div_3">
              <div class="col-md-12">
               <table class="table " id="table3">
   <thead class="bg-primary">
@@ -554,7 +553,7 @@ border:1px solid black;
 
             <div class="row mt-4">
               <div class="col-md-12">
-              <button type="button" class="btn btn-outline-dark font-weight-bold" id="navigatable_btn_2" style="border:none;"> <i class="fas fa-sort-down text-danger font-weight-bold mr-5 m-0 p-0"></i>Todays Expense</button>
+              <button type="button" class="btn btn-outline-dark font-weight-bold" id="navigatable_btn_4" style="border:none;"> <i class="fas fa-sort-down text-danger font-weight-bold mr-5 m-0 p-0"></i>Todays Expense</button>
               </div>
             </div>
           <!-- start of row -->
@@ -564,7 +563,7 @@ border:1px solid black;
 
            <!-- startr of row -->
 
-           <div class="row mt-4" id="navigatable_div_2" name="navigatable_div_1">
+           <div class="row mt-4" id="navigatable_div_4" name="navigatable_div_4">
              <div class="col-md-12">
               <table class="table" table="4">
   <thead>
@@ -632,9 +631,13 @@ border:1px solid black;
 
   <script >
       var div1 =document.getElementById("navigatable_div_1");
-      var div2 =document.getElementById("navigatable_div_1");
+      var div2 =document.getElementById("navigatable_div_2");
+        var div3 =document.getElementById("navigatable_div_3");
+      var div4 =document.getElementById("navigatable_div_4");
         var btn1 =document.getElementById("navigatable_btn_1");
           var btn2 =document.getElementById("navigatable_btn_2");
+          var btn3 =document.getElementById("navigatable_btn_3");
+          var btn4 =document.getElementById("navigatable_btn_4");
 
 
 
@@ -655,9 +658,24 @@ border:1px solid black;
     div_2.style.display = "none";
   }
 
-  
+ });
 
-          });
+          btn3.addEventListener('click',function(){
+            var div_3 =document.getElementById("navigatable_div_3");
+           if (div_3.style.display === "none") {
+    div_3.style.display = "block";
+  } else {
+    div_3.style.display = "none";}
+  });
+
+
+          btn4.addEventListener('click',function(){
+            var div_4 =document.getElementById("navigatable_div_4");
+           if (div_4.style.display === "none") {
+    div_4.style.display = "block";
+  } else {
+    div_4.style.display = "none";
+  } });
 
 $(document).ready(function(){
     $('#table1').dataTable();
