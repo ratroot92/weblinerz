@@ -35,6 +35,14 @@ Route::get('/employee', function () {
     return view('employees/employee');
 })->name('employee');
 
+
+
+
+Route::get('/hr_dashboard', function () {
+    return view('hr/hr_dashboard');
+})->name('hr_dashboard');
+
+
 Route::get('/employee_dashboard', function () {
     return view('employees/employee_dashboard');
 })->name('employee_dashboard');
