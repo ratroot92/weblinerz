@@ -90,7 +90,7 @@ session(['e_password' => $session_password]);
 
 }
 else{
-    return redirect()->route("employees/employee_home_view")->with('message','failed to login ! try again');
+    return redirect()->route("employees/semployee_home_view")->with('message','failed to login ! try again');
      }
     }
 

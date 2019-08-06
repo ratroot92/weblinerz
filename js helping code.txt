@@ -706,3 +706,85 @@ display error message on view
                    <p>{{ Session::get('message') }}</p>
                </div>
            @endif
+
+
+
+hide adnd show div on button click 
+
+<script >
+      var div1 =document.getElementById("navigatable_div_1");
+      var div2 =document.getElementById("navigatable_div_1");
+        var btn1 =document.getElementById("navigatable_btn_1");
+          var btn2 =document.getElementById("navigatable_btn_2");
+
+
+
+          btn1.addEventListener('click',function(){
+            var div_1 =document.getElementById("navigatable_div_1");
+           if (div_1.style.display === "none") {
+    div_1.style.display = "block";
+  } else {
+    div_1.style.display = "none";}
+  });
+
+
+          btn2.addEventListener('click',function(){
+            var div_2 =document.getElementById("navigatable_div_2");
+           if (div_2.style.display === "none") {
+    div_2.style.display = "block";
+  } else {
+    div_2.style.display = "none";
+  }
+
+  
+
+          });
+
+          
+
+  </script>
+bit bucked user name =
+invited by haroon sir 
+  passwords weblinerz_ahmed
+  ilovemydad1234
+
+
+
+
+  <!-- working boostrap and jquery cdns  (old bootstrap ) -->
+    <meta name="description" content="Bootstrap.">  
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">   
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+
+bootstrap table with pagination 
+
+
+<!--Import jQuery before export.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+
+    <!--Data Table-->
+    <script type="text/javascript"  src=" https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript"  src=" https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
+
+    <!--Export table buttons-->
+    <script type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.24/build/pdfmake.min.js" ></script>
+    <script type="text/javascript"  src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.24/build/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.1/js/buttons.print.min.js"></script>
+
+<!--Export table button CSS-->
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css">
+
+give table id and run jquery function 
+$(document).ready(function(){
+    $('#table1').dataTable();
+});
