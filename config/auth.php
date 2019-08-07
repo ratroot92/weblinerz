@@ -41,6 +41,11 @@ return [
             'provider' => 'users',
         ],
 
+        'web_hr' => [
+            'driver' => 'session',
+            'provider' => 'hr',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -69,6 +74,13 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+
+
+        
+         'hr' => [
+            'driver' => 'eloquent',
+            'model' => App\hr_model::class,
         ],
 
         // 'users' => [

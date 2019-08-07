@@ -240,12 +240,12 @@ background-color: #9933CC;
 
             <div class="col-md-3  ">
              <div class="row p-1 ">
-               <div class="col-md-12 bg-danger custom_badge text-center">
+               <div class="col-md-12 custom_badge text-center" style="background-color:#fe8f96;">
              
                    <img class="logo mt-3 " src="{{url('../icons/1-min.png' )}}" width="55" height="55" style="opacity: 1;">
          
      
-               <p class="font-weight-bold text-white">Emoployees</p>
+               <p class="font-weight-bold text-white"><a href="employee_dashboard" class="nav-link p-0 m-0 text-white"  title="">Emoployees</a></p>
              </div>
             </div>
           </div>
@@ -254,7 +254,7 @@ background-color: #9933CC;
 
               <div class="col-md-3  ">
              <div class="row p-1 ">
-               <div class="col-md-12 bg-primary custom_badge text-center">
+               <div class="col-md-12  custom_badge text-center" style="background-color:#6db7f2;">
                           <img class="logo mt-3 " src="{{url('../icons/2-min.png' )}}" width="55" height="55" style="opacity: 1;">
                <p class="font-weight-bold text-white">Carriers</p>
              </div>
@@ -265,7 +265,7 @@ background-color: #9933CC;
 
  <div class="col-md-3  ">
              <div class="row p-1 ">
-               <div class="col-md-12 bg-warning custom_badge text-center">
+               <div class="col-md-12  custom_badge text-center" style="background-color: #b792db;">
                        <img class="logo mt-3 " src="{{url('../icons/3-min.png' )}}" width="55" height="55" style="opacity: 1;">
                <p class="font-weight-bold text-white">Expense</p>
              </div>
@@ -276,7 +276,7 @@ background-color: #9933CC;
 
  <div class="col-md-3  ">
              <div class="row p-1 ">
-               <div class="col-md-12 bg-secondary custom_badge text-center">
+               <div class="col-md-12  custom_badge text-center" style="background-color: #8950e1;">
                           <img class="logo mt-3 " src="{{url('../icons/4-min.png' )}}" width="55" height="55" style="opacity: 1;">
                <p class="font-weight-bold text-white">Reports</p>
              </div>

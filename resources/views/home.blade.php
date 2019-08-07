@@ -105,7 +105,7 @@ align-items: center;
 
 <div class="col-md-3 circle  text-center bordeer  border-white m-2 pt-3 "style="font-size: 19px;">
 <i class="fas fa-users text-white font-weight-bold" style="font-size: 30px;"></i>
-<a class="text-white artigo_nome" href="#"> Employee Console </a>
+<a class="text-white artigo_nome" href="employees/employee_login"> Employee Console </a>
 </div>
 
 <!-- end of first circle -->
@@ -127,7 +127,7 @@ align-items: center;
 <!-- start of first circle -->
 <div class="col-md-3 circle  text-center bordeer  border-white m-2 pt-3" style="font-size: 16px;">
 <i class="fab fa-chrome text-white font-weight-bold" style="font-size: 30px;"></i>
-<a class="text-white artigo_nome" href="#"> HR Console </a>
+<a class="text-white artigo_nome" href="hr/login"> HR Console </a>
 </div>
 <!-- end of first circle -->
 </div>

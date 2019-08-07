@@ -38,14 +38,32 @@ Route::get('/employee', function () {
 
 
 
+
+
 Route::get('/hr_dashboard', function () {
     return view('hr/hr_dashboard');
 })->name('hr_dashboard');
 
 
 Route::get('/employee_dashboard', function () {
-    return view('employees/employee_dashboard');
+    return view('/employees/employee_dashboard');
 })->name('employee_dashboard');
+
+
+
+
+Route::get('/employees/employee_login
+', function () { return view('/employees/employee_login');
+});
+
+
+
+
+
+
+Route::get('/hr_employee_add', function () {
+    return view('/hr/hr_employee_add');
+})->name('hr_employee_add');
 
 
 //route for adding employee
