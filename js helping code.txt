@@ -788,3 +788,10 @@ give table id and run jquery function
 $(document).ready(function(){
     $('#table1').dataTable();
 });
+
+
+
+
+
+auth tutorial 
+https://medium.com/@tomgrohl/configuring-auth-guards-for-multiple-users-in-laravel-6b845178e414
