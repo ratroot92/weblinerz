@@ -30,15 +30,27 @@
                     <div class="card">
                         <div class="header">
                             <p class="lead">EMPLOYEE ! Login to your account</p>
+
+                         <!-- start of alert -->
+@if(session('message'))
+
+
+<div class="row">
+<div class="col-md-12 text-danger font-weight-bold text-white alert alert-danger text-center" style="font-size: 14px;">
+     {{session('message')}}
+</div>
+</div>
+@endif
+<!-- end of alert -->
                         </div>
                         <div class="body">
-                            <form class="form-auth-small" method="POST" action="" >
-                            @csrf                                
+                        <form class="" method="POST" action="/login" >
+
                                 <div class="form-group">
                                     <label for="signin-email" class="control-label sr-only">Email</label>
 
-                                    <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" id="email" placeholder="email" >
-                                    
+                                    <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="e_email" value="{{ old('email') }}" id="e_email" placeholder="email" >
+
                                      @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('email') }}</strong>
@@ -48,8 +60,8 @@
                                 <div class="form-group">
                                     <label for="signin-password" class="control-label sr-only">Password</label>
 
-                                    <input type="password" id="password" name="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="password">
-                                    
+                                    <input type="password" id="e_password" name="e_password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="password">
+
                                     @if ($errors->has('password'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('password') }}</strong>
@@ -61,10 +73,11 @@
                                     <label class="fancy-checkbox element-left">
                                         <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                         <span>Remember me</span>
-                                    </label>                                
+                                    </label>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
+                                <input type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</input>
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="bottom">
                                     <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="page-forgot-password.html">Forgot password?</a></span>
                                     <span>Don't have an account? <a href="{{ route('hr.register') }}">Register</a></span>

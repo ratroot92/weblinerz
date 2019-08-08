@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\employee_login_controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,10 +32,6 @@ Route::get('/employee_home_view', function () {
 
 
 
-Route::get('/employee', function () {
-    return view('employees/employee');
-})->name('employee');
-
 
 
 
@@ -50,11 +47,10 @@ Route::get('/employee_dashboard', function () {
 })->name('employee_dashboard');
 
 
+Route::get('employees/employee_login', function () {
+    return view('employees/employee_login');
+})->name('employeelogin');
 
-
-Route::get('/employees/employee_login
-', function () { return view('/employees/employee_login');
-});
 
 
 
@@ -66,18 +62,10 @@ Route::get('/hr_employee_add', function () {
 })->name('hr_employee_add');
 
 
-//route for adding employee
-Route::post('Add_Employee','employee@Add_Employee')->name('Add_Employee');
-//end of route
-
-
-//route for Authenticate_employee_login
-Route::post('Authenticate_employee_login','employee@Authenticate_employee_login')->name('Authenticate_employee_login');
-//end of route
-
-//route for Authenticate_employee_login_by_email
-Route::post('Authenticate_employee_login_by_email','employee@Authenticate_employee_login_by_email')->name('Authenticate_employee_login');
-//end of route
 
 
 
+
+
+//root for employee login
+Route::post('/login','employee_login_controller@login');
