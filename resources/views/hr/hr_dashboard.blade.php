@@ -124,6 +124,12 @@ background-color: #9933CC;
     <a class="dropdown-item" href="#">Profile</a>
     <a class="dropdown-item" href="#">Dashboard</a>
     <a class="dropdown-item" href="#">Security</a>
+    <a class="dropdown-item" href="{{ route('hr.logout') }}" onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">Logout</a>
+   <form id="logout-form" action="{{ route('hr.logout') }}" method="POST" style="display: none;">
+       @csrf
+   </form>
+
   </div>
 </div>
       </div>
@@ -171,7 +177,7 @@ background-color: #9933CC;
           <ul class="nav  d-flex flex-column m-0 p-0 ">
 
             <!-- start of tabs -->
-            <li class=" m-0 pt-1 pb-2 pl-0 pr-0 nav_tab border border-warning" style="width:100%; float:left;">
+            <li class=" m-0 pt-1 pb-2 pl-0 pr-0 nav_tab" style="width:100%; float:left;">
               <a class="nav-link active text-white font-weight-bold m-0 p-0" href="#hr_dashboard" data-toggle="tab" title="" style="font-size: 16px;">
                 <i class="fas fa-home font-weight-bold text-white p-2 mr-3 m-0 p-0 "></i>
                 Dashboard
@@ -181,7 +187,7 @@ background-color: #9933CC;
 
              <!-- start of tabs -->
             <li class=" m-0 mt-4 p-0 nav_tab" style="width:100%; float:left;">
-              <a class="nav-link text-white font-weight-bold m-0 p-0"href="#hr_employees" data-toggle="tab"   title="" style="font-size: 16px;">
+              <a class="nav-link text-white font-weight-bold m-0 p-0" href="employee_dashboard" data-toggle="tab"   title="" style="font-size: 16px;">
                 <i class="fas fa-male font-weight-bold text-white p-2 mr-3 m-0 p-0 "></i>
              <span class="text-center">  &nbsp; Employees </span>
                 <i class="fas fa-sort-down text-white font-weight-bold ml-5 m-0 p-0 pr-1 " style="float: right;" ></i></i></a> </li>
@@ -258,7 +264,7 @@ background-color: #9933CC;
                           <img class="logo mt-3 " src="{{url('../icons/2-min.png' )}}" width="55" height="55" style="opacity: 1;">
                <p class="font-weight-bold text-white">Carriers</p>
              </div>
-            </div>
+            </div> 
           </div>
 
 
@@ -404,214 +410,31 @@ background-color: #9933CC;
 
   <div class="tab-pane " id="hr_expense">
 
-<p>this is expense tab </p>
+<p>EXPENSE TAB  </p>
    </div>
 
 
 
   <div class="tab-pane " id="hr_employees">
 
- <div class="row">  <!-- start of row 1-->
-        <div class="col-md-12 pt-3 pb-3">
-         <p class="text-dark font-weight-bold my-auto" style="font-weight: bold;"> Home / Dashboard / Employee</p>  
-          </div>           
-          </div><!-- end of row 1-->
-
-          <div class="row p-2   ">
-
-            <div class="col-md-3  ">
-             <div class="row p-1 ">
-               <div class="col-md-12 bg-danger custom_badge text-center">
-            <img class="logo mt-3 " src="{{url('../icons/e-1.png' )}}" width="55" height="55" style="opacity: 1;">
-         
-     
-               <p class="font-weight-bold text-white">Contracts</p>
-             </div>
-            </div>
-          </div>
-
-
-
-              <div class="col-md-3  ">
-             <div class="row p-1 ">
-               <div class="col-md-12 bg-primary custom_badge text-center">
-                       <img class="logo mt-3 " src="{{url('../icons/e_2.png' )}}" width="55" height="55" style="opacity: 1;">
-               <p class="font-weight-bold text-white">Salaries</p>
-             </div>
-            </div>
-          </div>
-
-
-
- <div class="col-md-3  ">
-             <div class="row p-1 ">
-               <div class="col-md-12 bg-warning custom_badge text-center">
-                     <img class="logo mt-3 " src="{{url('../icons/e_3.png' )}}" width="55" height="55" style="opacity: 1;">
-               <p class="font-weight-bold text-white">Complaints</p>
-             </div>
-            </div>
-          </div>
-
-
-
- <div class="col-md-3  ">
-             <div class="row p-1 ">
-               <div class="col-md-12 bg-secondary custom_badge text-center">
-                       <img class="logo mt-3 " src="{{url('../icons/e_4.png' )}}" width="55" height="55" style="opacity: 1;">
-               <p class="font-weight-bold text-white">Attendence</p>
-             </div>
-            </div>
-          </div>
-             
-             
-          </div>
-
-
-          <!-- startr of row -->
-
-            <div class="row mt-4">
-              <div class="col-md-12">
-              <button type="button" class="btn btn-outline-dark font-weight-bold" id="navigatable_btn_3" style="border:none;"> <i class="fas fa-sort-down text-danger font-weight-bold mr-5 m-0 p-0"></i>All Employee</button>
-              </div>
-            </div>
-          <!-- start of row -->
-<div class="row mt-3 ">
-  <div class="col-md-8 d-flex flex-row justify-content-between">
-   <!-- Material inline 1 -->
-<div class="form-check form-check-inline">
-  <input type="checkbox" class="form-check-input" id="materialInline1">
-  <label class="form-check-label" for="materialInline1">All</label>
-</div>
-
-<!-- Material inline 2 -->
-<div class="form-check form-check-inline">
-    <input type="checkbox" class="form-check-input" id="materialInline2">
-    <label class="form-check-label" for="materialInline2">Current Employee</label>
-</div>
-
-<!-- Material inline 3 -->
-<div class="form-check form-check-inline">
-    <input type="checkbox" class="form-check-input" id="materialInline3">
-    <label class="form-check-label" for="materialInline3">Internees</label>
-</div>
-
-<!-- Material inline 2 -->
-<div class="form-check form-check-inline">
-    <input type="checkbox" class="form-check-input" id="materialInline2">
-    <label class="form-check-label" for="materialInline2">Old Employee</label>
-</div>
-  </div>
-  <div class="col-md-4"> </div>
-</div>
-
-
-
-           <!-- startr of row -->
-
-           <div class="row mt-4" id="navigatable_div_3" name="navigatable_div_3">
-             <div class="col-md-12">
-              <table class="table " id="table3">
-  <thead class="bg-primary">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-             </div>
-           </div>
-          <!-- start of row -->
-
-
-
-
-
-
-          <!-- startr of row -->
-
-            <div class="row mt-4">
-              <div class="col-md-12">
-              <button type="button" class="btn btn-outline-dark font-weight-bold" id="navigatable_btn_4" style="border:none;"> <i class="fas fa-sort-down text-danger font-weight-bold mr-5 m-0 p-0"></i>Todays Expense</button>
-              </div>
-            </div>
-          <!-- start of row -->
-
-
-
-
-           <!-- startr of row -->
-
-           <div class="row mt-4" id="navigatable_div_4" name="navigatable_div_4">
-             <div class="col-md-12">
-              <table class="table" table="4">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-             </div>
-           </div>
-          <!-- start of row -->
+<p>EMPLOYEES TAB  </p>
    </div>
 
 
 
+  
+
+
    <div class="tab-pane " id="hr_careers">
 
-<p>this is careeers tab </p>
+<p>CAREERS TAB  </p>
    </div>
 
 
 
    <div class="tab-pane " id="hr_reports">
 
-<p>this is careeers tab </p>
+<p>REPROTS TABS  </p>
    </div>
 
 

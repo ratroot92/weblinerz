@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use Auth;
 use Closure;
 
-class authenticate_user
-{
+class authenticate_user {
     /**
      * Handle an incoming request.
      *
@@ -15,6 +14,12 @@ class authenticate_user
      */
     public function handle($request, Closure $next)
     {
+        if(!Auth::check()){
+            return redirect()->route('hr_login');
+        }
         return $next($request);
     }
+
+
+
 }

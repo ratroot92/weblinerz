@@ -85,13 +85,6 @@ align-items: center;
 
 
 
- <!-- start of header text -->
-<div class="row " >
-<div class="col-md-12 text-center ">
-<p class="text-dark font-weight-bold  " style="color:white;font-size:26px;">Welcome To Weblinerz Online Portal  </p>
-</div>
-</div>
-<!-- end of header text -->
 
 
 

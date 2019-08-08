@@ -10,14 +10,14 @@
         <link rel="stylesheet" type="text/css" href="css/app.css">
         <script src="js/app.js" type="text/javascript" charset="utf-8" async defer></script>
         <script src="js/custom.js" type="text/javascript" charset="utf-8" async defer></script>
-        
+
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
 <!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
 
-      
+
 <script type="text/javascript" src="~/Scripts/data-table/jquery.dataTables.js"></script> -->
 
 
@@ -66,8 +66,8 @@ height:80px;
  background-image: url('../images/profile.png' );
         background-repeat: no-repeat;
          background-size:cover;
-        
-       
+
+
 
 
   }
@@ -90,7 +90,7 @@ background-color: #9933CC;
  }
 
 [placeholder]:focus::-webkit-input-placeholder {
-    transition: text-indent 0.4s 0.4s ease; 
+    transition: text-indent 0.4s 0.4s ease;
     text-indent: -100%;
     opacity: 1;
  }
@@ -114,6 +114,10 @@ background-color: #9933CC;
   border-radius: 0px;
 }
 
+.alert{
+    border-radius:0px;
+}
+
 
 
   </style>
@@ -134,7 +138,7 @@ background-color: #9933CC;
      <p class="text-dark font-weight-bold my-auto" style="font-weight: bolder;font-size:20px;">HR PORTAL</p>
    </div>
 
-  
+
 
 
 
@@ -149,7 +153,7 @@ background-color: #9933CC;
       <div class="col-md-6 text-center  d-flex flex-row my-auto">
 
         <div class="circle border border-dark">
-         
+
         </div>
 
         <div class="dropdown show ml-2 mt-3">
@@ -165,7 +169,7 @@ background-color: #9933CC;
 </div>
       </div>
     </div>
-     
+
 
    </div>
 
@@ -183,7 +187,7 @@ background-color: #9933CC;
          <div class="row pt-3">
            <div class="col-md-12 d-flex flex-row justify-content-center text-center">
               <div class="circle_sidebar border border-warning">
-        
+
       </div>
            </div>
          </div>
@@ -197,7 +201,7 @@ background-color: #9933CC;
         <div class="col-md-12 text-center border-white border">
            <p class="font-weight-bold text-white text-center my-auto ">Faisal Shehzad</p>
         </div>
-       
+
       </div>
        <!-- end of row2 -->
 
@@ -218,7 +222,7 @@ background-color: #9933CC;
 
              <!-- start of tabs -->
             <li class=" m-0 mt-4 p-0 nav_tab" style="width:100%; float:left;">
-              <a class="nav-link active text-white font-weight-bold m-0 p-0"href="#hr_employees" data-toggle="tab"   title="" style="font-size: 16px;">
+              <a class="nav-link active text-white font-weight-bold m-0 p-0"href="#employee_dashboard" data-toggle="tab"   title="" style="font-size: 16px;">
                 <i class="fas fa-male font-weight-bold text-white p-2 mr-3 m-0 p-0 "></i>
              <span class="text-center">  &nbsp; Employees </span>
                 <i class="fas fa-sort-down text-white font-weight-bold ml-5 m-0 p-0 pr-1 " style="float: right;" ></i></i></a> </li>
@@ -252,7 +256,7 @@ background-color: #9933CC;
                   <span class="text-center"> Reports </span>
                 <i class="fas fa-sort-down text-white font-weight-bold ml-5 m-0 p-0 pr-1 " style="float: right;"></i></i></a> </li>
             <!-- end of tabs -->
-           
+
           </ul>
         </div>
       </div>
@@ -261,10 +265,10 @@ background-color: #9933CC;
     <!-- end of side bar -->
   <!-- start of display page -->
     <div class="col-md-10">
-  
+
 <div class="tab-content">
   <!-- start of tab 1 -->
- 
+
 
 
 
@@ -276,11 +280,51 @@ background-color: #9933CC;
 
 
   <div class="tab-pane active " id="hr_employees">
+<div class="row">
+	<div  class="col-md-12 ">
+		<!-- start of alert -->
+@if(session('message'))
 
+
+<div class="row">
+<div class="col-md-12 text-danger font-weight-bold text-white alert alert-danger text-center" style="font-size: 18px;">
+     {{session('message')}}
+</div>
+</div>
+@endif
+<!-- end of alert -->
+
+
+
+
+<!-- 
+@if($errors->any())
+
+
+<div class="row">
+<div class="col-md-12 text-danger font-weight-bold text-white alert alert-danger text-center m-0 p-0" style="font-size: 25px;">
+
+<ul class="m-0 p-0">
+		@foreach($errors as $error)
+	<li class="m-0 p-0">&spades;{{$error}}}</li>
+		@endforeach
+</ul>
+</div>
+</div>
+@endif
+
+ -->
+
+
+	</div>
+</div>
  <div class="row">  <!-- start of row 1-->
         <div class="col-md-12 pt-3 pb-3">
-         <p class="text-dark font-weight-bold my-auto" style="font-weight: bold;float: left;"> Home / Dashboard / Employee</p>  
+         <p class="text-dark font-weight-bold my-auto" style="font-weight: bold;float: left;"> Home / Dashboard / Employee</p>
          <!--  <button class="btn  btn-primary" type="button" data-toggle="modal" data-target="#exampleModal" style="float: right;width: 100px;">New</button>  -->
+
+
+
 
 <div class="btn-group" id="openmenu-btn"  style="float: right;">
   <button type="button" class="btn btn-secondary dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -289,33 +333,69 @@ background-color: #9933CC;
 
         <div class="dropdown-container">
            <div class="dropdown-menu " onClick="event.stopPropagation();" style="width: 390px;" >
-  <form class="px-4 py-3">
-   <div class="container-fluid"> 
+
+   <div class="container-fluid">
+<form action="/add_employee"  method="POST">
+
+        <div class="row">
+                <div class="col-md-12">
+                <span class="font-weight-bold ">Employee ID</span>
+                <input class="inp col-md-12" type="number"  id="id" name="id"  required/>
+                @if($errors->has('id'))
+                <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;" >&spades;{{ $errors->first('id') }}</div>
+                @endif
+                </div>
+               
+            </div>
+
+
+
+
 <div class="row">
-<div class="col-md-12"> 
+<div class="col-md-12">
 <span class="font-weight-bold ">Name</span>
-<input class="inp col-md-12" type="text" placeholder="@example John Doe" id="e_name" name="e_name" required/>
+<input class="inp col-md-12" type="text" placeholder="@example John Doe" id="name" min="3" max="20" name="name" required/>
+@if($errors->has('name'))
+<div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('name') }}</div>
+@endif
+</div>
 
-</div> 
+<div class="col-md-12">
+<span class="font-weight-bold  " >Email</span>
+<input class="inp col-md-12" type="email" placeholder="@example JohnDoe@abc.com" id="email" name="email" required/>
+@if($errors->has('email'))
+<div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('email') }}</div>
+@endif
+</div>
 
-<div class="col-md-12"> 
-<span class="font-weight-bold ">Email</span>
-<input class="inp col-md-12" type="text" placeholder="@example JohnDoe@abc.com" id="e_email" name="e_email" required/>
 
-</div> 
 
-<div class="col-md-12 mt-3 ">
+<div class="col-md-12">
+        <span class="font-weight-bold " >Password</span>
+        <input class="inp col-md-12" type="password"  id="password" name="password" required/>
+        @if($errors->has('password'))
+<div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('password') }}</div>
+@endif
+</div>
+        </div>
+
+
+
+
+<div class="col-md-12 mt-3 d-flex flex-row justify-content-between ">
   <!-- Material inline 1 -->
-<div class="form-check form-check-inline">
-  <input type="radio" class="form-check-input" id="materialInline1" name="inlineMaterialRadiosExample">
+<div class="form-check form-check-inline" required>
+  <input type="radio" class="form-check-input" id="status1" name="status" value="Contract">
   <label class="form-check-label font-weight-bold" for="materialInline1">Contact</label>
+
 </div>
 
 <!-- Material inline 2 -->
-<div class="form-check form-check-inline">
-  <input type="radio" class="form-check-input" id="materialInline2" name="inlineMaterialRadiosExample">
+<div class="form-check form-check-inline" required>
+  <input type="radio" class="form-check-input" id="status2" name="status" value="Probabtion">
   <label class="form-check-label font-weight-bold" for="materialInline2">Probabtion</label>
 </div>
+
 
 </div>
 
@@ -324,15 +404,20 @@ background-color: #9933CC;
  <div class="row">
 
 <div class="col-md-6">
-<span class="font-weight-bold ">Duration To: </span>
+<span class="font-weight-bold " >Duration To: </span>
   <input class="inp col-md-12" type="date" placeholder="@example JohnDoe@abc.com" id="start_date" name="start_date" required/>
+  @if($errors->has('start_date'))
+  <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('start_date') }}</div>
+  @endif
 </div>
 
 
-<div class="col-md-6"> 
-  <span clas
-s="font-weight-bold ">Duration From: </span>
+<div class="col-md-6">
+  <span class="font-weight-bold  " >Duration From: </span>
   <input class="inp col-md-12" type="date" placeholder="@example JohnDoe@abc.com" id="end_date" name="end_date" required/>
+  @if($errors->has('end_date'))
+  <div class=" alert alert-danger  font-weight-bold m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('end_date') }}</div>
+  @endif
 </div>
 
   </div>
@@ -343,16 +428,19 @@ s="font-weight-bold ">Duration From: </span>
 
 
 
-  <div class="col-md-12 mt-3"> 
-<span class="font-weight-bold ">Salary</span>
-<input class="inp col-md-12" type="number" placeholder="@30,000 PKR" id="e_salary" name="e_salary" required/>
-</div> 
+  <div class="col-md-12 mt-3">
+<span class="font-weight-bold  " >Salary</span>
+<input class="inp col-md-12" type="number" placeholder="@30,000 PKR" min="1" max="100000" id="e_salary" name="e_salary" required/>
+@if($errors->has('e_salary'))
+  <div class=" alert alert-danger  font-weight-bold m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('e_salary') }}</div>
+  @endif
+</div>
 
 
 
 <div class="col-md-12 drag_files mt-3">
 <div class="row my-auto">
- 
+
 <div class="col-md-12 text-center mt-4" >
 
     <!--  <img class="logo mt-3 " src="{{url('../icons/files.png' )}}" width="55" height="55" style="opacity: 1;"> -->
@@ -372,19 +460,21 @@ s="font-weight-bold ">Duration From: </span>
 
 <div class="row">
 
-<div class="col-md-6 text-center"> 
+<div class="col-md-6 text-center">
 <button type="button" class="btn " id="closebtn" style="background-color:#ff4f4e;">Close</button>
 
 
 </div>
 
 <div class="col-md-6 text-center">
-  <button type="button" class="btn " style="background-color:  #a31b78 ">Add</button>
+  <input type="submit" class="btn " style="background-color:  #a31b78 "></button>
+  <input type="hidden" name="_token" value="{{csrf_token()}}">
  </div>
 
  </div>
   </div>
 </div>
+</form>
 </div>
 
   </form>
@@ -396,9 +486,9 @@ s="font-weight-bold ">Duration From: </span>
 </div>
           <!-- Button trigger modal -->
 
- 
+
 </button>
-          </div>           
+          </div>
           </div><!-- end of row 1-->
 
           <div class="row p-2   ">
@@ -407,8 +497,8 @@ s="font-weight-bold ">Duration From: </span>
              <div class="row p-1 ">
                <div class="col-md-12  custom_badge text-center" style="background-color: #ffa319;">
             <img class="logo mt-3 " src="{{url('../icons/e-1.png' )}}" width="55" height="55" style="opacity: 1;">
-         
-     
+
+
                <p class="font-weight-bold text-white">Contracts</p>
              </div>
             </div>
@@ -446,8 +536,8 @@ s="font-weight-bold ">Duration From: </span>
              </div>
             </div>
           </div>
-             
-             
+
+
           </div>
 
 
@@ -494,36 +584,57 @@ s="font-weight-bold ">Duration From: </span>
 
            <div class="row mt-4" id="navigatable_div_3" name="navigatable_div_3">
              <div class="col-md-12">
-              <table class="table " id="table3">
-  <thead class="" style="background-color:  #a31b78 ">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+
+
+
+             <!-- starrt of view employees tab -->
+                    <div class="conatiner-fluid">
+                        <div class="row m-0 p-0">
+                          <div class="col-md-12">
+                          	<table class="table border border-danger" id="table3" style="font-size:9px;">
+                                        <thead class="thead-dark">
+                                          <tr>
+                                            <th scope="col">Patient ID</th>
+                                            <th scope="col">Patient Name</th>
+                                            <th scope="col">Patient Email</th>
+                                            <th scope="col">Patient Mobile</th>
+                                            <th scope="col">Patient Password</th>
+                                            <th scope="col">Patient Contact</th>
+                                            <th scope="col">Salary</th>
+                                             <th scope="col">Start Date</th>
+                                               <th scope="col">End Date </th>
+
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach ($employees as $a)
+
+
+                                            <tr>
+                                            <th scope="row">{{$a->id}}</th>
+                                            <th scope="row">{{$a->name}}</th>
+                                            <th scope="row">{{$a->email}}</th>
+                                            <th scope="row">{{$a->mobile}}</th>
+                                            <th scope="row">{{$a->password}}</th>
+                                            <th scope="row">{{$a->contract}}</th>
+                                            <th scope="row">{{$a->salary}}</th>
+                                            <th scope="row">{{$a->start_date}}</th>
+                                            <th scope="row">{{$a->end_date}}</th>
+
+
+
+
+
+
+
+                                          </tr>
+                                         @endforeach
+
+                                        </tbody>
+                                      </table>
+                          </div>
+
+
              </div>
            </div>
           <!-- start of row -->
@@ -548,38 +659,49 @@ s="font-weight-bold ">Duration From: </span>
            <!-- startr of row -->
 
            <div class="row mt-4" id="navigatable_div_4" name="navigatable_div_4">
-             <div class="col-md-12">
-              <table class="table" table="4">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-             </div>
+            <div class="col-md-12">
+                          	<table class="table border border-danger" id="table3" style="font-size:9px;">
+                                        <thead class="thead-dark">
+                                          <tr>
+                                            <th scope="col">Patient ID</th>
+                                            <th scope="col">Patient Name</th>
+                                            <th scope="col">Patient Email</th>
+                                            <th scope="col">Patient Mobile</th>
+                                            <th scope="col">Patient Password</th>
+                                            <th scope="col">Patient Contact</th>
+                                            <th scope="col">Salary</th>
+                                             <th scope="col">Start Date</th>
+                                               <th scope="col">End Date </th>
+
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach ($employees as $a)
+
+
+                                            <tr>
+                                            <th scope="row">{{$a->id}}</th>
+                                            <th scope="row">{{$a->name}}</th>
+                                            <th scope="row">{{$a->email}}</th>
+                                            <th scope="row">{{$a->mobile}}</th>
+                                            <th scope="row">{{$a->password}}</th>
+                                            <th scope="row">{{$a->contract}}</th>
+                                            <th scope="row">{{$a->salary}}</th>
+                                            <th scope="row">{{$a->start_date}}</th>
+                                            <th scope="row">{{$a->end_date}}</th>
+
+
+
+
+
+
+
+                                          </tr>
+                                         @endforeach
+
+                                        </tbody>
+                                      </table>
+                          </div>
            </div>
           <!-- start of row -->
    </div>
@@ -614,16 +736,16 @@ s="font-weight-bold ">Duration From: </span>
   </div>
 
   <script >
-     
+
         var div3 =document.getElementById("navigatable_div_3");
       var div4 =document.getElementById("navigatable_div_4");
-        
+
           var btn3 =document.getElementById("navigatable_btn_3");
           var btn4 =document.getElementById("navigatable_btn_4");
 
 
 
-         
+
 
           btn3.addEventListener('click',function(){
             var div_3 =document.getElementById("navigatable_div_3");
@@ -642,35 +764,21 @@ s="font-weight-bold ">Duration From: </span>
     div_4.style.display = "none";
   } });
 
-$(document).ready(function(){
-    $('#table1').dataTable();
-});
 
-$(document).ready(function(){
-    $('#table2').dataTable();
-});
-
-
-$(document).ready(function(){
-    $('#table3').dataTable();
+$.noConflict();
+jQuery( document ).ready(function( $ ) {
+    $('#table3').DataTable();
 });
 
 
-$(document).ready(function(){
-    $('#table4').dataTable();
+
+$.noConflict();
+jQuery( document ).ready(function( $ ) {
+    $('#table4').DataTable();
 });
-          
 
 
-var x = document.getElementById("closebtn");
 
-
-          x.addEventListener('click',function(){
-var y = document.getElementById("openmenu-btn");
-
-  y.classList.remove("show");
-
-             });
 
   </script>
 

@@ -795,3 +795,206 @@ $(document).ready(function(){
 
 auth tutorial 
 https://medium.com/@tomgrohl/configuring-auth-guards-for-multiple-users-in-laravel-6b845178e414
+
+
+
+employees page <div class="tab-pane " id="hr_employees">
+
+ <div class="row">  <!-- start of row 1-->
+        <div class="col-md-12 pt-3 pb-3">
+         <p class="text-dark font-weight-bold my-auto" style="font-weight: bold;"> Home / Dashboard / Employee</p>  
+          </div>           
+          </div><!-- end of row 1-->
+
+          <div class="row p-2   ">
+
+            <div class="col-md-3  ">
+             <div class="row p-1 ">
+               <div class="col-md-12 bg-danger custom_badge text-center">
+            <img class="logo mt-3 " src="{{url('../icons/e-1.png' )}}" width="55" height="55" style="opacity: 1;">
+         
+     
+               <p class="font-weight-bold text-white">Contracts</p>
+             </div>
+            </div>
+          </div>
+
+
+
+              <div class="col-md-3  ">
+             <div class="row p-1 ">
+               <div class="col-md-12 bg-primary custom_badge text-center">
+                       <img class="logo mt-3 " src="{{url('../icons/e_2.png' )}}" width="55" height="55" style="opacity: 1;">
+               <p class="font-weight-bold text-white">Salaries</p>
+             </div>
+            </div>
+          </div>
+
+
+
+ <div class="col-md-3  ">
+             <div class="row p-1 ">
+               <div class="col-md-12 bg-warning custom_badge text-center">
+                     <img class="logo mt-3 " src="{{url('../icons/e_3.png' )}}" width="55" height="55" style="opacity: 1;">
+               <p class="font-weight-bold text-white">Complaints</p>
+             </div>
+            </div>
+          </div>
+
+
+
+ <div class="col-md-3  ">
+             <div class="row p-1 ">
+               <div class="col-md-12 bg-secondary custom_badge text-center">
+                       <img class="logo mt-3 " src="{{url('../icons/e_4.png' )}}" width="55" height="55" style="opacity: 1;">
+               <p class="font-weight-bold text-white">Attendence</p>
+             </div>
+            </div>
+          </div>
+             
+             
+          </div>
+
+
+          <!-- startr of row -->
+
+            <div class="row mt-4">
+              <div class="col-md-12">
+              <button type="button" class="btn btn-outline-dark font-weight-bold" id="navigatable_btn_3" style="border:none;"> <i class="fas fa-sort-down text-danger font-weight-bold mr-5 m-0 p-0"></i>All Employee</button>
+              </div>
+            </div>
+          <!-- start of row -->
+<div class="row mt-3 ">
+  <div class="col-md-8 d-flex flex-row justify-content-between">
+   <!-- Material inline 1 -->
+<div class="form-check form-check-inline">
+  <input type="checkbox" class="form-check-input" id="materialInline1">
+  <label class="form-check-label" for="materialInline1">All</label>
+</div>
+
+<!-- Material inline 2 -->
+<div class="form-check form-check-inline">
+    <input type="checkbox" class="form-check-input" id="materialInline2">
+    <label class="form-check-label" for="materialInline2">Current Employee</label>
+</div>
+
+<!-- Material inline 3 -->
+<div class="form-check form-check-inline">
+    <input type="checkbox" class="form-check-input" id="materialInline3">
+    <label class="form-check-label" for="materialInline3">Internees</label>
+</div>
+
+<!-- Material inline 2 -->
+<div class="form-check form-check-inline">
+    <input type="checkbox" class="form-check-input" id="materialInline2">
+    <label class="form-check-label" for="materialInline2">Old Employee</label>
+</div>
+  </div>
+  <div class="col-md-4"> </div>
+</div>
+
+
+
+           <!-- startr of row -->
+
+           <div class="row mt-4" id="navigatable_div_3" name="navigatable_div_3">
+             <div class="col-md-12">
+              <table class="table " id="table3">
+  <thead class="bg-primary">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+             </div>
+           </div>
+          <!-- start of row -->
+
+
+
+
+
+
+          <!-- startr of row -->
+
+            <div class="row mt-4">
+              <div class="col-md-12">
+              <button type="button" class="btn btn-outline-dark font-weight-bold" id="navigatable_btn_4" style="border:none;"> <i class="fas fa-sort-down text-danger font-weight-bold mr-5 m-0 p-0"></i>Todays Expense</button>
+              </div>
+            </div>
+          <!-- start of row -->
+
+
+
+
+           <!-- startr of row -->
+
+           <div class="row mt-4" id="navigatable_div_4" name="navigatable_div_4">
+             <div class="col-md-12">
+              <table class="table" table="4">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+             </div>
+           </div>
+          <!-- start of row -->
+   </div>
+
+
+
+
+
+   <a class="dropdown-item" href="{{ route('hr.logout') }}" onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">Logout</a>
+   <form id="logout-form" action="{{ route('hr.logout') }}" method="POST" style="display: none;">
+       @csrf
+   </form>

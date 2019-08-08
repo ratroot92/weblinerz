@@ -19,8 +19,13 @@ Route::group(['prefix' => 'hr'], function () {
 	Route::post('/logout', 'Hr\Auth\LoginController@logout')->name('hr.logout');
 	// Registration Routes...
 	Route::get('/register', 'Hr\Auth\RegisterController@showRegistrationForm')->name('hr.register');
+
 	Route::post('/register', 'Hr\Auth\RegisterController@register');
 
 });
 
 Route::get('/hr', 'Hr\Auth\HrController@index')->name('hr');
+
+
+
+

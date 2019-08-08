@@ -14,14 +14,15 @@ class CreateEmployeesTable extends Migration
     public function up()
     {
         Schema::create('employees', function (Blueprint $table) {
-            $table->bigInteger('e_id');
-            $table->string('e_name')->nullable();;
-            $table->string('e_email')->nullable();
-            $table->string('e_password')->nullable();;
-            $table->bigInteger('e_mobile')->nullable();;
-            $table->bigInteger('e_salary')->nullable();;
-            $table->string('from_date')->nullable();;
-            $table->string('to_date')->nullable();;
+            $table->bigInteger('id');
+            $table->string('name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('password')->nullable();
+            $table->string('contract')->nullable();
+            $table->bigInteger('mobile')->nullable();
+            $table->bigInteger('salary')->nullable();
+            $table->string('start_date')->nullable();
+            $table->string('end_date')->nullable();
             $table->timestamps();
         });
     }
