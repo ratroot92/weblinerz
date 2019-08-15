@@ -116,7 +116,7 @@ else{
 			$upload=new EmployeeUpload;
 			$upload->employee_id=$request->id;
 			$upload->file_name=$filename;
-			$upload->file_type=$file;
+			$upload->file_path=$file;
 			$upload->save();
 			}
 			
@@ -182,4 +182,30 @@ else{
 }//end of add employee function 
 
 
+
+
+public function add_employee_test(Request $request){
+
+
+ 
+
+        $form = EmployeeUpload::create($request->all());
+
+        if ($request->hasFile('uploads')) {
+            $files = $request->file('uploads');
+            foreach ($files as $file) {
+                $fl = $file->store('public/storage/formfiles');
+                employee::create([
+                   'freelancer_id' => $form->id,
+                    'files' => $fl
+                ]);
+            }
+        }
+
+        if ($validation->passes()) {
+            return response()->json(['success' => 'Мы скоро свяжемся с вами :)']);
+        }
+
+
+}
 }//end of controoler 

@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
         <title>WebLinerz</title>
         <link rel="stylesheet" type="text/css" href="css/app.css">
         <script src="js/app.js" type="text/javascript" charset="utf-8" async defer></script>
@@ -27,21 +27,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
 
-    <!--Data Table-->
-    <script type="text/javascript"  src=" https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript"  src=" https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
-
-    <!--Export table buttons-->
-    <script type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.24/build/pdfmake.min.js" ></script>
-    <script type="text/javascript"  src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.24/build/vfs_fonts.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.1/js/buttons.print.min.js"></script>
-
-<!--Export table button CSS-->
-
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css">
+   
 
 
 <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
@@ -272,6 +258,9 @@ background-color: #9933CC;
 <div class="row"><!-- row 1 start -->
 <div  class="col-md-12 ">
 <!-- start of alert -->
+
+<p class="alert alert-danger text-danger font-weight-bold "  id="msj" style="font-size:20px;"></p>
+</div>
 @if(session('message'))
 <div class="row">
 <div class="col-md-12 text-danger font-weight-bold text-white alert alert-danger text-center" style="font-size: 18px;">
@@ -300,12 +289,15 @@ background-color: #9933CC;
 <div class="dropdown-menu " onClick="event.stopPropagation();" style="width: 390px;" >
 
 <div class="container-fluid">
-<form action="/add_employee"  method="POST" enctype="multipart/form-data" name="form" id="form">
+
 
 <div class="row">
 <div class="col-md-12">
+
+<form   enctype="multipart/form-data" id="myform" >
+
 <span class="font-weight-bold ">Employee ID</span>
-<input class="inp col-md-12" type="number"  id="id" name="id"  required/>
+<input class="inp col-md-12" type="number"  id="id" name="id" />
 @if($errors->has('id'))
 <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;" >&spades;{{ $errors->first('id') }}</div>
 @endif
@@ -316,8 +308,9 @@ background-color: #9933CC;
 <div class="row">
 
 <div class="col-md-12">
+
 <span class="font-weight-bold ">Name</span>
-<input class="inp col-md-12" type="text" placeholder="@example John Doe" id="name" min="3" max="20" name="name" required/>
+<input class="inp col-md-12" type="text" placeholder="@example John Doe" id="name" min="3" max="20" name="name" />
 @if($errors->has('name'))
 <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('name') }}</div>
 @endif
@@ -325,7 +318,7 @@ background-color: #9933CC;
 
 <div class="col-md-12">
 <span class="font-weight-bold  " >Email</span>
-<input class="inp col-md-12" type="email" placeholder="@example JohnDoe@abc.com" id="email" name="email" required/>
+<input class="inp col-md-12" type="email" placeholder="@example JohnDoe@abc.com" id="email" name="email" />
 @if($errors->has('email'))
 <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('email') }}</div>
 @endif
@@ -335,7 +328,7 @@ background-color: #9933CC;
 
 <div class="col-md-12">
         <span class="font-weight-bold " >Password</span>
-        <input class="inp col-md-12" type="password"  id="password" name="password" required/>
+        <input class="inp col-md-12" type="password"  id="password" name="password" />
         @if($errors->has('password'))
 <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('password') }}</div>
 @endif
@@ -347,15 +340,15 @@ background-color: #9933CC;
 
 <div class="col-md-12 mt-3 d-flex flex-row justify-content-between ">
   <!-- Material inline 1 -->
-<div class="form-check form-check-inline" required>
-  <input type="radio" class="form-check-input" id="status1" name="status" value="Contract">
+<div class="form-check form-check-inline" >
+  <input type="radio" class="form-check-input" id="status" name="status" value="Contract">
   <label class="form-check-label font-weight-bold" for="materialInline1">Contact</label>
 
 </div>
 
 <!-- Material inline 2 -->
-<div class="form-check form-check-inline" required>
-  <input type="radio" class="form-check-input" id="status2" name="status" value="Probabtion">
+<div class="form-check form-check-inline" >
+  <input type="radio" class="form-check-input" id="status" name="status" value="Probabtion">
   <label class="form-check-label font-weight-bold" for="materialInline2">Probabtion</label>
 </div>
 
@@ -369,7 +362,7 @@ background-color: #9933CC;
 
 <div class="col-md-6">
 <span class="font-weight-bold " >Duration To: </span>
-  <input class="inp col-md-12" type="date" placeholder="@example JohnDoe@abc.com" id="start_date" name="start_date" required/>
+  <input class="inp col-md-12" type="date" placeholder="@example JohnDoe@abc.com" id="start_date" name="start_date" />
   @if($errors->has('start_date'))
   <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('start_date') }}</div>
   @endif
@@ -378,7 +371,7 @@ background-color: #9933CC;
 
 <div class="col-md-6">
   <span class="font-weight-bold  " >Duration From: </span>
-  <input class="inp col-md-12" type="date" placeholder="@example JohnDoe@abc.com" id="end_date" name="end_date" required/>
+  <input class="inp col-md-12" type="date" placeholder="@example JohnDoe@abc.com" id="end_date" name="end_date" />
   @if($errors->has('end_date'))
   <div class=" alert alert-danger  font-weight-bold m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('end_date') }}</div>
   @endif
@@ -392,7 +385,7 @@ background-color: #9933CC;
 
   <div class="col-md-12 mt-3">
 <span class="font-weight-bold  " >Salary</span>
-<input class="inp col-md-12" type="number" placeholder="@30,000 PKR" min="1" max="100000" id="e_salary" name="e_salary" required/>
+<input class="inp col-md-12" type="number" placeholder="@30,000 PKR" min="1" max="100000" id="e_salary" name="e_salary" />
 @if($errors->has('e_salary'))
   <div class=" alert alert-danger  font-weight-bold m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('e_salary') }}</div>
   @endif
@@ -423,8 +416,9 @@ background-color: #9933CC;
 </div>
 
 <div class="col-md-6 text-center">
-  <input type="submit" class="btn " style="background-color:  #a31b78 "></button>
-  <input type="hidden" name="_token" value="{{csrf_token()}}">
+<!-- style="background-color:#a31b78 " -->
+  <input type="submit" name="submit" id="add_employee_btn" class="btn btn-success" />
+
  </div>
 
  </div>
@@ -562,51 +556,51 @@ background-color: #9933CC;
 
   <script >
 
-        var div3 =document.getElementById("navigatable_div_3");
-      var div4 =document.getElementById("navigatable_div_4");
 
-          var btn3 =document.getElementById("navigatable_btn_3");
-          var btn4 =document.getElementById("navigatable_btn_4");
+//start of ensert employee ajax function 
+
+$(document).ready(function(){
+
+$(".add_employee_btn").click(function(e){
+            e.preventDefault();
+var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+var id=$('#id').val();
+var name=$('#name').val();
+var password=$('#password').val();
+var e_salary=$('#e_salary').val();
+var start_date=$('#start_date').val();
+var end_date=$('#end_date').val();
+var email=$('#email').val();
+var contract=$("input[name='status']:checked").val();
+var token=$('#token').val();
+ var files = $("input[name='uploads']").val();
+            var fd = new FormData(this.form);
+            $.ajax({
+            url:"<?php echo url('/add_employee_test')?>",
+                type:'POST',
+                data: fd,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                   cosnole.log(data);
+                }
+            });
+
+        });
 
 
-
-
-
-          btn3.addEventListener('click',function(){
-            var div_3 =document.getElementById("navigatable_div_3");
-           if (div_3.style.display === "none") {
-    div_3.style.display = "block";
-  } else {
-    div_3.style.display = "none";}
-  });
-
-
-          btn4.addEventListener('click',function(){
-            var div_4 =document.getElementById("navigatable_div_4");
-           if (div_4.style.display === "none") {
-    div_4.style.display = "block";
-  } else {
-    div_4.style.display = "none";
-  } });
-
-
-$.noConflict();
-jQuery( document ).ready(function( $ ) {
-    $('#table3').DataTable();
 });
 
-
-
-$.noConflict();
-jQuery( document ).ready(function( $ ) {
-    $('#table4').DataTable();
-});
 
 
 
 
   </script>
-
+<script>
+    $.ajaxSetup({
+        headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
+    });
+</script>
 
 </body>
 <!-- add employee model -->

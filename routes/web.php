@@ -46,6 +46,17 @@ Route::get('/employee_dashboard', function () {
 })->name('employee_dashboard');
 
 
+//open hr employee dashboard
+Route::get('/employee_dashboard_test', function () {
+    $employees = DB::select('select * from employees');
+    return view('/employees/employee_dashboard_test',compact('employees'));
+})->name('employee_dashboard_test');
+
+
+
+
+
+
 
 
 //root for employee login to employee_dashboard
@@ -68,6 +79,10 @@ Route::post('/hr_dashboard','hr_login_controller@login')->name('login_as_hr');
 
 //root for adding employee data by hr related employee dashboard
 Route::post('/add_employee','employee_login_controller@add_employee');
+
+
+//root for adding employee data by hr related employee dashboard
+Route::post('/add_employee_test','employee_login_controller@add_employee_test');
 
 Route::group(['middleware' => 'is-user'], function () { 
     

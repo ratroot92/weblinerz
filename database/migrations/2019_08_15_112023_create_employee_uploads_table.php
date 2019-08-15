@@ -17,7 +17,7 @@ class CreateEmployeeUploadsTable extends Migration
            $table->bigIncrements('id');
 			$table->bigInteger('employee_id')->nullable();
 			$table->mediumText('file_name')->nullable();
-			$table->mediumText('file_type')->nullable();
+			$table->mediumText('file_path')->nullable();
             $table->timestamps();
         });
     }
