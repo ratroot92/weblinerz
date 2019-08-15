@@ -27,8 +27,9 @@ $check_credentials =DB::table('hrs')->where(['email'=>$email,'password'=>$passwo
 
 
 
-
-        return view ('/hr/hr_dashboard')->with('session',$request->session());
+ $employees = DB::select('select * from employees');
+    return view('/hr/hr_dashboard',compact('employees'));
+     //  return view ('/hr/hr_dashboard')->with('session',$request->session());
 
 }
 else{

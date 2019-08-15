@@ -13,9 +13,6 @@ use App\Http\Controllers\employee_login_controller;
 */
 
 
-Route::get('/employee_home_view', function () {
-    return view('employees/employee_home_view');
-});
 
 
 
@@ -25,9 +22,9 @@ Route::get('/', function () {
 
 
 //it will open news page
-Route::get('/employee_home_view', function () {
+Route::get('/employee_login', function () {
     return view('employees/employee_home_view');
-})->name('employee_home_view');
+})->name('employee_login');
 
 
 
@@ -36,22 +33,7 @@ Route::get('/employee_home_view', function () {
 
 
 
-
-
-
-
-//employee_login page
-Route::get('employees/employee_login', function () {
-    return view('employees/employee_login');
-})->name('employeelogin');
-
-
-
-
-
-
-
-Route::get('/hr/auth/login', function () {
+Route::get('hr_login', function () {
     return view('/hr/auth/login');
 })->name('hr_login');
 
@@ -67,10 +49,19 @@ Route::get('/employee_dashboard', function () {
 
 
 //root for employee login to employee_dashboard
-Route::post('/login','employee_login_controller@login');
+Route::post('/employee_dashboard_by_email','employee_login_controller@login')->name('employee_dashboard_by_email');
+
+
 
 //root for employee login to employee_dashboard
-Route::post('/login_as_hr','hr_login_controller@login');
+Route::post('/employee_dashboard_by_name','employee_login_controller@login_by_name')->name('employee_dashboard_by_name');
+
+
+
+
+
+//root for employee login to employee_dashboard
+Route::post('/hr_dashboard','hr_login_controller@login')->name('login_as_hr');
 
 
 

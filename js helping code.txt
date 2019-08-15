@@ -992,9 +992,125 @@ employees page <div class="tab-pane " id="hr_employees">
 
 
 
-
+log out functionality 
    <a class="dropdown-item" href="{{ route('hr.logout') }}" onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">Logout</a>
    <form id="logout-form" action="{{ route('hr.logout') }}" method="POST" style="display: none;">
        @csrf
    </form>
+
+
+
+
+closeable alert
+ @if (Session::has('message'))
+        <div class="alert alert-success alert-dismissable text-center">
+           
+            <p>{{ Session::get('message') }}</p>
+        </div>
+        @endif
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		if($request->hasfile('files')){
+	
+	$alllowedfileextensions=['pdf','jpg','docx','png'];
+	$uploads=$request->file('files');
+	foreach($uploads as $upload){
+		$filename=$upload->getClientOrignalName();
+		$extension=$upload->getClientOrignalExtension();
+		 $filename = time().'.'.$extension;
+          $upload->move('public/images/Employee_Files', $filename);
+		  $check=in_array($extension,$alllowedfileextensions);
+	
+	
+	
+	if($check){
+$id=$req->input('id');
+$name=$req->input('name');
+$email=$req->input('email');
+$salary=$req->input('password');
+$contract_type=$req->get('status');
+$start=$req->input('start_date');
+$end=$req->input('end_date');
+$salary=$req->input('e_salary');
+
+
+$employee = new employee;
+$employee->id = $id;
+$employee->name = $name;
+$employee->email = $email;
+$employee->password = $salary;
+$employee->contract = $contract_type;
+$employee->start_date = $start;
+$employee->end_date = $end;
+$employee->salary = $salary;
+$check_status=$employee->save();
+
+	
+
+
+foreach ($request->files as $file) {
+$filename = $file->store('Employee_Files');
+EmployeeUploads::create([
+//'employee_id' => $items->id,
+'employee_id' => $id,
+'file_name' => $filename,
+'file_type' => $extension,
+
+]);
+
+}
+
+	}
+	}
+}//end of if (hasfile->())
+
+else{
+	
+	$id=$req->input('id');
+$name=$req->input('name');
+$email=$req->input('email');
+$salary=$req->input('password');
+$contract_type=$req->get('status');
+$start=$req->input('start_date');
+$end=$req->input('end_date');
+$salary=$req->input('e_salary');
+
+
+$employee = new employee;
+$employee->id = $id;
+$employee->name = $name;
+$employee->email = $email;
+$employee->password = $salary;
+$employee->contract = $contract_type;
+$employee->start_date = $start;
+$employee->end_date = $end;
+$employee->salary = $salary;
+$check_status=$employee->save();
+
+	
+} //end of else (hasfile->())
+
+
+    
+
+
+
+
+

@@ -41,6 +41,15 @@ background-color: red;
      width: 100px;
      height: 100px;
    }
+   
+   .alert{
+	   
+	   border-radius:0px;
+	   padding:0px;
+	   margin:0px;
+	   font-size:13px;
+	   color:red;
+   }
 </style>
 
 
@@ -58,13 +67,14 @@ background-color: red;
        <div class="col-md-2">
           <img class="logo" src="{{url('../images/wz logo-new.png' )}}" width="130" height="100;" style="opacity: 1;">
        </div>
-       <div class="col-md-7 d-flex flex-column mt-2 ml-0 pl-0">
-           <span class="text-white font-weight-bold" style="font-size: 25px;">WebLinerZ</span>
-           <span class="text-white font-weight-bold" style="font-size: 18px;">Leading Dvelopment Technology</span>
+       <div class="col-md-7    pl-0">
+           <div class="mt-3 ml-5 d-flex flex-column"><span class="text-white font-weight-bold" style="font-size: 25px;">WebLinerZ</span>
+           <span class="text-white font-weight-bold" style="font-size: 18px;">Leading Dvelopment Technology</span></div>
        </div>
-       <div class="col-md-3 mt-2">
-       <img class="logo" src="{{url('../images/employee1.png' )}}" width="65" height="65;" style="opacity: 1;">
-           <span class="font-weight-bold text-white ml-2 " style="font-size: 19px;">Employee Portal</span>
+       <div class="col-md-3 ">
+       <div class="mt-4">
+	   <img class="logo" src="{{url('../images/employee1.png' )}}" width="65" height="65;" style="opacity: 1;">
+          <span class="font-weight-bold text-white ml-2 " style="font-size: 13px;">Employee Portal</span></div>
        </div>
    </div>
    <!-- end of header -->
@@ -169,21 +179,21 @@ background-color: red;
                </ul>
 
                <div class="tab-content">
-                   <div class="active tab-pane " id="BYID" role="tabpanel" >
+                   <div class="active tab-pane " id="BYID"  >
 
-<form method="post" action="Authenticate_employee_login" >
+ <form method="POST" action="{{route('employee_dashboard_by_name')}}" >
 
         @if (Session::has('message'))
-        <div class="alert alert-success alert-dismissable text-center">
+        <div class="alert alert-success alert-dismissable text-center p-0 m-0">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <p>{{ Session::get('message') }}</p>
+            <p class="">{{ Session::get('message') }}</p>
         </div>
         @endif
 
     <!-- start of input field -->
     <div class="d-flex flex-column mt-4">
             <span class="text-dark font-weight-bold"> Employee Name:</span>
-          <input type="text" class="form-control" name="e_name" id="e_name" placeholder="Name" required >
+          <input type="text" class="form-control" name="e_name" id="e_name" placeholder="@Name" required >
           @if($errors->has('e_name'))
           <div  class=" alert alert-danger mt-1 "><span class="text-danger font-weight-bold">&spades;{{ $errors->first('e_name') }}</span></div>
            @endif
@@ -196,9 +206,9 @@ background-color: red;
 <!-- start of input field -->
         <div class="d-flex flex-column mt-2">
             <span class="text-dark font-weight-bold"> Employee Password:</span>
-          <input type="password" class="form-control" name="e_password" id="e_password" placeholder="@Password" required >
-          @if($errors->has('e_password'))
-           <div  class=" alert alert-danger mt-1 "><span class="text-danger font-weight-bold">&spades;{{ $errors->first('e_password') }}</span></div>
+          <input type="password" class="form-control" name="e_password1" id="e_password1" placeholder="@Password" required >
+          @if($errors->has('e_password1'))
+           <div  class=" alert alert-danger mt-1 "><span class="text-danger font-weight-bold">&spades;{{ $errors->first('e_password1') }}</span></div>
             @endif
         </div>
 
@@ -213,7 +223,7 @@ background-color: red;
                 <span  class="text-primary font-weight-bold"><a href="#" title="" >Click Here!</a> </span>
             </div>
             <div class="col-md-4  ">
-               <input type="submit" class="btn btn-success" name="">
+               <input type="submit" class="btn btn-success" name="" >
                <input type="hidden" name="_token" value="{{ csrf_token() }}">
             </div>
 
@@ -222,14 +232,13 @@ background-color: red;
 
 <!-- end of input field -->
 </form>
+</div>
 
 
 
 
-
-                   </div>
-                   <div class="tab-pane " id="BYLIST" role="tabpanel" >
-                        <form method="post" action="Authenticate_employee_login_by_email" >
+ <div class="tab-pane " id="BYLIST"  >
+                        <form method="POST" action="{{route('employee_dashboard_by_email')}}" >
 
                                 @if (Session::has('message'))
                                 <div class="alert alert-success alert-dismissable text-center">
@@ -254,9 +263,9 @@ background-color: red;
                         <!-- start of input field -->
                                 <div class="d-flex flex-column mt-2">
                                     <span class="text-dark font-weight-bold"> Employee Password:</span>
-                                  <input type="password" class="form-control" name="e_password1" id="e_password1" placeholder="@Password" required >
-                                  @if($errors->has('e_password1'))
-                                   <div  class=" alert alert-danger mt-1 "><span class="text-danger font-weight-bold">&spades;{{ $errors->first('e_password1') }}</span></div>
+                                  <input type="password" class="form-control" name="e_password" id="e_password" placeholder="@Password" required >
+                                  @if($errors->has('e_password'))
+                                   <div  class=" alert alert-danger mt-1 "><span class="text-danger font-weight-bold">&spades;{{ $errors->first('e_password') }}</span></div>
                                     @endif
                                 </div>
 
@@ -294,7 +303,7 @@ background-color: red;
 
 
 <!-- start of news panel -->
-<div class="row d-flex flex-row border-danger border">
+<div class="row d-flex flex-row">
 
     <!-- News -->
     <div class="col-md-8 ">

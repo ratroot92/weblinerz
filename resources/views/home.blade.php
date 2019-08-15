@@ -15,134 +15,146 @@
 
 
 <style type="text/css" media="screen">
-  .form-control{
-    border-radius: 0px;}
+  body,html{
+    height: 100%;
+  }
+  .wrapper{
+    position: absolute;
+   
+   
+  background-image: url('../images/londo-skyline.png' );
+   background-position: center;
+  background-repeat: no-repeat;
+  /*background-size: cover;*/
+  background-size: 100% 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  }
+  .logo{
+    top:-50px;
+    position: relative;
+     max-width: 100%;
+     width:400px;
 
-    label{
-   font-weight: bold;
-
-    }
-    .circle{
-        border-radius:50%;
-        border-style: dotted;
-        height: 150px;
-        vertical-align: middle;
-        line-height: 25px;
-        background-color: #06074E;
-            }
-
-
-
-      .artigo_nome {
-       display: inline-block;
-        max-width: 250px;
-        padding: 10px;
-        word-break: break-all; /* optional */
-        text-decoration: none !important;
-                    }
+  }
+  .circle{
+    max-width: 100%;
+    width: 160px;
+    height: 160px;
+    background-color: steelblue;
+    border-radius: 50%;
+    display: inline-block;
+    border-style: dotted;
+    border:3px solid white;
+  }
+  .circle-wrapper{
+    text-align: center;
+    padding: 10px;
+    max-width: 100%;
+   
+  }
+  .icon{
+    font-size: 35px;
+    margin-top: 40px;
+  }
+  .circle-text{
+    text-decoration: none !important;
+    font-weight: bold;
+  }
+  .row2{
+     position: relative;
+    top:-80px;
+  }
+  a{
+  text-decoration:none !important;
   }
 
-::-webkit-scrollbar {
-    display: none;
-}
- .logo{
-align-content: center;
-text-align: center;
-align-items: center;
- }
   </style>
   </head>
 
-<body class="container-fluid  wrapper"class=""  style=" background-image: url('../images/londo-skyline.png' );
-        background-repeat: repeat;
-         background-size:cover;
-       ">
+<body>
+ 
+    <div class="container-fluid wrapper" >
+   
 
-
-<!-- start of background image span -->
-<span >
-
-</span>
-<!-- end of background image span -->
 
 
 
 <!-- start of logo -->
 
 <div class="row ">
-<div class="col-md-12 text-center " style=" background-image: url('../images/pattern.png' );
-        background-repeat: repeat;
-         background-size:cover;
-
-        width: 100%;
-        height: 100%;
-       ">
-<img class="logo" src="{{url('../images/wz logo-new.png' )}}" width="400px" height="400px;" style="opacity: 1;">
+<div class="col-md-12 text-center "  >
+<img class="logo" src="{{url('../images/wz logo-new.png' )}}" >
 </div>
 </div>
 <!-- end of logo -->
 
 
 
+<div class="row  row2 ">
+
+
+  <div class="col-md-3 circle-wrapper">
+    <div class="circle ">
+
+  <div>
+    <i class="fas fa-users text-white font-weight-bold icon" ></i>
+   <br>
+<a class="text-white " href="{{ route('employee_login') }}"> Employee Console </a>
+  </div>
+      
+    </div>
+  </div>
+
+
+   <div class="col-md-3 circle-wrapper">
+    <div class="circle ">
+      <div>
+         <i class="fas fa-person-booth text-white font-weight-bold icon " ></i>
+     <br>
+<a class="text-white  circle-text" href="#"> CEO Console </a>
+      </div>
+    </div>
+  </div>
 
 
 
 
+   <div class="col-md-3 circle-wrapper">
+    <div class="circle ">
+      <div>
+         <i class="fas fa-address-card text-white font-weight-bold icon" ></i>
+    <br>
+<a class="text-white  circle-text" href="#"> Management Console </a>
+      </div>
+    </div>
+  </div>
 
-<div class="row ">
-<div class="col-md-3"></div>
 
-<div class="col-md-6 d-flex flex-row text-center ">
 
-<!-- start of first circle -->
 
-<div class="col-md-3 circle  text-center bordeer  border-white m-2 pt-3 "style="font-size: 19px;">
-<i class="fas fa-users text-white font-weight-bold" style="font-size: 30px;"></i>
-<a class="text-white artigo_nome" href="employees/employee_login"> Employee Console </a>
+   <div class="col-md-3 circle-wrapper">
+    <div class="circle ">
+       <div>
+         <i class="fab fa-chrome text-white font-weight-bold icon" ></i>
+     <br>
+<a class="text-white  circle-text" href="{{ route('hr_login') }}"> HR Console </a>
+       </div>
+    </div>
+  </div>
 </div>
 
-<!-- end of first circle -->
-
-<!-- start of first circle -->
-<div class="col-md-3 circle  text-center bordeer  border-white m-2 pt-3 "style="font-size: 16px;" >
-<i class="fas fa-person-booth text-white font-weight-bold " style="font-size: 30px;"></i>
-<a class="text-white artigo_nome" href="#"> CEO Console </a>
-</div>
-<!-- end of first circle -->
-
-<!-- start of first circle -->
-<div class="col-md-3 circle  text-center bordeer  border-white m-2 pt-3" style="font-size: 16px;">
-<i class="fas fa-address-card text-white font-weight-bold" style="font-size: 30px;"></i>
-<a class="text-white artigo_nome" href="#"> Management Console </a>
-</div>
-<!-- end of first circle -->
-
-<!-- start of first circle -->
-<div class="col-md-3 circle  text-center bordeer  border-white m-2 pt-3" style="font-size: 16px;">
-<i class="fab fa-chrome text-white font-weight-bold" style="font-size: 30px;"></i>
-<a class="text-white artigo_nome" href="hr/login"> HR Console </a>
-</div>
-<!-- end of first circle -->
-</div>
-
-<div class="col-md-3"></div>
-
-</div>
 
 
 
 
 
+    </div>
+    
+  </div>
 
-<!-- script for employee login (validation )-->
-<script>
-
-
-
-</script>
-
-
-
-    </body>
+</body>
 
 </html>
+
+

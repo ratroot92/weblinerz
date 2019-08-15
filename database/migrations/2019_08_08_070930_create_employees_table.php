@@ -23,6 +23,7 @@ class CreateEmployeesTable extends Migration
             $table->bigInteger('salary')->nullable();
             $table->string('start_date')->nullable();
             $table->string('end_date')->nullable();
+			
             $table->timestamps();
         });
     }

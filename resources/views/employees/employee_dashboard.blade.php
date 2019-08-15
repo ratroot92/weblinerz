@@ -21,7 +21,8 @@
 <script type="text/javascript" src="~/Scripts/data-table/jquery.dataTables.js"></script> -->
 
 
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<script src="http://malsup.github.com/jquery.form.js"></script>
 <!--Import jQuery before export.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
@@ -51,33 +52,34 @@
     border-radius: 50%;
 width: 60px;
 height:60px;
- border: 1px solid black;
-    border-radius: 100px;
-   background-image: url('../images/profile.png' );
-        background-repeat: no-repeat;
-         background-size:cover;
+border: 1px solid black;
+border-radius: 100px;
+background-image: url('../images/profile.png' );
+background-repeat: no-repeat;
+background-size:cover;
   }
+  .sidebar-text{
+	font-size:12px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
 
+  
   .circle_sidebar{
 border-radius: 50%;
 width: 50%;
-height:80px;
+height:60px;
+background-image: url('../images/profile.png' );
+background-repeat: no-repeat;
+background-size:cover;
+}
 
- background-image: url('../images/profile.png' );
-        background-repeat: no-repeat;
-         background-size:cover;
-
-
-
-
-  }
-  .custom_badge{
+.custom_badge{
 border-radius: 3px;
-  }
+ }
+
+
 .nav_tab:hover{
 background-color: #9933CC;
-
-
 }
 
 .inp {
@@ -126,7 +128,7 @@ background-color: #9933CC;
 <body class="container-fluid">
   <!-- start of row -->
 
-  <div class="row  h-100 border-warning border">
+  <div class="row  h-100 border-warning border"><!-- start of navbar -->
    <div class="col-md-2 my-auto">
      <img class="logo" src="{{url('../images/wz logo-new.png' )}}" width="130" height="80" style="opacity: 1;">
    </div>
@@ -172,22 +174,18 @@ background-color: #9933CC;
 
 
    </div>
-
-
-
-  </div>
-  <!-- end of row -->
+  </div><!-- end of navbar-->
+ 
 
   <div class="row">
-    <!-- start of side br -->
-    <div class="col-md-2  " style="background-color: #2d3640;">
+    <div class="col-md-2 bg-dark ">
       <!-- start of row 1-->
      <div class="row p-1">
        <div class="col-md-12 ">
          <div class="row pt-3">
            <div class="col-md-12 d-flex flex-row justify-content-center text-center">
               <div class="circle_sidebar border border-warning">
-
+        
       </div>
            </div>
          </div>
@@ -198,160 +196,125 @@ background-color: #9933CC;
 
        <!-- start of row2 -->
       <div class="row mt-3 p-1">
-        <div class="col-md-12 text-center border-white border">
+        <div class="col-md-12 text-center ">
            <p class="font-weight-bold text-white text-center my-auto ">Faisal Shehzad</p>
         </div>
-
+       
       </div>
        <!-- end of row2 -->
 
-<i class="fas fa-file-spreadsheet"></i>
+
 
       <div class="row " >
         <div class="col-md-12 m-0 p-1">
           <ul class="nav  d-flex flex-column m-0 p-0 ">
 
             <!-- start of tabs -->
-            <li class=" m-0 pt-1 pb-2 pl-0 pr-0 nav_tab border border-warning" style="width:100%; float:left;">
-              <a class="nav-link  text-white font-weight-bold m-0 p-0" href="#hr_dashboard" data-toggle="tab" title="" style="font-size: 16px;">
-                <i class="fas fa-home font-weight-bold text-white p-2 mr-3 m-0 p-0 "></i>
-                Dashboard
-                <i class="fas fa-sort-down text-white font-weight-bold ml-5 m-0 p-0 pr-1 "style="float:right;"></i></i></a> </li>
+            <li class="  nav_tab " style="width:100%; float:left;">
+              <a class="nav-link  text-white font-weight-bold m-0 p-0" href="#"  title="" style="font-size: 16px;">
+                <i class="fas fa-home  text-white  "></i>
+               <span class="sidebar-text ">Dashboard</span>
+                <i class="fas fa-sort-down text-white font-weight-bold  "style="float:right;"></i></a> </li>
             <!-- end of tabs -->
 
 
-             <!-- start of tabs -->
-            <li class=" m-0 mt-4 p-0 nav_tab" style="width:100%; float:left;">
-              <a class="nav-link active text-white font-weight-bold m-0 p-0"href="#employee_dashboard" data-toggle="tab"   title="" style="font-size: 16px;">
-                <i class="fas fa-male font-weight-bold text-white p-2 mr-3 m-0 p-0 "></i>
-             <span class="text-center">  &nbsp; Employees </span>
-                <i class="fas fa-sort-down text-white font-weight-bold ml-5 m-0 p-0 pr-1 " style="float: right;" ></i></i></a> </li>
+<!-- start of tabs -->
+            <li class="  nav_tab" style="width:100%; float:left;">
+              <a class="nav-link  text-white font-weight-bold m-0 p-0" href="#"  title="" style="font-size: 16px;">
+                <i class="fas fa-home  text-white  "></i>
+               <span class="sidebar-text ">Employees</span>
+                <i class="fas fa-sort-down text-white font-weight-bold  "style="float:right;"></i></a> </li>
             <!-- end of tabs -->
-
-
-
-             <!-- start of tabs -->
-            <li class=" m-0 mt-4 p-0 nav_tab" style="width:100%; float:left;">
-              <a class="nav-link text-white font-weight-bold m-0 p-0" href="#hr_careers" data-toggle="tab"  title="" style="font-size: 16px;">
-                <i class="fab fa-angular font-weight-bold text-white p-2 mr-3 m-0 p-0 "></i>
-               <span class="text-center">  Careers </span>
-                <i class="fas fa-sort-down text-white font-weight-bold ml-5 m-0 p-0 pr-1 " style="float: right;"></i></i></a> </li>
+			
+			
+			<!-- start of tabs -->
+            <li class="  nav_tab" style="width:100%; float:left;">
+              <a class="nav-link  text-white font-weight-bold m-0 p-0" href="#"  title="" style="font-size: 16px;">
+                <i class="fas fa-home  text-white  "></i>
+               <span class="sidebar-text ">Expenses</span>
+                <i class="fas fa-sort-down text-white font-weight-bold  "style="float:right;"></i></a> </li>
             <!-- end of tabs -->
-
-<i class=""></i>
-
-             <!-- start of tabs -->
-            <li class=" m-0 mt-4 p-0 nav_tab" style="width:100%; float:left;">
-              <a class="nav-link text-white font-weight-bold m-0 p-0"href="#hr_expense" data-toggle="tab" title="" style="font-size: 16px;">
-                <i class="far fa-file-excel font-weight-bold text-white p-2 mr-3 m-0 p-0 "></i>
-                <span class="text-center">  Expense </span>
-                <i class="fas fa-sort-down text-white font-weight-bold ml-5 m-0 p-0 pr-1 " style="float: right;"></i></i></a> </li>
+			
+			
+			
+			<!-- start of tabs -->
+            <li class="  nav_tab" style="width:100%; float:left;">
+              <a class="nav-link  text-white font-weight-bold m-0 p-0" href="#"  title="" style="font-size: 16px;">
+                <i class="fas fa-home  text-white  "></i>
+               <span class="sidebar-text ">Careers</span>
+                <i class="fas fa-sort-down text-white font-weight-bold  "style="float:right;"></i></a> </li>
             <!-- end of tabs -->
+			
+			
+			
 
+            
 
-             <!-- start of tabs -->
-            <li class="  m-0 mt-4 p-0 nav_tab" style="width:100%; float:left;">
-              <a class="nav-link text-white font-weight-bold m-0 p-0" href="#hr_reports" data-toggle="tab" title="" style="font-size: 16px;">
-                <i class="fas fa-american-sign-language-interpreting font-weight-bold text-white p-2 mr-2 m-0 p-0 "></i>
-                  <span class="text-center"> Reports </span>
-                <i class="fas fa-sort-down text-white font-weight-bold ml-5 m-0 p-0 pr-1 " style="float: right;"></i></i></a> </li>
-            <!-- end of tabs -->
-
+            
+           
           </ul>
         </div>
       </div>
     </div>
 
-    <!-- end of side bar -->
+
+
+
+     
+  
+
+   
   <!-- start of display page -->
-    <div class="col-md-10">
+<div class="col-md-10">
+<div class="tab-content"><!-- start of tab 1 -->
+<div class="tab-pane active " id="hr_employees">
 
-<div class="tab-content">
-  <!-- start of tab 1 -->
-
-
-
-
-  <div class="tab-pane " id="hr_expense">
-
-<p>this is expense tab </p>
-   </div>
-
-
-
-  <div class="tab-pane active " id="hr_employees">
-<div class="row">
-	<div  class="col-md-12 ">
-		<!-- start of alert -->
+<div class="row"><!-- row 1 start -->
+<div  class="col-md-12 ">
+<!-- start of alert -->
 @if(session('message'))
-
-
 <div class="row">
 <div class="col-md-12 text-danger font-weight-bold text-white alert alert-danger text-center" style="font-size: 18px;">
-     {{session('message')}}
+{{session('message')}}
 </div>
 </div>
 @endif
-<!-- end of alert -->
-
-
-
-
-<!-- 
-@if($errors->any())
-
-
-<div class="row">
-<div class="col-md-12 text-danger font-weight-bold text-white alert alert-danger text-center m-0 p-0" style="font-size: 25px;">
-
-<ul class="m-0 p-0">
-		@foreach($errors as $error)
-	<li class="m-0 p-0">&spades;{{$error}}}</li>
-		@endforeach
-</ul>
 </div>
-</div>
-@endif
-
- -->
+</div><!-- row 1 end -->
 
 
-	</div>
-</div>
+
+
  <div class="row">  <!-- start of row 1-->
-        <div class="col-md-12 pt-3 pb-3">
-         <p class="text-dark font-weight-bold my-auto" style="font-weight: bold;float: left;"> Home / Dashboard / Employee</p>
-         <!--  <button class="btn  btn-primary" type="button" data-toggle="modal" data-target="#exampleModal" style="float: right;width: 100px;">New</button>  -->
 
+ <div class="col-md-12 pt-3 pb-3">
 
-
+ <p class="text-dark font-weight-bold my-auto" style="font-weight: bold;float: left;"> Home / Dashboard / Employee</p>
+        
 
 <div class="btn-group" id="openmenu-btn"  style="float: right;">
-  <button type="button" class="btn btn-secondary dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Add
-  </button>
+<button type="button" class="btn btn-secondary dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add Employee
+</button>
 
-        <div class="dropdown-container">
-           <div class="dropdown-menu " onClick="event.stopPropagation();" style="width: 390px;" >
+<div class="dropdown-container">
+<div class="dropdown-menu " onClick="event.stopPropagation();" style="width: 390px;" >
 
-   <div class="container-fluid">
-<form action="/add_employee"  method="POST">
+<div class="container-fluid">
+<form action="/add_employee"  method="POST" enctype="multipart/form-data" name="form" id="form">
 
-        <div class="row">
-                <div class="col-md-12">
-                <span class="font-weight-bold ">Employee ID</span>
-                <input class="inp col-md-12" type="number"  id="id" name="id"  required/>
-                @if($errors->has('id'))
-                <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;" >&spades;{{ $errors->first('id') }}</div>
-                @endif
-                </div>
-               
-            </div>
-
-
+<div class="row">
+<div class="col-md-12">
+<span class="font-weight-bold ">Employee ID</span>
+<input class="inp col-md-12" type="number"  id="id" name="id"  required/>
+@if($errors->has('id'))
+<div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;" >&spades;{{ $errors->first('id') }}</div>
+@endif
+</div>
+</div>
 
 
 <div class="row">
+
 <div class="col-md-12">
 <span class="font-weight-bold ">Name</span>
 <input class="inp col-md-12" type="text" placeholder="@example John Doe" id="name" min="3" max="20" name="name" required/>
@@ -377,7 +340,7 @@ background-color: #9933CC;
 <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('password') }}</div>
 @endif
 </div>
-        </div>
+</div>
 
 
 
@@ -401,6 +364,7 @@ background-color: #9933CC;
 
 
 <div class="col-md-12 mt-3 ">
+
  <div class="row">
 
 <div class="col-md-6">
@@ -419,9 +383,7 @@ background-color: #9933CC;
   <div class=" alert alert-danger  font-weight-bold m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('end_date') }}</div>
   @endif
 </div>
-
-  </div>
-
+</div>
 </div>
 
 
@@ -444,26 +406,29 @@ background-color: #9933CC;
 <div class="col-md-12 text-center mt-4" >
 
     <!--  <img class="logo mt-3 " src="{{url('../icons/files.png' )}}" width="55" height="55" style="opacity: 1;"> -->
-  <p>Drag Files To Upload </p>
+ <input type="file" name="uploads[]" multiple>
+ @if($errors->has('uploads'))
+  <div class=" alert alert-danger  font-weight-bold mt-2 m-0 p-0" style="font-size:14px;">&spades;{{ $errors->first('uploads') }}</div>
+  @endif
+  
+  <div class="progress">
+  
+  <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="" style="width:0%;">
+  0%
+  
+  
   </div>
-
-
+  <div id="success"></div>
+  
  </div>
-
+ 
+ 
  </div>
-
-
-
-
- <div class="col-md-12 mt-3">
-
-
+ </div>
+<div class="col-md-12 mt-3">
 <div class="row">
-
 <div class="col-md-6 text-center">
 <button type="button" class="btn " id="closebtn" style="background-color:#ff4f4e;">Close</button>
-
-
 </div>
 
 <div class="col-md-6 text-center">
@@ -476,79 +441,79 @@ background-color: #9933CC;
 </div>
 </form>
 </div>
+</div>
+</div>
+</div> 
+</div>
 
-  </form>
- <!--  <div class="dropdown-divider"></div>
-  <a class="dropdown-item" href="#">New around here? Sign up</a>
-  <a class="dropdown-item" href="#">Forgot password?</a> -->
-</div>
-        </div>
-</div>
-          <!-- Button trigger modal -->
+
+<!-- Button trigger modal -->
 
 
 </button>
-          </div>
-          </div><!-- end of row 1-->
+</div>
+</div><!-- end of row 1-->
 
-          <div class="row p-2   ">
+<div class="row p-2   "><!-- start of cards -->
 
-            <div class="col-md-3  ">
-             <div class="row p-1 ">
-               <div class="col-md-12  custom_badge text-center" style="background-color: #ffa319;">
-            <img class="logo mt-3 " src="{{url('../icons/e-1.png' )}}" width="55" height="55" style="opacity: 1;">
+<div class="col-md-3  ">
+<div class="row p-1 ">
+<div class="col-md-12  custom_badge text-center" style="background-color: #ffa319;">
+<img class="logo mt-3 " src="{{url('../icons/e-1.png' )}}" width="55" height="55" style="opacity: 1;">
+<p class="font-weight-bold text-white">Contracts</p>
+</div>
+</div>
+</div>
 
-
-               <p class="font-weight-bold text-white">Contracts</p>
-             </div>
-            </div>
-          </div>
-
-
-
-              <div class="col-md-3  ">
-             <div class="row p-1 ">
-               <div class="col-md-12  custom_badge text-center" style="background-color: #007ffb;">
-                       <img class="logo mt-3 " src="{{url('../icons/e_2.png' )}}" width="55" height="55" style="opacity: 1;">
-               <p class="font-weight-bold text-white">Salaries</p>
-             </div>
-            </div>
-          </div>
 
 
 
  <div class="col-md-3  ">
-             <div class="row p-1 ">
-               <div class="col-md-12  custom_badge text-center" style="background-color: #00e0a5;">
-                     <img class="logo mt-3 " src="{{url('../icons/e_3.png' )}}" width="55" height="55" style="opacity: 1;">
-               <p class="font-weight-bold text-white">Complaints</p>
-             </div>
-            </div>
-          </div>
+<div class="row p-1 ">
+<div class="col-md-12  custom_badge text-center" style="background-color: #007ffb;">
+<img class="logo mt-3 " src="{{url('../icons/e_2.png' )}}" width="55" height="55" style="opacity: 1;">
+<p class="font-weight-bold text-white">Salaries</p>
+</div>
+</div>
+</div>
 
 
 
  <div class="col-md-3  ">
-             <div class="row p-1 ">
-               <div class="col-md-12  custom_badge text-center" style="background-color: #bb64e4;">
-                       <img class="logo mt-3 " src="{{url('../icons/e_4.png' )}}" width="55" height="55" style="opacity: 1;">
-               <p class="font-weight-bold text-white">Attendence</p>
-             </div>
-            </div>
-          </div>
+<div class="row p-1 ">
+<div class="col-md-12  custom_badge text-center" style="background-color: #00e0a5;">
+<img class="logo mt-3 " src="{{url('../icons/e_3.png' )}}" width="55" height="55" style="opacity: 1;">
+<p class="font-weight-bold text-white">Complaints</p>
+ </div>
+</div>
+</div>
 
 
-          </div>
+
+ <div class="col-md-3  ">
+<div class="row p-1 ">
+<div class="col-md-12  custom_badge text-center" style="background-color: #bb64e4;">
+<img class="logo mt-3 " src="{{url('../icons/e_4.png' )}}" width="55" height="55" style="opacity: 1;">
+<p class="font-weight-bold text-white">Attendence</p>
+</div>
+</div>
+</div>
 
 
-          <!-- startr of row -->
+</div><!-- end of cards -->
 
-            <div class="row mt-4">
-              <div class="col-md-12">
-              <button type="button" class="btn btn-outline-dark font-weight-bold" id="navigatable_btn_3" style="border:none;"> <i class="fas fa-sort-down text-danger font-weight-bold mr-5 m-0 p-0"></i>All Employee</button>
-              </div>
-            </div>
-          <!-- start of row -->
+
+<!-- hideable button  -->
+
+<div class="row mt-4">
+<div class="col-md-12">
+<button type="button" class="btn btn-outline-dark font-weight-bold" id="navigatable_btn_3" style="border:none;"> <i class="fas fa-sort-down text-danger font-weight-bold mr-5 m-0 p-0"></i>All Employee</button>
+</div>
+</div>
+          <!-- end hidebale button-->
+
+
+
 <div class="row mt-3 ">
   <div class="col-md-8 d-flex flex-row justify-content-between">
    <!-- Material inline 1 -->
@@ -580,46 +545,7 @@ background-color: #9933CC;
 
 
 
-           <!-- startr of row -->
-
-           <div class="row mt-4" id="navigatable_div_3" name="navigatable_div_3">
-             <div class="col-md-12">
-
-
-
-             <!-- starrt of view employees tab -->
-                    <div class="conatiner-fluid">
-                        <div class="row m-0 p-0">
-                          <div class="col-md-12">
-                          	<table class="table border border-danger" id="table3" style="font-size:9px;">
-                                        <thead class="thead-dark">
-                                          <tr>
-                                            <th scope="col">Patient ID</th>
-                                            <th scope="col">Patient Name</th>
-                                            <th scope="col">Patient Email</th>
-                                            <th scope="col">Patient Mobile</th>
-                                            <th scope="col">Patient Password</th>
-                                            <th scope="col">Patient Contact</th>
-                                            <th scope="col">Salary</th>
-                                             <th scope="col">Start Date</th>
-                                               <th scope="col">End Date </th>
-
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach ($employees as $a)
-
-
-                                            <tr>
-                                            <th scope="row">{{$a->id}}</th>
-                                            <th scope="row">{{$a->name}}</th>
-                                            <th scope="row">{{$a->email}}</th>
-                                            <th scope="row">{{$a->mobile}}</th>
-                                            <th scope="row">{{$a->password}}</th>
-                                            <th scope="row">{{$a->contract}}</th>
-                                            <th scope="row">{{$a->salary}}</th>
-                                            <th scope="row">{{$a->start_date}}</th>
-                                            <th scope="row">{{$a->end_date}}</th>
+           
 
 
 
@@ -627,68 +553,6 @@ background-color: #9933CC;
 
 
 
-                                          </tr>
-                                         @endforeach
-
-                                        </tbody>
-                                      </table>
-                          </div>
-
-
-             </div>
-           </div>
-          <!-- start of row -->
-
-
-
-
-
-
-          <!-- startr of row -->
-
-            <div class="row mt-4">
-              <div class="col-md-12">
-              <button type="button" class="btn btn-outline-dark font-weight-bold" id="navigatable_btn_4" style="border:none;"> <i class="fas fa-sort-down text-danger font-weight-bold mr-5 m-0 p-0"></i>Todays Expense</button>
-              </div>
-            </div>
-          <!-- start of row -->
-
-
-
-
-           <!-- startr of row -->
-
-           <div class="row mt-4" id="navigatable_div_4" name="navigatable_div_4">
-            <div class="col-md-12">
-                          	<table class="table border border-danger" id="table3" style="font-size:9px;">
-                                        <thead class="thead-dark">
-                                          <tr>
-                                            <th scope="col">Patient ID</th>
-                                            <th scope="col">Patient Name</th>
-                                            <th scope="col">Patient Email</th>
-                                            <th scope="col">Patient Mobile</th>
-                                            <th scope="col">Patient Password</th>
-                                            <th scope="col">Patient Contact</th>
-                                            <th scope="col">Salary</th>
-                                             <th scope="col">Start Date</th>
-                                               <th scope="col">End Date </th>
-
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach ($employees as $a)
-
-
-                                            <tr>
-                                            <th scope="row">{{$a->id}}</th>
-                                            <th scope="row">{{$a->name}}</th>
-                                            <th scope="row">{{$a->email}}</th>
-                                            <th scope="row">{{$a->mobile}}</th>
-                                            <th scope="row">{{$a->password}}</th>
-                                            <th scope="row">{{$a->contract}}</th>
-                                            <th scope="row">{{$a->salary}}</th>
-                                            <th scope="row">{{$a->start_date}}</th>
-                                            <th scope="row">{{$a->end_date}}</th>
 
 
 
@@ -696,37 +560,7 @@ background-color: #9933CC;
 
 
 
-                                          </tr>
-                                         @endforeach
 
-                                        </tbody>
-                                      </table>
-                          </div>
-           </div>
-          <!-- start of row -->
-   </div>
-
-
-
-   <div class="tab-pane " id="hr_careers">
-
-<p>this is careeers tab </p>
-   </div>
-
-
-
-   <div class="tab-pane " id="hr_reports">
-
-<p>this is careeers tab </p>
-   </div>
-
-
-
-
-
-
-
-</div><!-- end of tab-1 -->
 
 
 

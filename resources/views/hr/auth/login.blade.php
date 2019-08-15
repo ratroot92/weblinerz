@@ -44,7 +44,7 @@
 <!-- end of alert -->
                         </div>
                         <div class="body">
-                        <form class="" method="POST" action="/login_as_hr" >
+                        <form class="" method="POST" action="{{ route('login_as_hr') }}" >
 
                                 <div class="form-group">
                                     <label for="signin-email" class="control-label sr-only">Email</label>
