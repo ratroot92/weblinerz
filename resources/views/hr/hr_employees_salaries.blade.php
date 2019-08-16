@@ -344,27 +344,26 @@
                         <div id="navigatable_div_1" style="padding-top: 15px !important;">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox"> 
+                                    <input type="checkbox">
                                     <!-- <button type="submit" class="btn btn-secondary"  data-toggle="dropdown">&nbsp; &nbsp; Months &nbsp; &nbsp;<i class="fa fa-caret-down"></i></button> -->
                                     <div class="form-group">
-                                      <!-- <label for="sel1">Select list (select one):</label> -->
-                                      <select class="form-control" id="sel1" style="border: none; box-shadow: none;">
-                                          <option>January</option>
-                                          <option>February</option>
-                                          <option>March</option>
-                                          <option>April</option>
-                                          <option>May</option>
-                                          <option>June</option>
-                                          <option>July</option>
-                                          <option>August</option>
-                                          <option>September</option>
-                                          <option>October</option>
-                                          <option>November</option>
-                                          <option>December</option>                     
-                                      </select>
-                                      </div>
+                                        <!-- <label for="sel1">Select list (select one):</label> -->
+                                        <select class="form-control" id="sel1" style="border: none; box-shadow: none;">
+                                            <option>January</option>
+                                            <option>February</option>
+                                            <option>March</option>
+                                            <option>April</option>
+                                            <option>May</option>
+                                            <option>June</option>
+                                            <option>July</option>
+                                            <option>August</option>
+                                            <option>September</option>
+                                            <option>October</option>
+                                            <option>November</option>
+                                            <option>December</option>
+                                        </select>
+                                    </div>
                                 </label>
-
                                 &emsp;&emsp;&emsp;&emsp;&emsp;
                                 <label>
                                     <input type="checkbox"> Salaries Cleaned
@@ -381,7 +380,9 @@
                             </div>
                             <div class="form-popup" id="myForm">
                                 <form action="#" class="form-container">
-                                    <input type="text" placeholder="Employee Name" name="name" required>
+                                    <select class="form-control" id="sel1" style="border: none; box-shadow: none; border-bottom: 2px solid #1a1a1a5e !important; margin-bottom: 22px;">
+                                        <option>January</option>
+                                    </select>
                                     <input type="text" placeholder="Salary" name="salary" required>
                                     <input type="text" placeholder="Fine" name="fine" required>
                                     <input type="text" placeholder="Received" name="received" required>
