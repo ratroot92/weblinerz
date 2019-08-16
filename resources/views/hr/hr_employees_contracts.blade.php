@@ -276,7 +276,7 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1><small>Home / Dashboard / Employee</small></h1>
+      <h1><small>Home / Dashboard / Employee / Contracts</small></h1>
       
     </section>
 

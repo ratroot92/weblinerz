@@ -23,7 +23,75 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   
+ <style type="text/css" media="screen">
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
 
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+</style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -287,7 +355,7 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1><small>Home / Dashboard / Employee</small></h1>
+      <h1><small>Home / Dashboard / Employee / Salaries</small></h1>
       
     </section>
 
@@ -373,51 +441,65 @@
             
           <div class="checkbox">
               <label>
-                <input type="checkbox"> All
+                <input type="checkbox"> Month 
               </label>
               &emsp;&emsp;&emsp;&emsp;&emsp;
               <label>
-                <input type="checkbox"> Current Employee
+                <input type="checkbox"> Salaries Cleaned
               </label>
                &emsp;&emsp;&emsp;&emsp;&emsp;
               <label>
-                <input type="checkbox"> Internee
+                <input type="checkbox"> Salaries Pending 
               </label>
                &emsp;&emsp;&emsp;&emsp;&emsp;
-              <label>
+             <!--  <label>
                 <input type="checkbox"> Old Employee
-              </label>
-              <button type="button" class="btn btn-primary">New</button>
+              </label> -->
+              <button type="button" class="btn btn-primary" onclick="openForm()" >Add Draft</button>
           </div>  
+
+
+
+          <div class="form-popup" id="myForm">
+            <form action="#" class="form-container">
+
+              <input type="text" placeholder="Employee Name" name="name" required>
+
+              <input type="text" placeholder="Salary" name=salary" required>
+
+              <input type="text" placeholder="Fine" name="fine" required>    
+
+              <input type="text" placeholder="Received" name="received" required> 
+
+              <input type="text" placeholder="Pending" name="pending" required> 
+
+              <label for="Comments">Comments</label><br>
+
+              <textarea name="comments" rows="3" style="margin: 0px; width: 280px; height: 144px;"></textarea>
+              
+
+              <button type="button" class="btn btn-danger" onclick="closeForm()">Close</button>
+              <button type="button" class="btn btn-primary" >Add</button>
+            </form>
+            </div>
 
             <table class="table table-striped" id="table1" style="padding-top: 16px;">
               <thead>
                 <tr style="background-color: #b85197;">
                   <th style="color: #fff;" scope="col">Sr</th>
-                  <th style="color: #fff;" scope="col">Designation</th>
                   <th style="color: #fff;" scope="col">Assign To</th>
-                  <th style="color: #fff;" scope="col">Type</th>
-                  <th style="color: #fff;" scope="col">Status</th>
+                  <th style="color: #fff;" scope="col">Salary</th>
+                  <th style="color: #fff;" scope="col">Fine</th>
+                  <th style="color: #fff;" scope="col">status</th>
                   <th style="color: #fff;" scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <th scope="row">1</th>
-                    <td>Andriod Developer </td>
-                    <td>Waqas Ahmed &emsp;
-                       <a href="#"><button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><img src="{{ asset('images/100-min.png') }}" alt=""></a></button>
-
-                        <ul class="dropdown-menu">
-                          <label><input type="checkbox"> ALi Ahmed</label><br>
-                          <label><input type="checkbox"> Adnan ahmed</label><br>
-                          <label><input type="checkbox"> Asim Raza</label><br>
-                          <label><input type="checkbox"> Raza Khan</label><br>
-                          <label><input type="checkbox"> Raza Khan</label><br>
-                          <label><input type="checkbox"> Raza Khan</label><br>
-                        </ul> 
-                    </td>
-                    <td>Full Time</td>
+                    <td>Waqas </td>
+                    <td>Rs 25000 &emsp;</td>
+                    <td>85000</td>
                     <td>Active</td>
                     <td>
                       <a href="#"><img src="{{ asset('images/200-min.png') }}" alt=""></a>
@@ -427,20 +509,10 @@
                 </tr>
                 <tr>
                   <th scope="row">2</th>
-                  <td>PHP Developer</td>
-                  <td>Hamid Ahmed &emsp;
-                    <a href="#"><button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><img src="{{ asset('images/100-min.png') }}" alt=""></a></button>
-
-                    <ul class="dropdown-menu">
-                      <label><input type="checkbox"> ALi Ahmed</label><br>
-                      <label><input type="checkbox"> Adnan ahmed</label><br>
-                      <label><input type="checkbox"> Asim Raza</label><br>
-                      <label><input type="checkbox"> Raza Khan</label><br>
-                      <label><input type="checkbox"> Raza Khan</label><br>
-                      <label><input type="checkbox"> Raza Khan</label><br>
-                    </ul> 
+                  <td>Rasheed Ahmed</td>
+                  <td>Rs 25000 &emsp;
                   </td>
-                  <td>Full Time</td>
+                  <td>6500</td>
                   <td>Active</td>
                   <td>
                     <a href="#"><img src="{{ asset('images/200-min.png') }}" alt=""></a>
@@ -450,18 +522,8 @@
                 </tr>
                 <tr>
                   <th scope="row">3</th>
-                  <td>Javascript Developer</td>
-                  <td>ahmed Ahmed &emsp;<a href="#">
-                     <a href="#"><button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><img src="{{ asset('images/100-min.png') }}" alt=""></a></button>
-
-                    <ul class="dropdown-menu">
-                      <label><input type="checkbox"> ALi Ahmed</label><br>
-                      <label><input type="checkbox"> Adnan ahmed</label><br>
-                      <label><input type="checkbox"> Asim Raza</label><br>
-                      <label><input type="checkbox"> Raza Khan</label><br>
-                      <label><input type="checkbox"> Raza Khan</label><br>
-                      <label><input type="checkbox"> Raza Khan</label><br>
-                    </ul> 
+                  <td>ALi Ahmed</td>
+                  <td>Rs 25000 &emsp;
                   </td>
                   <td>Full Time</td>
                   <td>Inactive</td>
@@ -473,20 +535,10 @@
                 </tr>
                   <tr>
                   <th scope="row">4</th>
-                  <td>UI/UX Developer</td>
-                  <td>Arshad Ahmed &emsp;
-                     <a href="#"><button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><img src="{{ asset('images/100-min.png') }}" alt=""></a></button>
-
-                    <ul class="dropdown-menu">
-                      <label><input type="checkbox"> ALi Ahmed</label><br>
-                      <label><input type="checkbox"> Adnan ahmed</label><br>
-                      <label><input type="checkbox"> Asim Raza</label><br>
-                      <label><input type="checkbox"> Raza Khan</label><br>
-                      <label><input type="checkbox"> Raza Khan</label><br>
-                      <label><input type="checkbox"> Raza Khan</label><br>
-                    </ul> 
+                  <td>Usman khan</td>
+                  <td>Rs 25000 &emsp;
                   </td>
-                  <td>Full Time</td>
+                  <td>65400</td>
                   <td>Active</td>
                   <td>
                     <a href="#"><img src="{{ asset('images/200-min.png') }}" alt=""></a>
@@ -497,20 +549,10 @@
                  </tr>
                   <tr>
                   <th scope="row">5</th>
-                  <td>SEO</td>
-                  <td>Rizwan Ahmed &emsp;
-                    <a href="#"><button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><img src="{{ asset('images/100-min.png') }}" alt=""></a></button>
-
-                    <ul class="dropdown-menu">
-                      <label><input type="checkbox"> ALi Ahmed</label><br>
-                      <label><input type="checkbox"> Adnan ahmed</label><br>
-                      <label><input type="checkbox"> Asim Raza</label><br>
-                      <label><input type="checkbox"> Raza Khan</label><br>
-                      <label><input type="checkbox"> Raza Khan</label><br>
-                      <label><input type="checkbox"> Raza Khan</label><br>
-                    </ul>                    
+                  <td>Rahim Khan</td>
+                  <td>Rs 25600 &emsp;
                   </td>
-                  <td>Full Time</td>
+                  <td>25000</td>
                   <td>Active</td>
                   <td>
                     <a href="#"><img src="{{ asset('images/200-min.png') }}" alt=""></a>
@@ -612,6 +654,15 @@ $(function () {
   })
 })
 });
+
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
 </script>
 </body>
 </html>
+    
