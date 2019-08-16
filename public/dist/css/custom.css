@@ -127,7 +127,7 @@
     background-color: #c879af !important;
     border-color: #c879af !important;
     position: relative;
-    left: 439px;
+    left: 410px;
     width: 82px;
 }
 
@@ -222,10 +222,13 @@ label {
 /* Full-width input fields */
 .form-container input[type=text], .form-container input[type=password] {
     width: 100%;
-    padding: 15px;
+    padding: 5px;
     margin: 5px 0 22px 0;
-    border: none;
-    background: #f1f1f1;
+    border: none;    /* background: #f1f1f1; */
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #1a1a1a5e;
 }
 
 /* When the inputs get focus, do something */

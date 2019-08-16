@@ -13,4 +13,8 @@ class HrEmployeeSalariesController extends Controller
     public function employeeContracts() {
     	return view('hr.hr_employees_contracts');
     }
+
+    public function addEmpolyeesContracts() {
+    	return view('hr.hr_employees_add_contracts');
+    }
 }

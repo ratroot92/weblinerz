@@ -591,7 +591,7 @@
 $(document).ready(function () {  
 $(function () {
   $('#table1').DataTable()
-  $('#table1').DataTable({
+  $('#table2').DataTable({
     'paging'      : true,
     'lengthChange': false,
     'searching'   : false,
