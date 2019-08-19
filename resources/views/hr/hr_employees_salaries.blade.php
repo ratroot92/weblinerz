@@ -494,7 +494,7 @@ function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
 
-</script>
 
+</script>
 </body>
 </html>
