@@ -320,7 +320,9 @@
                                    
                                     <input type="text" id="salary" class="salary" value="Salary" placeholder="Salary" name="salary" required>
                                     
-                                    <input type="text" placeholder="Fine" name="fine" required>
+                                    <input type="text" id="fine" value="" name="fine" placeholder="Fine" required>
+                                   <input type="text" id="total_sal" value="" name="total_sal" placeholder="Total Salary" >
+                                   
                                     <input type="text" placeholder="Received" name="received" required>
                                     <input type="text" placeholder="Pending" name="pending" required>
                                     <label for="Comments">Comments</label><br>
@@ -471,24 +473,36 @@
     
 <script type="text/javascript">
 
-//$('#name').on('change',function(){
-$('#name').click(function(event){  
-event.preventDefault();
-var name = $('#name').val();   
-//alert(name);
- $.ajax({
-          url : '/getsalary',
-          type: 'get',
-          data : { 'name' : name },
-          dataType: 'json',
-           success: function(response){ 
-           $('#salary').val(response);      
-        
-            }, error:function(e){
-                    console.log(e);
-                    }
-                });
+//----------------------------------------
+    $('#name').click(function(event){  
+    event.preventDefault();
+    var name = $('#name').val();   
 
+     $.ajax({
+              url : '/getsalary',
+              type: 'get',
+              data : { 'name' : name },
+              dataType: 'json',
+               success: function(response){ 
+               $('#salary').val(response);      
+            
+                }, error:function(e){
+                        console.log(e);
+                        }
+            });
+
+        });
+//---------------------------------------
+    $('#fine').change(function(event){  
+    event.preventDefault();
+   
+        var salary = parseInt($('#salary').val());
+        var fine = parseInt($('#fine').val()); 
+        var total =  salary - fine;
+        $('#total_sal').val(total);
+        //console.log(name);
+        //console.log(fine);
+        //console.log(total);
     });
 
 //--------------------------------------
@@ -506,7 +520,7 @@ var name = $('#name').val();
           })
         })
     });
-
+//------------------------------------------
 function openForm() {
   document.getElementById("myForm").style.display = "block";
 }
