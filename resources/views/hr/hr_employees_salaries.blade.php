@@ -310,13 +310,15 @@
                             </div>
                             <div class="form-popup" id="myForm">
                                 <form action="#" class="form-container">
-                                    <select class="form-control" id="sel1" style="border: none; box-shadow: none; border-bottom: 2px solid #1a1a1a5e !important; margin-bottom: 22px;">
+                                    <select class="form-control aircraftsName" id="sel1" style="border: none; box-shadow: none; border-bottom: 2px solid #1a1a1a5e !important; margin-bottom: 22px;">
                                         <option>Please Select</option>
                                             @foreach($salariesName as $salary)
-                                                <option>{{ $salary->name }}</option>
+                                                <option id="salary_id" value="{{ $salary->name }}">{{ $salary->name }}</option>
                                             @endforeach
                                     </select>
-                                    <input type="text" placeholder="Salary" name="salary" required>
+                                   
+                                    <input type="text" id="salary" class="salary" value="Salary" placeholder="Salary" name="salary" required>
+                                    
                                     <input type="text" placeholder="Fine" name="fine" required>
                                     <input type="text" placeholder="Received" name="received" required>
                                     <input type="text" placeholder="Pending" name="pending" required>
@@ -425,7 +427,7 @@
     <!-- <script src="bower_components/jquery-ui/jquery-ui.min.js"></script> -->
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
-    <script>
+    <script type="text/javascript">
     var div1 = document.getElementById("navigatable_div_1");
     var div2 = document.getElementById("navigatable_div_2");
     var btn1 = document.getElementById("navigatable_btn_1");
@@ -467,22 +469,22 @@
     <script src="{{ asset('bower_components/fastclick/lib/fastclick.js') }}"></script>
     <!-- AdminLTE App -->
     <!-- <script src="{{ asset('dist/js/adminlte.min.js"></script> -->
-<!-- AdminLTE for demo purposes -->
-<!-- <script src="{{ asset('dist/js/demo.js"></script> -->
+    <!-- AdminLTE for demo purposes -->
+    <!-- <script src="{{ asset('dist/js/demo.js"></script> -->
 <script type="text/javascript">
-$(document).ready(function () {  
-$(function () {
-  $('#table1').DataTable()
-  $('#table2').DataTable({
-    'paging'      : true,
-    'lengthChange': false,
-    'searching'   : false,
-    'ordering'    : true,
-    'info'        : true,
-    'autoWidth'   : false
-  })
-})
-});
+    $(document).ready(function () {  
+        $(function () {
+          $('#table1').DataTable()
+          $('#table2').DataTable({
+            'paging'      : true,
+            'lengthChange': false,
+            'searching'   : false,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : false
+          })
+        })
+    });
 
 function openForm() {
   document.getElementById("myForm").style.display = "block";
@@ -491,6 +493,8 @@ function openForm() {
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
+
 </script>
+
 </body>
 </html>
