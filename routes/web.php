@@ -107,3 +107,9 @@ Route::get('hr/hr_dashboard', function () {
 
 
 });
+
+Route::get('/hr/hr_employee_salaries','HrEmployeeSalariesController@index');
+
+Route::get('/hr/hr_employee_contracts','HrEmployeeSalariesController@employeeContracts');
+
+Route::get('/hr/hr_employees_add_contracts','HrEmployeeSalariesController@addEmpolyeesContracts');

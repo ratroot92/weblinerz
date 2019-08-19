@@ -1,0 +1,259 @@
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+    background-color: #2d3640 !important;
+}
+
+.content {
+    background-color: #fafafa !important;
+}
+
+.content-header {
+    background-color: #fafafa !important;
+}
+
+.bg-aqua, .callout.callout-info, .alert-info, .label-info, .modal-info .modal-body {
+    background-color: #fd9097 !important;
+}
+
+.bg-green, .callout.callout-success, .alert-success, .label-success, .modal-success .modal-body {
+    background-color: #6db7f2 !important;
+}
+
+.bg-yellow, .callout.callout-warning, .alert-warning, .label-warning, .modal-warning .modal-body {
+    background-color: #b792db !important;
+}
+
+.bg-red, .callout.callout-danger, .alert-danger, .alert-error, .label-danger, .modal-danger .modal-body {
+    background-color: #8a52e1 !important;
+}
+
+.bg-aqua-one, .callout.callout-info, .alert-info, .label-info, .modal-info .modal-body {
+    background-color: #fab245 !important;
+}
+
+.bg-green-two, .callout.callout-success, .alert-success, .label-success, .modal-success .modal-body {
+    background-color: #007ffb !important;
+}
+
+.bg-yellow-three, .callout.callout-warning, .alert-warning, .label-warning, .modal-warning .modal-body {
+    background-color: #00e0a5 !important;
+}
+
+.bg-red-four, .callout.callout-danger, .alert-danger, .alert-error, .label-danger, .modal-danger .modal-body {
+    background-color: #bb64e4 !important;
+}
+
+.content-wrapper {
+    min-height: calc(100% - 102px);
+    background-color: #fff !important;
+    z-index: 800;
+}
+
+.small-box h3, .small-box p {
+    padding-left: 80px !important;
+    padding-top: 0px;
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+}
+
+.skin-blue .main-header .navbar {
+    background-color: #ffffff !important;
+    border-bottom: 4px solid #eae1e1;
+}
+
+.small-box>.inner {
+    height: 143px !important;
+}
+
+.skin-blue .main-header .logo {
+    background-color: #ffffff !important;
+    color: none !important;
+}
+
+.p .carriers {
+    font-size: 18.75px;
+    font-family: "Myriad Pro";
+    color: #fff;
+    line-height: 2.133;
+    text-align: left;
+    position: absolute;
+    left: 586.863px;
+    top: 270.503px;
+    z-index: 66;
+}
+
+.content-header>h1>small {
+    font-weight: 500 !important;
+    color: #000 !important;
+}
+
+.img_hr {
+    padding-left: 90px;
+    margin-top: 27px;
+}
+
+.logo-lg {
+    position: relative;
+    right: 54px;
+    bottom: 14px;
+}
+
+.user-panel {
+    height: 122px !important;
+}
+
+.skin-blue .main-header .navbar .nav>li>a {
+    color: #ceceba !important;
+}
+
+.skin-blue .sidebar-menu>li.active>a {
+    border-left-color: #1e282c !important;
+}
+
+.portal {
+    padding-top: 19px;
+    position: relative;
+    top: 12px;
+    left: 12px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.checkbox, .radio {
+    padding-bottom: 12px !important;
+}
+
+.btn-primary {
+    background-color: #c879af !important;
+    border-color: #c879af !important;
+    position: relative;
+    left: 410px;
+    width: 82px;
+}
+
+.open>.dropdown-menu {
+    position: relative !important;
+}
+
+.btn-default {
+    background-color: transparent !important;
+    border-color: white !important;
+}
+
+label {
+    position: relative;
+    left: 18px;
+}
+
+.btn.btn-primary-done {
+    background-color: #c571ab !important;
+    position: relative;
+    left: 400px;
+    width: 107px;
+}
+
+.jumbotron.shadow {
+    background-color: #fff !important;
+    border: 2px solid #fbfbfb !important;
+}
+
+.headingone {
+    color: #a21b79 !important;
+    font-weight: 600;
+    padding-left: 20px;
+}
+
+.font-weight-bold {
+    padding-left: 15px !important;
+}
+
+.inp {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #1a1a1a5e;
+    padding: 5px 15px;
+    outline: none;
+}
+
+[placeholder]:focus::-webkit-input-placeholder {
+    transition: text-indent 0.4s 0.4s ease;
+    text-indent: -100%;
+    opacity: 1;
+}
+
+.drag_files {
+    border: 1px dotted black;
+    height: 130px;
+    border-radius: 3px;
+}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0 22px 0;
+    border: none;    /* background: #f1f1f1; */
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #1a1a1a5e;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+    background-color: #4CAF50;
+    color: white;  /* padding: 16px 20px; */
+    border: none;
+    cursor: pointer;  /* width: 100%; */
+    margin-bottom: 10px;
+    opacity: 0.8;
+    width: 82px;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+    background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+}
