@@ -10645,7 +10645,7 @@ a.text-dark:focus {
 }
 
 /*!
- * Font Awesome Free 5.10.0 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 5.10.1 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 
@@ -16436,7 +16436,7 @@ readers do not read off random characters that represent icons */
 }
 
 /*!
- * Font Awesome Free 5.10.0 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 5.10.1 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 
@@ -16445,8 +16445,8 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 400;
   font-display: auto;
-  src: url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.eot?d98ffd73c6b104b42bfe69c987a72924);
-  src: url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.eot?d98ffd73c6b104b42bfe69c987a72924) format("embedded-opentype"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.woff2?d90e1b03a9168c0d775a52098423adfb) format("woff2"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.woff?f9695ea8029b2975dea6753bf6f1bf1c) format("woff"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.ttf?76d069c84f54a63d1bf9e29c76fe65e6) format("truetype"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.svg?0234a585809be071bd68db999f27f829) format("svg");
+  src: url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.eot?a03df7ab0ffc96cabbfe3dc71c60baaa);
+  src: url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.eot?a03df7ab0ffc96cabbfe3dc71c60baaa) format("embedded-opentype"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.woff2?bd52a727b5449dc3f8195b72c9c58341) format("woff2"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.woff?7ab2cb050690f93994c46258d49af5b6) format("woff"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.ttf?2cd8d991e82712f1a5c5de8ee869ca74) format("truetype"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.svg?2fad4ee0a47f41bc76e21c2baf613182) format("svg");
 }
 
 .far {
@@ -16455,7 +16455,7 @@ readers do not read off random characters that represent icons */
 }
 
 /*!
- * Font Awesome Free 5.10.0 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 5.10.1 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 
@@ -16464,8 +16464,8 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 900;
   font-display: auto;
-  src: url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.eot?f9b8a1aa417e318d5be775e14ee3c475);
-  src: url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.eot?f9b8a1aa417e318d5be775e14ee3c475) format("embedded-opentype"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff2?60ce8cf4dd9fe177abdfeda21e20798e) format("woff2"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff?55ce8d0ca92adb7c283d6043d0edf46f) format("woff"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.ttf?e9809ab6a5a34dc6b7966de82265d6bd) format("truetype"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.svg?d42cc8bb088b9bbcb51b1db2d9210976) format("svg");
+  src: url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.eot?a547e21eceadf53602caf057be9ad9fd);
+  src: url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.eot?a547e21eceadf53602caf057be9ad9fd) format("embedded-opentype"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff2?2cd2be177470d5096992572176bbe76e) format("woff2"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff?657a469469a2fc38a2901c68a3d56512) format("woff"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.ttf?5ee32f5c8598e1a63ddf1aad4ffe54f4) format("truetype"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.svg?fdc155d57b7351ef85b3028ea3cfc048) format("svg");
 }
 
 .fa,
@@ -16475,7 +16475,7 @@ readers do not read off random characters that represent icons */
 }
 
 /*!
- * Font Awesome Free 5.10.0 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 5.10.1 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 
@@ -16484,8 +16484,8 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: normal;
   font-display: auto;
-  src: url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.eot?e33a1a54eb0a1e560362fcf5335ac26c);
-  src: url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.eot?e33a1a54eb0a1e560362fcf5335ac26c) format("embedded-opentype"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff2?4f786efdf6328877ec2448bf265bcc8f) format("woff2"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff?72f5c754189a296467db59e26e2b4671) format("woff"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.ttf?75dae2b62813bc641a9b6a2fc041e4de) format("truetype"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.svg?060ea8dd8446c15159ed6ec217ae29b9) format("svg");
+  src: url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.eot?3165b14bbf3b64fca65829ecde6b800d);
+  src: url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.eot?3165b14bbf3b64fca65829ecde6b800d) format("embedded-opentype"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff2?f861a57c52ef711cf807a3eec92c0e17) format("woff2"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff?457cb96b6191ed105c4fe8463957f70d) format("woff"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.ttf?f2e186cfab4787d4ef6f1bb192aa9a1b) format("truetype"), url(../fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.svg?f249e44df3044e7b0d665b550569ddf0) format("svg");
 }
 
 .fab {

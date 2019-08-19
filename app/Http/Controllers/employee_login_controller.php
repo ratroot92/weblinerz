@@ -5,7 +5,7 @@ use App\employee;
 use App\EmployeeUpload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-
+use Datatables;
 use DB;
 use Validator;
 
@@ -65,22 +65,6 @@ else{
      }
 
    }
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
    
    
    
@@ -184,28 +168,71 @@ else{
 
 
 
-public function add_employee_test(Request $request){
+public function add_employee_ajax(Request $request){
 
 
- 
+ $lastempployee= employee::orderBy('created_at','desc')->first();
+       if ($lastempployee!=null)
+       {
+           $lastempployee_id              = $lastempployee->id+1;
+       }
+       else
+       {
+           $lastempployee_id              = 1;
+       }
+      
+      
 
-        $form = EmployeeUpload::create($request->all());
+       
+       $input= $request->all();
+       $this->validate($request, [
+            // 'uploads' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+			'email' => 'unique:employees,email',
+			'status'=>'required'
+       ]);
+       if($request->hasFile('uploads'))
+       {
+		   foreach($request->uploads as $upload){
+			   $extension=$upload->getClientOriginalExtension();
+			 $filename=time()."_.".$extension;
+			//$filename = $upload->getClientOriginalName();
+            $path=$upload->move(public_path('Employee_Files/Files'),$filename);
+		   
+			$upload1=new EmployeeUpload;
+			$upload1->employee_id=$request->id;
+			$upload1->file_name=$filename;
+			 $upload1->file_path=$path;
+			$upload1->save();
+		   }
+          
+       }
+	    $employee= new employee();
+       $employee->id                	 = $lastempployee_id;
+       $employee->name                 	= $input['name'];
+       $employee->email              	 = $input['email'];
+	   $employee->password                 = $input['password'];
+	   $employee->contract = $request->get('status');
+       $employee->start_date                 = $input['start_date'];
+       $employee->end_date               = $input['end_date'];
+	   $employee->salary               = $input['e_salary'];
+       $employee->save();
+      
+       return response()->json($employee);
 
-        if ($request->hasFile('uploads')) {
-            $files = $request->file('uploads');
-            foreach ($files as $file) {
-                $fl = $file->store('public/storage/formfiles');
-                employee::create([
-                   'freelancer_id' => $form->id,
-                    'files' => $fl
-                ]);
-            }
-        }
 
-        if ($validation->passes()) {
-            return response()->json(['success' => 'Мы скоро свяжемся с вами :)']);
-        }
+}//end of add_employee_ajax
 
 
+
+
+
+public function display_employee_ajax(){
+	
+	return Datatables::of(employees::query())->make(true);
+	
+	
+	
 }
+
+
 }//end of controoler 

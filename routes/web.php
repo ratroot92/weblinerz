@@ -48,9 +48,13 @@ Route::get('/employee_dashboard', function () {
 
 //open hr employee dashboard
 Route::get('/employee_dashboard_test', function () {
-    $employees = DB::select('select * from employees');
-    return view('/employees/employee_dashboard_test',compact('employees'));
+    return view('/employees/employee_dashboard_test');
 })->name('employee_dashboard_test');
+
+//root for adding employee data by hr related employee dashboard
+Route::post('/add_employee_ajax','employee_login_controller@add_employee_ajax')->name('add_employee_ajax');
+Route::post('/display_employee_ajax','employee_login_controller@display_employee_ajax')->name('display_employee_ajax');
+
 
 
 
@@ -81,8 +85,7 @@ Route::post('/hr_dashboard','hr_login_controller@login')->name('login_as_hr');
 Route::post('/add_employee','employee_login_controller@add_employee');
 
 
-//root for adding employee data by hr related employee dashboard
-Route::post('/add_employee_test','employee_login_controller@add_employee_test');
+
 
 Route::group(['middleware' => 'is-user'], function () { 
     

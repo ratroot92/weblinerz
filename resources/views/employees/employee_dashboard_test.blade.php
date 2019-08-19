@@ -5,12 +5,14 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="csrf-token" content="{{ csrf_token() }}">
+		<meta name="csrf-token" content="{{ csrf_token() }}">
         <title>WebLinerz</title>
         <link rel="stylesheet" type="text/css" href="css/app.css">
         <script src="js/app.js" type="text/javascript" charset="utf-8" async defer></script>
         <script src="js/custom.js" type="text/javascript" charset="utf-8" async defer></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" defer></script>
 
+    
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
@@ -259,15 +261,25 @@ background-color: #9933CC;
 <div  class="col-md-12 ">
 <!-- start of alert -->
 
-<p class="alert alert-danger text-danger font-weight-bold "  id="msj" style="font-size:20px;"></p>
+
 </div>
 @if(session('message'))
 <div class="row">
-<div class="col-md-12 text-danger font-weight-bold text-white alert alert-danger text-center" style="font-size: 18px;">
+<div class="col-md-12 text-danger font-weight-bold text-white alert alert-danger text-center"  style="font-size: 18px;">
 {{session('message')}}
 </div>
 </div>
 @endif
+
+<!-- ajax query success message here -->
+
+<div class="col-md-12 text-center alert alert-success text-dark font-weight-bold" id="msg">
+
+</div>
+
+<!-- ajax query success message here -->
+
+
 </div>
 </div><!-- row 1 end -->
 
@@ -286,7 +298,7 @@ background-color: #9933CC;
 </button>
 
 <div class="dropdown-container">
-<div class="dropdown-menu " onClick="event.stopPropagation();" style="width: 390px;" >
+<div class="dropdown-menu " id="employee_dropdown" onClick="event.stopPropagation();" style="width: 390px;" >
 
 <div class="container-fluid">
 
@@ -294,13 +306,16 @@ background-color: #9933CC;
 <div class="row">
 <div class="col-md-12">
 
-<form   enctype="multipart/form-data" id="myform" >
-
+<form    enctype="multipart/form-data" id="submit_form" name="submit_form" action={{route('add_employee_ajax')}}  >
+ @csrf
+ 
+ <!--
 <span class="font-weight-bold ">Employee ID</span>
-<input class="inp col-md-12" type="number"  id="id" name="id" />
+<input class="inp col-md-12" type="number"  id="id"   name="id" />
 @if($errors->has('id'))
 <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;" >&spades;{{ $errors->first('id') }}</div>
 @endif
+-->
 </div>
 </div>
 
@@ -310,7 +325,7 @@ background-color: #9933CC;
 <div class="col-md-12">
 
 <span class="font-weight-bold ">Name</span>
-<input class="inp col-md-12" type="text" placeholder="@example John Doe" id="name" min="3" max="20" name="name" />
+<input class="inp col-md-12" type="text" placeholder="@example John Doe" id="name" min="3" max="20" name="name" required />
 @if($errors->has('name'))
 <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('name') }}</div>
 @endif
@@ -318,7 +333,7 @@ background-color: #9933CC;
 
 <div class="col-md-12">
 <span class="font-weight-bold  " >Email</span>
-<input class="inp col-md-12" type="email" placeholder="@example JohnDoe@abc.com" id="email" name="email" />
+<input class="inp col-md-12" type="email" placeholder="@example JohnDoe@abc.com" id="email" name="email" required />
 @if($errors->has('email'))
 <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('email') }}</div>
 @endif
@@ -328,7 +343,7 @@ background-color: #9933CC;
 
 <div class="col-md-12">
         <span class="font-weight-bold " >Password</span>
-        <input class="inp col-md-12" type="password"  id="password" name="password" />
+        <input class="inp col-md-12" type="password"  id="password" min="8" max="14" name="password" required />
         @if($errors->has('password'))
 <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('password') }}</div>
 @endif
@@ -362,7 +377,7 @@ background-color: #9933CC;
 
 <div class="col-md-6">
 <span class="font-weight-bold " >Duration To: </span>
-  <input class="inp col-md-12" type="date" placeholder="@example JohnDoe@abc.com" id="start_date" name="start_date" />
+  <input class="inp col-md-12" type="date" placeholder="@example JohnDoe@abc.com" id="start_date" name="start_date" required />
   @if($errors->has('start_date'))
   <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('start_date') }}</div>
   @endif
@@ -371,7 +386,7 @@ background-color: #9933CC;
 
 <div class="col-md-6">
   <span class="font-weight-bold  " >Duration From: </span>
-  <input class="inp col-md-12" type="date" placeholder="@example JohnDoe@abc.com" id="end_date" name="end_date" />
+  <input class="inp col-md-12" type="date" placeholder="@example JohnDoe@abc.com" id="end_date" name="end_date" required />
   @if($errors->has('end_date'))
   <div class=" alert alert-danger  font-weight-bold m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('end_date') }}</div>
   @endif
@@ -385,7 +400,7 @@ background-color: #9933CC;
 
   <div class="col-md-12 mt-3">
 <span class="font-weight-bold  " >Salary</span>
-<input class="inp col-md-12" type="number" placeholder="@30,000 PKR" min="1" max="100000" id="e_salary" name="e_salary" />
+<input class="inp col-md-12" type="number" placeholder="@30,000 PKR" min="1" max="100000" id="e_salary" name="e_salary" requireds />
 @if($errors->has('e_salary'))
   <div class=" alert alert-danger  font-weight-bold m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('e_salary') }}</div>
   @endif
@@ -529,6 +544,27 @@ background-color: #9933CC;
 </div>
 
 
+<div class="row">
+<div class="col-md-12">
+<table class="table table-bordered" id="employee_table">
+               <thead>
+                  <tr>
+                     <th>Employee ID</th>
+                     <th>Name</th>
+                     <th>Email</th>
+					 <th>Password ID</th>
+                     <th>Contract Type</th>
+                     <th>Joining Date</th>
+					 <th>Ending Date</th>
+                     <th>Salary</th>
+                    
+                  </tr>
+               </thead>
+            </table>
+</div>
+
+</div>
+
 
            
 
@@ -558,49 +594,77 @@ background-color: #9933CC;
 
 
 //start of ensert employee ajax function 
+// $.ajaxSetup({
+  // headers: {
+    // 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  // }
+// });
+ $(document).ready(function (){
+	$('#msg').hide(); 
+	 
+ });
 
-$(document).ready(function(){
+$('#submit_form').submit(function () {
+            event.preventDefault();
 
-$(".add_employee_btn").click(function(e){
-            e.preventDefault();
-var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-var id=$('#id').val();
-var name=$('#name').val();
-var password=$('#password').val();
-var e_salary=$('#e_salary').val();
-var start_date=$('#start_date').val();
-var end_date=$('#end_date').val();
-var email=$('#email').val();
-var contract=$("input[name='status']:checked").val();
-var token=$('#token').val();
- var files = $("input[name='uploads']").val();
-            var fd = new FormData(this.form);
             $.ajax({
-            url:"<?php echo url('/add_employee_test')?>",
+            url:$(this).attr('action'),
                 type:'POST',
-                data: fd,
+				 data:new FormData(this),                  
                 contentType: false,
                 processData: false,
                 success: function(data) {
-                   cosnole.log(data);
-                }
+				$('#msg').show();
+                  $('#msg').html("Form has been Submitted Succesfully !!!");
+				  $('#employee_dropdown').hide();
+				  	$('#msg').fadeOut(15000);
+
+                },
+				 error: function (data) {
+				var response = JSON.parse(data.responseText);
+               var str = '';
+               $.each(response.errors,function (i,item) {
+                   var html = '<p class="alert alert-danger alert-dismissible"><strong>Error!!</strong> &nbsp;&nbsp; '+item+'&nbsp;&nbsp;&nbsp; <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>';
+                   str = str + html;
+               });
+			   $('#msg').show();
+               $('#msj').html(str);
+					 
+				 }
             });
 
         });
 
 
-});
+//display employees ajax 
+
+ $(function() {
+               $('#employee_table').DataTable({
+               processing: true,
+               serverSide: true,
+               ajax: '{{ url('display_employee_ajax') }}',
+               columns: [
+                        { data: 'id', name: 'id' },
+                        { data: 'name', name: 'name' },
+                        { data: 'email', name: 'email' },
+						{ data: 'password', name: 'password' },
+                        { data: 'contract', name: 'contract' },
+                        { data: 'start_date', name: 'start_date' },
+						{ data: 'end_date', name: 'end_date' },
+						{ data: 'salary', name: 'salary' },
+					
+                     ]
+            });
+         });
+
+
 
 
 
 
 
   </script>
-<script>
-    $.ajaxSetup({
-        headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
-    });
-</script>
+
 
 </body>
 <!-- add employee model -->
