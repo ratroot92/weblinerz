@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>HR Portal | Salaries</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -310,7 +311,7 @@
                             </div>
                             <div class="form-popup" id="myForm">
                                 <form action="#" class="form-container">
-                                    <select class="form-control aircraftsName" id="sel1" style="border: none; box-shadow: none; border-bottom: 2px solid #1a1a1a5e !important; margin-bottom: 22px;">
+                                    <select class="form-control" id="name" style="border: none; box-shadow: none; border-bottom: 2px solid #1a1a1a5e !important; margin-bottom: 22px;">
                                         <option>Please Select</option>
                                             @foreach($salariesName as $salary)
                                                 <option id="salary_id" value="{{ $salary->name }}">{{ $salary->name }}</option>
@@ -467,12 +468,32 @@
     <script src="{{ asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
     <!-- FastClick -->
     <script src="{{ asset('bower_components/fastclick/lib/fastclick.js') }}"></script>
-    <!-- AdminLTE App -->
-    <!-- <script src="{{ asset('dist/js/adminlte.min.js"></script> -->
-    <!-- AdminLTE for demo purposes -->
-    <!-- <script src="{{ asset('dist/js/demo.js"></script> -->
+    
 <script type="text/javascript">
-    $(document).ready(function () {  
+
+//$('#name').on('change',function(){
+$('#name').click(function(event){  
+event.preventDefault();
+var name = $('#name').val();   
+//alert(name);
+ $.ajax({
+          url : '/getsalary',
+          type: 'get',
+          data : { 'name' : name },
+          dataType: 'json',
+           success: function(response){ 
+           $('#salary').val(response);      
+        
+            }, error:function(e){
+                    console.log(e);
+                    }
+                });
+
+    });
+
+//--------------------------------------
+
+    $(document).ready(function () { 
         $(function () {
           $('#table1').DataTable()
           $('#table2').DataTable({

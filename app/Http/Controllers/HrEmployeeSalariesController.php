@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\HrEmpolyeeSalaries;
+use App\employee;
 use DB;
 
 class HrEmployeeSalariesController extends Controller
@@ -11,7 +12,7 @@ class HrEmployeeSalariesController extends Controller
     public function index() {
         $salariesName = HrEmpolyeeSalaries::all();
         //dd($salaries_name);
-        //echo '<pre>'; print_r($salaries_name); echo '</pre>'; die();
+        //echo '<pre>'; print_r($salariesName); echo '</pre>'; die();
     	return view('hr.hr_employees_salaries')->with(compact('salariesName'));
     }
 
@@ -24,10 +25,11 @@ class HrEmployeeSalariesController extends Controller
     	return view('hr.hr_employees_add_contracts');
     }
 
-    public Function getSalary($name){
-
-        // $salary = DB::table('employees')->where('name', $name)->first();
-        // return response()->json(['success'=>'Got Simple Ajax Request.']);
+    public Function getSalary(Request $request) {
+        $name = $request->name;
+        $amount = employee::where('name', $name)->pluck('salary');
+        return response()->json($amount);
+          
     }
 }
 
