@@ -50,77 +50,7 @@
                                 <i class="fa fa-envelope-o"></i>
                                 <span class="label label-success">4</span>
                             </a>
-                            <ul class="dropdown-menu">
-                                <li class="header">You have 4 messages</li>
-                                <li>
-                                    <!-- inner menu: contains the actual data -->
-                                    <ul class="menu">
-                                        <li>
-                                            <!-- start message -->
-                                            <a href="#">
-                                                <div class="pull-left">
-                                                    <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
-                                                </div>
-                                                <h4>
-                                                    Support Team
-                                                    <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                                </h4>
-                                                <p>Why not buy a new awesome theme?</p>
-                                            </a>
-                                        </li>
-                                        <!-- end message -->
-                                        <li>
-                                            <a href="#">
-                                                <div class="pull-left">
-                                                    <img src="{{ asset('dist/img/user3-128x128.jpg') }}" class="img-circle" alt="User Image">
-                                                </div>
-                                                <h4>
-                                                    AdminLTE Design Team
-                                                    <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                                                </h4>
-                                                <p>Why not buy a new awesome theme?</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="pull-left">
-                                                    <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                                                </div>
-                                                <h4>
-                                                    Developers
-                                                    <small><i class="fa fa-clock-o"></i> Today</small>
-                                                </h4>
-                                                <p>Why not buy a new awesome theme?</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="pull-left">
-                                                    <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
-                                                </div>
-                                                <h4>
-                                                    Sales Department
-                                                    <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                                                </h4>
-                                                <p>Why not buy a new awesome theme?</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="pull-left">
-                                                    <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                                                </div>
-                                                <h4>
-                                                    Reviewers
-                                                    <small><i class="fa fa-clock-o"></i> 2 days</small>
-                                                </h4>
-                                                <p>Why not buy a new awesome theme?</p>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="footer"><a href="#">See All Messages</a></li>
-                            </ul>
+                        
                         </li>
                         <!-- Notifications: style can be found in dropdown.less -->
                         <li class="dropdown notifications-menu">
@@ -381,7 +311,10 @@
                             <div class="form-popup" id="myForm">
                                 <form action="#" class="form-container">
                                     <select class="form-control" id="sel1" style="border: none; box-shadow: none; border-bottom: 2px solid #1a1a1a5e !important; margin-bottom: 22px;">
-                                        <option>January</option>
+                                        <option>Please Select</option>
+                                            @foreach($salariesName as $salary)
+                                                <option>{{ $salary->name }}</option>
+                                            @endforeach
                                     </select>
                                     <input type="text" placeholder="Salary" name="salary" required>
                                     <input type="text" placeholder="Fine" name="fine" required>
@@ -413,7 +346,7 @@
                                         <td>85000</td>
                                         <td>Active</td>
                                         <td>
-                                            <a href="#"><img src="{{ asset('images/200-min.png') }}" alt=""></a>
+                                            
                                             <a href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
                                             <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
                                         </td>
@@ -425,7 +358,7 @@
                                         <td>6500</td>
                                         <td>Active</td>
                                         <td>
-                                            <a href="#"><img src="{{ asset('images/200-min.png') }}" alt=""></a>
+                                            
                                             <a href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
                                             <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
                                         </td>
@@ -437,7 +370,7 @@
                                         <td>75000</td>
                                         <td>Inactive</td>
                                         <td>
-                                            <a href="#"><img src="{{ asset('images/200-min.png') }}" alt=""></a>
+                                           
                                             <a href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
                                             <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
                                         </td>
@@ -449,7 +382,7 @@
                                         <td>65400</td>
                                         <td>Active</td>
                                         <td>
-                                            <a href="#"><img src="{{ asset('images/200-min.png') }}" alt=""></a>
+                                            
                                             <a href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
                                             <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
                                         </td>
@@ -461,8 +394,7 @@
                                         <td>Rs 25600 &emsp;</td>
                                         <td>25000</td>
                                         <td>Active</td>
-                                        <td>
-                                            <a href="#"><img src="{{ asset('images/200-min.png') }}" alt=""></a>
+                                        <td>                                          
                                             <a href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
                                             <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
                                         </td>
@@ -492,10 +424,7 @@
     <!-- jQuery UI 1.11.4 -->
     <!-- <script src="bower_components/jquery-ui/jquery-ui.min.js"></script> -->
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-    $.widget.bridge('uibutton', $.ui.button);
 
-    </script>
     <script>
     var div1 = document.getElementById("navigatable_div_1");
     var div2 = document.getElementById("navigatable_div_2");
@@ -537,9 +466,9 @@
     <!-- FastClick -->
     <script src="{{ asset('bower_components/fastclick/lib/fastclick.js') }}"></script>
     <!-- AdminLTE App -->
-    <script src="{{ asset('dist/js/adminlte.min.js"></script>
+    <!-- <script src="{{ asset('dist/js/adminlte.min.js"></script> -->
 <!-- AdminLTE for demo purposes -->
-<script src="{{ asset('dist/js/demo.js"></script>
+<!-- <script src="{{ asset('dist/js/demo.js"></script> -->
 <script type="text/javascript">
 $(document).ready(function () {  
 $(function () {
