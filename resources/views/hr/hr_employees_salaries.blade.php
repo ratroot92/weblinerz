@@ -15,6 +15,8 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{ asset('bower_components/Ionicons/css/ionicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -23,6 +25,7 @@
     <link rel="stylesheet" href="{{ asset('dist/css/custom.css') }}">
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -206,57 +209,46 @@
                 <div class="row">
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
+                        <a href="{{ url('/hr/hr_employee_contracts') }}">
                         <div class="small-box bg-aqua-one">
-                            <div class="inner">
-                                <!-- <h3></h3> -->
+                            <div class="inner">                                
                                 <img src="{{ asset('images/21.png') }}" class="img_hr" alt="">
                                 <p class="carriers">Contracts</p>
-                            </div>
-                            <div class="icon">
-                                <!-- <i class="ion ion-bag"></i> -->
-                            </div>
+                            </div>                            
                         </div>
+                        </a>
                     </div>
                     <!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-green-two">
-                            <div class="inner">
-                                <!-- <h3></h3> -->
+                            <div class="inner">                                
                                 <img src="{{ asset('images/22.png') }}" class="img_hr" alt="">
                                 <p>Salaries</p>
                             </div>
-                            <div class="icon">
-                                <!-- <i class="ion ion-stats-bars"></i> -->
-                            </div>
+                           
                         </div>
                     </div>
                     <!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-yellow-three">
-                            <div class="inner">
-                                <!-- <h3></h3> -->
+                            <div class="inner">                                
                                 <img src="{{ asset('images/23.png') }}" class="img_hr" alt="">
                                 <p>Complaints</p>
                             </div>
-                            <div class="icon">
-                                <!-- <i class="ion ion-person-add"></i> -->
-                            </div>
+                           
                         </div>
                     </div>
                     <!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-red-four">
-                            <div class="inner">
-                                <!-- <h3></h3> -->
+                            <div class="inner">                               
                                 <img src="{{ asset('images/24.png') }}" class="img_hr" alt="">
                                 <p>Attendence</p>
                             </div>
-                            <div class="icon">
-                                <!-- <i class="ion ion-pie-graph"></i> -->
-                            </div>
+                            
                         </div>
                     </div>
                     <!-- ./col -->
@@ -311,6 +303,8 @@
                             </div>
                             <div class="form-popup" id="myForm">
                                 <form action="#" class="form-container">
+                                    <input type="text" class="form-control pull-right" value="Date" id="datepicker">
+                                    
                                     <select class="form-control" id="name" style="border: none; box-shadow: none; border-bottom: 2px solid #1a1a1a5e !important; margin-bottom: 22px;">
                                         <option>Please Select</option>
                                             @foreach($salariesName as $salary)
@@ -321,10 +315,13 @@
                                     <input type="text" id="salary" class="salary" value="Salary" placeholder="Salary" name="salary" required>
                                     
                                     <input type="text" id="fine" value="" name="fine" placeholder="Fine" required>
-                                   <input type="text" id="total_sal" value="" name="total_sal" placeholder="Total Salary" >
+                                    
+                                    <input type="text" id="total_sal" value="" name="total_sal" placeholder="Total Salary" >
                                    
-                                    <input type="text" placeholder="Received" name="received" required>
-                                    <input type="text" placeholder="Pending" name="pending" required>
+                                    <input type="text" id="receive" name="receive" placeholder="Received">
+
+                                    <input type="text" id="pending" name="pending" value="" placeholder="Pending" name="pending" required>
+                                    
                                     <label for="Comments">Comments</label><br>
                                     <textarea name="comments" rows="3" style="margin: 0px; width: 280px; height: 144px;"></textarea>
                                     <button type="button" class="btn cancel" style="position: relative; top: 20px; left: 30px;" onclick="closeForm()">Close</button>
@@ -470,6 +467,9 @@
     <script src="{{ asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
     <!-- FastClick -->
     <script src="{{ asset('bower_components/fastclick/lib/fastclick.js') }}"></script>
+
+    <!-- bootstrap datepicker -->
+    <script src="{{ asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
     
 <script type="text/javascript">
 
@@ -492,6 +492,7 @@
             });
 
         });
+
 //---------------------------------------
     $('#fine').change(function(event){  
     event.preventDefault();
@@ -500,9 +501,18 @@
         var fine = parseInt($('#fine').val()); 
         var total =  salary - fine;
         $('#total_sal').val(total);
-        //console.log(name);
-        //console.log(fine);
-        //console.log(total);
+        
+    });
+
+
+//-----------------------------------------
+    $('#receive').change(function(event){  
+    event.preventDefault();   
+        var total = parseInt($('#total_sal').val());
+        var receive = parseInt($('#receive').val());  
+        var pending =  total - receive;
+        $('#pending').val(pending);
+
     });
 
 //--------------------------------------
@@ -529,7 +539,10 @@ function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
 
-
+//Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    })
 </script>
 </body>
 </html>

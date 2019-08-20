@@ -31,12 +31,12 @@
   <header class="main-header">
     <!-- Logo -->
     <a href="index2.html" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><img src="images/wz logo-new.png" width="100" height="80" style="opacity: 1;" alt=""></span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><img src="images/wz logo-new.png" width="100" height="80" style="opacity: 1;" alt=""></span>
-      <img class="logo" src="images/wz logo-new.png" width="100" height="80" style="opacity: 1;">
-    </a>
+          <!-- mini logo for sidebar mini 50x50 pixels -->
+          <span class="logo-mini"><img src="{{ asset('images/wz logo-new.png') }}" width="100" height="80" style="opacity: 1;" alt=""></span>
+          <!-- logo for regular state and mobile devices -->
+          <span class="logo-lg"><img src="{{ asset('images/wz logo-new.png') }}" width="100" height="80" style="opacity: 1;" alt=""></span>
+          <img class="logo" src="{{ asset('images/wz logo-new.png') }}" width="100" height="80" style="opacity: 1;">
+      </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
@@ -287,60 +287,44 @@
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-aqua-one">
-            <div class="inner">
-              <!-- <h3></h3> -->
+            <div class="inner">              
               <img src="{{ asset('images/21.png') }}" class="img_hr" alt="">
               <p class="carriers">Contracts</p>
-            </div>
-            <div class="icon">
-              <!-- <i class="ion ion-bag"></i> -->
-            </div>
+            </div>     
             
           </div>
         </div>
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-green-two">
-            <div class="inner">
-              <!-- <h3></h3> -->
-              <img src="{{ asset('images/22.png') }}" class="img_hr" alt="">
-              <p>Salaries</p>
+          <a href="{{ url('/hr/hr_employee_salaries') }}">
+            <div class="small-box bg-green-two">
+              <div class="inner">                
+                <img src="{{ asset('images/22.png') }}" class="img_hr" alt="">
+                <p>Salaries</p>
+              </div>            
             </div>
-            <div class="icon">
-              <!-- <i class="ion ion-stats-bars"></i> -->
-            </div>
-            
-          </div>
+           </a>
         </div>
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-yellow-three">
             <div class="inner">
-              <!-- <h3></h3> -->
+              
               <img src="{{ asset('images/23.png') }}" class="img_hr" alt="">
               <p>Complaints</p>
             </div>
-            <div class="icon">
-              <!-- <i class="ion ion-person-add"></i> -->
-            </div>
-            
           </div>
         </div>
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-red-four">
-            <div class="inner">
-              <!-- <h3></h3> -->
+            <div class="inner">              
               <img src="{{ asset('images/24.png') }}" class="img_hr" alt="">
               <p>Attendence</p>
-            </div>
-            <div class="icon">
-              <!-- <i class="ion ion-pie-graph"></i> -->
-            </div>
-            
+            </div>   
           </div>
         </div>
         <!-- ./col -->
