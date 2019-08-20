@@ -257,3 +257,7 @@ label {
 .form-container .btn:hover, .open-button:hover {
     opacity: 1;
 }
+
+.form-control {
+    padding: 0px !important;
+}

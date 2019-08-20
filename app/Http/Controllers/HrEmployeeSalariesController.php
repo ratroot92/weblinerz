@@ -4,15 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\HrEmpolyeeSalaries;
+use App\EmployeesSalaryDrafts;
 use App\employee;
 use DB;
 
 class HrEmployeeSalariesController extends Controller
 {
     public function index() {
-        $salariesName = HrEmpolyeeSalaries::all();
-        //dd($salaries_name);
-        //echo '<pre>'; print_r($salariesName); echo '</pre>'; die();
+        $salariesName = HrEmpolyeeSalaries::all();        
     	return view('hr.hr_employees_salaries')->with(compact('salariesName'));
     }
 
@@ -25,11 +24,33 @@ class HrEmployeeSalariesController extends Controller
     	return view('hr.hr_employees_add_contracts');
     }
 
-    public Function getSalary(Request $request) {
+    public function getSalary(Request $request) {
         $name = $request->name;
-        $amount = employee::where('name', $name)->pluck('salary');
+        $amount = employee::where('id', $name)->pluck('salary');
         return response()->json($amount);
           
+    }
+
+    public function addEmployeesSalaries(Request $request) {
+
+        if ($request->isMethod('post')) {
+            
+            $data = $request->all();
+            //echo '<pre>'; print_r($data); echo '</pre>'; die();
+            
+            $employee = new EmployeesSalaryDrafts;
+            $employee->employee_id = $data['emp_id'];
+            $employee->date = $data['date'];
+            $employee->fine = $data['fine'];
+            $employee->total = $data['total_sal'];
+            $employee->received = $data['receive'];
+            $employee->pending = $data['pending'];
+            $employee->comments = $data['comments'];
+            $employee->status = 'active';
+            $employee->save();
+            
+            return redirect('//hr/hr_employee_salaries')->with('flash_message_success','Employee Salary added sucessfully');
+        }
     }
 }
 

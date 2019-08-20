@@ -263,6 +263,14 @@
                             <!-- Tabs within a box -->
                         </div>
                         <!-- /.nav-tabs-custom -->
+                       
+                @if (Session::has('flash_message_success'))
+                    <div class="alert alert-success alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <p>{{ Session::get('flash_message_success') }}</p>
+                    </div>
+                @endif
+                       
                         <button type="submit" class="btn btn-secondary" id="navigatable_btn_1"><i class="fa fa-caret-down"></i>&nbsp; &nbsp; Salaries</button>
                         <div id="navigatable_div_1" style="padding-top: 15px !important;">
                             <div class="checkbox">
@@ -301,32 +309,53 @@
               </label> -->
                                 <button type="button" class="btn btn-primary" onclick="openForm()">Add Draft</button>
                             </div>
-                            <div class="form-popup" id="myForm">
-                                <form action="#" class="form-container">
-                                    <input type="text" class="form-control pull-right" value="Date" id="datepicker">
-                                    
-                                    <select class="form-control" id="name" style="border: none; box-shadow: none; border-bottom: 2px solid #1a1a1a5e !important; margin-bottom: 22px;">
-                                        <option>Please Select</option>
-                                            @foreach($salariesName as $salary)
-                                                <option id="salary_id" value="{{ $salary->name }}">{{ $salary->name }}</option>
-                                            @endforeach
-                                    </select>
-                                   
-                                    <input type="text" id="salary" class="salary" value="Salary" placeholder="Salary" name="salary" required>
-                                    
-                                    <input type="text" id="fine" value="" name="fine" placeholder="Fine" required>
-                                    
-                                    <input type="text" id="total_sal" value="" name="total_sal" placeholder="Total Salary" >
-                                   
-                                    <input type="text" id="receive" name="receive" placeholder="Received">
 
-                                    <input type="text" id="pending" name="pending" value="" placeholder="Pending" name="pending" required>
+                            <div class="form-popup" id="myForm">
+                                <form name="addEmployeesSalaries" id="addEmployeesSalaries" class="form-container">
+                                    @csrf
+                                    <div class="form-group">
+
+                                        <input type="text" class="form-control pull-right" id="date" name="date" placeholder="Date">
+                                    </div>
+                                    <div class="form-group">
+
+                                        <select class="form-control" id="name" name="emp_id" style="border: none; box-shadow: none; border-bottom: 2px solid #1a1a1a5e !important; margin-bottom: 22px;">
+                                            <option>Please Select</option>
+                                                @foreach($salariesName as $salary)
+                                                    <option id="salary_id"  value="{{ $salary->id }}">{{ $salary->name }}</option>
+                                                @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <input type="text" id="salary" class="salary" placeholder="Salary" name="salary" >
+                                    </div>
+                                    <div class="form-group">
+
+                                        <input type="text" id="fine" name="fine" placeholder="Fine" >
+                                    </div>
+                                    <div class="form-group">
+
+                                        <input type="text" id="total_sal"  name="total_sal" placeholder="Total Salary" >
+                                    </div>
+                                    <div class="form-group">
+
+                                        <input type="text" id="receive" name="receive" placeholder="Received">
+                                    </div>
+                                    <div class="form-group">
+
+                                        <input type="text" id="pending" name="pending" value="" placeholder="Pending" name="pending">
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="Comments">Comments</label><br>
+                                        <textarea name="comments" id="comments" rows="3" style="margin: 0px; width: 280px; height: 110px;"></textarea>
                                     
-                                    <label for="Comments">Comments</label><br>
-                                    <textarea name="comments" rows="3" style="margin: 0px; width: 280px; height: 144px;"></textarea>
+                                    </div>
                                     <button type="button" class="btn cancel" style="position: relative; top: 20px; left: 30px;" onclick="closeForm()">Close</button>
                                     &emsp;&emsp;
-                                    <button type="button" class="btn btn-success" style="position: relative; background-color: #c879af !important; top: 20px; left: 20px;">Add</button>
+                                    <button type="submit" class="btn btn-success" style="position: relative; background-color: #c879af !important; top: 20px; left: 20px;">Add</button>
+                        
                                 </form>
                             </div>
                             <table class="table table-striped" id="table1" style="padding-top: 16px;">
@@ -467,7 +496,6 @@
     <script src="{{ asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
     <!-- FastClick -->
     <script src="{{ asset('bower_components/fastclick/lib/fastclick.js') }}"></script>
-
     <!-- bootstrap datepicker -->
     <script src="{{ asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
     
@@ -530,6 +558,31 @@
           })
         })
     });
+
+//---------------------------------------------
+
+$('#addEmployeesSalaries').submit(function () {
+    //console.log('420');
+    //alert('first');
+       var str = '';
+       event.preventDefault();
+       $.ajax({
+           url         : '/hr/add_employee_salaries',
+           type        : 'post',
+           data        : $('#addEmployeesSalaries').serialize(),
+           dataType    : 'json',
+           success     : function ($result) {
+            console.log($result);
+            $('#flash_message_success').html("Employee Salary added sucessfully");
+            $('#flash_message_success').fadeOut(15000);
+               //$('#add_modal').modal('toggle');
+           },
+           error        : function (result) {
+           }
+       })
+   });
+
+
 //------------------------------------------
 function openForm() {
   document.getElementById("myForm").style.display = "block";
@@ -540,9 +593,9 @@ function closeForm() {
 }
 
 //Date picker
-    $('#datepicker').datepicker({
-      autoclose: true
-    })
+$('#date').datepicker({
+    autoclose: true
+})
 </script>
 </body>
 </html>
