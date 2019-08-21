@@ -264,12 +264,9 @@
                         </div>
                         <!-- /.nav-tabs-custom -->
                        
-                @if (Session::has('flash_message_success'))
-                    <div class="alert alert-success alert-dismissable">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <p>{{ Session::get('flash_message_success') }}</p>
-                    </div>
-                @endif
+                           <div id="flash_message_success"></div>
+                    
+       
                        
                         <button type="submit" class="btn btn-secondary" id="navigatable_btn_1"><i class="fa fa-caret-down"></i>&nbsp; &nbsp; Salaries</button>
                         <div id="navigatable_div_1" style="padding-top: 15px !important;">
@@ -370,66 +367,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @foreach ($salariesdata as $resource)
+                                    <?php //echo '<pre>'; print_r($resource->name); echo '</pre>'; die(); ?>
+                                    @foreach ($resource->employeessalarydrafts as $b)
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Waqas </td>
-                                        <td>Rs 25000 &emsp;</td>
-                                        <td>85000</td>
-                                        <td>Active</td>
+                                        <th scope="row">{{ $resource->id }}</th>
+                                        <td>{{ $resource->name }}</td>
+                                        <td>{{ $resource->salary }}</td>
+                                        <td>{{ $b->fine }} &emsp;</td>
+                                        <td>{{ $b->status }}</td>
                                         <td>
-                                            
                                             <a href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
                                             <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Rasheed Ahmed</td>
-                                        <td>Rs 25000 &emsp;</td>
-                                        <td>6500</td>
-                                        <td>Active</td>
-                                        <td>
-                                            
-                                            <a href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
-                                            <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>ALi Ahmed</td>
-                                        <td>Rs 25000 &emsp;</td>
-                                        <td>75000</td>
-                                        <td>Inactive</td>
-                                        <td>
-                                           
-                                            <a href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
-                                            <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">4</th>
-                                        <td>Usman khan</td>
-                                        <td>Rs 25000 &emsp;</td>
-                                        <td>65400</td>
-                                        <td>Active</td>
-                                        <td>
-                                            
-                                            <a href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
-                                            <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
-                                        </td>
-                                    </tr>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">5</th>
-                                        <td>Rahim Khan</td>
-                                        <td>Rs 25600 &emsp;</td>
-                                        <td>25000</td>
-                                        <td>Active</td>
-                                        <td>                                          
-                                            <a href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
-                                            <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
-                                        </td>
-                                    </tr>
+                                    @endforeach
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -573,7 +526,8 @@ $('#addEmployeesSalaries').submit(function () {
            dataType    : 'json',
            success     : function ($result) {
             console.log($result);
-            $('#flash_message_success').html("Employee Salary added sucessfully");
+            str = '<div class="alert alert-success alert-dismissable">Added successfully<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
+            $('#flash_message_success').html(str);
             $('#flash_message_success').fadeOut(15000);
                //$('#add_modal').modal('toggle');
            },

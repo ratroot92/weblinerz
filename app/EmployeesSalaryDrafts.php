@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class EmployeesSalaryDrafts extends Model
 {
-    protected $table = 'employees_salary_drafts';
+    public $table = 'employees_salary_drafts';
+
+    public function employee()
+    {
+        return $this->belongsTo('App\employee');
+    }
 }

@@ -16,14 +16,14 @@ class CreateEmployeesSalaryDraftsTable extends Migration
         Schema::create('employees_salary_drafts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('employee_id')->unsigned();
-            $table->date('date');
+            $table->string('date');
             $table->bigInteger('fine');
             $table->bigInteger('total');
             $table->bigInteger('received');
             $table->bigInteger('pending');
             $table->string('comments');
             $table->string('status');
-            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
+            // $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
             $table->timestamps();
         });
     }

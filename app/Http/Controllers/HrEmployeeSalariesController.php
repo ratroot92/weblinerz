@@ -11,8 +11,13 @@ use DB;
 class HrEmployeeSalariesController extends Controller
 {
     public function index() {
-        $salariesName = HrEmpolyeeSalaries::all();        
-    	return view('hr.hr_employees_salaries')->with(compact('salariesName'));
+
+        $salariesName = HrEmpolyeeSalaries::all();  
+        
+        $salariesdata = employee::with('employeessalarydrafts')->get();
+        //dd($salariesdata);
+    	//echo '<pre>'; print_r($salariesdata); echo '</pre>'; die();
+        return view('hr.hr_employees_salaries')->with(compact('salariesName','salariesdata'));
     }
 
     public function employeeContracts() {
@@ -48,9 +53,10 @@ class HrEmployeeSalariesController extends Controller
             $employee->comments = $data['comments'];
             $employee->status = 'active';
             $employee->save();
-            
-            return redirect('//hr/hr_employee_salaries')->with('flash_message_success','Employee Salary added sucessfully');
+            return response()->json('success');
+          
         }
     }
+
 }
 
