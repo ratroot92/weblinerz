@@ -5,121 +5,38 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+		<meta name="csrf-token" content="{{ csrf_token() }}">
         <title>WebLinerz</title>
-        <link rel="stylesheet" type="text/css" href="css/app.css">
-        <script src="js/app.js" type="text/javascript" charset="utf-8" async defer></script>
-        <script src="js/custom.js" type="text/javascript" charset="utf-8" async defer></script>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
-<!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-
-
-
-<script type="text/javascript" src="~/Scripts/data-table/jquery.dataTables.js"></script> -->
-
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-<script src="http://malsup.github.com/jquery.form.js"></script>
-<!--Import jQuery before export.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-
-
-    <!--Data Table-->
-    <script type="text/javascript"  src=" https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript"  src=" https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
-
-    <!--Export table buttons-->
-    <script type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.24/build/pdfmake.min.js" ></script>
-    <script type="text/javascript"  src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.24/build/vfs_fonts.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.1/js/buttons.print.min.js"></script>
-
-<!--Export table button CSS-->
-
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css">
-
-
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('dist/employee_dashboard.css') }}">
 <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
+<link rel="stylesheet" type="text/css" href="{{asset('dist/bootstrap/dist/css/bootstrap.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('dist/bootstrap-table/dist/bootstrap-table.min.css')}}">
+<!-- <script src="{{asset('js/app.js')}}"type="text/javascript" charset="utf-8" async defer></script> -->
+
+<!-- <script src="{{asset('dist/bootstrap-table/dist/bootstrap-table.min.js')}}"type="text/javascript" charset="utf-8" async defer></script> -->
+<script src="{{ asset('dist/jquery/dist/jquery.min.js') }}"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+<script src="{{asset('dist/bootstrap/dist/js/bootstrap.bundle.min.js')}}"type="text/javascript" charset="utf-8" async defer></script>
+
+
+
+
+<!-- bootstrap table -->
+
+<!--Data Table-->
+    
+
 
 
 <style type="text/css" media="screen">
-  .circle{
-    border-radius: 50%;
-width: 60px;
-height:60px;
-border: 1px solid black;
-border-radius: 100px;
-background-image: url('../images/profile.png' );
-background-repeat: no-repeat;
-background-size:cover;
-  }
-  .sidebar-text{
-	font-size:12px;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-
   
-  .circle_sidebar{
-border-radius: 50%;
-width: 50%;
-height:60px;
-background-image: url('../images/profile.png' );
-background-repeat: no-repeat;
-background-size:cover;
-}
-
-.custom_badge{
-border-radius: 3px;
- }
-
-
-.nav_tab:hover{
-background-color: #9933CC;
-}
-
-.inp {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 1px solid #03a8f45e;
-    padding: 5px 15px;
-    outline: none;
- }
-
-[placeholder]:focus::-webkit-input-placeholder {
-    transition: text-indent 0.4s 0.4s ease;
-    text-indent: -100%;
-    opacity: 1;
- }
-
-
-.drag_files{
-  border:1px dotted black;
-  height: 130px;
-  border-radius:3px;
-}
-.dropdown-container {
-  position: relative;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 100%; /* Bottom of button */
-  right: 0;
-  margin-left: -450px; /* More to the left */
-  margin-top: 135px;
-  border-radius: 0px;
-}
-
-.alert{
-    border-radius:0px;
-}
-
+ 
 
 
   </style>
@@ -129,8 +46,8 @@ background-color: #9933CC;
   <!-- start of row -->
 
   <div class="row  h-100 border-warning border"><!-- start of navbar -->
-   <div class="col-md-2 my-auto">
-     <img class="logo" src="{{url('../images/wz logo-new.png' )}}" width="130" height="80" style="opacity: 1;">
+   <div class="col-md-2 ">
+     <img class="logo" src="{{url('../images/wz logo-new.png' )}}" width="80" height="40" style="opacity: 1;">
    </div>
 
 
@@ -148,18 +65,16 @@ background-color: #9933CC;
    <div class="col-md-4 text-center  my-auto">
     <div class="row " >
       <div class="col-md-6 text-center  my-auto">
-    <i class="fas fa-envelope-open-text " style="font-size: 30px;"></i>
-     <i class="fas fa-bell ml-3" style="font-size: 30px;"></i>
-     <i class="fas fa-users ml-3" style="font-size: 30px;"></i>
+    <i class="fas fa-envelope-open-text " style="font-size: 20px;"></i>
+     <i class="fas fa-bell ml-3" style="font-size: 20px;"></i>
+     <i class="fas fa-users ml-3" style="font-size: 20px;"></i>
       </div>
       <div class="col-md-6 text-center  d-flex flex-row my-auto">
 
-        <div class="circle border border-dark">
+       
 
-        </div>
-
-        <div class="dropdown show ml-2 mt-3">
-  <a class="btn btn-sm btn-outline-secondary dropdown-toggle"  href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <div class="dropdown show  my-auto">
+  <a class="btn btn-sm btn-outline-primary dropdown-toggle"  href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
    Fisal Shehzad
   </a>
 
@@ -167,6 +82,7 @@ background-color: #9933CC;
     <a class="dropdown-item" href="#">Profile</a>
     <a class="dropdown-item" href="#">Dashboard</a>
     <a class="dropdown-item" href="#">Security</a>
+ <a class="dropdown-item" href="{{URL::to('employee_login')}}">Logout</a>
   </div>
 </div>
       </div>
@@ -175,7 +91,7 @@ background-color: #9933CC;
 
    </div>
   </div><!-- end of navbar-->
- 
+
 
   <div class="row">
     <div class="col-md-2 bg-dark ">
@@ -185,7 +101,7 @@ background-color: #9933CC;
          <div class="row pt-3">
            <div class="col-md-12 d-flex flex-row justify-content-center text-center">
               <div class="circle_sidebar border border-warning">
-        
+
       </div>
            </div>
          </div>
@@ -199,7 +115,7 @@ background-color: #9933CC;
         <div class="col-md-12 text-center ">
            <p class="font-weight-bold text-white text-center my-auto ">Faisal Shehzad</p>
         </div>
-       
+
       </div>
        <!-- end of row2 -->
 
@@ -225,8 +141,8 @@ background-color: #9933CC;
                <span class="sidebar-text ">Employees</span>
                 <i class="fas fa-sort-down text-white font-weight-bold  "style="float:right;"></i></a> </li>
             <!-- end of tabs -->
-			
-			
+
+
 			<!-- start of tabs -->
             <li class="  nav_tab" style="width:100%; float:left;">
               <a class="nav-link  text-white font-weight-bold m-0 p-0" href="#"  title="" style="font-size: 16px;">
@@ -234,9 +150,9 @@ background-color: #9933CC;
                <span class="sidebar-text ">Expenses</span>
                 <i class="fas fa-sort-down text-white font-weight-bold  "style="float:right;"></i></a> </li>
             <!-- end of tabs -->
-			
-			
-			
+
+
+
 			<!-- start of tabs -->
             <li class="  nav_tab" style="width:100%; float:left;">
               <a class="nav-link  text-white font-weight-bold m-0 p-0" href="#"  title="" style="font-size: 16px;">
@@ -244,14 +160,14 @@ background-color: #9933CC;
                <span class="sidebar-text ">Careers</span>
                 <i class="fas fa-sort-down text-white font-weight-bold  "style="float:right;"></i></a> </li>
             <!-- end of tabs -->
-			
-			
-			
 
-            
 
-            
-           
+
+
+
+
+
+
           </ul>
         </div>
       </div>
@@ -260,10 +176,10 @@ background-color: #9933CC;
 
 
 
-     
-  
 
-   
+
+
+
   <!-- start of display page -->
 <div class="col-md-10">
 <div class="tab-content"><!-- start of tab 1 -->
@@ -272,13 +188,26 @@ background-color: #9933CC;
 <div class="row"><!-- row 1 start -->
 <div  class="col-md-12 ">
 <!-- start of alert -->
+
+
+</div>
 @if(session('message'))
 <div class="row">
-<div class="col-md-12 text-danger font-weight-bold text-white alert alert-danger text-center" style="font-size: 18px;">
+<div class="col-md-12 text-danger font-weight-bold text-white alert alert-danger text-center"  style="font-size: 18px;">
 {{session('message')}}
 </div>
 </div>
 @endif
+
+<!-- ajax query success message here -->
+
+<div class="col-md-12 text-center alert alert-success text-dark font-weight-bold" id="msg">
+
+</div>
+
+<!-- ajax query success message here -->
+
+
 </div>
 </div><!-- row 1 end -->
 
@@ -290,25 +219,31 @@ background-color: #9933CC;
  <div class="col-md-12 pt-3 pb-3">
 
  <p class="text-dark font-weight-bold my-auto" style="font-weight: bold;float: left;"> Home / Dashboard / Employee</p>
-        
+
 
 <div class="btn-group" id="openmenu-btn"  style="float: right;">
-<button type="button" class="btn btn-secondary dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add Employee
+<button type="button" class="btn btn-sm btn-success dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add Employee
 </button>
 
-<div class="dropdown-container">
-<div class="dropdown-menu " onClick="event.stopPropagation();" style="width: 390px;" >
+<div class="dropdown-container customDropdown">
+<div class="dropdown-menu dropdown-menu-right customDropdownMenu" id="employee_dropdown" onClick="event.stopPropagation();" style="width: 390px;" >
 
 <div class="container-fluid">
-<form action="/add_employee"  method="POST" enctype="multipart/form-data" name="form" id="form">
+
 
 <div class="row">
 <div class="col-md-12">
+
+<form    enctype="multipart/form-data" id="submit_form" name="submit_form" action={{route('add_employee_ajax')}} >
+ @csrf
+
+ <!--
 <span class="font-weight-bold ">Employee ID</span>
-<input class="inp col-md-12" type="number"  id="id" name="id"  required/>
+<input class="inp col-md-12" type="number"  id="id"   name="id" />
 @if($errors->has('id'))
 <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;" >&spades;{{ $errors->first('id') }}</div>
 @endif
+-->
 </div>
 </div>
 
@@ -316,8 +251,9 @@ background-color: #9933CC;
 <div class="row">
 
 <div class="col-md-12">
+
 <span class="font-weight-bold ">Name</span>
-<input class="inp col-md-12" type="text" placeholder="@example John Doe" id="name" min="3" max="20" name="name" required/>
+<input class="inp col-md-12" type="text" placeholder="@example John Doe" id="name" minlength="3" maxlength="20" name="name"  pattern="^[A-Za-z -]+$" required />
 @if($errors->has('name'))
 <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('name') }}</div>
 @endif
@@ -325,7 +261,7 @@ background-color: #9933CC;
 
 <div class="col-md-12">
 <span class="font-weight-bold  " >Email</span>
-<input class="inp col-md-12" type="email" placeholder="@example JohnDoe@abc.com" id="email" name="email" required/>
+<input class="inp col-md-12" type="email" placeholder="@example JohnDoe@abc.com" id="email" name="email" maxlength="25" required />
 @if($errors->has('email'))
 <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('email') }}</div>
 @endif
@@ -335,27 +271,27 @@ background-color: #9933CC;
 
 <div class="col-md-12">
         <span class="font-weight-bold " >Password</span>
-        <input class="inp col-md-12" type="password"  id="password" name="password" required/>
-        @if($errors->has('password'))
+<input class="inp col-md-12" type="password"  id="password"  minlength="8" maxlength="14"  name="password" required/>
+@if($errors->has('password'))
 <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('password') }}</div>
 @endif
 </div>
-</div>
+
 
 
 
 
 <div class="col-md-12 mt-3 d-flex flex-row justify-content-between ">
   <!-- Material inline 1 -->
-<div class="form-check form-check-inline" required>
-  <input type="radio" class="form-check-input" id="status1" name="status" value="Contract">
+<div class="form-check form-check-inline" >
+  <input type="radio" class="form-check-input" id="status" name="status" value="Contract" required />
   <label class="form-check-label font-weight-bold" for="materialInline1">Contact</label>
 
 </div>
 
 <!-- Material inline 2 -->
-<div class="form-check form-check-inline" required>
-  <input type="radio" class="form-check-input" id="status2" name="status" value="Probabtion">
+<div class="form-check form-check-inline"  >
+  <input type="radio" class="form-check-input" id="status" name="status" value="Probabtion" />
   <label class="form-check-label font-weight-bold" for="materialInline2">Probabtion</label>
 </div>
 
@@ -369,7 +305,7 @@ background-color: #9933CC;
 
 <div class="col-md-6">
 <span class="font-weight-bold " >Duration To: </span>
-  <input class="inp col-md-12" type="date" placeholder="@example JohnDoe@abc.com" id="start_date" name="start_date" required/>
+  <input class="inp col-md-12" type="date" placeholder="@example JohnDoe@abc.com" id="start_date" name="start_date" required />
   @if($errors->has('start_date'))
   <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('start_date') }}</div>
   @endif
@@ -378,7 +314,7 @@ background-color: #9933CC;
 
 <div class="col-md-6">
   <span class="font-weight-bold  " >Duration From: </span>
-  <input class="inp col-md-12" type="date" placeholder="@example JohnDoe@abc.com" id="end_date" name="end_date" required/>
+  <input class="inp col-md-12" type="date" placeholder="@example JohnDoe@abc.com" id="end_date" name="end_date" required />
   @if($errors->has('end_date'))
   <div class=" alert alert-danger  font-weight-bold m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('end_date') }}</div>
   @endif
@@ -392,7 +328,7 @@ background-color: #9933CC;
 
   <div class="col-md-12 mt-3">
 <span class="font-weight-bold  " >Salary</span>
-<input class="inp col-md-12" type="number" placeholder="@30,000 PKR" min="1" max="100000" id="e_salary" name="e_salary" required/>
+<input class="inp col-md-12" type="number" placeholder="@30,000 PKR" min="1" max="100000" id="e_salary" name="e_salary" requireds />
 @if($errors->has('e_salary'))
   <div class=" alert alert-danger  font-weight-bold m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('e_salary') }}</div>
   @endif
@@ -406,16 +342,17 @@ background-color: #9933CC;
 <div class="col-md-12 text-center mt-4" >
 
     <!--  <img class="logo mt-3 " src="{{url('../icons/files.png' )}}" width="55" height="55" style="opacity: 1;"> -->
- <input type="file" name="uploads[]" multiple>
+ <input type="file" name="uploads[]" multiple required/>
  @if($errors->has('uploads'))
   <div class=" alert alert-danger  font-weight-bold mt-2 m-0 p-0" style="font-size:14px;">&spades;{{ $errors->first('uploads') }}</div>
   @endif
-  
-  
- 
- 
+
+
+
+
  </div>
  </div>
+</div>
 <div class="col-md-12 mt-3">
 <div class="row">
 <div class="col-md-6 text-center">
@@ -423,18 +360,19 @@ background-color: #9933CC;
 </div>
 
 <div class="col-md-6 text-center">
-  <input type="submit" class="btn " style="background-color:  #a31b78 "></button>
-  <input type="hidden" name="_token" value="{{csrf_token()}}">
+<!-- style="background-color:#a31b78 " -->
+  <input type="submit" name="submit" id="add_employee_btn" class="btn btn-success" />
+
  </div>
 
  </div>
   </div>
-</div>
+
 </form>
 </div>
 </div>
 </div>
-</div> 
+</div>
 </div>
 
 
@@ -498,7 +436,7 @@ background-color: #9933CC;
 
 <div class="row mt-4">
 <div class="col-md-12">
-<button type="button" class="btn btn-outline-dark font-weight-bold" id="navigatable_btn_3" style="border:none;"> <i class="fas fa-sort-down text-danger font-weight-bold mr-5 m-0 p-0"></i>All Employee</button>
+<button type="button" class="btn btn-sm btn-danger font-weight-bold" id="navigatable_btn_3" style="border:none;"> <i class="fas fa-sort-down text-white font-weight-bold mr-2 m-0 p-0"></i>All Employee</button>
 </div>
 </div>
           <!-- end hidebale button-->
@@ -534,78 +472,172 @@ background-color: #9933CC;
   <div class="col-md-4"> </div>
 </div>
 
-
-
-           
-
-
+<div id="renderEditModel" class="mt-2"></div>
+<div class="row" id="div_table"></div>
 
 
 
+</div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-      </div>
     </div>
     <!-- end of display page -->
   </div>
 
   <script >
 
-        var div3 =document.getElementById("navigatable_div_3");
-      var div4 =document.getElementById("navigatable_div_4");
 
-          var btn3 =document.getElementById("navigatable_btn_3");
-          var btn4 =document.getElementById("navigatable_btn_4");
+//start of ensert employee ajax function
+// $.ajaxSetup({
+  // headers: {
+    // 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  // }
+// });
+ $(document).ready(function (){
+
+	$('#msg').hide();
+
+	//display employees table using ajax
+ $.get('{{URL::to("employee_table_view")}}',function(data){
+	 $('#div_table').empty().append(data);
+});
+
+ //start of form return edit_table_employee
+
+ $('#div_table').on('click','#edit',function(){
+     var id=$(this).data('task');
+$.get('{{URL::to("employee_table_edit")}}/'+id,function(data){
+	 $('#renderEditModel').empty().append(data);
+     $('#employee_edit_model').modal('show');
+
+});
+
+ });//end of return  edit table em,ployee
+
+
+
+//start of form edit_table_employee
+
+ $('#renderEditModel').on('submit','#edit_employee_form',function(event){
+     event.preventDefault();  
+ $.ajax({
+            url:$(this).attr('action'),
+                type:'POST',
+				 data:new FormData(this),
+                contentType: false,
+                processData: false,
+                success: function(data) {
+				  $('#msg').show();
+                  $('#msg').html("Form has been Edited Succesfully !!!");
+				  $('#msg').fadeOut(15000);
+				$.get('{{URL::to("employee_table_view")}}',function(data){
+				 $('#div_table').empty().append(data);
+   $('#employee_edit_model').modal('hide');
+});
+                },
+				 error: function (data) {
+				console.log(data);
+
+				 }
+            });
 
 
 
 
 
-          btn3.addEventListener('click',function(){
-            var div_3 =document.getElementById("navigatable_div_3");
-           if (div_3.style.display === "none") {
-    div_3.style.display = "block";
-  } else {
-    div_3.style.display = "none";}
+
+
+
+
+ });//end of edit table employee
+
+
+
+ 
+
+
+ //start of delete table employee
+ $('#div_table').on('click','#delete',function(){
+     var id=$(this).data('task');
+$.get('{{URL::to("employee_table_delete")}}/'+id,function(data){
+    	$('#msg').show();
+        $('#msg').html("Employee has Been Sucessfully Deleted");
+	 $('#div_table').empty().append(data);
+   
+});
+});
+ //end of delte_table_employee
+
+
+
+
+ //end of form edit functionality
   });
 
+$('#submit_form').submit(function () {
+            event.preventDefault();
 
-          btn4.addEventListener('click',function(){
-            var div_4 =document.getElementById("navigatable_div_4");
-           if (div_4.style.display === "none") {
-    div_4.style.display = "block";
-  } else {
-    div_4.style.display = "none";
-  } });
+            $.ajax({
+            url:$(this).attr('action'),
+                type:'POST',
+				 data:new FormData(this),
+                contentType: false,
+                processData: false,
+                success: function(data) {
+				$('#msg').show();
+                  $('#msg').html("Form has been Submitted Succesfully !!!");
+				  $('#employee_dropdown').hide();
+				  	$('#msg').fadeOut(15000);
+$.get('{{URL::to("employee_table_view")}}',function(data){
+	 $('#div_table').empty().append(data);
+});
+                },
+				 error: function (data) {
+				var response = JSON.parse(data.responseText);
+               var str = '';
+               $.each(response.errors,function (i,item) {
+                   var html = '<p class="alert alert-danger alert-dismissible"><strong>Error!!</strong> &nbsp;&nbsp; '+item+'&nbsp;&nbsp;&nbsp; <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>';
+                   str = str + html;
+               });
+			   $('#msg').show();
+               $('#msj').html(str);
+
+				 }
+            });
+
+        });
 
 
-$.noConflict();
-jQuery( document ).ready(function( $ ) {
-    $('#table3').DataTable();
+//close edit employee model on close button
+$('#renderEditModel').on('click','#closeBtn',function(){
+$('#employee_edit_model').modal('hide');
 });
 
 
 
-$.noConflict();
-jQuery( document ).ready(function( $ ) {
-    $('#table4').DataTable();
+
+// $(document).ready(function(){
+//  // /   $('#employee_table').dataTable();
+//    $('#div_table').on('click','#employee_table',function(){
+//    	 $(this).dataTable();
+// });
+
+
+// });
+
+
+
+$(document).ready(function(){
+$('#div_table').on("click",'#employee_table',function(){
+$('#employee_table').dataTable();
 });
 
 
-
-
+    
+});
   </script>
+
 
 
 </body>

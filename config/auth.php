@@ -41,9 +41,9 @@ return [
             'provider' => 'users',
         ],
 
-        'web_hr' => [
+ 'admin' => [
             'driver' => 'session',
-            'provider' => 'hr',
+            'provider' => 'admins',
         ],
 
         'api' => [
@@ -76,11 +76,9 @@ return [
             'model' => App\User::class,
         ],
 
-
-        
-         'hr' => [
+'admins' => [
             'driver' => 'eloquent',
-            'model' => App\hr_model::class,
+            'model' => App\Admin::class,
         ],
 
         // 'users' => [
@@ -110,6 +108,15 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+
+
+'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
+
     ],
 
 ];

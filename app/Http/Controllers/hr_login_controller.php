@@ -1,46 +1,44 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\hr;
+use App\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use DB;
 use Validator;
 
+
 class hr_login_controller extends Controller
 {
-    public Function login(Request $request){
+
+
+//hr_login
+    public Function loginAdmin(Request $request){
         $validator = Validator::make($request->all(), [
             'a_email' => 'required',
             'a_password' => 'required',
         ]);
 
         if ($validator->fails()) {
-                return redirect('hr_login')
+                return redirect('showLoginForm')
                             ->withErrors($validator)
                             ->withInput();
             }
 $email=$request->input('a_email');
 $password=$request->input('a_password');
-$check_credentials =DB::table('hrs')->where(['email'=>$email,'password'=>$password])->get();
-    if(count($check_credentials)>0){
-
-
-
- $employees = DB::select('select * from employees');
-    return view('/hr/hr_dashboard',compact('employees'));
-     //  return view ('/hr/hr_dashboard')->with('session',$request->session());
-
+if (Admin::where(['email'=>$email,'password'=>$password])->exists()) {
+return view('hr/hr_home');
 }
 else{
+return Redirect()->route('showLoginForm')->with('message','Invalid email and password! ');
+}
 
-    return Redirect()->route('hr_login')->with('message','Invalid email and password! ');
-     }
-
-   }
+   }//end of function login
 
 
-   }
+
+
+   }//end of controller 
 
 
 

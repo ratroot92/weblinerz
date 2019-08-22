@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" charset="UTF-8">
 <head>
     <title>:: Lucid HR :: Home</title>
     <meta charset="utf-8">

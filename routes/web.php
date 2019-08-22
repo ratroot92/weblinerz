@@ -20,39 +20,42 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-
-//it will open news page
+//employee login from homepage 
 Route::get('/employee_login', function () {
-    return view('employees/employee_home_view');
+    return view('employee_home_view');
 })->name('employee_login');
 
 
 
 
+//cards navigation(hr_home)
+Route::get('/hr_employee_home', function () {
+    return view("hr/hr_home");
+})->name('hr_employee_home');
 
 
 
 
-Route::get('hr_login', function () {
-    return view('/hr/auth/login');
-})->name('hr_login');
 
 
-  
+
+
+
   //open hr employee dashboard
 Route::get('/employee_dashboard', function () {
     $employees = DB::select('select * from employees');
     return view('/employees/employee_dashboard',compact('employees'));
 })->name('employee_dashboard');
 
+Route::get('employee_table_view','employee_login_controller@employee_table_view')->name('employee_table_view');
+Route::get('employee_table_edit/{id}','employee_login_controller@employee_table_edit')->name('employee_table_edit');
+Route::get('employee_table_delete/{id}','employee_login_controller@employee_table_delete')->name('employee_table_delete');
+Route::post('edit_employee_ajax','employee_login_controller@edit_employee_ajax')->name('edit_employee_ajax');
+Route::post('/add_employee_ajax','employee_login_controller@add_employee_ajax')->name('add_employee_ajax');
 
-//open hr employee dashboard
-Route::get('/employee_dashboard_test', function () {
-    return view('/employees/employee_dashboard_test');
-})->name('employee_dashboard_test');
 
 //root for adding employee data by hr related employee dashboard
-Route::post('/add_employee_ajax','employee_login_controller@add_employee_ajax')->name('add_employee_ajax');
+
 Route::post('/display_employee_ajax','employee_login_controller@display_employee_ajax')->name('display_employee_ajax');
 
 
@@ -68,16 +71,15 @@ Route::post('/employee_dashboard_by_email','employee_login_controller@login')->n
 
 
 
+
+
+
+
+
+
 //root for employee login to employee_dashboard
-Route::post('/employee_dashboard_by_name','employee_login_controller@login_by_name')->name('employee_dashboard_by_name');
 
-
-
-
-
-//root for employee login to employee_dashboard
-Route::post('/hr_dashboard','hr_login_controller@login')->name('login_as_hr');
-
+//Route::post('/hr_dashboard','hr_login_controller@login')->name('login_as_hr');
 
 
 
@@ -85,31 +87,40 @@ Route::post('/hr_dashboard','hr_login_controller@login')->name('login_as_hr');
 Route::post('/add_employee','employee_login_controller@add_employee');
 
 
+//Route::get('hr/hr_dashboard', 'hr_login_controller@index')->name('admin');
+
+Route::post('loginAdmin', 'hr_login_controller@loginAdmin')->name('loginAdmin');
 
 
-Route::group(['middleware' => 'is-user'], function () { 
-    
-    
-
-
-  
-
-
-
-//open hr dashboard
-Route::get('hr/hr_dashboard', function () {
-    return view('hr/hr_dashboard');
-})->name('hr_dashboard');
-
-
-
-
-
+//hr_home
+Route::get('hr_home',function(){
+return view('hr/hr_home');
 
 });
+
+
+
+
+
 
 Route::get('/hr/hr_employee_salaries','HrEmployeeSalariesController@index');
 
 Route::get('/hr/hr_employee_contracts','HrEmployeeSalariesController@employeeContracts');
 
 Route::get('/hr/hr_employees_add_contracts','HrEmployeeSalariesController@addEmpolyeesContracts');
+
+
+//admin middleware and controller routes 
+
+
+
+Route::get('/adminLogout', 'Admin\LoginController@logout')->name('adminLogout');
+Route::get('/showLoginForm', 'Admin\LoginController@showLoginForm')->name('showLoginForm');
+// Route::post('/loginAdmin', 'Admin\LoginController@loginAdmin')->name('loginAdmin');
+Route::get('/registerAdmin', 'Admin\LoginController@registerAdmin')->name('registerAdmin');
+
+Route::get('/home', 'HomeController@index')->name('home');
+//route hr_dasboard -- direct root
+Route::get('/hr/hr_dashboard',function(){
+return view('hr/hr_dashboard');
+})->name('hr_dashboard');

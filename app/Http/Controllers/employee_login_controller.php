@@ -33,10 +33,10 @@ else{
 return Redirect()->route('employee_login')->with('message','Invalid Email and Password ');
 }
 }
-   
-   
-   
-   
+
+
+
+
 public Function login_by_name(Request $request){
 $validator = Validator::make($request->all(), [
 'e_name' => 'required',
@@ -51,7 +51,7 @@ return redirect('employee_login')
 $name=$request->input('e_name');
 $password=$request->input('e_password1');
 $check_credentials =DB::table('employees')->where(['name'=>$name,'password'=>$password])->get();
-    
+
 if(count($check_credentials)>0){
 
 
@@ -65,10 +65,10 @@ else{
      }
 
    }
-   
-   
-   
-   
+
+
+
+
 
 
    public Function add_employee(Request $request){
@@ -77,9 +77,9 @@ else{
      'email' => 'unique:employees,email',
        // 'uploads'=>'required|mimes:jpeg,png,jpg,gif,docx,pdf,svg',
         'status'=>'required'
-		
-	
-       
+
+
+
     ]);
 
     if ($validator->fails()) {
@@ -87,24 +87,24 @@ else{
                         ->withErrors($validator)
                         ->withInput();
         }
-		
+
 		if($request->hasFile('uploads') ){
 		 $files = $request->file('uploads');
 			foreach($request->uploads as $file){
 				$extension=$file->getClientOriginalExtension ();
-				
+
 				 $filename=time()."_.".$extension;
         $file->move(public_path('Employee_Files/Files'),$filename);
-				
-			 
+
+
 			$upload=new EmployeeUpload;
 			$upload->employee_id=$request->id;
 			$upload->file_name=$filename;
 			$upload->file_path=$file;
 			$upload->save();
 			}
-			
-			
+
+
 $employee = new employee;
 $employee->id = $request->id;
 $employee->name = $request->name;
@@ -124,9 +124,9 @@ else{
 }
 
 
-		
-			
-		}//end of  if request has uploads 
+
+
+		}//end of  if request has uploads
 else{
 
 $employee = new employee;
@@ -149,8 +149,7 @@ else{
 }
 
 
-}	
-		
+}
 
 
 
@@ -163,7 +162,8 @@ else{
 
 
 
-}//end of add employee function 
+
+}//end of add employee function
 
 
 
@@ -180,10 +180,10 @@ public function add_employee_ajax(Request $request){
        {
            $lastempployee_id              = 1;
        }
-      
-      
 
-       
+
+
+
        $input= $request->all();
        $this->validate($request, [
             // 'uploads' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -197,26 +197,26 @@ public function add_employee_ajax(Request $request){
 			 $filename=time()."_.".$extension;
 			//$filename = $upload->getClientOriginalName();
             $path=$upload->move(public_path('Employee_Files/Files'),$filename);
-		   
+
 			$upload1=new EmployeeUpload;
 			$upload1->employee_id=$request->id;
 			$upload1->file_name=$filename;
 			 $upload1->file_path=$path;
 			$upload1->save();
 		   }
-          
+
        }
 	    $employee= new employee();
        $employee->id                	 = $lastempployee_id;
        $employee->name                 	= $input['name'];
        $employee->email              	 = $input['email'];
 	   $employee->password                 = $input['password'];
-	   $employee->contract = $request->get('status');
+	   $employee->contract = 				$request->get('status');
        $employee->start_date                 = $input['start_date'];
        $employee->end_date               = $input['end_date'];
 	   $employee->salary               = $input['e_salary'];
        $employee->save();
-      
+
        return response()->json($employee);
 
 
@@ -226,13 +226,41 @@ public function add_employee_ajax(Request $request){
 
 
 
-public function display_employee_ajax(){
-	
-	return Datatables::of(employees::query())->make(true);
-	
-	
-	
+public Function employee_table_view(){
+	$employees=employee::all();
+	return view('employees/employees_table',compact('employees'));
+}
+
+public Function employee_table_edit($id){
+$employee=employee::findOrFail($id);
+	return view('employees/employee_table/employee_table_edit',compact('employee'));
 }
 
 
-}//end of controoler 
+
+public Function employee_table_delete($id){
+employee::findOrFail($id)->delete();
+$employees=employee::all();
+return view('employees/employees_table',compact('employees'));
+}
+
+public Function edit_employee_ajax(Request $request){
+    $id=$request->input('id');
+$edit_employee=employee::findOrFail($id);
+$edit_employee->name=$request->input('name');
+$edit_employee->email=$request->input('email');
+$edit_employee->password=$request->input('password');
+$edit_employee->salary=$request->input('e_salary');
+$edit_employee->contract =$request->get('status');
+$edit_employee->start_date=$request->input('start_date');
+$edit_employee->end_date=$request->input('end_date');
+$edit_employee->save();
+
+
+$employees=employee::all();
+return view('employees/employees_table',compact('employees'));
+}
+
+
+
+}//end of controoler

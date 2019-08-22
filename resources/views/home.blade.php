@@ -138,7 +138,7 @@
        <div>
          <i class="fab fa-chrome text-white font-weight-bold icon" ></i>
      <br>
-<a class="text-white  circle-text" href="{{ route('hr_login') }}"> HR Console </a>
+<a class="text-white  circle-text" href="{{ route('showLoginForm') }}"> HR Console </a>
        </div>
     </div>
   </div>

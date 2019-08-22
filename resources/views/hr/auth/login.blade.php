@@ -44,7 +44,7 @@
 <!-- end of alert -->
                         </div>
                         <div class="body">
-                        <form class="" method="POST" action="{{ route('login_as_hr') }}" >
+                        <form  method="POST" action="{{ URL::to('/loginAdmin') }}" >
 
                                 <div class="form-group">
                                     <label for="signin-email" class="control-label sr-only">Email</label>
@@ -71,7 +71,7 @@
 
                                 <div class="form-group clearfix">
                                     <label class="fancy-checkbox element-left">
-                                        <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                        <input type="checkbox" name="remember" id="remember" value="{{ old('remember') ? 'checked' : '' }}">
                                         <span>Remember me</span>
                                     </label>
                                 </div>
@@ -80,7 +80,7 @@
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="bottom">
                                     <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="page-forgot-password.html">Forgot password?</a></span>
-                                    <span>Don't have an account? <a href="{{ route('hr.register') }}">Register</a></span>
+                                    <span>Don't have an account? <a href="{{ route('registerAdmin') }}">Register</a></span>
                                 </div>
                             </form>
                         </div>

@@ -1,0 +1,61 @@
+ .sidebar-text{
+  font-size:12px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+
+  .circle_sidebar{
+border-radius: 50%;
+width: 50%;
+height:60px;
+background-image: url('../images/profile.png' );
+background-repeat: no-repeat;
+background-size:cover;
+}
+
+.custom_badge{
+border-radius: 3px;
+ }
+
+
+.nav_tab:hover{
+background-color: #9933CC;
+}
+
+.inp {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #03a8f45e;
+    padding: 5px 15px;
+    outline: none;
+ }
+
+[placeholder]:focus::-webkit-input-placeholder {
+    transition: text-indent 0.4s 0.4s ease;
+    text-indent: -100%;
+    opacity: 1;
+ }
+
+
+.drag_files{
+  border:1px dotted black;
+  height: 130px;
+  border-radius:3px;
+}
+.customDropdown{
+  position: absolute;
+}
+
+#employee_dropdown{
+  position: relative;
+  top: 100%; /* Bottom of button */
+  right: 0;
+  margin-left: 0px; /* More to the left */
+  margin-top: 82px;
+  border-radius: 0px;
+}
+
+.alert{
+    border-radius:0px;
+}

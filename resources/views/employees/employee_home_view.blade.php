@@ -9,48 +9,11 @@
         <script src="js/app.js" type="text/javascript" charset="utf-8" async defer></script>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-<link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
+		<link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
+<!-- custom css-->
+  <link rel="stylesheet" href="{{ asset('dist/employee_home_view.css') }}">
 
 
-<style type="text/css" media="screen">
-   .notice_Board{
-
-    border-radius: 8px;
-    border:10px solid white;
-
-
-   }
-
-   .form-control{
-    border-radius: 0px;
-   }
-   .panel{
-    background-color: white;
-    height: 170px;
-    border-radius: 5px;
-    width: 235px;
-   }
-   .event{
-    width: 100%;
-
-
-   }
-   .event-panel{
-background-color: red;
-     border-radius: 5px;
-     width: 100px;
-     height: 100px;
-   }
-   
-   .alert{
-	   
-	   border-radius:0px;
-	   padding:0px;
-	   margin:0px;
-	   font-size:13px;
-	   color:red;
-   }
-</style>
 
 
 </head>
@@ -59,8 +22,8 @@ background-color: red;
 
 <div class="container-fluid">
 <div class="row">
-<div class="col-md-1"></div>
-<div class="col-md-10 bg-primary">
+
+<div class="col-md-12 bg-primary">
    <!-- start of header -->
 
    <div class="row">
@@ -174,121 +137,85 @@ background-color: red;
         <div class="row pl-2 pr-2">
             <div class="col-md-12 p-1">
                <ul class="nav-tabs  d-flex flex-row  list-unstyled">
-                   <li class="active  "><a href="#BYID" class="nav-link bg-primary text-white font-weight-bold ml-1" role="tab" data-toggle="tab">By NAME</a></li>
-                    <li class=" "><a href="#BYLIST" class="nav-link text-white bg-secondary ml-1 font-weight-bold" role="tab" data-toggle="tab">By EMAIL</a></li>
+                   <!-- <li class="active  "><a href="#BYID" class="nav-link bg-primary text-white font-weight-bold ml-1" role="tab" data-toggle="tab">By NAME</a></li> -->
+<li class=" "><a href="#BYLIST" class="nav-link text-white bg-secondary  font-weight-bold " role="tab" data-toggle="tab" style="width: 100px;">Login</a>
+</li>
                </ul>
 
-               <div class="tab-content">
-                   <div class="active tab-pane " id="BYID"  >
+               <!-- <div class="tab-content">
+<div class=" tab-pane " id="BYID"  > -->
 
- <form method="POST" action="{{route('employee_dashboard_by_name')}}" >
-
-        @if (Session::has('message'))
-        <div class="alert alert-success alert-dismissable text-center p-0 m-0">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <p class="">{{ Session::get('message') }}</p>
-        </div>
-        @endif
-
-    <!-- start of input field -->
-    <div class="d-flex flex-column mt-4">
-            <span class="text-dark font-weight-bold"> Employee Name:</span>
-          <input type="text" class="form-control" name="e_name" id="e_name" placeholder="@Name" required >
-          @if($errors->has('e_name'))
-          <div  class=" alert alert-danger mt-1 "><span class="text-danger font-weight-bold">&spades;{{ $errors->first('e_name') }}</span></div>
-           @endif
-        </div>
-
-
-<!-- end of input field -->
-
-
-<!-- start of input field -->
-        <div class="d-flex flex-column mt-2">
-            <span class="text-dark font-weight-bold"> Employee Password:</span>
-          <input type="password" class="form-control" name="e_password1" id="e_password1" placeholder="@Password" required >
-          @if($errors->has('e_password1'))
-           <div  class=" alert alert-danger mt-1 "><span class="text-danger font-weight-bold">&spades;{{ $errors->first('e_password1') }}</span></div>
-            @endif
-        </div>
-
-
-<!-- end of input field -->
-
-
-<!-- start of input field -->
-        <div class="row mt-4 ">
-            <div class="col-md-8  ">
-                 <span class="text-dark font-weight-bold " style>Forgot Password ?</span>
-                <span  class="text-primary font-weight-bold"><a href="#" title="" >Click Here!</a> </span>
-            </div>
-            <div class="col-md-4  ">
-               <input type="submit" class="btn btn-success" name="" >
-               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            </div>
-
-        </div>
-
-
-<!-- end of input field -->
-</form>
+ 
+</div>
 </div>
 
 
 
 
- <div class="tab-pane " id="BYLIST"  >
-                        <form method="POST" action="{{route('employee_dashboard_by_email')}}" >
+<div class="tab-pane active" id="BYLIST" >
+<form method="POST" action="{{route('employee_dashboard_by_email')}}" >
 
-                                @if (Session::has('message'))
-                                <div class="alert alert-success alert-dismissable text-center">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                    <p>{{ Session::get('message') }}</p>
-                                </div>
-                                @endif
-
-                            <!-- start of input field -->
-                            <div class="d-flex flex-column mt-4">
-                                    <span class="text-dark font-weight-bold"> Employee Email:</span>
-                                  <input type="email" class="form-control" name="e_email" id="e_email" placeholder="@Email" required >
-                                  @if($errors->has('e_email'))
-                                  <div  class=" alert alert-danger mt-1 "><span class="text-danger font-weight-bold">&spades;{{ $errors->first('e_email') }}</span></div>
-                                   @endif
-                                </div>
+<div class="row">
+<div class="col-md-12">
+@if (Session::has('message'))
+<div class="alert alert-success alert-dismissable text-center">
+<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+<p>{{ Session::get('message') }}</p>
+</div>
+@endif
+</div>
+</div>
 
 
-                        <!-- end of input field -->
+<div class="row ">
+<div class="col-md-12">
+
+<!-- start of input field -->
+<div class="form-group">
+<span class="text-dark font-weight-bold"> Employee Email:</span>
+<input type="email" class="form-control" name="e_email" id="e_email" placeholder="@Email" required />
+@if($errors->has('e_email'))
+<div  class=" alert alert-danger mt-1 "><span class="text-danger font-weight-bold">&spades;{{ $errors->first('e_email') }}</span></div>
+@endif
+</div>
+
+<!-- end of input field -->
+
+
+<!-- start of input field -->
+<div class="form-group">
+<span class="text-dark font-weight-bold"> Employee Password:</span>
+<input type="password" class="form-control" name="e_password" id="e_password" placeholder="@Password" required >
+@if($errors->has('e_password'))
+<div  class=" alert alert-danger mt-1 "><span class="text-danger font-weight-bold">&spades;{{ $errors->first('e_password') }}</span></div>
+@endif
+</div>
+<!-- end of input field -->
+
+
+
+</div>
+</div>
+
+
+
+                        
 
 
                         <!-- start of input field -->
-                                <div class="d-flex flex-column mt-2">
-                                    <span class="text-dark font-weight-bold"> Employee Password:</span>
-                                  <input type="password" class="form-control" name="e_password" id="e_password" placeholder="@Password" required >
-                                  @if($errors->has('e_password'))
-                                   <div  class=" alert alert-danger mt-1 "><span class="text-danger font-weight-bold">&spades;{{ $errors->first('e_password') }}</span></div>
-                                    @endif
-                                </div>
+<div class="row mt-4 ">
+<div class="col-md-12  ">
+<span class="text-dark font-weight-bold " style>Forgot Password ?</span>
+<span  class="text-primary font-weight-bold"><a href="#" title="" >Click Here!</a> </span>
+</div>
 
+</div>
 
-                        <!-- end of input field -->
-
-
-                        <!-- start of input field -->
-                                <div class="row mt-4 ">
-                                    <div class="col-md-8  ">
-                                         <span class="text-dark font-weight-bold " style>Forgot Password ?</span>
-                                        <span  class="text-primary font-weight-bold"><a href="#" title="" >Click Here!</a> </span>
-                                    </div>
-                                    <div class="col-md-4  ">
-                                       <input type="submit" class="btn btn-success" name="">
-                                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    </div>
-
-                                </div>
-
-
-                        <!-- end of input field -->
-                        </form>
+<div class="form-group mt-3">
+<input type="submit" class="btn btn-success" name="">
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
+</div>
+</form>
 
                    </div>
                </div>
@@ -310,7 +237,7 @@ background-color: red;
         <!-- row -->
 <div class="row ">
     <div class="col-md-12">
-        <p class="text-white font-weight-bold " style="font-size: 35px;">Latest News </p>
+        <p class="text-secondary font-weight-bold " style="font-size: 35px;">Latest News </p>
 <hr class="bg-light " style="width: 100%;height: 1px;">
     </div>
 
@@ -325,7 +252,7 @@ background-color: red;
 <div class="panel ">
 
 
-    <div class=" p-3 d-flex flex-column ">
+    <div class=" p-3 d-flex flex-column border border-secondary ">
         <span class="text-dark font-weight-bold" style="font-size: 20px;font-weight: bolder;">COMSATS</span>
     <span class="text-secondary mt-2">Welcome to COMSATS University Islamabad Student Console.</span>
     <button class="btn btn-primary  btn-sm mt-2" style="width: 100px;"><a href="#" title="" class="text-dark font-weight-bold">Learn More</a></button>
@@ -335,7 +262,7 @@ background-color: red;
 </div>
 
 <div class="panel ">
-    <div class=" p-3 d-flex flex-column ">
+    <div class=" p-3 d-flex flex-column border border-secondary">
         <span class="text-dark font-weight-bold" style="font-size: 20px;font-weight: bolder;">COMSATS</span>
     <span class="text-secondary mt-2">Welcome to COMSATS University Islamabad Student Console.</span>
     <button class="btn btn-primary  btn-sm mt-2" style="width: 100px;"><a href="#" title="" class="text-dark font-weight-bold">Learn More</a></button>
@@ -360,34 +287,34 @@ background-color: red;
 
     <div class="col-md-4 ">
         <div class="row">
-            <p class="text-white font-weight-bold " style="font-size: 25px;"> Events </p>
+            <p class="text-secondary font-weight-bold " style="font-size: 25px;"> Events </p>
 <hr class="bg-light " style="width: 100%;height: 1px;">
 
 
         </div>
 
 
-        <div class="row" >
+        <div class="row  mt-4" >
             <div class="col-md-12 ">
                 <div class="row">
-                    <div class="col-md-4 text-center bg-light p-1" style="border-radius: 5px;height: 80px;vertical-align: middle;line-height: 80px;font-size: 22px; ">
+                    <div class="col-md-4 text-center bg-light p-1 border border-secondary" style="border-radius: 5px;height: 80px;vertical-align: middle;line-height: 80px;font-size: 22px; ">
                         <p class="text-dark font-weight-bold">27 SEP</p>
                     </div>
 
-                    <div class="col-md-8 ">
-                        asdasdas
+                    <div class="col-md-8 border border-secondary ">
+                       <p class="mt-4">  asdasdas</p>
                     </div>
 
                 </div>
             </div>
              <div class="col-md-12 mt-2 ">
                 <div class="row">
-                    <div class="col-md-4 text-center bg-light p-1" style="border-radius: 5px;height: 80px;vertical-align: middle;line-height: 80px;font-size: 22px; ">
+                    <div class="col-md-4 text-center bg-light p-1 border border-secondary" style="border-radius: 5px;height: 80px;vertical-align: middle;line-height: 80px;font-size: 22px; ">
                         <p class="text-dark font-weight-bold">27 SEP</p>
                     </div>
 
-                    <div class="col-md-8 ">
-                        asdasdas
+                    <div class="col-md-8 border border-secondary">
+                      <p class="mt-4">  asdasdas</p>
                     </div>
 
                 </div>
@@ -404,9 +331,7 @@ background-color: red;
 
 
 </div>
-<div class="col-md-1">
 
-</div>
 </div>
 
 
@@ -414,7 +339,11 @@ background-color: red;
 
 
 </div><!-- end of container fluid -->
-
+<footer class="row bg-dark">
+	<div class="col-md-12 text-center">
+<p class="text-white font-weight-bold">&copy; weblinerz.co.uk</p>
+</div>
+</footer>
 
 </body>
 

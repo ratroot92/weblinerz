@@ -18,11 +18,7 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-           
-            if ('web_hr' === $guard) {
-                return redirect('/hr');
-            }            
-            return redirect('/home');
+            return redirect('/hr.auth.login');
         }
 
         return $next($request);
