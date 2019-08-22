@@ -112,6 +112,18 @@ Route::get('/hr/hr_employees_add_contracts','HrEmployeeSalariesController@addEmp
 
 //admin middleware and controller routes 
 
+<<<<<<< HEAD
+=======
+Route::post('/hr/add_employee_salaries','HrEmployeeSalariesController@addEmployeesSalaries');
+
+Route::get('getsalary','HrEmployeeSalariesController@getSalary');
+
+Route::match(['get','post'],'/hr/hr_employee_salaries/edit_employeesalary/{id}','HrEmployeeSalariesController@editHrEmployeeSalaries');
+
+Route::match(['get','post'],'/hr/hr_employee_salaries/delete_employeesalary/{id}','HrEmployeeSalariesController@deleteHrEmployeeSalaries');
+
+Route::get('/hr/hr_employee_contracts','HrEmployeeSalariesController@employeeContracts');
+>>>>>>> d94dd3517c88be57b9aadb04a15635f78482113a
 
 
 Route::get('/adminLogout', 'Admin\LoginController@logout')->name('adminLogout');

@@ -4,9 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>HR Portal | Salaries</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
     <!-- Font Awesome -->
@@ -14,6 +16,8 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{ asset('bower_components/Ionicons/css/ionicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -22,9 +26,10 @@
     <link rel="stylesheet" href="{{ asset('dist/css/custom.css') }}">
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" id="mysection">
     <div class="wrapper">
         <header class="main-header">
             <!-- Logo -->
@@ -50,77 +55,7 @@
                                 <i class="fa fa-envelope-o"></i>
                                 <span class="label label-success">4</span>
                             </a>
-                            <ul class="dropdown-menu">
-                                <li class="header">You have 4 messages</li>
-                                <li>
-                                    <!-- inner menu: contains the actual data -->
-                                    <ul class="menu">
-                                        <li>
-                                            <!-- start message -->
-                                            <a href="#">
-                                                <div class="pull-left">
-                                                    <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
-                                                </div>
-                                                <h4>
-                                                    Support Team
-                                                    <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                                </h4>
-                                                <p>Why not buy a new awesome theme?</p>
-                                            </a>
-                                        </li>
-                                        <!-- end message -->
-                                        <li>
-                                            <a href="#">
-                                                <div class="pull-left">
-                                                    <img src="{{ asset('dist/img/user3-128x128.jpg') }}" class="img-circle" alt="User Image">
-                                                </div>
-                                                <h4>
-                                                    AdminLTE Design Team
-                                                    <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                                                </h4>
-                                                <p>Why not buy a new awesome theme?</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="pull-left">
-                                                    <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                                                </div>
-                                                <h4>
-                                                    Developers
-                                                    <small><i class="fa fa-clock-o"></i> Today</small>
-                                                </h4>
-                                                <p>Why not buy a new awesome theme?</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="pull-left">
-                                                    <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
-                                                </div>
-                                                <h4>
-                                                    Sales Department
-                                                    <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                                                </h4>
-                                                <p>Why not buy a new awesome theme?</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="pull-left">
-                                                    <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                                                </div>
-                                                <h4>
-                                                    Reviewers
-                                                    <small><i class="fa fa-clock-o"></i> 2 days</small>
-                                                </h4>
-                                                <p>Why not buy a new awesome theme?</p>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="footer"><a href="#">See All Messages</a></li>
-                            </ul>
+                        
                         </li>
                         <!-- Notifications: style can be found in dropdown.less -->
                         <li class="dropdown notifications-menu">
@@ -275,64 +210,53 @@
                 <div class="row">
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
+                        <a href="{{ url('/hr/hr_employee_contracts') }}">
                         <div class="small-box bg-aqua-one">
-                            <div class="inner">
-                                <!-- <h3></h3> -->
+                            <div class="inner">                                
                                 <img src="{{ asset('images/21.png') }}" class="img_hr" alt="">
                                 <p class="carriers">Contracts</p>
-                            </div>
-                            <div class="icon">
-                                <!-- <i class="ion ion-bag"></i> -->
-                            </div>
+                            </div>                            
                         </div>
+                        </a>
                     </div>
                     <!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-green-two">
-                            <div class="inner">
-                                <!-- <h3></h3> -->
+                            <div class="inner">                                
                                 <img src="{{ asset('images/22.png') }}" class="img_hr" alt="">
                                 <p>Salaries</p>
                             </div>
-                            <div class="icon">
-                                <!-- <i class="ion ion-stats-bars"></i> -->
-                            </div>
+                           
                         </div>
                     </div>
                     <!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-yellow-three">
-                            <div class="inner">
-                                <!-- <h3></h3> -->
+                            <div class="inner">                                
                                 <img src="{{ asset('images/23.png') }}" class="img_hr" alt="">
                                 <p>Complaints</p>
                             </div>
-                            <div class="icon">
-                                <!-- <i class="ion ion-person-add"></i> -->
-                            </div>
+                           
                         </div>
                     </div>
                     <!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-red-four">
-                            <div class="inner">
-                                <!-- <h3></h3> -->
+                            <div class="inner">                               
                                 <img src="{{ asset('images/24.png') }}" class="img_hr" alt="">
                                 <p>Attendence</p>
                             </div>
-                            <div class="icon">
-                                <!-- <i class="ion ion-pie-graph"></i> -->
-                            </div>
+                            
                         </div>
                     </div>
                     <!-- ./col -->
                 </div>
                 <!-- /.row -->
                 <!-- Main row -->
-                <div class="row">
+                <div class="row" >
                     <!-- Left col -->
                     <section class="col-lg-12">
                         <!-- Custom tabs (Charts with tabs)-->
@@ -340,6 +264,11 @@
                             <!-- Tabs within a box -->
                         </div>
                         <!-- /.nav-tabs-custom -->
+                       
+                           <div id="flash_message_success"></div>
+                    
+       
+                       
                         <button type="submit" class="btn btn-secondary" id="navigatable_btn_1"><i class="fa fa-caret-down"></i>&nbsp; &nbsp; Salaries</button>
                         <div id="navigatable_div_1" style="padding-top: 15px !important;">
                             <div class="checkbox">
@@ -378,27 +307,60 @@
               </label> -->
                                 <button type="button" class="btn btn-primary" onclick="openForm()">Add Draft</button>
                             </div>
+
                             <div class="form-popup" id="myForm">
-                                <form action="#" class="form-container">
-                                    <select class="form-control" id="sel1" style="border: none; box-shadow: none; border-bottom: 2px solid #1a1a1a5e !important; margin-bottom: 22px;">
-                                        <option>January</option>
-                                    </select>
-                                    <input type="text" placeholder="Salary" name="salary" required>
-                                    <input type="text" placeholder="Fine" name="fine" required>
-                                    <input type="text" placeholder="Received" name="received" required>
-                                    <input type="text" placeholder="Pending" name="pending" required>
-                                    <label for="Comments">Comments</label><br>
-                                    <textarea name="comments" rows="3" style="margin: 0px; width: 280px; height: 144px;"></textarea>
+                                <form name="addEmployeesSalaries" id="addEmployeesSalaries" class="form-container">
+                                    @csrf
+                                    <div class="form-group">
+
+                                        <input type="text" class="form-control pull-right" id="date" name="date" placeholder="Date">
+                                    </div>
+                                    <div class="form-group">
+
+                                        <select class="form-control" id="name" name="emp_id" style="border: none; box-shadow: none; border-bottom: 2px solid #1a1a1a5e !important; margin-bottom: 22px;">
+                                            <option>Please Select</option>
+                                                @foreach($salariesName as $salary)
+                                                    <option id="salary_id"  value="{{ $salary->id }}">{{ $salary->name }}</option>
+                                                @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <input type="text" id="salary" class="salary" placeholder="Salary" name="salary" >
+                                    </div>
+                                    <div class="form-group">
+
+                                        <input type="text" id="fine" name="fine" placeholder="Fine" >
+                                    </div>
+                                    <div class="form-group">
+
+                                        <input type="text" id="total_sal"  name="total_sal" placeholder="Total Salary" >
+                                    </div>
+                                    <div class="form-group">
+
+                                        <input type="text" id="receive" name="receive" placeholder="Received">
+                                    </div>
+                                    <div class="form-group">
+
+                                        <input type="text" id="pending" name="pending" value="" placeholder="Pending" name="pending">
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="Comments">Comments</label><br>
+                                        <textarea name="comments" id="comments" rows="3" style="margin: 0px; width: 280px; height: 110px;"></textarea>
+                                    
+                                    </div>
                                     <button type="button" class="btn cancel" style="position: relative; top: 20px; left: 30px;" onclick="closeForm()">Close</button>
                                     &emsp;&emsp;
-                                    <button type="button" class="btn btn-success" style="position: relative; background-color: #c879af !important; top: 20px; left: 20px;">Add</button>
+                                    <button type="submit" class="btn btn-success" style="position: relative; background-color: #c879af !important; top: 20px; left: 20px;">Add</button>
+                        
                                 </form>
                             </div>
                             <table class="table table-striped" id="table1" style="padding-top: 16px;">
                                 <thead>
                                     <tr style="background-color: #b85197;">
                                         <th style="color: #fff;" scope="col">Sr</th>
-                                        <th style="color: #fff;" scope="col">Assign To</th>
+                                        <th style="color: #fff;" scope="col">Name</th>
                                         <th style="color: #fff;" scope="col">Salary</th>
                                         <th style="color: #fff;" scope="col">Fine</th>
                                         <th style="color: #fff;" scope="col">status</th>
@@ -406,70 +368,92 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @foreach ($salariesdata as $resource)
+                                    <?php //echo '<pre>'; print_r($resource->name); echo '</pre>'; die(); ?>
+                                    @foreach ($resource->employeessalarydrafts as $b)
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Waqas </td>
-                                        <td>Rs 25000 &emsp;</td>
-                                        <td>85000</td>
-                                        <td>Active</td>
+                                        <th scope="row">{{ $b->id }}</th>
+                                        <td>{{ $resource->name }}</td>
+                                        <td>{{ $resource->salary }}</td>
+                                        <td>{{ $b->fine }} &emsp;</td>
+                                        <td>{{ $b->status }}</td>
                                         <td>
-                                            <a href="#"><img src="{{ asset('images/200-min.png') }}" alt=""></a>
-                                            <a href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
-                                            <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
+                                            <a data-toggle="edit_sal" href="{{ url('/hr/hr_employee_salaries/edit_employeesalary/'.$b->id) }}"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
+                                            <a class="deleteRecord" data-id="{{ $b->id }}" href="{{ url('/hr/hr_employee_salaries/delete_employeesalary/'.$b->id) }}"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Rasheed Ahmed</td>
-                                        <td>Rs 25000 &emsp;</td>
-                                        <td>6500</td>
-                                        <td>Active</td>
-                                        <td>
-                                            <a href="#"><img src="{{ asset('images/200-min.png') }}" alt=""></a>
-                                            <a href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
-                                            <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>ALi Ahmed</td>
-                                        <td>Rs 25000 &emsp;</td>
-                                        <td>75000</td>
-                                        <td>Inactive</td>
-                                        <td>
-                                            <a href="#"><img src="{{ asset('images/200-min.png') }}" alt=""></a>
-                                            <a href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
-                                            <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">4</th>
-                                        <td>Usman khan</td>
-                                        <td>Rs 25000 &emsp;</td>
-                                        <td>65400</td>
-                                        <td>Active</td>
-                                        <td>
-                                            <a href="#"><img src="{{ asset('images/200-min.png') }}" alt=""></a>
-                                            <a href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
-                                            <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
-                                        </td>
-                                    </tr>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">5</th>
-                                        <td>Rahim Khan</td>
-                                        <td>Rs 25600 &emsp;</td>
-                                        <td>25000</td>
-                                        <td>Active</td>
-                                        <td>
-                                            <a href="#"><img src="{{ asset('images/200-min.png') }}" alt=""></a>
-                                            <a href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
-                                            <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
-                                        </td>
-                                    </tr>
+                                    @endforeach
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Employee Salary</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="container-fluid">
+          
+
+            <form name="addEmployeesSalaries" id="addEmployeesSalaries" class="form-container formdata">
+                @csrf
+                <div class="form-group">
+
+                    <input type="text" class="form-control pull-right" id="date" name="date" placeholder="Date">
+                </div>
+                <div class="form-group">
+
+                    <select class="form-control" id="name" name="emp_id" style="border: none; box-shadow: none; border-bottom: 2px solid #1a1a1a5e !important; margin-bottom: 22px;">
+                        <option>Please Select</option>
+                            @foreach($salariesName as $salary)
+                                <option id="salary_id"  value="{{ $salary->id }}">{{ $salary->name }}</option>
+                            @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+
+                    <input type="text" id="salary" class="salary" placeholder="Salary" name="salary" >
+                </div>
+                <div class="form-group">
+
+                    <input type="text" id="fine" name="fine" placeholder="Fine" >
+                </div>
+                <div class="form-group">
+
+                    <input type="text" id="total_sal"  name="total_sal" placeholder="Total Salary" >
+                </div>
+                <div class="form-group">
+
+                    <input type="text" id="receive" name="receive" placeholder="Received">
+                </div>
+                <div class="form-group">
+
+                    <input type="text" id="pending" name="pending" value="" placeholder="Pending" name="pending">
+                </div>
+                <div class="form-group">
+
+                    <label for="Comments">Comments</label><br>
+                    <textarea name="comments" id="comments" rows="3" style="margin: 0px; width: 395px; height: 110px;"></textarea>
+                
+                </div>          
+
+            </form>
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
                         <!-- Chat box -->
                     </section>
                     <!-- /.Left col -->
@@ -492,11 +476,8 @@
     <!-- jQuery UI 1.11.4 -->
     <!-- <script src="bower_components/jquery-ui/jquery-ui.min.js"></script> -->
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-    $.widget.bridge('uibutton', $.ui.button);
 
-    </script>
-    <script>
+    <script type="text/javascript">
     var div1 = document.getElementById("navigatable_div_1");
     var div2 = document.getElementById("navigatable_div_2");
     var btn1 = document.getElementById("navigatable_btn_1");
@@ -536,25 +517,148 @@
     <script src="{{ asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
     <!-- FastClick -->
     <script src="{{ asset('bower_components/fastclick/lib/fastclick.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ asset('dist/js/demo.js"></script>
+    <!-- bootstrap datepicker -->
+    <script src="{{ asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+    
 <script type="text/javascript">
-$(document).ready(function () {  
-$(function () {
-  $('#table1').DataTable()
-  $('#table2').DataTable({
-    'paging'      : true,
-    'lengthChange': false,
-    'searching'   : false,
-    'ordering'    : true,
-    'info'        : true,
-    'autoWidth'   : false
-  })
-})
+//----------------------------------------
+
+// $(document).on('click','a[data-toggle=del_sal',function (e) {
+//        e.preventDefault();
+//        var str;
+//        $.ajax({
+//            url         : $(this).attr('href'),
+//            type        : 'get',
+//            dataType    : 'json',
+//            success     : function ($result) {
+//                 console.log($result);
+//                 $('#termsrow').html(str);
+//            },
+//            error        : function (result) {
+//            }
+//        })
+//    }); 
+
+
+//----------------------------------------
+    $('#name').click(function(event){  
+    event.preventDefault();
+    var name = $('#name').val();   
+
+     $.ajax({
+              url : '/getsalary',
+              type: 'get',
+              data : { 'name' : name },
+              dataType: 'json',
+               success: function(response){ 
+               $('#salary').val(response);      
+            
+                }, error:function(e){
+                        console.log(e);
+                        }
+            });
+
+        });
+
+//---------------------------------------
+    $('#fine').change(function(event){  
+    event.preventDefault();
+   
+        var salary = parseInt($('#salary').val());
+        var fine = parseInt($('#fine').val()); 
+        var total =  salary - fine;
+        $('#total_sal').val(total);
+        
+    });
+
+
+//-----------------------------------------
+    $('#receive').change(function(event){  
+    event.preventDefault();   
+        var total = parseInt($('#total_sal').val());
+        var receive = parseInt($('#receive').val());  
+        var pending =  total - receive;
+        $('#pending').val(pending);
+
+    });
+
+//--------------------------------------
+
+    $(document).ready(function () { 
+        $(function () {
+          $('#table1').DataTable()
+          $('#table2').DataTable({
+            'paging'      : true,
+            'lengthChange': false,
+            'searching'   : false,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : false
+          })
+        })
+    });
+
+//---------------------------------------------
+
+$('#addEmployeesSalaries').submit(function () {
+    //console.log('420');
+    //alert('first');
+       var str = '';
+       event.preventDefault();
+       $.ajax({
+           url         : '/hr/add_employee_salaries',
+           type        : 'post',
+           data        : $('#addEmployeesSalaries').serialize(),
+           dataType    : 'json',
+           success     : function ($result) {
+            console.log($result);
+            str = '<div class="alert alert-success alert-dismissable">Added successfully<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
+            $('#flash_message_success').html(str);
+            $('#flash_message_success').fadeOut(15000);
+            $('#mysection').empty();
+            $('#mysection').load('/hr/hr_employee_salaries');
+               //$('#add_modal').modal('toggle');
+           },
+           error        : function (result) {
+           }
+       })
+   });
+
+//------------------------------------------------------------
+$(document).on('click','a[data-toggle=edit_sal]',function (event) {
+   event.preventDefault();
+   $('#exampleModal').find('.modal-body').load($(this).attr('href'));
+   $('#exampleModal').modal('show');
 });
 
+//-------------------------------------------------------------
+$(".deleteRecord").click(function(){
+    var id = $(this).data("id");
+    //alert(id);
+    var token = $("meta[name='csrf-token']").attr("content");
+   
+    $.ajax(
+    {
+        url: "/hr/hr_employee_salaries/delete_employeesalary/"+id,
+        type: 'DELETE',
+        datatype : 'json',
+        data: {
+            "id": id,
+            "_token": token,
+        },
+        success: function (result){
+            console.log("it Works");
+            $('#mysection').empty();
+            $('#mysection').load('/hr/hr_employee_salaries');
+        },
+        error: function (result) {
+            console.log('in error');
+        }
+    });
+   
+});
+
+//-----------------------------------------------------------
 function openForm() {
   document.getElementById("myForm").style.display = "block";
 }
@@ -562,6 +666,11 @@ function openForm() {
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
+//-----------------------------------------------------------
+//Date picker
+$('#date').datepicker({
+    autoclose: true
+})
 </script>
 </body>
 </html>
