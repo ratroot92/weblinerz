@@ -8,6 +8,7 @@
     <title>HR Portal | Salaries</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
     <!-- Font Awesome -->
@@ -28,7 +29,7 @@
     
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" id="mysection">
     <div class="wrapper">
         <header class="main-header">
             <!-- Logo -->
@@ -255,7 +256,7 @@
                 </div>
                 <!-- /.row -->
                 <!-- Main row -->
-                <div class="row">
+                <div class="row" >
                     <!-- Left col -->
                     <section class="col-lg-12">
                         <!-- Custom tabs (Charts with tabs)-->
@@ -359,7 +360,7 @@
                                 <thead>
                                     <tr style="background-color: #b85197;">
                                         <th style="color: #fff;" scope="col">Sr</th>
-                                        <th style="color: #fff;" scope="col">Assign To</th>
+                                        <th style="color: #fff;" scope="col">Name</th>
                                         <th style="color: #fff;" scope="col">Salary</th>
                                         <th style="color: #fff;" scope="col">Fine</th>
                                         <th style="color: #fff;" scope="col">status</th>
@@ -371,14 +372,14 @@
                                     <?php //echo '<pre>'; print_r($resource->name); echo '</pre>'; die(); ?>
                                     @foreach ($resource->employeessalarydrafts as $b)
                                     <tr>
-                                        <th scope="row">{{ $resource->id }}</th>
+                                        <th scope="row">{{ $b->id }}</th>
                                         <td>{{ $resource->name }}</td>
                                         <td>{{ $resource->salary }}</td>
                                         <td>{{ $b->fine }} &emsp;</td>
                                         <td>{{ $b->status }}</td>
                                         <td>
-                                            <a href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
-                                            <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
+                                            <a data-toggle="edit_sal" href="{{ url('/hr/hr_employee_salaries/edit_employeesalary/'.$b->id) }}"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
+                                            <a class="deleteRecord" data-id="{{ $b->id }}" href="{{ url('/hr/hr_employee_salaries/delete_employeesalary/'.$b->id) }}"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -386,6 +387,73 @@
                                 </tbody>
                             </table>
                         </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Employee Salary</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="container-fluid">
+          
+
+            <form name="addEmployeesSalaries" id="addEmployeesSalaries" class="form-container formdata">
+                @csrf
+                <div class="form-group">
+
+                    <input type="text" class="form-control pull-right" id="date" name="date" placeholder="Date">
+                </div>
+                <div class="form-group">
+
+                    <select class="form-control" id="name" name="emp_id" style="border: none; box-shadow: none; border-bottom: 2px solid #1a1a1a5e !important; margin-bottom: 22px;">
+                        <option>Please Select</option>
+                            @foreach($salariesName as $salary)
+                                <option id="salary_id"  value="{{ $salary->id }}">{{ $salary->name }}</option>
+                            @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+
+                    <input type="text" id="salary" class="salary" placeholder="Salary" name="salary" >
+                </div>
+                <div class="form-group">
+
+                    <input type="text" id="fine" name="fine" placeholder="Fine" >
+                </div>
+                <div class="form-group">
+
+                    <input type="text" id="total_sal"  name="total_sal" placeholder="Total Salary" >
+                </div>
+                <div class="form-group">
+
+                    <input type="text" id="receive" name="receive" placeholder="Received">
+                </div>
+                <div class="form-group">
+
+                    <input type="text" id="pending" name="pending" value="" placeholder="Pending" name="pending">
+                </div>
+                <div class="form-group">
+
+                    <label for="Comments">Comments</label><br>
+                    <textarea name="comments" id="comments" rows="3" style="margin: 0px; width: 395px; height: 110px;"></textarea>
+                
+                </div>          
+
+            </form>
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
                         <!-- Chat box -->
                     </section>
                     <!-- /.Left col -->
@@ -453,6 +521,24 @@
     <script src="{{ asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
     
 <script type="text/javascript">
+//----------------------------------------
+
+// $(document).on('click','a[data-toggle=del_sal',function (e) {
+//        e.preventDefault();
+//        var str;
+//        $.ajax({
+//            url         : $(this).attr('href'),
+//            type        : 'get',
+//            dataType    : 'json',
+//            success     : function ($result) {
+//                 console.log($result);
+//                 $('#termsrow').html(str);
+//            },
+//            error        : function (result) {
+//            }
+//        })
+//    }); 
+
 
 //----------------------------------------
     $('#name').click(function(event){  
@@ -529,6 +615,8 @@ $('#addEmployeesSalaries').submit(function () {
             str = '<div class="alert alert-success alert-dismissable">Added successfully<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
             $('#flash_message_success').html(str);
             $('#flash_message_success').fadeOut(15000);
+            $('#mysection').empty();
+            $('#mysection').load('/hr/hr_employee_salaries');
                //$('#add_modal').modal('toggle');
            },
            error        : function (result) {
@@ -536,8 +624,41 @@ $('#addEmployeesSalaries').submit(function () {
        })
    });
 
+//------------------------------------------------------------
+$(document).on('click','a[data-toggle=edit_sal]',function (event) {
+   event.preventDefault();
+   $('#exampleModal').find('.modal-body').load($(this).attr('href'));
+   $('#exampleModal').modal('show');
+});
 
-//------------------------------------------
+//-------------------------------------------------------------
+$(".deleteRecord").click(function(){
+    var id = $(this).data("id");
+    //alert(id);
+    var token = $("meta[name='csrf-token']").attr("content");
+   
+    $.ajax(
+    {
+        url: "/hr/hr_employee_salaries/delete_employeesalary/"+id,
+        type: 'DELETE',
+        datatype : 'json',
+        data: {
+            "id": id,
+            "_token": token,
+        },
+        success: function (result){
+            console.log("it Works");
+            $('#mysection').empty();
+            $('#mysection').load('/hr/hr_employee_salaries');
+        },
+        error: function (result) {
+            console.log('in error');
+        }
+    });
+   
+});
+
+//-----------------------------------------------------------
 function openForm() {
   document.getElementById("myForm").style.display = "block";
 }
@@ -545,7 +666,7 @@ function openForm() {
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
-
+//-----------------------------------------------------------
 //Date picker
 $('#date').datepicker({
     autoclose: true

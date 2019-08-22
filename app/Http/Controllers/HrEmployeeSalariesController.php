@@ -58,5 +58,17 @@ class HrEmployeeSalariesController extends Controller
         }
     }
 
+    public function editHrEmployeeSalaries(Request $request, $id = null) {
+
+    }
+
+    public function deleteHrEmployeeSalaries($id = null) {
+        //echo '<pre>'; print_r('420'); echo '</pre>'; die();
+
+        EmployeesSalaryDrafts::find($id)->delete($id);
+        return response()->json(['Record deleted successfully!']);
+        //return redirect()->back()->with('flash_message_success','Record has been Deleted sucessfully!');
+    }
+
 }
 
