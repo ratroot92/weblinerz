@@ -61,26 +61,24 @@ class HrEmployeeSalariesController extends Controller
     public function editHrEmployeeSalaries(Request $request, $id) {
 
         $emp_sal = EmployeesSalaryDrafts::findOrFail($id);
-        $salariesName = HrEmpolyeeSalaries::all();
+        $employeesName = HrEmpolyeeSalaries::all();
         //$emp_sal = employee::with('employeessalarydrafts')->get();
         //dd($emp_sal);
-        if ($request->isMethod('post')) {
-            $data = $request->all();
-            //echo '<pre>'; print_r($data); echo '</pre>'; die();
-            EmployeesSalaryDrafts::where(['id' => $id])->update([
-                'date'=> $data['date'],
-                'fine'=> $data['fine'],
-                'total'=> $data['total_sal'],
-                'received'=> $data['receive'],
-                'pending'=>$data['pending'],
-                'comments'=>$data['comments']
-            ]);
-            return redirect()->back()->with('flash_message_success','Record has been updated sucessfully');
-        }
-            return view('hr.Employees.Salaries.edit',[
-                'emp_sal' => $emp_sal,
-                'salariesName' => $salariesName
-            ]);
+
+        return view('hr.Employees.Salaries.edit',[
+            'emp_sal' => $emp_sal,
+            'employeesName' => $employeesName
+        ]);
+    }
+    public function updateHrEmployeeSalaries(Request $request)
+    {
+        $input                   = $request->all();
+        $saldraft                = EmployeesSalaryDrafts::findorfail($input['saldraftID']);
+        $saldraft->fine          = $input['fine'];
+        $saldraft->save();
+        //dd($saldraft);
+        return redirect()->back()->with('flash_message_success','Record has been updated sucessfully');
+
     }
 
     public function deleteHrEmployeeSalaries($id = null) {

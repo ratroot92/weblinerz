@@ -1,7 +1,8 @@
 
-<form action="{{ url('/hr/hr_employee_salaries/edit_employeesalary/'.$emp_sal->id) }}" name="editEmployeesSalaries" method="post" id="editEmployeesSalaries" class="form-container formdata editform">
+<form action="{{ url('/hr/hr_employee_salaries/update_employeesalary/') }}" name="editEmployeesSalaries" method="post" id="editEmployeesSalaries" class="form-container formdata editform">
     @csrf
     <div class="form-group">
+        <input type="hidden" name="saldraftID" value="{{$emp_sal->id}}">
         <label for="date">Date</label>
         <input type="text" value="{{$emp_sal->date}}" class="form-control pull-right" id="date" name="date" placeholder="Date">
     </div>
@@ -9,8 +10,12 @@
         <label for="name">Name</label>
         <select class="form-control" id="name" name="emp_id">
             <option>Please Select</option>
-            @foreach($salariesName as $salary)
-                <option id="salary_id"  value="{{ $salary->id }}">{{ $salary->name }}</option>
+            @foreach($employeesName as $employees)
+                <option id="name" name="name"
+                        @if ($employees->id == $emp_sal->employee->id)
+                        {{'selected="selected"'}}
+                        @endif
+                        value="{{$employees->id}}">{{ $employees->name }}</option>
             @endforeach
         </select>
     </div>
@@ -36,7 +41,7 @@
     </div>
     <div class="form-group">
         <label for="Comments">Comments</label><br>
-        <textarea value="{{ $emp_sal->comments }}" name="comments" id="comments" rows="3" style="margin: 0px; width: 395px; height: 110px;"></textarea>
+        <textarea name="comments" id="comments" rows="3" style="margin: 0px; width: 395px; height: 110px;">{{ $emp_sal->comments }}</textarea>
 
     </div>
      <div class="row form-group bt_form">
