@@ -27,7 +27,7 @@ class hr_login_controller extends Controller
 $email=$request->input('a_email');
 $password=$request->input('a_password');
 if (Admin::where(['email'=>$email,'password'=>$password])->exists()) {
-return view('hr/hr_home');
+return view('hr.Dashboard.hrDashboard');
 }
 else{
 return Redirect()->route('showLoginForm')->with('message','Invalid email and password! ');
@@ -38,7 +38,7 @@ return Redirect()->route('showLoginForm')->with('message','Invalid email and pas
 
 
 
-   }//end of controller 
+   }//end of controller
 
 
 
@@ -48,4 +48,3 @@ return Redirect()->route('showLoginForm')->with('message','Invalid email and pas
 
 
 
-   

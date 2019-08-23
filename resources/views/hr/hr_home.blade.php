@@ -210,7 +210,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
-                        <a href="{{ url('/hr/hr_employee_contracts') }}">
+                        <a href="{{ url('/hr_employee_home') }}">
                         <div class="small-box bg-aqua-one">
                             <div class="inner">                                
                                 <img src="{{ asset('images/21.png') }}" class="img_hr" alt="">
@@ -233,6 +233,7 @@
                     <!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
+<a href="#">
                         <div class="small-box bg-yellow-three">
                             <div class="inner">                                
                                 <img src="{{ asset('images/23.png') }}" class="img_hr" alt="">
@@ -240,10 +241,12 @@
                             </div>
                            
                         </div>
+</a>
                     </div>
                     <!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
+<a href="#">
                         <div class="small-box bg-red-four">
                             <div class="inner">                               
                                 <img src="{{ asset('images/24.png') }}" class="img_hr" alt="">
@@ -251,6 +254,7 @@
                             </div>
                             
                         </div>
+</a>
                     </div>
                     <!-- ./col -->
                 </div>
