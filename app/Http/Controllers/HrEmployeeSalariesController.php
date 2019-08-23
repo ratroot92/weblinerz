@@ -10,38 +10,43 @@ use DB;
 
 class HrEmployeeSalariesController extends Controller
 {
-    public function index() {
+    public function index()
+    {
 
-        $salariesName = HrEmpolyeeSalaries::all();  
-        
+        $salariesName = HrEmpolyeeSalaries::all();
         $salariesdata = employee::with('employeessalarydrafts')->get();
         //dd($salariesdata);
     	//echo '<pre>'; print_r($salariesdata); echo '</pre>'; die();
         return view('hr.Employees.Salaries.index')->with(compact('salariesName','salariesdata'));
     }
 
-    public function employeeContracts() {
+    public function employeeContracts()
+    {
     	return view('hr.hr_employees_contracts');
     }
 
-    public function addEmpolyeesContracts() {
+    public function addEmpolyeesContracts()
+    {
     	
     	return view('hr.hr_employees_add_contracts');
     }
 
-    public function getSalary(Request $request) {
+    public function getSalary(Request $request)
+    {
         $name = $request->name;
         $amount = employee::where('id', $name)->pluck('salary');
         return response()->json($amount);
           
     }
 
-    public function addEmployeesSalaries(Request $request) {
+    public function addEmployeesSalaries(Request $request)
+    {
 
-        if ($request->isMethod('post')) {
+        if ($request->isMethod('post'))
+        {
             
             $data = $request->all();
-            //echo '<pre>'; print_r($data); echo '</pre>'; die();
+            echo '<pre>'; print_r($data); echo '</pre>'; die();
             
             $employee = new EmployeesSalaryDrafts;
             $employee->employee_id = $data['emp_id'];
@@ -58,7 +63,8 @@ class HrEmployeeSalariesController extends Controller
         }
     }
 
-    public function editHrEmployeeSalaries(Request $request, $id) {
+    public function editHrEmployeeSalaries(Request $request, $id)
+    {
 
         $emp_sal = EmployeesSalaryDrafts::findOrFail($id);
         $employeesName = HrEmpolyeeSalaries::all();
@@ -73,15 +79,22 @@ class HrEmployeeSalariesController extends Controller
     public function updateHrEmployeeSalaries(Request $request)
     {
         $input                   = $request->all();
+        //echo '<pre>'; print_r($input); echo '</pre>'; die();
         $saldraft                = EmployeesSalaryDrafts::findorfail($input['saldraftID']);
-        $saldraft->fine          = $input['fine'];
+        $saldraft->date     = $input['date'];
+        $saldraft->fine     = $input['fine'];
+        $saldraft->total    = $input['total_sal'];
+        $saldraft->received    = $input['receive'];
+        $saldraft->pending    = $input['pending'];
+        $saldraft->comments    = $input['comments'];
         $saldraft->save();
         //dd($saldraft);
         return redirect()->back()->with('flash_message_success','Record has been updated sucessfully');
 
     }
 
-    public function deleteHrEmployeeSalaries($id = null) {
+    public function deleteHrEmployeeSalaries($id = null)
+    {
         //echo '<pre>'; print_r('420'); echo '</pre>'; die();
         EmployeesSalaryDrafts::find($id)->delete($id);
         //return response()->json(['Record deleted successfully!']);

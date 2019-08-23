@@ -265,11 +265,8 @@
                             &emsp;&emsp;&emsp;&emsp;&emsp;
                             <label>
                                 <input type="checkbox"> Salaries Pending
-                            </label>
-                            &emsp;&emsp;&emsp;&emsp;&emsp;
-                            <!--  <label>
-            <input type="checkbox"> Old Employee
-          </label> -->
+                            </label>                            &emsp;&emsp;&emsp;&emsp;&emsp;
+
                             <button type="button" class="btn btn-primary" onclick="openForm()">Add Draft</button>
                         </div>
 
