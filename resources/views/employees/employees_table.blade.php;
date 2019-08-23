@@ -48,7 +48,7 @@ color:blue;}
 
 </style>
 
-<div class="col-md-12 p-1 m-0" id="btn" >	 
+<div class="col-md-12 p-1 m-0" id="btn" >
 <button type="button" class="btn btn-secondary float-left font-weight-bold"> <i class=" text-white font-weight-bold fas fa-arrow-down mr-2"></i>All Employees</button>
 
 
@@ -60,7 +60,7 @@ color:blue;}
 
 </div>
 <div id="div1" class="table-responsive p-1">
-	
+
  <table class="table  table-striped " id="employee_table"  style="border:1px solid black;font-size: 11px;" >
                                         <thead class="">
                                           <tr style="background-color: #b85197;">
@@ -79,7 +79,7 @@ color:blue;}
                                         <tbody>
                                         @foreach ($employees  as $a)
 
-                                          
+
 
 <tr class="p-0 m-0">
 <th scope="row">{{$a->id}}</th>
@@ -124,7 +124,7 @@ color:blue;}
         }
     });
 
-   
+
 
     </script>
 

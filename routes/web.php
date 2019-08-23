@@ -14,13 +14,27 @@ use App\Http\Controllers\employee_login_controller;
 
 
 
+Route::get('/hrMaster','RouteController_HR@returnHrMaster');//take me to hrMaster tempelate
+Route::get('/hrDasboard','RouteController_HR@returnHrDashboard');//take me to hrdashboard
+Route::get('/hrEmployeeHome','RouteController_HR@returnHrEmplyoyee');//take me to Employee dashboard of hr
+Route::get('/hrEmployeeContract','RouteController_HR@returnHrEmplyoyeeContract');//take me to EmployeeContracts regarding HR Employees
+Route::get('/hrEmployeeSalaries','RouteController_HR@returnHrEmployeeSalaries');//take me to EmployeeSalries regarding HR Employees
+Route::get('/hrEmployeeComplaints','RouteController_HR@returnHrEmployeeComplaints');//take me to EmployeeComplaints regarding HR Employees
+Route::get('/hrEmployeeAttendence','RouteController_HR@returnHrEmployeeAttendence');//take me to EmployeeSalries regarding HR Employees
+
+
+
+
+
+
+
 
 
 Route::get('/', function () {
     return view('home');
 })->name('home');
 
-//employee login from homepage 
+//employee login from homepage
 Route::get('/employee_login', function () {
     return view('employee_home_view');
 })->name('employee_login');
@@ -28,10 +42,10 @@ Route::get('/employee_login', function () {
 
 
 
-//cards navigation(hr_home)
-Route::get('/hr_employee_home', function () {
-    return view("hr/hr_home");
-})->name('hr_employee_home');
+// //cards navigation(hr_home)
+// Route::get('/hr_employee_home', function () {
+//     return view("hr/hr_home");
+// })->name('hr_employee_home');
 
 
 
@@ -110,7 +124,7 @@ Route::get('/hr/hr_employee_contracts','HrEmployeeSalariesController@employeeCon
 Route::get('/hr/hr_employees_add_contracts','HrEmployeeSalariesController@addEmpolyeesContracts');
 
 
-//admin middleware and controller routes 
+//admin middleware and controller routes
 
 
 Route::post('/hr/add_employee_salaries','HrEmployeeSalariesController@addEmployeesSalaries');
