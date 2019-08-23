@@ -17,7 +17,7 @@ class HrEmployeeSalariesController extends Controller
         $salariesdata = employee::with('employeessalarydrafts')->get();
         //dd($salariesdata);
     	//echo '<pre>'; print_r($salariesdata); echo '</pre>'; die();
-        return view('hr.hr_employees_salaries')->with(compact('salariesName','salariesdata'));
+        return view('hr.Employees.Salaries.index')->with(compact('salariesName','salariesdata'));
     }
 
     public function employeeContracts() {
@@ -58,13 +58,33 @@ class HrEmployeeSalariesController extends Controller
         }
     }
 
-    public function editHrEmployeeSalaries(Request $request, $id = null) {
+    public function editHrEmployeeSalaries(Request $request, $id) {
 
+        $emp_sal = EmployeesSalaryDrafts::findOrFail($id);
+        $salariesName = HrEmpolyeeSalaries::all();
+        //$emp_sal = employee::with('employeessalarydrafts')->get();
+        //dd($emp_sal);
+        if ($request->isMethod('post')) {
+            $data = $request->all();
+            //echo '<pre>'; print_r($data); echo '</pre>'; die();
+            EmployeesSalaryDrafts::where(['id' => $id])->update([
+                'date'=> $data['date'],
+                'fine'=> $data['fine'],
+                'total'=> $data['total_sal'],
+                'received'=> $data['receive'],
+                'pending'=>$data['pending'],
+                'comments'=>$data['comments']
+            ]);
+            return redirect()->back()->with('flash_message_success','Record has been updated sucessfully');
+        }
+            return view('hr.Employees.Salaries.edit',[
+                'emp_sal' => $emp_sal,
+                'salariesName' => $salariesName
+            ]);
     }
 
     public function deleteHrEmployeeSalaries($id = null) {
         //echo '<pre>'; print_r('420'); echo '</pre>'; die();
-
         EmployeesSalaryDrafts::find($id)->delete($id);
         //return response()->json(['Record deleted successfully!']);
         return redirect()->back()->with('flash_message_success','Record has been Deleted sucessfully!');

@@ -142,7 +142,7 @@
 
 label {
     position: relative;
-    left: 18px;
+    /*left: 18px;*/
 }
 
 .btn.btn-primary-done {
@@ -271,4 +271,14 @@ label {
 
 .modal-footer {
     text-align: center !important;
+}
+.form-container.editform input[type=text], .form-container.editform input[type=password] {
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0 5px 0;
+    border: 1px solid #ccc;
+}
+.row.form-group.bt_form {
+    position: relative;
+    left: 116px;
 }

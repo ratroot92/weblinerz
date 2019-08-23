@@ -130,7 +130,7 @@ Route::get('/showLoginForm', 'Admin\LoginController@showLoginForm')->name('showL
 // Route::post('/loginAdmin', 'Admin\LoginController@loginAdmin')->name('loginAdmin');
 Route::get('/registerAdmin', 'Admin\LoginController@registerAdmin')->name('registerAdmin');
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 //route hr_dasboard -- direct root
 Route::get('/hr/hr_dashboard',function(){
 return view('hr/hr_dashboard');
