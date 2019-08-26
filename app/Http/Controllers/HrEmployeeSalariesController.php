@@ -20,17 +20,6 @@ class HrEmployeeSalariesController extends Controller
         return view('hr.Employees.Salaries.index')->with(compact('salariesName','salariesdata'));
     }
 
-    public function employeeContracts()
-    {
-    	return view('hr.hr_employees_contracts');
-    }
-
-    public function addEmpolyeesContracts()
-    {
-    	
-    	return view('hr.hr_employees_add_contracts');
-    }
-
     public function getSalary(Request $request)
     {
         $name = $request->name;
@@ -46,7 +35,7 @@ class HrEmployeeSalariesController extends Controller
         {
             
             $data = $request->all();
-            echo '<pre>'; print_r($data); echo '</pre>'; die();
+            //echo '<pre>'; print_r($data); echo '</pre>'; die();
             
             $employee = new EmployeesSalaryDrafts;
             $employee->employee_id = $data['emp_id'];

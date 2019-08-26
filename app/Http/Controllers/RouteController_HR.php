@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\HrEmpolyeeSalaries;
+use App\EmployeesSalaryDrafts;
+use App\employee;
+use DB;
 
 class RouteController_HR extends Controller
 {
@@ -26,7 +30,9 @@ public function returnHrEmplyoyeeContract(){
 }
 
 public function returnHrEmployeeSalaries(){
-        return view ('hr.Employees.Salaries.employeeSalaries');
+	$salariesName = HrEmpolyeeSalaries::all();
+	$salariesdata = employee::with('employeessalarydrafts')->get();
+	return view ('hr.Employees.Salaries.employeeSalaries')->with(compact('salariesName','salariesdata'));
 }
 
 public function returnHrEmployeeComplaints(){
@@ -37,4 +43,12 @@ public function returnHrEmployeeComplaints(){
 public function returnHrEmployeeAttendence(){
         return view('hr.Employees.Complaints.employeeComplaints');
     }
+public function getSalary(Request $request) {
+    $name = $request->name;
+    $amount = employee::where('id', $name)->pluck('salary');
+    return response()->json($amount);
+      
+}
+
+
 }

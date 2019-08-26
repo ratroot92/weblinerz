@@ -103,7 +103,7 @@
   
 <div class="row mt-5">
 <div class="col-md-12">
-<button class="btn btn-secondary float-left"><i class=" text-white font-weight-bold fas fa-arrow-down mr-2"></i>Salaries </button>
+<button class="btn btn-secondary float-left"><i class=" text-white font-weight-bold fas fa-arrow-down mr-2" id="navigatable_btn_1"></i>Salaries </button>
 
 
 <div class="table-responsive" id="table1">
@@ -119,7 +119,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                               
+                                @php $i=1; @endphp
+                                @foreach ($salariesdata as $resource)
+                                    <?php //echo '<pre>'; print_r($resource->name); echo '</pre>'; die(); ?>
+                                    @foreach ($resource->employeessalarydrafts as $b)
+                                        <tr>
+                                            <th scope="row">{{ $i++ }}</th>
+                                            <td>{{ $resource->name }}</td>
+                                            <td>{{ $resource->salary }}</td>
+                                            <td>{{ $b->fine }} &emsp;</td>
+                                            <td>{{ $b->status }}</td>
+                                            <td>
+                                                <a data-toggle="edit_sal" href="{{ url('/hr/hr_employee_salaries/edit_employeesalary/'.$b->id) }}"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
+                                                <a class="deleteRecord" data-id="{{ $b->id }}" href="{{ url('/hr/hr_employee_salaries/delete_employeesalary/'.$b->id) }}"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endforeach
                                 </tbody>
                             </table>
 </div>
@@ -127,3 +143,32 @@
 </div>
 </div>
 @endsection
+
+@push('footer')
+
+<script type="text/javascript">
+    var div1 = document.getElementById("navigatable_div_1");
+    var div2 = document.getElementById("navigatable_div_2");
+    var btn1 = document.getElementById("navigatable_btn_1");
+    var btn2 = document.getElementById("navigatable_btn_2");
+
+    btn1.addEventListener('click', function() {
+        var div_1 = document.getElementById("navigatable_div_1");
+        if (div_1.style.display === "none") {
+            div_1.style.display = "block";
+        } else {
+            div_1.style.display = "none";
+        }
+    });
+
+    // btn2.addEventListener('click', function() {
+    //     var div_2 = document.getElementById("navigatable_div_2");
+    //     if (div_2.style.display === "none") {
+    //         div_2.style.display = "block";
+    //     } else {
+    //         div_2.style.display = "none";
+    //     }
+    // });
+    
+</script>
+@endpush
