@@ -1,5 +1,5 @@
 
-<form action="{{ url('/hr/hr_employee_salaries/update_employeesalary/') }}" name="editEmployeesSalaries" method="post" id="editEmployeesSalaries" class="form-container formdata editform">
+<form action="{{ url('/hrEmployeeSalaries/update_employeesalary/') }}" name="editEmployeesSalaries" method="post" id="editEmployeesSalaries" class="form-container formdata editform">
     @csrf
     <div class="form-group">
         <input type="hidden" name="saldraftID" value="{{$emp_sal->id}}">
@@ -46,6 +46,6 @@
     </div>
      <div class="row form-group bt_form">
          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-         <button type="submit" id="send_form" class="btn btn-success">Update</button>
+         <button type="submit" id="send_form" class="btn btn-success btn002">Update</button>
      </div>
 </form>

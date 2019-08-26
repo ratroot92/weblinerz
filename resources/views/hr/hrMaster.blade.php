@@ -146,7 +146,7 @@ margin: 0px;
 <!-- content -->
 <script src="{{ asset('dist/jquery/dist/jquery.min.js') }}"></script>
 
-<section id="yeildContent" class="container-fluid">
+<section id="yeildContent" class="container-fluid" id="mysection">
 	@yield('content')
 </section>
 
@@ -166,5 +166,6 @@ margin: 0px;
    </footer>
 </div><!-- end of page   -->
 
+@stack('footer')
 </body>
 </html>
