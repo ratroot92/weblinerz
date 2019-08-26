@@ -107,7 +107,7 @@
 
 <!-- asd -->
 <div class="btn-group" id="openmenu-btn"  style="float: right;">
-<button type="button" class="btn  btn-success dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add Employee
+<button type="button" id="dlDropDown" class="btn  btn-success dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add Employee
 </button>
 
 <div class="dropdown-container customDropdown">
@@ -321,12 +321,14 @@ $.get('{{URL::to("employee_table_edit")}}/'+id,function(data){
 				$.get('{{URL::to("employee_table_view")}}',function(data){
 				 $('#div_table').empty().append(data);
    $('#employee_edit_model').modal('hide');
+
+
 });
                 },
 				 error: function (data) {
 				console.log(data);
 
-				 }
+				 },
             });
 
 
@@ -374,7 +376,7 @@ $('#submit_form').submit(function () {
                 success: function(data) {
 				$('#msg').show();
                   $('#msg').html("Form has been Submitted Succesfully !!!");
-				  $('#employee_dropdown').hide();
+				 // $('#employee_dropdown').hide();
 				  	$('#msg').fadeOut(15000);
 $.get('{{URL::to("employee_table_view")}}',function(data){
 	 $('#div_table').empty().append(data);
@@ -420,9 +422,7 @@ $('#div_table').on("click",'#employee_table',function(){
 $('#employee_table').dataTable();
 });
 
-$('#btnCloseAddEmployee').click('#employee_dropdown',function() {
-  $(this).parents('.dropdown').find('button.dropdown-toggle').dropdown('toggle')
-});
+
 
 });
 
@@ -432,15 +432,24 @@ $('#btnCloseAddEmployee').click('#employee_dropdown',function() {
 </script>
 
 <script>
-    $(document).ready(function () {
-        $('.dropdown-toggle').dropdown();
-
-    });
-//add employee drop down close on click close
+$(document).ready(function(){
 $('#btnCloseAddEmployee').on('click','#employee_dropdown',function() {
   $(this).parents('.dropdown').find('button.dropdown-toggle').dropdown('toggle')
 });
 
+});
+//add employee drop down close on click close
+
+   $(document).ready(function(){
+$("#btnCloseAddEmployee").click(function() {
+   $("#dlDropDown").dropdown("toggle");
+
+});
+
+   });
+
+
+
 </script>
-</script>
+
 @endsection

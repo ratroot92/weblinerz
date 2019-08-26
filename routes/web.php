@@ -55,7 +55,11 @@ Route::get('/hrEmployeeAttendence','RouteController_HR@returnHrEmployeeAttendenc
 
 //Contract page Routes
 Route::get('/returnAddContractView','ContractController_HR@returnAddContractView');//calling html for adding contract in model
-Route::get('/getCredentialsByName/{name}','ContractController_HR@getCredentialsByName');//get credentials
+Route::get('/getCredentialsByName/{name}','ContractController_HR@getCredentialsByName'); //get credentials
+Route::post('/insertContract', 'ContractController_HR@insertContract')->name('insertContract');
+Route::get('/allContractsTable', 'ContractController_HR@allContractsTable')->name('allContractsTable');
+Route::get('/editContractView/{id}', 'ContractController_HR@editContractView')->name('editContractView');
+Route::post('/editContract', 'ContractController_HR@editContract')->name('editContract');
 
 
 
