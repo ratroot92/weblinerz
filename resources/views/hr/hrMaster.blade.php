@@ -14,7 +14,7 @@
 <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
 <link rel="stylesheet" type="text/css" href="{{asset('dist/bootstrap/dist/css/bootstrap.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('dist/bootstrap-table/dist/bootstrap-table.min.css')}}">
-<!-- MATERIAL ICONS--> 
+<!-- MATERIAL ICONS-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 <!-- <script src="{{asset('js/app.js')}}"type="text/javascript" charset="utf-8" async defer></script> -->
@@ -28,12 +28,12 @@
 <!-- bootstrap table -->
 
 <!--Data Table-->
-    
+
 
 
 
 <style type="text/css" media="screen">
-  
+
 section{
 padding: 0px;
 margin: 0px;
@@ -78,7 +78,7 @@ margin: 0px;
 <div class="container-fluid">
 
 <header  id="header" class="">
-	
+
 
 <!-- header -->
 
@@ -108,7 +108,7 @@ margin: 0px;
 <i class="fas fa-bell text-white font-weight-bold ml-1 icon"></i>
 </div>
 <div class="float-right mt-2">
- <a href="{{URL::to('/showLoginForm')}}" title=""> <button type="button" class="btn btn-outline-warning " ><i class="fas fa-sign-out-alt"></i>Logout</button></a>
+ <a href="{{URL::to('/adminLogout')}}" title=""> <button type="button" class="btn btn-outline-warning " ><i class="fas fa-sign-out-alt"></i>Logout</button></a>
 </div>
 
 
@@ -120,7 +120,7 @@ margin: 0px;
 </header><!-- header -->
 <div class="row">
 <div class="col-md-12">
-	
+
 
 <!-- Start dashboard -->
 <div class="row">
@@ -136,7 +136,7 @@ margin: 0px;
 <li class="list-group-item p-0"><a href="" class="nav-link" title="">Reports</a></li>
 <li class="list-group-item p-0"><a href="" class="nav-link" title="">Expense</a></li>
 <li class="list-group-item p-0"><a href="" class="nav-link" title="">Contracts</a></li>
-</ul>	
+</ul>
 
 
 
@@ -163,7 +163,7 @@ margin: 0px;
 <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
 <script src="{{asset('dist/bootstrap/dist/js/bootstrap.bundle.min.js')}}"type="text/javascript" charset="utf-8" async defer></script>
-   </footer> 
+   </footer>
 </div><!-- end of page   -->
 
 </body>

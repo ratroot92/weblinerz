@@ -11,15 +11,15 @@
 
 
 <div class="row">
-  
+
   <div class="col-md-12">
     <nav aria-label="breadcrumb">
   <ul class="breadcrumb">
-     <li class="breadcrumb-item"><a href="{{URL::to('hrDasboard')}}">Dashboard</a></li>
+     <li class="breadcrumb-item"><a href="{{URL::to('hrHome')}}">Dashboard</a></li>
     <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeHome')}}">Employee</a></li>
     <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeContract')}}">Contracts</a></li>
     <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeSalaries')}}">Salries</a></li>
- <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeComplaints')}}">Complaints</a></li> <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeAttendence')}}">Attendence</a></li>   
+ <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeComplaints')}}">Complaints</a></li> <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeAttendence')}}">Attendence</a></li>
   </ul>
 </nav>
   </div>
@@ -36,10 +36,10 @@
 <div class="col-md-3 col-xs-6 col-sm-12  text-center p-1">
 <div class="bg-dark outer">
 <a href="{{ url('/hrEmployeeHome') }} " class="anchor" >
-<div class="inner  " >                                            
+<div class="inner  " >
 <img src="{{ asset('images/21.png') }}" class="img_hr mt-4" alt="">
-<p class="text-white font-weight-bold " >Employees</p> 
-</div>                  
+<p class="text-white font-weight-bold " >Employees</p>
+</div>
 
 </a>
 </div>
@@ -50,10 +50,10 @@
 <div class="col-md-3 col-xs-6 col-sm-12  text-center p-1">
 <div class="bg-warning outer">
 <a href="{{ url('/hr_employee_home') }}" class="anchor">
-<div class="inner  " >                                            
+<div class="inner  " >
 <img src="{{ asset('images/21.png') }}" class="img_hr mt-4" alt="">
-<p class="text-white font-weight-bold anchor">Reports</p> 
-</div>                  
+<p class="text-white font-weight-bold anchor">Reports</p>
+</div>
 
 </a>
 </div>
@@ -64,10 +64,10 @@
 <div class="col-md-3 col-xs-6 col-sm-12  text-center p-1">
 <div class="bg-primary outer">
 <a href="{{ url('/hr_employee_home') }}" class="anchor">
-<div class="inner  " >                                            
+<div class="inner  " >
 <img src="{{ asset('images/21.png') }}" class="img_hr mt-4" alt="">
-<p class="text-white font-weight-bold anchor">Careers</p> 
-</div>                  
+<p class="text-white font-weight-bold anchor">Careers</p>
+</div>
 
 </a>
 </div>
@@ -79,10 +79,10 @@
 <div class="col-md-3 col-xs-6 col-sm-12  text-center p-1">
 <div class="bg-danger outer">
 <a href="{{ url('/hr_employee_home') }}" class="anchor">
-<div class="inner  " >                                            
+<div class="inner  " >
 <img src="{{ asset('images/21.png') }}" class="img_hr mt-4" alt="">
-<p class="text-white font-weight-bold anchor">Expense</p> 
-</div>                  
+<p class="text-white font-weight-bold anchor">Expense</p>
+</div>
 
 </a>
 </div>
@@ -98,8 +98,8 @@
 
 </div>
 
-<!-- end section cards -->	
-	
+<!-- end section cards -->
+
 <div class="row">
 <div class="col-md-12">
 <button class="btn btn-secondary float-left"><i class=" text-white font-weight-bold fas fa-arrow-down mr-2"></i>Todays Interviews </button>
@@ -119,17 +119,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                               
+
                                 </tbody>
                             </table>
 </div>
-		
+
 </div>
 </div>
 
 
 
-	
+
 <div class="row">
 <div class="col-md-12">
 <button class="btn btn-secondary float-left"><i class=" text-white font-weight-bold fas fa-arrow-down mr-2"></i>Todays Interviews </button>
@@ -148,11 +148,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                               
+
                                 </tbody>
                             </table>
 </div>
-		
+
 </div>
 </div>
 @endsection

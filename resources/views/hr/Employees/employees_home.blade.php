@@ -11,15 +11,16 @@
 
 
 <div class="row mt-1">
-  
+
   <div class="col-md-12">
     <nav aria-label="breadcrumb">
   <ul class="breadcrumb">
-   <li class="breadcrumb-item"><a href="{{URL::to('hrDasboard')}}">Dashboard</a></li>
+   <li class="breadcrumb-item"><a href="{{ URL::to('hrHome')}}">Dashboard</a></li>
     <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeHome')}}">Employee</a></li>
     <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeContract')}}">Contracts</a></li>
     <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeSalaries')}}">Salries</a></li>
- <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeComplaints')}}">Complaints</a></li> <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeAttendence')}}">Attendence</a></li>   
+ <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeComplaints')}}">Complaints</a></li>
+ <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeAttendence')}}">Attendence</a></li>
   </ul>
 </nav>
   </div>
@@ -36,10 +37,10 @@
 <div class="col-md-3 col-xs-6 col-sm-12  text-center p-1">
 <div class="bg-dark outer">
 <a href="{{ url('/hrEmployeeHome') }} " class="anchor" >
-<div class="inner  " >                                            
+<div class="inner  " >
 <img src="{{ asset('images/21.png') }}" class="img_hr mt-4" alt="">
-<p class="text-white font-weight-bold " >Contracts</p> 
-</div>                  
+<p class="text-white font-weight-bold " >Contracts</p>
+</div>
 
 </a>
 </div>
@@ -50,10 +51,10 @@
 <div class="col-md-3 col-xs-6 col-sm-12  text-center p-1">
 <div class="bg-warning outer">
 <a href="{{ url('/hrEmployeeSalaries') }}" class="anchor">
-<div class="inner  " >                                            
+<div class="inner  " >
 <img src="{{ asset('images/21.png') }}" class="img_hr mt-4" alt="">
-<p class="text-white font-weight-bold anchor">Salaries</p> 
-</div>                  
+<p class="text-white font-weight-bold anchor">Salaries</p>
+</div>
 
 </a>
 </div>
@@ -64,10 +65,10 @@
 <div class="col-md-3 col-xs-6 col-sm-12  text-center p-1">
 <div class="bg-primary outer">
 <a href="{{ url('/hrEmployeeComplaints') }}" class="anchor">
-<div class="inner  " >                                            
+<div class="inner  " >
 <img src="{{ asset('images/21.png') }}" class="img_hr mt-4" alt="">
-<p class="text-white font-weight-bold anchor">Complaints</p> 
-</div>                  
+<p class="text-white font-weight-bold anchor">Complaints</p>
+</div>
 
 </a>
 </div>
@@ -79,10 +80,10 @@
 <div class="col-md-3 col-xs-6 col-sm-12  text-center p-1">
 <div class="bg-danger outer">
 <a href="{{ url('/hrEmployeeAttendence') }}" class="anchor">
-<div class="inner  " >                                            
+<div class="inner  " >
 <img src="{{ asset('images/21.png') }}" class="img_hr mt-4" alt="">
-<p class="text-white font-weight-bold anchor">Attendence</p> 
-</div>                  
+<p class="text-white font-weight-bold anchor">Attendence</p>
+</div>
 
 </a>
 </div>
@@ -98,12 +99,12 @@
 
 </div>
 
-<!-- end section cards -->  
-	
+<!-- end section cards -->
+
 
 <div class="row">
 	<div class="col-md-12">
-	
+
 <!-- asd -->
 <div class="btn-group" id="openmenu-btn"  style="float: right;">
 <button type="button" class="btn  btn-success dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add Employee
@@ -266,9 +267,9 @@
 
 
 
-			
 
-<!-- CONTENT -->                      
+
+<!-- CONTENT -->
 <div id="renderEditModel" class="col-md-12"></div>
 <div class="row" id="div_table"></div>
 <!-- CONTENT -->
@@ -306,7 +307,7 @@ $.get('{{URL::to("employee_table_edit")}}/'+id,function(data){
 //start of form edit_table_employee
 
  $('#renderEditModel').on('submit','#edit_employee_form',function(event){
-     event.preventDefault();  
+     event.preventDefault();
  $.ajax({
             url:$(this).attr('action'),
                 type:'POST',
@@ -340,7 +341,7 @@ $.get('{{URL::to("employee_table_edit")}}/'+id,function(data){
 
 
 
- 
+
 
 
  //start of delete table employee
@@ -350,7 +351,7 @@ $.get('{{URL::to("employee_table_delete")}}/'+id,function(data){
     	$('#msg').show();
         $('#msg').html("Employee has Been Sucessfully Deleted");
 	 $('#div_table').empty().append(data);
-   
+
 });
 });
  //end of delte_table_employee
@@ -435,7 +436,7 @@ $('#btnCloseAddEmployee').click('#employee_dropdown',function() {
         $('.dropdown-toggle').dropdown();
 
     });
-//add employee drop down close on click close 
+//add employee drop down close on click close
 $('#btnCloseAddEmployee').on('click','#employee_dropdown',function() {
   $(this).parents('.dropdown').find('button.dropdown-toggle').dropdown('toggle')
 });

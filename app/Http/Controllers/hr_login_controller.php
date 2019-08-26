@@ -28,6 +28,7 @@ $email=$request->input('a_email');
 $password=$request->input('a_password');
 if (Admin::where(['email'=>$email,'password'=>$password])->exists()) {
 return view('hr.Dashboard.hrDashboard');
+
 }
 else{
 return Redirect()->route('showLoginForm')->with('message','Invalid email and password! ');

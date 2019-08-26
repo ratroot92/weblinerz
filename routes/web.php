@@ -11,17 +11,51 @@ use App\Http\Controllers\employee_login_controller;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+//routes under admin guard
+Route::get('/hr/auth/login', function(){
+    return view('hr/auth/login');
+});
+
+
+Route::post('loginAdmin', 'hr_login_controller@loginAdmin')->name('loginAdmin');
+
+Route::middleware(['admin'])->group(function () {
+    Route::get('/hrDashboard', 'RouteController_HR@returnHrDashboard'); //take me to hrdashboard
+
+
+
+});
+Route::get('hrHome', function () {
+    return view('hr.Dashboard.hrDashboard');
+})->name('hrHome');//take me to hr_dashboard
+
+
+
+
+
+
+Route::get('/adminLogout', 'Admin\LoginController@logout')->name('adminLogout');
+Route::get('/showLoginForm', 'Admin\LoginController@showLoginForm')->name('showLoginForm');
+// Route::post('/loginAdmin', 'Admin\LoginController@loginAdmin')->name('loginAdmin');
+Route::get('/registerAdmin', 'Admin\LoginController@registerAdmin')->name('registerAdmin');
+
 
 
 
 Route::get('/hrMaster','RouteController_HR@returnHrMaster');//take me to hrMaster tempelate
-Route::get('/hrDasboard','RouteController_HR@returnHrDashboard');//take me to hrdashboard
+
 Route::get('/hrEmployeeHome','RouteController_HR@returnHrEmplyoyee');//take me to Employee dashboard of hr
 Route::get('/hrEmployeeContract','RouteController_HR@returnHrEmplyoyeeContract');//take me to EmployeeContracts regarding HR Employees
 Route::get('/hrEmployeeSalaries','RouteController_HR@returnHrEmployeeSalaries');//take me to EmployeeSalries regarding HR Employees
 Route::get('/hrEmployeeComplaints','RouteController_HR@returnHrEmployeeComplaints');//take me to EmployeeComplaints regarding HR Employees
 Route::get('/hrEmployeeAttendence','RouteController_HR@returnHrEmployeeAttendence');//take me to EmployeeSalries regarding HR Employees
 
+
+
+//Contract page Routes
+Route::get('/returnAddContractView','ContractController_HR@returnAddContractView');//calling html for adding contract in model
+Route::get('/getCredentialsByName/{name}','ContractController_HR@getCredentialsByName');//get credentials
 
 
 
@@ -103,7 +137,6 @@ Route::post('/add_employee','employee_login_controller@add_employee');
 
 //Route::get('hr/hr_dashboard', 'hr_login_controller@index')->name('admin');
 
-Route::post('loginAdmin', 'hr_login_controller@loginAdmin')->name('loginAdmin');
 
 
 //hr_home
@@ -138,11 +171,6 @@ Route::match(['get','post'],'/hr/hr_employee_salaries/delete_employeesalary/{id}
 Route::get('/hr/hr_employee_contracts','HrEmployeeSalariesController@employeeContracts');
 
 
-
-Route::get('/adminLogout', 'Admin\LoginController@logout')->name('adminLogout');
-Route::get('/showLoginForm', 'Admin\LoginController@showLoginForm')->name('showLoginForm');
-// Route::post('/loginAdmin', 'Admin\LoginController@loginAdmin')->name('loginAdmin');
-Route::get('/registerAdmin', 'Admin\LoginController@registerAdmin')->name('registerAdmin');
 
 //Route::get('/home', 'HomeController@index')->name('home');
 //route hr_dasboard -- direct root
