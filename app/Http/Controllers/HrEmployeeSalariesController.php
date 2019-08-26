@@ -69,7 +69,7 @@ class HrEmployeeSalariesController extends Controller
     {
         $input                   = $request->all();
         //echo '<pre>'; print_r($input); echo '</pre>'; die();
-        $saldraft                = EmployeesSalaryDrafts::findorfail($input['saldraftID']);
+        $saldraft                = EmployeesSalaryDrafts::findOrFail($input['saldraftID']);
         $saldraft->date     = $input['date'];
         $saldraft->fine     = $input['fine'];
         $saldraft->total    = $input['total_sal'];
@@ -86,8 +86,12 @@ class HrEmployeeSalariesController extends Controller
     {
         //echo '<pre>'; print_r('420'); echo '</pre>'; die();
         EmployeesSalaryDrafts::find($id)->delete($id);
+        return redirect()->back()->with('flash_message_success','Record has been Deleted sucessfully');
+        // $salariesName = HrEmpolyeeSalaries::all();
+        // $salariesdata = employee::with('employeessalarydrafts')->get();
+        // $EmployeesSalaryDrafts = EmployeesSalaryDrafts::all();
         //return response()->json(['Record deleted successfully!']);
-        return redirect()->back()->with('flash_message_success','Record has been Deleted sucessfully!');
+        //return view('hr.Employees.Salaries.index',compact('EmployeesSalaryDrafts','salariesName','salariesdata'));
     }
 
 }

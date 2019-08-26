@@ -88,7 +88,7 @@
 }
 
 .img_hr {
-    padding-left: 90px;
+    padding-left: 11px;
     margin-top: 27px;
 }
 
@@ -127,8 +127,7 @@
     background-color: #c879af !important;
     border-color: #c879af !important;
     position: relative;
-    left: 410px;
-    width: 82px;
+    left: 330px;
 }
 
 .open>.dropdown-menu {
@@ -141,8 +140,7 @@
 }
 
 label {
-    position: relative;
-    /*left: 18px;*/
+    position: relative;    /*left: 18px;*/
 }
 
 .btn.btn-primary-done {
@@ -259,26 +257,47 @@ label {
     opacity: 1;
 }
 
-.form-control {
+/* .form-control {
     padding: 0px !important;
-}
-
+} */
 .form-container.formdata {
     max-width: 413px !important;
     position: relative;
-    left: 74px !important;
+    left: 34px !important;
 }
 
 .modal-footer {
     text-align: center !important;
 }
+
 .form-container.editform input[type=text], .form-container.editform input[type=password] {
     width: 100%;
     padding: 5px;
     margin: 5px 0 5px 0;
     border: 1px solid #ccc;
 }
+
 .row.form-group.bt_form {
     position: relative;
     left: 116px;
+}
+
+.chek {
+    position: relative;
+    top: 34px;
+}
+
+.drop_select {
+    left: 14px;
+    position: relative;
+}
+
+.btn002 {
+    position: relative;
+    left: 23px;
+}
+
+input.form-control.form-control-sm {
+    width: 75% !important;
+    display: inline-block;
 }

@@ -43,12 +43,7 @@ public function returnHrEmployeeComplaints(){
 public function returnHrEmployeeAttendence(){
         return view('hr.Employees.Complaints.employeeComplaints');
     }
-public function getSalary(Request $request) {
-    $name = $request->name;
-    $amount = employee::where('id', $name)->pluck('salary');
-    return response()->json($amount);
-      
-}
+
 
 
 }
