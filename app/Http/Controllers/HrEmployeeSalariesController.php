@@ -7,6 +7,7 @@ use App\HrEmpolyeeSalaries;
 use App\EmployeesSalaryDrafts;
 use App\employee;
 use DB;
+use Validator;
 
 class HrEmployeeSalariesController extends Controller
 {
@@ -67,18 +68,33 @@ class HrEmployeeSalariesController extends Controller
     }
     public function updateHrEmployeeSalaries(Request $request)
     {
-        $input                   = $request->all();
-        //echo '<pre>'; print_r($input); echo '</pre>'; die();
-        $saldraft                = EmployeesSalaryDrafts::findOrFail($input['saldraftID']);
-        $saldraft->date     = $input['date'];
-        $saldraft->fine     = $input['fine'];
-        $saldraft->total    = $input['total_sal'];
-        $saldraft->received    = $input['receive'];
-        $saldraft->pending    = $input['pending'];
-        $saldraft->comments    = $input['comments'];
-        $saldraft->save();
-        //dd($saldraft);
-        return redirect()->back()->with('flash_message_success','Record has been updated sucessfully');
+
+        $validator = Validator::make($request->all(), [
+            'date' => 'required',
+            'fine' => 'required|numeric',
+            'total_sal' => 'required|numeric',
+            'receive' => 'required|numeric',
+            'pending' => 'required|numeric',
+            'comments' => 'required'
+       ]);
+        if ($validator->passes()) {
+            $input = $request->all();
+            //echo '<pre>'; print_r($input); echo '</pre>'; die();
+            $saldraft = EmployeesSalaryDrafts::findOrFail($input['saldraftID']);
+            $saldraft->date = $input['date'];
+            $saldraft->fine = $input['fine'];
+            $saldraft->total = $input['total_sal'];
+            $saldraft->received = $input['receive'];
+            $saldraft->pending = $input['pending'];
+            $saldraft->comments = $input['comments'];
+            $saldraft->save();
+            //dd($saldraft);
+            //return redirect()->back()->with('flash_message_success','Record has been updated sucessfully');
+            return response()->json(1);
+        }
+        else{
+            return response()->json(['error' => $validator->errors()->all()]);
+        }
 
     }
 

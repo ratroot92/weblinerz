@@ -4,7 +4,14 @@
 
 <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
 <link rel="stylesheet" href="{{ asset('dist/css/custom.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
+<style type="text/css" media="screen">
+.error {
+    color: red;
+    font-size: 14px;
+}
+</style>
 
 <div class="row mt-1">
   
@@ -193,6 +200,7 @@
                                     <th style="color: #fff;" scope="col">Sr</th>
                                     <th style="color: #fff;" scope="col">Name</th>
                                     <th style="color: #fff;" scope="col">Salary</th>
+                                    <th style="color: #fff;" scope="col">Date</th>
                                     <th style="color: #fff;" scope="col">Fine</th>
                                     <th style="color: #fff;" scope="col">status</th>
                                     <th style="color: #fff;" scope="col">Action</th>
@@ -206,10 +214,12 @@
                                         <th scope="row">{{ $i++ }}</th>
                                         <td>{{ $resource->name }}</td>
                                         <td>{{ $resource->salary }}</td>
+                                        <td>{{ $b->date }} &emsp;</td>
                                         <td>{{ $b->fine }} &emsp;</td>
                                         <td>{{ $b->status }}</td>
                                         <td>
-                                            <button style="border: none; background-color: none !important;" type="button" data-task="{{ $b->id }}" data-toggle="modal" data-target="#edit_modal1" id="editBtn" ><img src="{{ asset('images/300-min.png') }}" alt=""></button>
+                                            <a data-toggle="edit_sal" data-task="{{ $b->id }}" href="{{ url('/editview/'.$b->id) }}"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
+                                            <!-- <button type="button" data-task="{{ $b->id }}" data-toggle="modal" data-target="#edit_modal1" id="editBtn" style="border: none; background: none !important;"><img src="{{ asset('images/300-min.png') }}" alt=""></button> -->
 
                                             <!-- <button type="button" data-task="{{ $b->id }}" id="deleteBtn"><img src="{{ asset('images/400-min.png') }}" alt=""></a></button> -->
                                              <a href="{{ url('/hrEmployeeSalaries/'.$b->id) }}"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
@@ -227,13 +237,14 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="edit_modal1">
+    <div class="modal fade" id="edit_modal">
         <div class="modal-dialog modal-dialog-centered" id="edit_modal" data="toggle" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Edit Salary </h4>
                     <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
                 </div>
+                <div id="div_table alert alert-danger"></div>
                 <div class="modal-body" id="render_model">
                 </div>
             </div>
@@ -242,8 +253,49 @@
     <!-- bootstrap datepicker -->
 <script src="{{ asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 
-    <script type="text/javascript">
-    //------------------------------------
+<script type="text/javascript">
+//------------- Add Form validation------------------------    
+$(document).ready(function() {
+
+  $('#addEmployeesSalaries').submit(function(e) {
+    e.preventDefault();
+    var date = $('#date').val();
+    var salary = $('#salary').val();
+    var fine = $('#fine').val();
+    var total_sal = $('#total_sal').val();
+    var receive = $('#receive').val();
+    var pending = $('#pending').val();
+    var comments = $('#comments').val();
+
+    $(".error").remove();
+
+    if (date.length < 1) {
+        $('#date').after('<span class="error">This Date field is required</span>');
+    }   
+    if (salary.length < 1) {
+        $('#salary').after('<span class="error">This salary field is required</span>');
+    }   
+    if (fine.length < 1) {
+        $('#fine').after('<span class="error">This fine field is required</span>');
+    }   receive
+    if (total_sal.length < 1) {
+        $('#total_sal').after('<span class="error">This Total field is required</span>');
+    }  
+    if (receive.length < 1) {
+        $('#receive').after('<span class="error">This Receive field is required</span>');
+    } 
+    if (pending.length < 1) {
+        $('#pending').after('<span class="error">This Pending field is required</span>');
+    }
+    if (comments.length < 1) {
+        $('#comments').after('<span class="error">This Comments field is required</span>');
+    }
+    
+  });
+
+});
+
+//------------------------------------
   $(document).ready(function(){  
     var btn1 = document.getElementById("navigatable_btn_1");
     btn1.addEventListener('click', function() {  
@@ -349,40 +401,14 @@
         autoclose: true
     })
     //-------------------------------------------------------------
-    // $(document).ready(function () {
-    //     $(document).on('click','a[data-toggle=edit_sal]',function (event) {
-    //         event.preventDefault();
-    //         $('#edit_modal').find('.modal-body').load($(this).attr('href'));
-    //         $('#edit_modal').modal('show');
+    $(document).ready(function () {
+        $(document).on('click','a[data-toggle=edit_sal]',function (event) {
+            event.preventDefault();
+            $('#edit_modal').find('.modal-body').load($(this).attr('href'));
+            $('#edit_modal').modal('show');
 
-    //     });
-    // });
-
-
-
-    $(document).ready(function(){
-        $('#editBtn').on('click',function(){
-        var id=$(this).data('task');
-    //alert(id);
-        $.get('{{ URL::to("/editview") }}/'+id,function(data){
-        $('#render_model').empty().append(data);
-        ('#edit_modal1').modal('show');
-            });
         });
     });
-
-    $(document).ready(function(){
-        $('#deleteBtn').on('click',function(){
-        var id=$(this).data('task');
-        //alert(id);
-        $.get('{{ URL::to("/deleteview") }}/'+id,function(data){
-        //$('#msg').show();
-        $('#msg').html("Record has Been Sucessfully Deleted");
-        $('#div_table').empty().append(data);
-            });
-        });
-    });
-
 
 </script>
 @endsection

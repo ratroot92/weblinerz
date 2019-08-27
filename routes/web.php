@@ -155,18 +155,6 @@ Route::post('/hrEmployeeSalaries/update_employeesalary','HrEmployeeSalariesContr
 Route::get('/hrEmployeeSalaries/{id}','HrEmployeeSalariesController@deleteHrEmployeeSalaries');
 
 
-// Route::get('/hr/hr_employee_salaries','HrEmployeeSalariesController@index');
-
-// Route::post('/hr/add_employee_salaries','HrEmployeeSalariesController@addEmployeesSalaries');
-
-// Route::get('getsalary','HrEmployeeSalariesController@getSalary');
-
-// Route::match(['get','post'],'/hr/hr_employee_salaries/edit_employeesalary/{id}','HrEmployeeSalariesController@editHrEmployeeSalaries');
-
-// Route::post('/hr/hr_employee_salaries/update_employeesalary','HrEmployeeSalariesController@updateHrEmployeeSalaries');
-
-// Route::match(['get','post'],'/hr/hr_employee_salaries/delete_employeesalary/{id}','HrEmployeeSalariesController@deleteHrEmployeeSalaries');
-
 
 //Route::get('/home', 'HomeController@index')->name('home');
 //route hr_dasboard -- direct root
