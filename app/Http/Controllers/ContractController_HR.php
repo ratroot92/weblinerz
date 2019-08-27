@@ -28,19 +28,31 @@ return response()->json($user);
 //inserting contract in database
 
 public function insertContract(Request $request){
-
+        $validator = Validator::make($request->all(), [
+            'name' => 'max:25',
+            'email' => 'email',
+            'description' => 'max:200',
+            'start_date' => 'date',
+            'end_date' => 'date',
+            'id' => 'required|numeric'
+        ]);
+        if ($validator->passes()) {
 
 $contract=new Contract;
 $contract->name=$request->name;
 $contract->reference_id=$request->id;
 $contract->employee_designation=$request->designation;
 $contract->email=$request->email;
+$contract->start_date = $request->start_date;
+$contract->end_date = $request->end_date;
 $contract->description=$request->description;
 $contract->save();
+$contracts = Contract::all();
+return view('hr.Employees.Contracts.allContractTable', compact('contracts'));
 
+        }
 
-
-
+        return response()->json(['error' => $validator->errors()->all()]);
 
 }
 
@@ -60,31 +72,52 @@ return view('hr.Employees.Contracts.editContract',compact('contract'));
 }
 
 //submit eddited contract
-public function editContract(Request $request){
-   $id= $request->id;
-// //$empContract=Contract::findOrFail($request->id)->get();
-//         $empContract = DB::table('contracts')->where('reference_id', $id)->first();
-// $empContract->name=$request->name;
-// $empContract->email = $request->email;
-// $empContract->description = $request->description;
-// $empContract->employee_designation = $request->designation;
-// $empContract->save();
-
-        $id = $request->input('id');
-        $empContract = Contract::findOrFail($id);
-        $user = DB::table('contracts')->where('reference_id', $id)->first();
-        $empContract->email = $request->input('email');
-        $empContract->name = $request->input('name');
-        $empContract->description = $request->input('description');
-        $empContract->employee_designation = $request->input('employee_designation');
-
-        $empContract->save();
+public function editContractSubmit(Request $request,$id){
 
 
-        $contract=Contract::all();
-return view('hr.Employees.Contracts.allContractTable',compact('contract'));
+        $validator = Validator::make($request->all(), [
+            'name' => 'max:25',
+            'email' => 'email',
+            'description' => 'max:200',
+            'start_date' => 'date',
+            'end_date' => 'date',
+            'contractid'=>'required|numeric'
+        ]);
+        if ($validator->passes()) {
+            $empContract = Contract::findOrFail($id)->first();
+            //   $empContract = DB::table('contracts')->where('reference_id', $id)->first();
+            $empContract->name = $request->name;
+            $empContract->email = $request->email;
+            $empContract->description = $request->description;
+            $empContract->start_date = $request->start_date;
+            $empContract->end_date = $request->end_date;
+            $empContract->employee_designation = $request->designation;
+            $empContract->save();
+
+
+            $contracts = Contract::all();
+              return view('hr.Employees.Contracts.allContractTable', compact('contracts'));
+
+           
+        }
+
+       
+
+
+        return response()->json(['error' => $validator->errors()->all()]);
+    }
+
+
+public function deleteContract($id){
+Contract::findorfail($id)->delete();
+        $contracts = Contract::all();
+        return view('hr.Employees.Contracts.allContractTable', compact('contracts'));
 
 }
+
+
+
+
 
 
 }

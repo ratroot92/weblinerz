@@ -100,8 +100,11 @@
 </div>
 
 <!-- end section cards -->
+<!-- messages -->
+<div id="displayMessage" class="alert alert-danger font-weight-bold list-unstyled p-0 m-0" >
 
-
+</div>
+<!-- end of messages  -->
 <div class="row">
 	<div class="col-md-12">
 
@@ -115,7 +118,13 @@
 
 <div class="container-fluid">
 
+<!-- form messgaes -->
+<div class="row">
+<div class="col-md-12 text-center alert alert-danger font-weight-bold p-0 m-0" id="addEmployeeValidation">
 
+</div>
+</div>
+<!-- end of form messages -->
 <div class="row">
 <div class="col-md-12">
 <!-- form -->
@@ -278,12 +287,22 @@
 
 
 
+<script>
+    //show hide messages errors divs
 
+    $(document).ready(function(){
+	$('#displayMessage').hide();
+    $('#addEmployeeValidation').hide();
+    $('#editEmployeeValidation').hide();
+    
+
+    });
+</script>
 
 <script type="text/javascript">
 $(document).ready(function (){
 
-	$('#msg').hide();
+
 
 	//display employees table using ajax
  $.get('{{URL::to("employee_table_view")}}',function(data){
@@ -314,21 +333,36 @@ $.get('{{URL::to("employee_table_edit")}}/'+id,function(data){
 				 data:new FormData(this),
                 contentType: false,
                 processData: false,
+                dataType:'json',
                 success: function(data) {
-				  $('#msg').show();
-                  $('#msg').html("Form has been Edited Succesfully !!!");
-				  $('#msg').fadeOut(15000);
-				$.get('{{URL::to("employee_table_view")}}',function(data){
-				 $('#div_table').empty().append(data);
-   $('#employee_edit_model').modal('hide');
-
-
+$('#editEmployeeValidation').show();
+$('#displayMessage').show();
+$.each( data.error, function( key, value ) {
+$('#editEmployeeValidation').empty().append('<p class="p-0 m-0" style="font-size:13px;">&spades;'+value+'</p>');
+$('#displayMessage').empty().append('<p class="p-0 m-0" style="font-size:13px;">&spades;'+value+'</p>') ; 
 });
-                },
-				 error: function (data) {
-				console.log(data);
 
-				 },
+$('#editEmployeeValidation').fadeOut(15000);
+$('#employee_edit_model').modal('hide');
+$('#displayMessage').html("Employee has Been Sucessfully Edited");
+$('#displayMessage').fadeOut();
+
+//relaod view 
+$.get('{{URL::to("employee_table_view")}}',function(data){
+$('#div_table').empty().append(data);
+$('#employee_edit_model').modal('hide');
+});//end of reload view
+},//end of success function 
+error:function(error){
+$('#employee_edit_model').modal('hide');
+$('#displayMessage').html("Employee has Been Sucessfully Edited");
+$('#displayMessage').fadeOut();
+	//display employees table using ajax
+ $.get('{{URL::to("employee_table_view")}}',function(data){
+	 $('#div_table').empty().append(data);
+});
+},
+			
             });
 
 
@@ -348,11 +382,11 @@ $.get('{{URL::to("employee_table_edit")}}/'+id,function(data){
 
  //start of delete table employee
  $('#div_table').on('click','#delete',function(){
-     var id=$(this).data('task');
-$.get('{{URL::to("employee_table_delete")}}/'+id,function(data){
-    	$('#msg').show();
-        $('#msg').html("Employee has Been Sucessfully Deleted");
-	 $('#div_table').empty().append(data);
+var id=$(this).data('task');
+$.get('{{URL::to("employee_table_delete")}}/'+id,function(data){	
+$('#displayMessage').html("Employee has Been Sucessfully Deleted");
+$('#displayMessage').fadeOut();
+$('#div_table').empty().append(data);
 
 });
 });
@@ -361,41 +395,40 @@ $.get('{{URL::to("employee_table_delete")}}/'+id,function(data){
 
 
 
- //end of form edit functionality
-  });
 
+  
+//add employee function 
 $('#submit_form').submit(function () {
-            event.preventDefault();
+event.preventDefault();
 
-            $.ajax({
+$.ajax({
             url:$(this).attr('action'),
                 type:'POST',
 				 data:new FormData(this),
                 contentType: false,
                 processData: false,
-                success: function(data) {
-				$('#msg').show();
-                  $('#msg').html("Form has been Submitted Succesfully !!!");
-				 // $('#employee_dropdown').hide();
-				  	$('#msg').fadeOut(15000);
-$.get('{{URL::to("employee_table_view")}}',function(data){
-	 $('#div_table').empty().append(data);
+                dataType:'json',
+                success: function(data) {                  
+$('#addEmployeeValidation').show();
+$('#displayMessage').show();
+$.each( data.error, function( key, value ) {
+$('#addEmployeeValidation').empty().append('<p class="p-0 m-0" style="font-size:13px;">&spades;'+value+'</p>');
+$('#displayMessage').empty().append('<p class="p-0 m-0" style="font-size:13px;">&spades;'+value+'</p>') ; 
 });
-                },
-				 error: function (data) {
-				var response = JSON.parse(data.responseText);
-               var str = '';
-               $.each(response.errors,function (i,item) {
-                   var html = '<p class="alert alert-danger alert-dismissible"><strong>Error!!</strong> &nbsp;&nbsp; '+item+'&nbsp;&nbsp;&nbsp; <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>';
-                   str = str + html;
-               });
-			   $('#msg').show();
-               $('#msj').html(str);
+ 
+$('#addEmployeeValidation').fadeOut(15000);
+$('#displayMessage').fadeOut(15000);
+//reload tables with new data	
+$.get('{{URL::to("employee_table_view")}}',function(data){
+$('#div_table').empty().append(data);
+});
+//end of reload tables 	
+},//end of success function 
+ });//end of ajax function 
 
-				 }
-            });
 
-        });
+});//end of function 
+
 
 
 //close edit employee model on close button
@@ -406,14 +439,10 @@ $('#employee_edit_model').modal('hide');
 
 
 
-// $(document).ready(function(){
-//  // /   $('#employee_table').dataTable();
-//    $('#div_table').on('click','#employee_table',function(){
-//    	 $(this).dataTable();
-// });
+});//end of ready function 
 
 
-// });
+
 
 
 

@@ -98,7 +98,15 @@
 </div>
 
 <!-- end section cards -->
+<!-- messages -->
 
+<div id="displayMessage" class="alert alert-danger text-center font-weight-bold list-unstyled p-2" >
+
+</div>
+
+
+
+<!-- end of message  -->
 {{-- add contract button --}}
 <div class="row">
 <div class="col-md-12">
@@ -124,10 +132,11 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="renderAddContractModel">
- <div class="alert alert-danger " id="showValidation">
-
+        <div class="alert alert-danger print-error-msg" id="addModelvalidation" style="display:none">
+        <ul class="d-flex flex-column"></ul>
     </div>
+      <div class="modal-body" id="renderAddContractModel">
+ 
 
 
 
@@ -151,11 +160,11 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="renderEditContractModel">
- <div class="alert alert-danger " id="showValidation">
-
+      <div class="alert alert-danger print-error-msg" id="editModelvalidation" style="display:none">
+        <ul class="d-flex flex-column"></ul>
     </div>
-
+      <div class="modal-body" id="renderEditContractModel">
+ 
 
 
 
@@ -168,11 +177,13 @@
 
 <script>
 $(document).ready(function(){
+$('#displayMessage').hide();
+    
 $('#btnAddContract').on('click',function(){
 $.get('/returnAddContractView',function(data){
 $('#renderAddContractModel').empty().append(data);
-    });
-        });
+});
+});
 
 
 //get credentials against name
@@ -185,7 +196,6 @@ data:{name:name},
 success:function(response){
 $('#id').val(response.id);
 $('#email').val(response.email);
-console.log(response.id);
 },
 });
 });
@@ -207,28 +217,78 @@ $('#editContractModel').modal('show');
 
 
 //save edited contract
-
 $('#renderEditContractModel').on('submit','#editContractForm',function(event){
 event.preventDefault();
+var id=$('#contractid').val();
 $.ajax({
     type:'post',
-    url:$(this).attr('action'),
+    url:'/editContractSubmit/'+id,
     data:new FormData(this),
-    contentType:false,
-    processData:false,
-    dataType:"json",
-    success:function(data){
-console.log('success'+data);
-    },
-    error:function(error){
-console.log(error);
-    },
+    contentType: false,
+    processData: false,
+   	dataType:"json",
 
+success: function(data){
+$('#displayMessage').show();
+$("#editModelvalidation").find("ul").html('');
+$("#editModelvalidation").css('display','block');
+$.each( data.error, function( key, value ) {
+$("#editModelvalidation").find("ul").append('<li>'+value+'</li>');
+$('#displayMessage').empty().append('<li>'+value+'</li>');
+$('#displayMessage').fadeOut(15000);
+});
+$('#editContractModel').modal('hide'); 
+//reload view
+$.get('/allContractsTable',function(data){
+$('#renderContractTable').empty().append(data);
+});       
+                	},
+                    error:function(error){
+$.get('/allContractsTable',function(data){
+$('#renderContractTable').empty().append(data);
+}); 
+                    },
+});
+
+ 
+
+
+
+});//end of edit contract 
+
+//start of delete contract 
+$('#renderContractTable').on('click',"#delete",function(e){
+e.preventDefault();
+var id=$(this).data('task');
+  $.ajax({
+        type:'get',
+        url:'/deleteContract/'+id,
+        success:function(data){
+        $('#displayMessage').show();
+$('#displayMessage').empty().append('<li>Contract Has Been Deleted Successfully</li>');
+$('#displayMessage').fadeOut(15000);
+//display all contract stable
+$.get('/allContractsTable',function(data){
+$('#renderContractTable').empty().append(data);
+});
+},
+ error:function(error){
+$.get('/allContractsTable',function(data){
+$('#renderContractTable').empty().append(data);
+}); 
+                    },
 })
+
+
+    
+});
+
+
 
 });//end of readyfunction
 
-});
+
+
 //add contract to databse
 $(document).ready(function(){
 $('#renderAddContractModel').on('submit','#addContractForm',function(event){
@@ -237,17 +297,32 @@ $.ajax({
 type:'post',
 //url:'/insertContract',
 url:$(this).attr('action'),
-//data: $(this).serialize(),
+datatype:'json',
  data:new FormData(this),
-                contentType: false,
-                processData: false,
-   				dataType:"json",
-success:function(data){
- $('#showValidation').html("Successfully Submitted the Contract ");
-},
- error: function (error) {
+contentType: false,
+processData: false,
 
-           },
+success: function(data){
+$('#displayMessage').show();
+$("#addModelvalidation").find("ul").html('');
+$("#addModelvalidation").css('display','block');
+$.each( data.error, function( key, value ) {
+$("#addModelvalidation").find("ul").append('<li>'+value+'</li>');
+$('#displayMessage').empty().append('<li>'+value+'</li>');
+});
+$('#displayMessage').fadeOut(15000); 
+//update table again 
+$.get('/allContractsTable',function(data){
+$('#renderContractTable').empty().append(data);
+});//end of update
+//hide modal 
+$('#addContractModel').modal('hide');
+},
+  error:function(error){
+$.get('/allContractsTable',function(data){
+$('#renderContractTable').empty().append(data);
+}); 
+                    },
 });
 
 });

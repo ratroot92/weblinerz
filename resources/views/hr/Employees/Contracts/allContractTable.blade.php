@@ -86,7 +86,7 @@ color:blue;}
 <th scope="row">{{$a->reference_id}}</th>
 <th scope="row">{{$a->name}}</th>
 <th scope="row">{{$a->email}}</th>
-<th scope="row">{{$a->designation}}</th>
+<th scope="row">{{$a->employee_designation}}</th>
 <th scope="row">{{$a->start_date}}</th>
 <th scope="row">{{$a->end_date}}</th>
 <th scope="row">{{$a->description}}</th>
@@ -94,9 +94,10 @@ color:blue;}
 <button type="button"  id="edit" class="p-0 m-0 Edit" data-task="{{$a->id}}" Title="Edit" >
 <img src="{{ asset('images/300-min.png') }}" alt="">
 </button>
-<button class="Delete p-0 m-0 ml-2" id="delete" type="button" data-task="{{$a->id}}" Title="Delete"></button>
-<img src="{{ asset('images/400-min.png') }}" alt=""></a>
-</th>
+<button type="button"  id="delete" class="p-0 m-0 Delete" data-task="{{$a->id}}" Title="Delete" >
+<img src="{{ asset('images/400-min.png') }}" alt="">
+</button>
+
 
 
 

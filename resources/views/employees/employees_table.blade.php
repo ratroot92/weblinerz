@@ -94,9 +94,9 @@ color:blue;}
 <button type="button"  id="edit" class="p-0 m-0 Edit" data-task="{{$a->id}}" Title="Edit" >
 <img src="{{ asset('images/300-min.png') }}" alt="">
 </button>
-<button class="Delete p-0 m-0 ml-2" id="delete" type="button" data-task="{{$a->id}}" Title="Delete"></button>
-<img src="{{ asset('images/400-min.png') }}" alt=""></a>
-</th>
+<button type="button"  id="delete" class="p-0 m-0 Delete" data-task="{{$a->id}}" Title="Delete" >
+<img src="{{ asset('images/400-min.png') }}" alt="">
+</button>
 
 
 

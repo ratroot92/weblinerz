@@ -170,54 +170,60 @@ else{
 
 public function add_employee_ajax(Request $request){
 
-
- $lastempployee= employee::orderBy('created_at','desc')->first();
-       if ($lastempployee!=null)
-       {
-           $lastempployee_id              = $lastempployee->id+1;
-       }
-       else
-       {
-           $lastempployee_id              = 1;
-       }
-
-
+        $validator = Validator::make($request->all(), [
+            'name' => 'min:5|max:25|',
+            'email' => 'email|unique:employees|email',
+            'password' => 'min:8|max:14',
+            'status' => 'alpha',
+            'start_date' => 'date',
+            'end_date' => 'date',
+            'e_salary'=>'numeric|min:0|max:100000'
+        ]);
+        if ($validator->passes()) {
 
 
-       $input= $request->all();
-       $this->validate($request, [
-            // 'uploads' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-			'email' => 'unique:employees,email',
-			'status'=>'required'
-       ]);
-       if($request->hasFile('uploads'))
-       {
-		   foreach($request->uploads as $upload){
-			   $extension=$upload->getClientOriginalExtension();
-			 $filename=time()."_.".$extension;
-			//$filename = $upload->getClientOriginalName();
-            $path=$upload->move(public_path('Employee_Files/Files'),$filename);
+            $lastempployee = employee::orderBy('created_at', 'desc')->first();
+            if ($lastempployee != null) {
+                $lastempployee_id              = $lastempployee->id + 1;
+            } else {
+                $lastempployee_id              = 1;
+            }
 
-			$upload1=new EmployeeUpload;
-			$upload1->employee_id=$request->id;
-			$upload1->file_name=$filename;
-			 $upload1->file_path=$path;
-			$upload1->save();
-		   }
 
-       }
-	    $employee= new employee();
-       $employee->id                	 = $lastempployee_id;
-       $employee->name                 	= $input['name'];
-       $employee->email              	 = $input['email'];
-	   $employee->password                 = $input['password'];
-	   $employee->contract = 				$request->get('status');
-       $employee->start_date                 = $input['start_date'];
-       $employee->end_date               = $input['end_date'];
-	   $employee->salary               = $input['e_salary'];
-       $employee->save();
 
-       return response()->json($employee);
+
+            $input = $request->all();
+
+            if ($request->hasFile('uploads')) {
+                foreach ($request->uploads as $upload) {
+                    $extension = $upload->getClientOriginalExtension();
+                    $filename = time() . "_." . $extension;
+                    //$filename = $upload->getClientOriginalName();
+                    $path = $upload->move(public_path('Employee_Files/Files'), $filename);
+
+                    $upload1 = new EmployeeUpload;
+                    $upload1->employee_id = $request->id;
+                    $upload1->file_name = $filename;
+                    $upload1->file_path = $path;
+                    $upload1->save();
+                }
+            }
+            $employee = new employee();
+            $employee->id                     = $lastempployee_id;
+            $employee->name                     = $input['name'];
+            $employee->email                   = $input['email'];
+            $employee->password                 = $input['password'];
+            $employee->contract =                 $request->get('status');
+            $employee->start_date                 = $input['start_date'];
+            $employee->end_date               = $input['end_date'];
+            $employee->salary               = $input['e_salary'];
+            $employee->save();
+
+            return response()->json($employee);
+        }
+        return response()->json(['error' => $validator->errors()->all()]);
+
+
 
 
 }//end of add_employee_ajax
@@ -245,22 +251,41 @@ return view('employees/employees_table',compact('employees'));
 }
 
 public Function edit_employee_ajax(Request $request){
-    $id=$request->input('id');
-$edit_employee=employee::findOrFail($id);
-$edit_employee->name=$request->input('name');
-$edit_employee->email=$request->input('email');
-$edit_employee->password=$request->input('password');
-$edit_employee->salary=$request->input('e_salary');
-$edit_employee->contract =$request->get('status');
-$edit_employee->start_date=$request->input('start_date');
-$edit_employee->end_date=$request->input('end_date');
-$edit_employee->save();
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'min:5|max:25|',
+            'email' => 'email',
+            'password' => 'min:8|max:14',
+            'status' => 'alpha',
+            'start_date' => 'date',
+            'end_date' => 'date',
+            'e_salary' => 'numeric|min:0|max:100000'
+        ]);
+        if ($validator->passes()) {
 
 
-$employees=employee::all();
-return view('employees/employees_table',compact('employees'));
-}
+            $id = $request->input('id');
+            $edit_employee = employee::findOrFail($id);
+            $edit_employee->name = $request->input('name');
+            $edit_employee->email = $request->input('email');
+            $edit_employee->password = $request->input('password');
+            $edit_employee->salary = $request->input('e_salary');
+            $edit_employee->contract = $request->get('status');
+            $edit_employee->start_date = $request->input('start_date');
+            $edit_employee->end_date = $request->input('end_date');
+            $edit_employee->save();
 
+
+          
+            return response()->json(['sucess' => 'Successfully Eddited the Employee ']);
+        }else{
+            return response()->json(['error' => $validator->errors()->all()]);
+        }
+
+        
+
+
+        }
 
 
 }//end of controoler

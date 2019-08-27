@@ -10,6 +10,10 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+{{-- <div class="p-0 m-0 alert alert-danger font-weight-bold " id="editEmployeeValidation">
+
+</div> --}}
+
 <form enctype="multipart/form-data" id="edit_employee_form" action="{{route('edit_employee_ajax')}}"  >
  @csrf
       <div class="modal-body">
@@ -34,7 +38,7 @@
 <div class="col-md-12">
 
 <span class="font-weight-bold ">Name</span>
-<input class="inp col-md-12" type="text" value="{{$employee->name}}" id="name" minlength="3" maxlength="20" pattern="^[A-Za-z -]+$" name="name"  />
+<input class="inp col-md-12" type="text" value="{{$employee->name}}" id="name" minlength="3" maxlength="20" pattern="^[A-Za-z -]+$" name="name"  required/>
 @if($errors->has('name'))
 <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('name') }}</div>
 @endif
@@ -42,7 +46,7 @@
 
 <div class="col-md-12">
 <span class="font-weight-bold  " >Email</span>
-<input class="inp col-md-12" type="email" value="{{$employee->email}}" maxlength="25" id="email" name="email"  />
+<input class="inp col-md-12" type="email" value="{{$employee->email}}" maxlength="25" id="email" name="email"  required/>
 @if($errors->has('email'))
 <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('email') }}</div>
 @endif
@@ -52,7 +56,7 @@
 
 <div class="col-md-12">
         <span class="font-weight-bold " >Password</span>
-        <input class="inp col-md-12" type="password" value="{{$employee->password}}"  id="password" min="8" max="14" name="password" minlength="8" maxlength="14"  />
+        <input class="inp col-md-12" type="password" value="{{$employee->password}}"  id="password" min="8" max="14" name="password" minlength="8" maxlength="14"  required/>
         @if($errors->has('password'))
 <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;">&spades;{{ $errors->first('password') }}</div>
 @endif
@@ -65,14 +69,14 @@
 <div class="col-md-12 mt-3 d-flex flex-row justify-content-between ">
   <!-- Material inline 1 -->
 <div class="form-check form-check-inline" >
-  <input type="radio" class="form-check-input" id="status" name="status" value="Contract" required/>
+  <input type="radio" class="form-check-input" id="status" name="status" value="Contract" {{ ($employee->contract=="Contract")? "checked" : "" }}  required/>
   <label class="form-check-label font-weight-bold" for="materialInline1">Contact</label>
 
 </div>
 
 <!-- Material inline 2 -->
 <div class="form-check form-check-inline" >
-  <input type="radio" class="form-check-input" id="status" name="status" value="Probabtion">
+  <input type="radio" class="form-check-input" id="status" name="status" value="Probabtion"  {{ ($employee->contract=="Probabtion")? "checked" : "" }} >
   <label class="form-check-label font-weight-bold" for="materialInline2">Probabtion</label>
 </div>
 

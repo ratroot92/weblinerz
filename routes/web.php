@@ -59,8 +59,8 @@ Route::get('/getCredentialsByName/{name}','ContractController_HR@getCredentialsB
 Route::post('/insertContract', 'ContractController_HR@insertContract')->name('insertContract');
 Route::get('/allContractsTable', 'ContractController_HR@allContractsTable')->name('allContractsTable');
 Route::get('/editContractView/{id}', 'ContractController_HR@editContractView')->name('editContractView');
-Route::post('/editContract', 'ContractController_HR@editContract')->name('editContract');
-
+Route::post('/editContractSubmit/{id}', 'ContractController_HR@editContractSubmit')->name('editContractSubmit');
+Route::get('/deleteContract/{id}','Contractcontroller_HR@deleteContract')->name('deleteContract');
 
 
 
