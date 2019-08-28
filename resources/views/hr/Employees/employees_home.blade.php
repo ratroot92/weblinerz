@@ -101,7 +101,7 @@
 
 <!-- end section cards -->
 <!-- messages -->
-<div id="displayMessage" class="alert alert-danger font-weight-bold list-unstyled p-0 m-0" >
+<div id="displayMessage" class="alert alert-danger font-weight-bold list-unstyled p-0 m-0 " style="font-size:16px" >
 
 </div>
 <!-- end of messages  -->
@@ -334,46 +334,33 @@ $.get('{{URL::to("employee_table_edit")}}/'+id,function(data){
                 contentType: false,
                 processData: false,
                 dataType:'json',
-                success: function(data) {
-$('#editEmployeeValidation').show();
+             
+ success: function(data){  
+  $('#displayMessage').empty(); 
+if(data.success){                     
 $('#displayMessage').show();
-$.each( data.error, function( key, value ) {
-$('#editEmployeeValidation').empty().append('<p class="p-0 m-0" style="font-size:13px;">&spades;'+value+'</p>');
-$('#displayMessage').empty().append('<p class="p-0 m-0" style="font-size:13px;">&spades;'+value+'</p>') ; 
-});
 
-$('#editEmployeeValidation').fadeOut(15000);
+$('#displayMessage').html('<p>&spades;Employee Successfully Edited to Database </p>');
 $('#employee_edit_model').modal('hide');
-$('#displayMessage').html("Employee has Been Sucessfully Edited");
-$('#displayMessage').fadeOut();
-
+$('#displayMessage').fadeOut(15000);
 //relaod view 
 $.get('{{URL::to("employee_table_view")}}',function(data){
 $('#div_table').empty().append(data);
-$('#employee_edit_model').modal('hide');
 });//end of reload view
-},//end of success function 
-error:function(error){
-$('#employee_edit_model').modal('hide');
-$('#displayMessage').html("Employee has Been Sucessfully Edited");
-$('#displayMessage').fadeOut();
-	//display employees table using ajax
- $.get('{{URL::to("employee_table_view")}}',function(data){
-	 $('#div_table').empty().append(data);
-});
-},
+ }
+else{
+  $('#displayMessage').show();
+    
+$.each(data.error, function(i, v){
+$('#displayMessage').append('<p>&spades;'+v+'</p>');
+$(this).closest('#employee_edit_model').children('#editEmployeeValidation')append('<p>&spades;'+v+'</p>');
+}); 
+$('#displayMessage').fadeOut(15000);
+} 
+},//end of success function
 			
-            });
-
-
-
-
-
-
-
-
-
- });//end of edit table employee
+});//end of ajax 
+});//end of edit table employee
 
 
 
@@ -384,8 +371,9 @@ $('#displayMessage').fadeOut();
  $('#div_table').on('click','#delete',function(){
 var id=$(this).data('task');
 $.get('{{URL::to("employee_table_delete")}}/'+id,function(data){	
+$('#displayMessage').show();
 $('#displayMessage').html("Employee has Been Sucessfully Deleted");
-$('#displayMessage').fadeOut();
+$('#displayMessage').fadeOut(15000);
 $('#div_table').empty().append(data);
 
 });
@@ -408,22 +396,29 @@ $.ajax({
                 contentType: false,
                 processData: false,
                 dataType:'json',
-                success: function(data) {                  
-$('#addEmployeeValidation').show();
+                          
+ success: function(data){  
+if(data.success){                     
 $('#displayMessage').show();
-$.each( data.error, function( key, value ) {
-$('#addEmployeeValidation').empty().append('<p class="p-0 m-0" style="font-size:13px;">&spades;'+value+'</p>');
-$('#displayMessage').empty().append('<p class="p-0 m-0" style="font-size:13px;">&spades;'+value+'</p>') ; 
-});
- 
-$('#addEmployeeValidation').fadeOut(15000);
+$('#displayMessage').empty().html('<p>&spades;Employee Successfully Added to Database </p>');
+$('#employee_edit_model').modal('hide');
 $('#displayMessage').fadeOut(15000);
-//reload tables with new data	
+$("#dlDropDown").dropdown("toggle");
+//relaod view 
 $.get('{{URL::to("employee_table_view")}}',function(data){
 $('#div_table').empty().append(data);
-});
-//end of reload tables 	
-},//end of success function 
+});//end of reload view
+ }
+else{
+  $('#displayMessage').show();
+  $('#displayMessage').empty().append('');
+$.each(data.error, function(i, v){
+$('#displayMessage').append('<p>&spades;'+v+'</p>');
+}); 
+ 
+} 
+ $('#displayMessage').fadeOut(30000);
+},//end of success function
  });//end of ajax function 
 
 

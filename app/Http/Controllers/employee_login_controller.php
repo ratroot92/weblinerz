@@ -219,9 +219,12 @@ public function add_employee_ajax(Request $request){
             $employee->salary               = $input['e_salary'];
             $employee->save();
 
-            return response()->json($employee);
+            return response()->json(array('success' => 'Successfull '));
         }
-        return response()->json(['error' => $validator->errors()->all()]);
+        else{
+            return response()->json(['error' => $validator->errors()->all()]);
+        }
+       
 
 
 
@@ -277,7 +280,7 @@ public Function edit_employee_ajax(Request $request){
 
 
           
-            return response()->json(['sucess' => 'Successfully Eddited the Employee ']);
+            return response()->json(['success' => 'Successfully Eddited the Employee ']);
         }else{
             return response()->json(['error' => $validator->errors()->all()]);
         }

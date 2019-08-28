@@ -48,11 +48,16 @@ $contract->end_date = $request->end_date;
 $contract->description=$request->description;
 $contract->save();
 $contracts = Contract::all();
-return view('hr.Employees.Contracts.allContractTable', compact('contracts'));
+            return response()->json(array(
+                'success' => 'Successfully saved Item to database ',
+
+            ));
 
         }
-
-        return response()->json(['error' => $validator->errors()->all()]);
+else{
+return response()->json(['error' => $validator->errors()->all()]);
+}
+        
 
 }
 
@@ -95,16 +100,21 @@ public function editContractSubmit(Request $request,$id){
             $empContract->save();
 
 
-            $contracts = Contract::all();
-              return view('hr.Employees.Contracts.allContractTable', compact('contracts'));
+            return response()->json(array(
+                'success' => 'Successfully saved Item to database ',
+
+            ));
 
            
+        }
+        else{
+            return response()->json(['error' => $validator->errors()->all()]);
         }
 
        
 
 
-        return response()->json(['error' => $validator->errors()->all()]);
+       
     }
 
 
