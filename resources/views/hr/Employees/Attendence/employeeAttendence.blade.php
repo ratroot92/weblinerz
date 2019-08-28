@@ -104,10 +104,10 @@
 
 <div class="row mt-5">
 <div class="col-md-12">
-<button class="btn btn-secondary float-left"><i class=" text-white font-weight-bold fas fa-arrow-down mr-2"></i>Attendence </button>
+<button class="btn btn-secondary float-left"><i class=" text-white font-weight-bold fas fa-arrow-down mr-2" id="navigatable_btn_1"></i>Attendence </button>
 
 
-<div class="table-responsive" id="table1">
+<div class="table-responsive" id="navigatable_div_1">
     <table class="table table-striped" id="table1" style="padding-top: 16px;">
                                 <thead>
                                     <tr style="background-color: #b85197;">
@@ -183,4 +183,19 @@
 
 </div>
 </div>
+<script type="text/javascript">
+  $(document).ready(function(){  
+    var btn1 = document.getElementById("navigatable_btn_1");
+    btn1.addEventListener('click', function() {  
+        var div_1 = document.getElementById("navigatable_div_1");
+        if (div_1.style.display === "none") {
+            div_1.style.display = "block";
+        } else {
+            div_1.style.display = "none";
+        }
+    });
+
+  });
+    
+</script>
 @endsection

@@ -41,7 +41,7 @@ public function returnHrEmployeeComplaints(){
 
 
 public function returnHrEmployeeAttendence(){
-        return view('hr.Employees.Complaints.employeeComplaints');
+        return view('hr.Employees.Attendence.employeeAttendence');
     }
 
 
