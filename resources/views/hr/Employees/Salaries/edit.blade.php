@@ -1,13 +1,9 @@
-<<<<<<< HEAD
-
-=======
 <script type="text/javascript">
       //Date picker
     $('#sandbox-container input').datepicker({
         autoclose: true
     })
 </script>
->>>>>>> c623a4e076e8b8ff10bcdb5e9df7b3c783725db4
 <form action="{{ url('/hrEmployeeSalaries/update_employeesalary/') }}" name="editEmployeesSalaries" method="post" id="editEmployeesSalaries" class="form-container formdata editform">
     @csrf
     <div id="alrtmsg1"></div>
