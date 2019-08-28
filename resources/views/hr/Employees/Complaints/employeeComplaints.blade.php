@@ -118,6 +118,62 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <tr>
+                                        <th scope="row">1</th>
+                                        <td>Ali</td>
+                                        <td>25000</td>
+                                        <td>120</td>
+                                        <td>ACTIVE</td>
+                                       
+                                        <td>
+                                            <a data-toggle="edit_sal" href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
+                                            
+                                             <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
+                                        
+                                        </td>
+                                    </tr>
+                                     <tr>
+                                        <th scope="row">1</th>
+                                        <td>Ali</td>
+                                        <td>25000</td>
+                                        <td>120</td>
+                                        <td>ACTIVE</td>
+                                       
+                                        <td>
+                                            <a data-toggle="edit_sal" href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
+                                            
+                                             <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
+                                        
+                                        </td>
+                                    </tr>
+                                     <tr>
+                                        <th scope="row">1</th>
+                                        <td>Ali</td>
+                                        <td>25000</td>
+                                        <td>120</td>
+                                        <td>ACTIVE</td>
+                                       
+                                        <td>
+                                            <a data-toggle="edit_sal" href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
+                                            
+                                             <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
+                                        
+                                        </td>
+                                    </tr>
+                                     <tr>
+                                        <th scope="row">1</th>
+                                        <td>Ali</td>
+                                        <td>25000</td>
+                                        <td>120</td>
+                                        <td>ACTIVE</td>
+                                       
+                                        <td>
+                                            <a data-toggle="edit_sal" href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
+                                            
+                                             <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
+                                        
+                                        </td>
+                                    </tr>
 
                                 </tbody>
                             </table>
