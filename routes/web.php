@@ -42,7 +42,6 @@ Route::get('/registerAdmin', 'Admin\LoginController@registerAdmin')->name('regis
 
 
 
-
 Route::get('/hrMaster','RouteController_HR@returnHrMaster');//take me to hrMaster tempelate
 
 Route::get('/hrEmployeeHome','RouteController_HR@returnHrEmplyoyee');//take me to Employee dashboard of hr
@@ -149,30 +148,15 @@ return view('hr/hr_home');
 
 });
 
+Route::get('/getsalary','HrEmployeeSalariesController@getSalary');
 
+Route::post('/add_employee_salaries','HrEmployeeSalariesController@addEmployeesSalaries');
 
+Route::get('/editview/{id}','HrEmployeeSalariesController@editHrEmployeeSalaries');
 
+Route::post('/hrEmployeeSalaries/update_employeesalary','HrEmployeeSalariesController@updateHrEmployeeSalaries');
 
-
-Route::get('/hr/hr_employee_salaries','HrEmployeeSalariesController@index');
-
-Route::get('/hr/hr_employee_contracts','HrEmployeeSalariesController@employeeContracts');
-
-Route::get('/hr/hr_employees_add_contracts','HrEmployeeSalariesController@addEmpolyeesContracts');
-
-
-//admin middleware and controller routes
-
-
-Route::post('/hr/add_employee_salaries','HrEmployeeSalariesController@addEmployeesSalaries');
-
-Route::get('getsalary','HrEmployeeSalariesController@getSalary');
-
-Route::match(['get','post'],'/hr/hr_employee_salaries/edit_employeesalary/{id}','HrEmployeeSalariesController@editHrEmployeeSalaries');
-Route::post('/hr/hr_employee_salaries/update_employeesalary','HrEmployeeSalariesController@updateHrEmployeeSalaries');
-Route::match(['get','post'],'/hr/hr_employee_salaries/delete_employeesalary/{id}','HrEmployeeSalariesController@deleteHrEmployeeSalaries');
-
-Route::get('/hr/hr_employee_contracts','HrEmployeeSalariesController@employeeContracts');
+Route::get('/hrEmployeeSalaries/{id}','HrEmployeeSalariesController@deleteHrEmployeeSalaries');
 
 
 

@@ -166,6 +166,10 @@ margin: 0px;
    </footer>
 </div><!-- end of page   -->
 
+<<<<<<< HEAD
 @stack('footer')
+=======
+
+>>>>>>> c623a4e076e8b8ff10bcdb5e9df7b3c783725db4
 </body>
 </html>
