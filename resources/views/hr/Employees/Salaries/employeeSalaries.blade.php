@@ -295,7 +295,7 @@ $(document).ready(function() {
 
 });
 
-//------------------------------------
+//----------------- Salaries Show Hide button -------------------
   $(document).ready(function(){  
     var btn1 = document.getElementById("navigatable_btn_1");
     btn1.addEventListener('click', function() {  
@@ -354,11 +354,11 @@ $(document).ready(function() {
             $('#table1').DataTable()
             $('#table2').DataTable({
                 'paging'      : true,
-                'lengthChange': false,
-                'searching'   : false,
+                'lengthChange': true,
+                'searching'   : true,
                 'ordering'    : true,
                 'info'        : true,
-                'autoWidth'   : false
+                'autoWidth'   : true
             })
         })
     });
@@ -400,7 +400,7 @@ $(document).ready(function() {
     $('#date').datepicker({
         autoclose: true
     })
-    //-------------------------------------------------------------
+    //---------------------Edit form Modal Popup-----------------
     $(document).ready(function () {
         $(document).on('click','a[data-toggle=edit_sal]',function (event) {
             event.preventDefault();

@@ -79,7 +79,6 @@ class HrEmployeeSalariesController extends Controller
        ]);
         if ($validator->passes()) {
             $input = $request->all();
-            //echo '<pre>'; print_r($input); echo '</pre>'; die();
             $saldraft = EmployeesSalaryDrafts::findOrFail($input['saldraftID']);
             $saldraft->date = $input['date'];
             $saldraft->fine = $input['fine'];
@@ -88,8 +87,6 @@ class HrEmployeeSalariesController extends Controller
             $saldraft->pending = $input['pending'];
             $saldraft->comments = $input['comments'];
             $saldraft->save();
-            //dd($saldraft);
-            //return redirect()->back()->with('flash_message_success','Record has been updated sucessfully');
             return response()->json(1);
         }
         else{
