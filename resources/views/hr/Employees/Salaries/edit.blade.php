@@ -1,8 +1,14 @@
+<script type="text/javascript">
+      //Date picker
+    $('#sandbox-container input').datepicker({
+        autoclose: true
+    })
+</script>
 <form action="{{ url('/hrEmployeeSalaries/update_employeesalary/') }}" name="editEmployeesSalaries" method="post" id="editEmployeesSalaries" class="form-container formdata editform">
     @csrf
     <div id="alrtmsg1"></div>
 
-    <div class="form-group">
+    <div class="form-group" id="sandbox-container">
         <input type="hidden" name="saldraftID" value="{{$emp_sal->id}}">
         <label for="date">Date</label>
         <input type="text" value="{{$emp_sal->date}}" class="form-control pull-right" id="date" name="date" placeholder="Date">        

@@ -306,7 +306,5 @@ input.form-control.form-control-sm {
     left: 304px;
 }
 .custom-control-label::before, .custom-file-label, .custom-select{
-    position: relative;
-    left: 45px;
-    bottom: 26px;
+    width: 75px;
 }

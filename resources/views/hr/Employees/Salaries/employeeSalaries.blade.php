@@ -21,7 +21,7 @@
     <li class="breadcrumb-item"><a href="{{URL::to('hrDasboard')}}">Dashboard</a></li>
     <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeHome')}}">Employee</a></li>
     <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeContract')}}">Contracts</a></li>
-    <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeSalaries')}}">Salries</a></li>
+    <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeSalaries')}}">Salaries</a></li>
  <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeComplaints')}}">Complaints</a></li> <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeAttendence')}}">Attendence</a></li>      
   </ul>
 </nav>
@@ -400,6 +400,8 @@ $(document).ready(function() {
     $('#date').datepicker({
         autoclose: true
     })
+
+   
     //---------------------Edit form Modal Popup-----------------
     $(document).ready(function () {
         $(document).on('click','a[data-toggle=edit_sal]',function (event) {
