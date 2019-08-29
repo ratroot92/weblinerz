@@ -73,7 +73,7 @@ margin: 0px;
   </head>
 
 
-<body >
+<body id="section_close">
 
 <div class="container-fluid">
 
@@ -167,6 +167,9 @@ margin: 0px;
 </div><!-- end of page   -->
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 83dddeced716777507e9e61c3b6494eccda1a347
 </body>
 </html>

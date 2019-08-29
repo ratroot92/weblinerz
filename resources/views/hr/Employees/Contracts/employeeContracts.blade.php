@@ -18,7 +18,7 @@
     <li class="breadcrumb-item"><a href="{{URL::to('hrDashboard')}}">Dashboard</a></li>
     <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeHome')}}">Employee</a></li>
     <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeContract')}}">Contracts</a></li>
-    <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeSalaries')}}">Salries</a></li>
+    <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeSalaries')}}">Salaries</a></li>
  <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeComplaints')}}">Complaints</a></li><li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeAttendence')}}">Attendence</a></li>
   </ul>
 </nav>
@@ -34,7 +34,7 @@
 <!-- start of card -->
 <div class="col-md-3 col-xs-6 col-sm-12  text-center p-1">
 <div class="bg-dark outer">
-<a href="{{ url('/hrEmployeeHome') }} " class="anchor" >
+<a href="{{ url('/hrEmployeeContract') }} " class="anchor" >
 <div class="inner  " >
 <img src="{{ asset('images/21.png') }}" class="img_hr mt-4" alt="">
 <p class="text-white font-weight-bold " >Contracts</p>
@@ -48,7 +48,7 @@
 <!-- start of card -->
 <div class="col-md-3 col-xs-6 col-sm-12  text-center p-1">
 <div class="bg-warning outer">
-<a href="{{ url('/hr_employee_home') }}" class="anchor">
+<a href="{{ url('/hrEmployeeSalaries') }}" class="anchor">
 <div class="inner  " >
 <img src="{{ asset('images/21.png') }}" class="img_hr mt-4" alt="">
 <p class="text-white font-weight-bold anchor">Salaries</p>
@@ -62,7 +62,7 @@
 <!-- start of card -->
 <div class="col-md-3 col-xs-6 col-sm-12  text-center p-1">
 <div class="bg-primary outer">
-<a href="{{ url('/hr_employee_home') }}" class="anchor">
+<a href="{{ url('/hrEmployeeComplaints') }}" class="anchor">
 <div class="inner  " >
 <img src="{{ asset('images/21.png') }}" class="img_hr mt-4" alt="">
 <p class="text-white font-weight-bold anchor">Complaints</p>
@@ -77,7 +77,7 @@
 <!-- start of card -->
 <div class="col-md-3 col-xs-6 col-sm-12  text-center p-1">
 <div class="bg-danger outer">
-<a href="{{ url('/hr_employee_home') }}" class="anchor">
+<a href="{{ url('/hrEmployeeAttendence') }}" class="anchor">
 <div class="inner  " >
 <img src="{{ asset('images/21.png') }}" class="img_hr mt-4" alt="">
 <p class="text-white font-weight-bold anchor">Attendence</p>

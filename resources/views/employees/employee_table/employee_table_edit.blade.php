@@ -10,9 +10,9 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
- <div class="p-0 m-0 alert alert-danger font-weight-bold " id="editEmployeeValidation">
+{{-- <div class="p-0 m-0 alert alert-danger font-weight-bold " id="editEmployeeValidation">
 
-</div> 
+</div> --}}
 
 <form enctype="multipart/form-data" id="edit_employee_form" action="{{route('edit_employee_ajax')}}"  >
  @csrf

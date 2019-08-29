@@ -300,15 +300,17 @@ label {
 input.form-control.form-control-sm {
     width: 75% !important;
     display: inline-block;
-<<<<<<< HEAD
 }
-=======
-}
+
 .dataTables_filter {
     position: relative;
     left: 304px;
 }
-.custom-control-label::before, .custom-file-label, .custom-select{
+
+.custom-control-label::before, .custom-file-label, .custom-select {
     width: 75px;
 }
->>>>>>> c623a4e076e8b8ff10bcdb5e9df7b3c783725db4
+
+/* .btn.btn-primary.add_left_button {
+    left: 198px;
+} */
