@@ -34,7 +34,7 @@
 <!-- start of card -->
 <div class="col-md-3 col-xs-6 col-sm-12  text-center p-1">
 <div class="bg-dark outer">
-<a href="{{ url('/hrEmployeeHome') }} " class="anchor" >
+<a href="{{ url('/hrEmployeeContract') }} " class="anchor" >
 <div class="inner  " >
 <img src="{{ asset('images/21.png') }}" class="img_hr mt-4" alt="">
 <p class="text-white font-weight-bold " >Contracts</p>

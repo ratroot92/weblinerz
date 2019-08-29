@@ -301,10 +301,16 @@ input.form-control.form-control-sm {
     width: 75% !important;
     display: inline-block;
 }
+
 .dataTables_filter {
     position: relative;
     left: 304px;
 }
-.custom-control-label::before, .custom-file-label, .custom-select{
+
+.custom-control-label::before, .custom-file-label, .custom-select {
     width: 75px;
 }
+
+/* .btn.btn-primary.add_left_button {
+    left: 198px;
+} */

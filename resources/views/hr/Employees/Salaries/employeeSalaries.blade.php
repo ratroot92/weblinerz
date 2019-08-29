@@ -37,7 +37,7 @@
 <!-- start of card -->
 <div class="col-md-3 col-xs-6 col-sm-12  text-center p-1">
 <div class="bg-dark outer">
-<a href="{{ url('/hrEmployeeHome') }} " class="anchor" >
+<a href="{{ url('/hrEmployeeContract') }} " class="anchor" >
 <div class="inner  " >                                            
 <img src="{{ asset('images/21.png') }}" class="img_hr mt-4" alt="">
 <p class="text-white font-weight-bold " >Contracts</p> 
@@ -120,6 +120,7 @@
                         <div class="form-group">
                             <!-- <label for="sel1">Select list (select one):</label> -->
                             <select class="form-control drop_select" id="sel1" style="border: none; box-shadow: none;">
+                                <option>Please Select</option>
                                 <option>January</option>
                                 <option>February</option>
                                 <option>March</option>
@@ -137,14 +138,14 @@
                     </label>
                     &emsp;&emsp;&emsp;&emsp;&emsp;
                     <label>
-                        <input type="checkbox" > Salaries Cleaned
+                        <input type="checkbox" > Salaries Cleared
                     </label>
                     &emsp;&emsp;&emsp;&emsp;&emsp;
                     <label>
                         <input type="checkbox"> Salaries Pending
                     </label>                            &emsp;&emsp;&emsp;&emsp;&emsp;
-
-                    <button type="button" class="btn btn-primary" onclick="openForm()">Add Draft</button>
+                    <!-- <button type="button" class="btn btn-success">Export In Excel</button> -->
+                    <button type="button" class="btn btn-primary add_left_button" onclick="openForm()">Add Draft</button>
                     </div>
                      <div class="form-popup" id="myForm">
                             <form name="addEmployeesSalaries" id="addEmployeesSalaries" class="form-container">
@@ -254,6 +255,8 @@
 <script src="{{ asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 
 <script type="text/javascript">
+
+   
 //------------- Add Form validation------------------------    
 $(document).ready(function() {
 
@@ -394,6 +397,23 @@ $(document).ready(function() {
     function closeForm() {
         document.getElementById("myForm").style.display = "none";
     }
+
+
+const $menu = $('#myForm');
+
+$(document).mouseup(e => {
+   if (!$menu.is(e.target) // if the target of the click isn't the container...
+   && $menu.has(e.target).length === 0) // ... nor a descendant of the container
+   {
+     $menu.removeClass('is-active');
+  }
+ });
+
+$('#addEmployeesSalaries').on('click', () => {
+  $menu.toggleClass('is-active');
+});
+
+
 
     //-----------------------------------------------------------
      //Date picker

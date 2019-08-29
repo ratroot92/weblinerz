@@ -95,53 +95,62 @@
 
 
   <div class="col-md-3 circle-wrapper">
+    <a class="text-white " href="{{ route('employee_login') }}">
     <div class="circle ">
 
   <div>
     <i class="fas fa-users text-white font-weight-bold icon" ></i>
    <br>
-<a class="text-white " href="{{ route('employee_login') }}"> Employee Console </a>
+ Employee Console 
   </div>
       
     </div>
+    </a>
   </div>
 
 
    <div class="col-md-3 circle-wrapper">
+    <a class="text-white  circle-text" href="#">
     <div class="circle ">
       <div>
          <i class="fas fa-person-booth text-white font-weight-bold icon " ></i>
      <br>
-<a class="text-white  circle-text" href="#"> CEO Console </a>
+ CEO Console 
       </div>
     </div>
+    </a>
   </div>
 
 
 
 
    <div class="col-md-3 circle-wrapper">
+    <a class="text-white  circle-text" href="#">
     <div class="circle ">
       <div>
          <i class="fas fa-address-card text-white font-weight-bold icon" ></i>
     <br>
-<a class="text-white  circle-text" href="#"> Management Console </a>
+ Management Console 
       </div>
     </div>
+    </a>
   </div>
 
 
 
 
    <div class="col-md-3 circle-wrapper">
+    <a class="text-white  circle-text" href="{{ route('showLoginForm') }}">
     <div class="circle ">
        <div>
          <i class="fab fa-chrome text-white font-weight-bold icon" ></i>
      <br>
-<a class="text-white  circle-text" href="{{ route('showLoginForm') }}"> HR Console </a>
+       HR Console 
        </div>
     </div>
+    </a>
   </div>
+
 </div>
 
 

@@ -18,7 +18,7 @@
    <li class="breadcrumb-item"><a href="{{ URL::to('hrHome')}}">Dashboard</a></li>
     <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeHome')}}">Employee</a></li>
     <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeContract')}}">Contracts</a></li>
-    <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeSalaries')}}">Salries</a></li>
+    <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeSalaries')}}">Salaries</a></li>
  <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeComplaints')}}">Complaints</a></li>
  <li class="breadcrumb-item"><a href="{{URL::to('hrEmployeeAttendence')}}">Attendence</a></li>
   </ul>
@@ -110,7 +110,7 @@
 
 <!-- asd -->
 <div class="btn-group" id="openmenu-btn"  style="float: right;">
-<button type="button" id="dlDropDown" class="btn  btn-success dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add Employee
+<button type="button" id="dlDropDown" class="btn  btn-success dropdown-toggle" style="top: 40px;"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add Employee
 </button>
 
 <div class="dropdown-container customDropdown">
@@ -353,7 +353,7 @@ else{
     
 $.each(data.error, function(i, v){
 $('#displayMessage').append('<p>&spades;'+v+'</p>');
-$(this).closest('#employee_edit_model').children('#editEmployeeValidation')append('<p>&spades;'+v+'</p>');
+// $(this).closest('#employee_edit_model').children('#editEmployeeValidation')append('<p>&spades;'+v+'</p>');
 }); 
 $('#displayMessage').fadeOut(15000);
 } 
