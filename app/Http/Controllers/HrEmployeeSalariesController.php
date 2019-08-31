@@ -29,6 +29,12 @@ class HrEmployeeSalariesController extends Controller
           
     }
 
+    public function addEmployeesSalariesCreate()
+    {
+        $salariesName = HrEmpolyeeSalaries::all();
+        return view('hr.Employees.Salaries.add')->with(compact('salariesName'));
+    }
+
     public function addEmployeesSalaries(Request $request)
     {
 
@@ -38,6 +44,10 @@ class HrEmployeeSalariesController extends Controller
             $data = $request->all();
             //echo '<pre>'; print_r($data); echo '</pre>'; die();
             
+            $employee_data = employee::find($data['emp_id']);
+            $employee_name = $employee_data->name;
+            $employee_salary = $employee_data->salary;
+
             $employee = new EmployeesSalaryDrafts;
             $employee->employee_id = $data['emp_id'];
             $employee->date = $data['date'];
@@ -48,7 +58,14 @@ class HrEmployeeSalariesController extends Controller
             $employee->comments = $data['comments'];
             $employee->status = 'active';
             $employee->save();
-            return response()->json('success');
+
+           
+            // Sending JSON response array
+            return response()->json([
+                'employee'=> $employee,
+                'employee_name'=> $employee_name,     
+                'employee_salary'=> $employee_salary
+                ]);
           
         }
     }
@@ -100,11 +117,24 @@ class HrEmployeeSalariesController extends Controller
         //echo '<pre>'; print_r('420'); echo '</pre>'; die();
         EmployeesSalaryDrafts::find($id)->delete($id);
         return redirect()->back()->with('flash_message_success','Record has been Deleted sucessfully');
-        // $salariesName = HrEmpolyeeSalaries::all();
-        // $salariesdata = employee::with('employeessalarydrafts')->get();
-        // $EmployeesSalaryDrafts = EmployeesSalaryDrafts::all();
-        //return response()->json(['Record deleted successfully!']);
-        //return view('hr.Employees.Salaries.index',compact('EmployeesSalaryDrafts','salariesName','salariesdata'));
+
+    }
+
+    public function getMonth(Request $request)
+    {
+        $date = $request->date;
+        // $monthsQuery = DB::table('employees_salary_drafts')
+        //             ->whereMonth('date',  $date)
+        //             ->get();
+        $monthsQuery = EmployeesSalaryDrafts::whereMonth('date',  $date)
+                    ->with('employee')
+                    ->get();
+
+        //$salariesName = HrEmpolyeeSalaries::all('name','salary');
+        //dd($monthsQuery);
+        return response()->json($monthsQuery);
+      
+          
     }
 
 }

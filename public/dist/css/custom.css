@@ -213,7 +213,7 @@ label {
 
 /* Add styles to the form container */
 .form-container {
-    max-width: 300px;
+    /* max-width: 300px; */
     padding: 10px;
     background-color: white;
 }
@@ -223,11 +223,11 @@ label {
     width: 100%;
     padding: 5px;
     margin: 5px 0 5px 0;
-    border: none;    /* background: #f1f1f1; */
+   /*  border: none;    
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 2px solid #1a1a1a5e;
+    border-bottom: 2px solid #1a1a1a5e; */
 }
 
 /* When the inputs get focus, do something */
@@ -314,3 +314,10 @@ input.form-control.form-control-sm {
 /* .btn.btn-primary.add_left_button {
     left: 198px;
 } */
+.form-control.pull-right.border_date {
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 2px solid #1a1a1a5e !important;
+
+}
