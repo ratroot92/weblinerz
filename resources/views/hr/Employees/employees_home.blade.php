@@ -294,7 +294,7 @@
 	$('#displayMessage').hide();
     $('#addEmployeeValidation').hide();
     $('#editEmployeeValidation').hide();
-    
+
 
     });
 </script>
@@ -334,32 +334,36 @@ $.get('{{URL::to("employee_table_edit")}}/'+id,function(data){
                 contentType: false,
                 processData: false,
                 dataType:'json',
-             
- success: function(data){  
-  $('#displayMessage').empty(); 
-if(data.success){                     
+
+ success: function(data){
+  $('#displayMessage').empty();
+if(data.success){
 $('#displayMessage').show();
 
 $('#displayMessage').html('<p>&spades;Employee Successfully Edited to Database </p>');
 $('#employee_edit_model').modal('hide');
 $('#displayMessage').fadeOut(15000);
-//relaod view 
+//relaod view
 $.get('{{URL::to("employee_table_view")}}',function(data){
 $('#div_table').empty().append(data);
 });//end of reload view
  }
 else{
   $('#displayMessage').show();
-    
+
 $.each(data.error, function(i, v){
 $('#displayMessage').append('<p>&spades;'+v+'</p>');
+<<<<<<< HEAD
+});
+=======
 // $(this).closest('#employee_edit_model').children('#editEmployeeValidation')append('<p>&spades;'+v+'</p>');
 }); 
+>>>>>>> 83dddeced716777507e9e61c3b6494eccda1a347
 $('#displayMessage').fadeOut(15000);
-} 
+}
 },//end of success function
-			
-});//end of ajax 
+
+});//end of ajax
 });//end of edit table employee
 
 
@@ -370,7 +374,7 @@ $('#displayMessage').fadeOut(15000);
  //start of delete table employee
  $('#div_table').on('click','#delete',function(){
 var id=$(this).data('task');
-$.get('{{URL::to("employee_table_delete")}}/'+id,function(data){	
+$.get('{{URL::to("employee_table_delete")}}/'+id,function(data){
 $('#displayMessage').show();
 $('#displayMessage').html("Employee has Been Sucessfully Deleted");
 $('#displayMessage').fadeOut(15000);
@@ -384,8 +388,8 @@ $('#div_table').empty().append(data);
 
 
 
-  
-//add employee function 
+
+//add employee function
 $('#submit_form').submit(function () {
 event.preventDefault();
 
@@ -396,15 +400,15 @@ $.ajax({
                 contentType: false,
                 processData: false,
                 dataType:'json',
-                          
- success: function(data){  
-if(data.success){                     
+
+ success: function(data){
+if(data.success){
 $('#displayMessage').show();
 $('#displayMessage').empty().html('<p>&spades;Employee Successfully Added to Database </p>');
 $('#employee_edit_model').modal('hide');
 $('#displayMessage').fadeOut(15000);
 $("#dlDropDown").dropdown("toggle");
-//relaod view 
+//relaod view
 $.get('{{URL::to("employee_table_view")}}',function(data){
 $('#div_table').empty().append(data);
 });//end of reload view
@@ -414,15 +418,15 @@ else{
   $('#displayMessage').empty().append('');
 $.each(data.error, function(i, v){
 $('#displayMessage').append('<p>&spades;'+v+'</p>');
-}); 
- 
-} 
+});
+
+}
  $('#displayMessage').fadeOut(30000);
 },//end of success function
- });//end of ajax function 
+ });//end of ajax function
 
 
-});//end of function 
+});//end of function
 
 
 
@@ -434,7 +438,7 @@ $('#employee_edit_model').modal('hide');
 
 
 
-});//end of ready function 
+});//end of ready function
 
 
 
