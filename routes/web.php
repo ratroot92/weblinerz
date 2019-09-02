@@ -64,8 +64,8 @@ Route::get('/deleteContract/{id}','Contractcontroller_HR@deleteContract')->name(
 //employeeemasterpage
 Route::get('employeeMaster','RouteController_HR@returnemployeeMaster')->name('employeeMaster');
 Route::get('employeeDashboard','RouteController_HR@returnemployeeDashboard')->name('employeeDashboard');
-Route::get('clocklogin','RouteController_HR@returnclocklogin')->name('clocklogin');
-Route::get('clocksignup','RouteController_HR@returnclocksignup')->name('clocksignup');
+Route::get('clocklogin','clocl\clockController@returnclocklogin')->name('clocklogin');
+Route::get('clocksignup','clock\clockController@returnclocksignup')->name('clocksignup');
 
 
 

@@ -106,7 +106,7 @@
 </div>
 <!-- end of messages  -->
 <div class="row">
-  <div class="col-md-12">
+	<div class="col-md-12">
 
 <!-- asd -->
 <div class="btn-group" id="openmenu-btn"  style="float: right;">
@@ -304,7 +304,7 @@
     //show hide messages errors divs
 
     $(document).ready(function(){
-  $('#displayMessage').hide();
+	$('#displayMessage').hide();
     $('#addEmployeeValidation').hide();
     $('#editEmployeeValidation').hide();
 
@@ -317,9 +317,9 @@ $(document).ready(function (){
 
 
 
-  //display employees table using ajax
+	//display employees table using ajax
  $.get('{{URL::to("employee_table_view")}}',function(data){
-   $('#div_table').empty().append(data);
+	 $('#div_table').empty().append(data);
 });
 
  //start of form return edit_table_employee
@@ -327,7 +327,7 @@ $(document).ready(function (){
  $('#div_table').on('click','#edit',function(){
      var id=$(this).data('task');
 $.get('{{URL::to("employee_table_edit")}}/'+id,function(data){
-   $('#renderEditModel').empty().append(data);
+	 $('#renderEditModel').empty().append(data);
      $('#employee_edit_model').modal('show');
 
 });
@@ -343,7 +343,7 @@ $.get('{{URL::to("employee_table_edit")}}/'+id,function(data){
  $.ajax({
             url:$(this).attr('action'),
                 type:'POST',
-         data:new FormData(this),
+				 data:new FormData(this),
                 contentType: false,
                 processData: false,
                 dataType:'json',
@@ -363,11 +363,9 @@ $('#div_table').empty().append(data);
  }
 else{
   $('#displayMessage').show();
-
 $.each(data.error, function(i, v){
 $('#displayMessage').append('<p>&spades;'+v+'</p>');
 });
-
 $('#displayMessage').fadeOut(15000);
 }//end of success function
  },
@@ -399,7 +397,7 @@ event.preventDefault();
 $.ajax({
             url:$(this).attr('action'),
                 type:'POST',
-         data:new FormData(this),
+				 data:new FormData(this),
                 contentType: false,
                 processData: false,
                 dataType:'json',
