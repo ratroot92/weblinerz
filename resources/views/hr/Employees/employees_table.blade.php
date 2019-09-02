@@ -70,9 +70,9 @@ color:blue;}
                                             <th style="color:white;" scope="col">Employee Password</th>
                                             <th style="color:white;" scope="col">Employee Contract</th>
                                             <th style="color:white;" scope="col">Employee Salary</th>
-                                             <th style="color:white;" scope="col">Joining Date </th>
+                                            <th style="color:white;" scope="col">Joining Date </th>
                                             <th style="color:white;" scope="col">Ending Date  </th>
-											<th style="color:white;" scope="col"> Operations </th>
+										                      	<th style="color:white;" scope="col"> Operations </th>
 
                                           </tr>
                                         </thead>

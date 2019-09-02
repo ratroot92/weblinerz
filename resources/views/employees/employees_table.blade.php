@@ -48,8 +48,8 @@ color:blue;}
 
 </style>
 
-<div class="col-md-12 p-1 m-0" id="btn" >	 
-<button type="button" class="btn btn-secondary float-left font-weight-bold"> <i class=" text-white font-weight-bold fas fa-arrow-down mr-2"></i>All Employees</button>
+<div class="col-md-6 p-1 m-0"  >	 
+<button type="button" id="btn" class="btn btn-secondary float-left font-weight-bold"> <i class=" text-white font-weight-bold fas fa-arrow-down mr-2"></i>All Employees</button>
 
 
 
@@ -72,7 +72,7 @@ color:blue;}
                                             <th style="color:white;" scope="col">Employee Salary</th>
                                              <th style="color:white;" scope="col">Joining Date </th>
                                             <th style="color:white;" scope="col">Ending Date  </th>
-											<th style="color:white;" scope="col"> Operations </th>
+                                            <th style="color:white;" scope="col"> Operations </th>
 
                                           </tr>
                                         </thead>
