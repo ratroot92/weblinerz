@@ -280,11 +280,24 @@
 
 <!-- CONTENT -->
 <div id="renderEditModel" class="col-md-12"></div>
-<div class="row" id="div_table"></div>
+<div class="row">
+  <div class="col-md-12">
+
+  </div>
+</div>
+
 <!-- CONTENT -->
+<section id="print_section">
+  <div class="row" id="div_table"></div>
+</section>
 
-
-
+<div class="row">
+  <div class="col-md-12 text-center">
+    
+<a href="{{URL::to("/allEmployeePDF")}}" class="btn  btn-primary" title=""><i class=" text-white font-weight-bold fas fa-arrow-down mr-2"></i>Download PDF</a>
+<a onclick="printDiv()" class="btn  btn-primary" title=""><i class=" text-white font-weight-bold fas fa-arrow-down mr-2"></i>Print PDF</a>
+  </div>
+</div>
 
 
 <script>
@@ -353,23 +366,13 @@ else{
 
 $.each(data.error, function(i, v){
 $('#displayMessage').append('<p>&spades;'+v+'</p>');
-<<<<<<< HEAD
 });
-=======
-// $(this).closest('#employee_edit_model').children('#editEmployeeValidation')append('<p>&spades;'+v+'</p>');
-}); 
->>>>>>> 83dddeced716777507e9e61c3b6494eccda1a347
-$('#displayMessage').fadeOut(15000);
-}
-},//end of success function
 
+$('#displayMessage').fadeOut(15000);
+}//end of success function
+ },
 });//end of ajax
 });//end of edit table employee
-
-
-
-
-
 
  //start of delete table employee
  $('#div_table').on('click','#delete',function(){
@@ -452,6 +455,7 @@ $('#employee_table').dataTable();
 
 
 
+
 });
 
 
@@ -474,10 +478,27 @@ $("#btnCloseAddEmployee").click(function() {
 
 });
 
+//downlaod pdf (all employees )
+$('#pdfBtn').on('click',function(){
+$.get('',function(data){
+  console.log(data);
+});
+});//end of download pdf
    });
 
 
-
+//print employee pdf 
+function printDiv()
+   {
+    
+       var divToPrint=$('#div_table #employee_table')[0].outerHTML;
+      // alert(divToPrint);
+       var newWin=window.open('','Print-Window');
+       newWin.document.open();
+        newWin.document.write('<html><body onload="window.print()">'+divToPrint+'</body></html>');
+       newWin.document.close();
+       setTimeout(function(){newWin.close();},10);
+   }
 </script>
 
 @endsection

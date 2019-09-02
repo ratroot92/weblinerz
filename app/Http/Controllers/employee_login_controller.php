@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 use App\employee;
+use PDF;
+use App;
 use App\EmployeeUpload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Datatables;
 use DB;
 use Validator;
+use Dompdf\Dompdf;
 
 class employee_login_controller extends Controller
 {
@@ -26,45 +29,13 @@ $email=$request->input('e_email');
 $password=$request->input('e_password');
 $check_credentials =DB::table('employees')->where(['email'=>$email,'password'=>$password])->get();
 if(count($check_credentials)>0){
-$employees = DB::select('select * from employees');
-return view('/employees/employee_dashboard',compact('employees'));
+
+return view('employees.employeedashboard.employeeDashboard');
 }
 else{
 return Redirect()->route('employee_login')->with('message','Invalid Email and Password ');
 }
 }
-
-
-
-
-public Function login_by_name(Request $request){
-$validator = Validator::make($request->all(), [
-'e_name' => 'required',
-'e_password1' => 'required',
-]);
-
-if ($validator->fails()) {
-return redirect('employee_login')
-->withErrors($validator)
-->withInput();
-            }
-$name=$request->input('e_name');
-$password=$request->input('e_password1');
-$check_credentials =DB::table('employees')->where(['name'=>$name,'password'=>$password])->get();
-
-if(count($check_credentials)>0){
-
-
-
-$employees = DB::select('select * from employees');
-return view('/employees/employee_dashboard',compact('employees'));
-}
-else{
-
-    return Redirect()->route('employee_login')->with('message','Invalid Name and Password ');
-     }
-
-   }
 
 
 
@@ -224,7 +195,7 @@ public function add_employee_ajax(Request $request){
         else{
             return response()->json(['error' => $validator->errors()->all()]);
         }
-       
+
 
 
 
@@ -279,16 +250,79 @@ public Function edit_employee_ajax(Request $request){
             $edit_employee->save();
 
 
-          
+
             return response()->json(['success' => 'Successfully Eddited the Employee ']);
         }else{
             return response()->json(['error' => $validator->errors()->all()]);
         }
 
-        
+
+        } //end of function
 
 
-        }
+    function get_customer_data()
+    {
+        $employees = DB::table('employees')
+            ->limit(100)
+            ->get();
+        return $employees;
+    }
+
+public function convert_customer_data_to_html(){
+       $employees =employee::all();
+       return view('hr.Employees.pdf_view',compact('employees'));
+}
 
 
+
+       public function allEmployeePDF(){
+         $employees =employee::all();
+        $data = ['title' => 'Weblinerz Employees '];
+        $pdf = PDF::loadview('hr.Employees.pdf_view',compact('employees'));
+  
+        return $pdf->download('weblinerz.pdf');
+     
+      //  $pdf = \App::make('dompdf.wrapper');
+      //  $pdf=PDF::loadHTML($this->convert_customer_data_to_html());
+        //$name = 'myfile_' . date('m-d-Y_hia') . '.pdf';
+        //return $pdf->download($name);
+       }
 }//end of controoler
+
+
+
+
+//  $employees = $this->get_customer_data();
+//         $output = '
+//      <h3 align="center">Customer Data</h3>
+//     <table class="table  table-striped " id="employee_table"  style="border:1px solid black;font-size: px;" >
+//      <thead class="">
+//                                           <tr style="background-color: #b85197;">
+//                                             <th style="color:white;" scope="col">Employee ID</th>
+//                                             <th style="color:white;" scope="col">Employee Name</th>
+//                                             <th style="color:white;" scope="col">Employee Email</th>
+//                                             <th style="color:white;" scope="col">Employee Password</th>
+//                                             <th style="color:white;" scope="col">Employee Contract</th>
+//                                             <th style="color:white;" scope="col">Employee Salary</th>
+//                                              <th style="color:white;" scope="col">Joining Date </th>
+//                                             <th style="color:white;" scope="col">Ending Date  </th>
+
+//                                           </tr>
+//                                           </thead>
+//      ';
+//         foreach ($employees as $a) {
+// $output .= '
+//      <tr class="p-0 m-0">
+// <th scope="row">'.$a->id.'</th>
+// <th scope="row">'.$a->name.'</th>
+// <th scope="row">'.$a->email.'</th>
+// <th scope="row">'.$a->password.'</th>
+// <th scope="row">'.$a->contract.'</th>
+// <th scope="row">'.$a->salary.'</th>
+// <th scope="row">'.$a->start_date.'</th>
+// <th scope="row">'.$a->end_date.'</th>
+// </tr>
+//       ';
+//         }
+//         $output .= '</table>';
+//         return $output;

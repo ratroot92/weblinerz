@@ -45,5 +45,26 @@ public function returnHrEmployeeAttendence(){
     }
 
 
+public function returnemployeeMaster(){
+    return view('employees.employeeMaster');
+}
+
+public function returnemployeeDashboard(){
+    return view('employees.employeedashboard.employeeMaster');
+}
+
+
+
+public function returnclocklogin(){
+    return view('employees.clockin.clock_login');
+}
+
+
+public function returnclocksignup(){
+    return view('employees.clockin.signup');
+}
+
+
+
 
 }

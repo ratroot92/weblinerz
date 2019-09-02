@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>WebLinerz | HR</title>
+        <title>WebLinerz | EMPLOYEE</title>
 
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('dist/employee_dashboard.css') }}">
@@ -95,7 +95,7 @@ margin: 0px;
   <i class="fab fa-usps text-white font-weight-bold mt-2"></i>
 </div>
 
-<div class="text-white font-weight-bold ml-5 mt-3" style="font-size: 22px;">HR PORTAL</div>
+<div class="text-white font-weight-bold ml-5 mt-3" style="font-size: 22px;">EMPLOYEE PORTAL</div>
 </div>
 
 

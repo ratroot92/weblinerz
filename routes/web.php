@@ -61,7 +61,11 @@ Route::get('/editContractView/{id}', 'ContractController_HR@editContractView')->
 Route::post('/editContractSubmit/{id}', 'ContractController_HR@editContractSubmit')->name('editContractSubmit');
 Route::get('/deleteContract/{id}','Contractcontroller_HR@deleteContract')->name('deleteContract');
 
-
+//employeeemasterpage
+Route::get('employeeMaster','RouteController_HR@returnemployeeMaster')->name('employeeMaster');
+Route::get('employeeDashboard','RouteController_HR@returnemployeeDashboard')->name('employeeDashboard');
+Route::get('clocklogin','RouteController_HR@returnclocklogin')->name('clocklogin');
+Route::get('clocksignup','RouteController_HR@returnclocksignup')->name('clocksignup');
 
 
 
@@ -73,7 +77,7 @@ Route::get('/', function () {
 
 //employee login from homepage
 Route::get('/employee_login', function () {
-    return view('employee_home_view');
+    return view('employees.employee_home_view');
 })->name('employee_login');
 
 
@@ -103,7 +107,7 @@ Route::get('employee_table_edit/{id}','employee_login_controller@employee_table_
 Route::get('employee_table_delete/{id}','employee_login_controller@employee_table_delete')->name('employee_table_delete');
 Route::post('edit_employee_ajax','employee_login_controller@edit_employee_ajax')->name('edit_employee_ajax');
 Route::post('/add_employee_ajax','employee_login_controller@add_employee_ajax')->name('add_employee_ajax');
-
+Route::get('/allEmployeePDF', 'employee_login_controller@allEmployeePDF')->name('allEmployeePDF');
 
 //root for adding employee data by hr related employee dashboard
 
