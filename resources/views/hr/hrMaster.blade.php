@@ -167,9 +167,6 @@ margin: 0px;
 </div><!-- end of page   -->
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> f88ebb8db796695451bb490a8770901c88e57d20
 </body>
 </html>
