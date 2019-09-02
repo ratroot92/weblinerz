@@ -122,19 +122,35 @@ class HrEmployeeSalariesController extends Controller
 
     public function getMonth(Request $request)
     {
-        $date = $request->date;
-        // $monthsQuery = DB::table('employees_salary_drafts')
-        //             ->whereMonth('date',  $date)
-        //             ->get();
+        $date = $request->date;        
         $monthsQuery = EmployeesSalaryDrafts::whereMonth('date',  $date)
                     ->with('employee')
                     ->get();
 
-        //$salariesName = HrEmpolyeeSalaries::all('name','salary');
+        
         //dd($monthsQuery);
         return response()->json($monthsQuery);
       
           
+    }
+
+    public function getSalariesCleared(Request $request) {
+        $pending = $request->pending;
+        $salariesCleared = EmployeesSalaryDrafts::where('pending',  $pending)
+                            ->with('employee')
+                            ->get();
+        //echo '<pre>'; prsalariesClearedint_r($pendingQuery); echo '</pre>'; die();
+        return response()->json($salariesCleared);
+
+    }
+
+    public function getSalariesPending(Request $request) {
+        $pending = $request->pending;
+        $salariesPending = EmployeesSalaryDrafts::where('pending','>', 0)
+                            ->with('employee')
+                            ->get();
+        //echo '<pre>'; print_r($salariesPending); echo '</pre>'; die();
+        return response()->json($salariesPending);
     }
 
 }

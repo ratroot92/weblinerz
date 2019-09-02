@@ -358,7 +358,7 @@ $('#displayMessage').append('<p>&spades;'+v+'</p>');
 =======
 // $(this).closest('#employee_edit_model').children('#editEmployeeValidation')append('<p>&spades;'+v+'</p>');
 }); 
->>>>>>> 83dddeced716777507e9e61c3b6494eccda1a347
+
 $('#displayMessage').fadeOut(15000);
 }
 },//end of success function

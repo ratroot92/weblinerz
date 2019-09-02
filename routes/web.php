@@ -159,8 +159,12 @@ Route::get('/editview/{id}','HrEmployeeSalariesController@editHrEmployeeSalaries
 Route::post('/hrEmployeeSalaries/update_employeesalary','HrEmployeeSalariesController@updateHrEmployeeSalaries');
 
 Route::get('/hrEmployeeSalaries/{id}','HrEmployeeSalariesController@deleteHrEmployeeSalaries');
-
+// Salaries months
 Route::get('/getmonth','HrEmployeeSalariesController@getMonth');
+// Salaries Cleared  
+Route::get('/getsalariescleared','HrEmployeeSalariesController@getSalariesCleared');
+// Salaries Pending
+Route::get('/getsalariespending','HrEmployeeSalariesController@getSalariesPending');
 
 //Route::get('/home', 'HomeController@index')->name('home');
 //route hr_dasboard -- direct root

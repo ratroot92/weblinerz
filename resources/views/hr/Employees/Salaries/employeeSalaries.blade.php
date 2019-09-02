@@ -138,11 +138,11 @@
                     </label>
                     &emsp;&emsp;&emsp;&emsp;&emsp;
                     <label>
-                        <input type="checkbox" > Salaries Cleared
+                        <input type="checkbox" id="checkbox1" value="0" > Salaries Cleared
                     </label>
                     &emsp;&emsp;&emsp;&emsp;&emsp;
                     <label>
-                        <input type="checkbox"> Salaries Pending
+                        <input type="checkbox" id="checkbox2" value="1"> Salaries Pending
                     </label>                            &emsp;&emsp;&emsp;&emsp;&emsp;
                     <!-- <button type="button" class="btn btn-success">Export In Excel</button> -->
                     <a data-toggle="add_new" href="{{ url('/add_employee_salaries_create') }}" class="btn btn-primary add_left_button">Add New</a>
@@ -220,6 +220,7 @@
 
 <script type="text/javascript">
 
+//------------------------Select Month Drop Down ---------------------
 $(document).ready(function(){
     $("select.drop_select").change(function(){
         var selectedMonth = $(this).children("option:selected").val();
@@ -253,9 +254,71 @@ $(document).ready(function(){
         
     });
 });
-   
-  
-
+//-------------------------- Salaries Cleared ----------------------------
+$(document).ready(function(){
+    $("input#checkbox1").change(function(){
+        var selectedpending = $(this).val();
+        //console.log(selectedpending);
+        var counter = 1;
+         $.ajax({
+            url : '/getsalariescleared',
+            type: 'get',
+            data : { 'pending' : selectedpending },
+            dataType: 'json',
+            success: function($result){
+                //console.log($result.length); 
+                $('tbody').empty();   
+                if ($result.length>0)
+                {
+                    $.each($result,function (i,item) {
+                    //console.log(item.employee.name);
+                    $('tbody').append("<tr><th scope='row'>"+counter+++"</th><td>"+item.employee.name+"</td><td>"+item.employee.salary+"</td><td>"+item.date+"</td><td>"+item.fine+"</td><td>"+item.status+"</td><td>"+'<a data-toggle="edit_sal" href="/editview/'+item.id+'"><img src="/images/300-min.png" ></a>&nbsp;<a href="/hrEmployeeSalaries/'+item.id+'"><img src="/images/400-min.png"></a>'+"</td></tr> ");
+                   });
+                }
+                else
+                {
+                   $('tbody').append( "<tr><td colspan='6' class='text-center'>"+'No data available in table'+"</td><td>");
+                }   
+            }, error:function(e){
+                console.log(e);
+            }
+        });
+        
+    });
+});   
+//----------------- Salaries Pending ----------------------------  
+$(document).ready(function(){
+    $("input#checkbox2").change(function(){
+        var salariespending = $(this).val();
+        var counter = 1;
+        //alert('333');
+        //console.log(selectedpending);
+         $.ajax({
+            url : '/getsalariespending',
+            type: 'get',
+            data : { 'pending' : salariespending },
+            dataType: 'json',
+            success: function($result){
+                //console.log($result.length); 
+                $('tbody').empty();   
+                if ($result.length>0)
+                {
+                    $.each($result,function (i,item) {
+                    //console.log(item.employee.name);
+                    $('tbody').append("<tr><th scope='row'>"+counter+++"</th><td>"+item.employee.name+"</td><td>"+item.employee.salary+"</td><td>"+item.date+"</td><td>"+item.fine+"</td><td>"+item.status+"</td><td>"+'<a data-toggle="edit_sal" href="/editview/'+item.id+'"><img src="/images/300-min.png" ></a>&nbsp;<a href="/hrEmployeeSalaries/'+item.id+'"><img src="/images/400-min.png"></a>'+"</td></tr> ");
+                   });
+                }
+                else
+                {
+                   $('tbody').append( "<tr><td colspan='6' class='text-center'>"+'No data available in table'+"</td><td>");
+                }   
+            }, error:function(e){
+                console.log(e);
+            }
+        });
+        
+    });
+});   
 //----------------- Salaries Show Hide button -------------------
   $(document).ready(function(){  
     var btn1 = document.getElementById("navigatable_btn_1");
@@ -268,12 +331,9 @@ $(document).ready(function(){
         }
     });
 
-  });
-
-  //-------------------------------------------
+  });  
   
-  
-    //------------------------------------------
+//------------------------------------------
     $(document).ready(function () {
         $(function () {
             $('#table1').DataTable()
