@@ -121,18 +121,18 @@
                             <!-- <label for="sel1">Select list (select one):</label> -->
                             <select class="form-control drop_select" id="sel1" style="border: none; box-shadow: none;">
                                 <option>Please Select</option>
-                                <option>January</option>
-                                <option>February</option>
-                                <option>March</option>
-                                <option>April</option>
-                                <option>May</option>
-                                <option>June</option>
-                                <option>July</option>
-                                <option>August</option>
-                                <option>September</option>
-                                <option>October</option>
-                                <option>November</option>
-                                <option>December</option>
+                                <option value='01'>January</option>
+                                <option value='02'>February</option>
+                                <option value='03'>March</option>
+                                <option value='04'>April</option>
+                                <option value='05'>May</option>
+                                <option value='06'>June</option>
+                                <option value='07'>July</option>
+                                <option value='08'>August</option>
+                                <option value='09'>September</option>
+                                <option value='10'>October</option>
+                                <option value='11'>November</option>
+                                <option value='12'>December</option>
                             </select>
                         </div>
                     </label>
@@ -145,56 +145,9 @@
                         <input type="checkbox"> Salaries Pending
                     </label>                            &emsp;&emsp;&emsp;&emsp;&emsp;
                     <!-- <button type="button" class="btn btn-success">Export In Excel</button> -->
-                    <button type="button" class="btn btn-primary add_left_button" onclick="openForm()">Add Draft</button>
+                    <a data-toggle="add_new" href="{{ url('/add_employee_salaries_create') }}" class="btn btn-primary add_left_button">Add New</a>
                     </div>
-                     <div class="form-popup" id="myForm">
-                            <form name="addEmployeesSalaries" id="addEmployeesSalaries" class="form-container">
-                                @csrf
-                                <div class="form-group">
-
-                                    <input type="text" class="form-control pull-right" id="date" name="date" placeholder="Date">
-                                </div>
-                                <div class="form-group">
-
-                                    <select class="form-control" id="name" name="emp_id" style="border: none; box-shadow: none; border-bottom: 2px solid #1a1a1a5e !important; margin-bottom: 22px;">
-                                        <option>Please Select</option>
-                                        @foreach($salariesName as $salary)
-                                            <option id="salary_id"  value="{{ $salary->id }}">{{ $salary->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group">
-
-                                    <input type="text" id="salary" class="salary" placeholder="Salary" name="salary" >
-                                </div>
-                                <div class="form-group">
-
-                                    <input type="text" id="fine" name="fine" placeholder="Fine" >
-                                </div>
-                                <div class="form-group">
-
-                                    <input type="text" id="total_sal"  name="total_sal" placeholder="Total Salary" >
-                                </div>
-                                <div class="form-group">
-
-                                    <input type="text" id="receive" name="receive" placeholder="Received">
-                                </div>
-                                <div class="form-group">
-
-                                    <input type="text" id="pending" name="pending" value="" placeholder="Pending" name="pending">
-                                </div>
-                                <div class="form-group">
-
-                                    <label for="Comments">Comments</label><br>
-                                    <textarea name="comments" id="comments" rows="3" style="margin: 0px; width: 280px; height: 110px;"></textarea>
-
-                                </div>
-                                <button type="button" class="btn cancel" style="position: relative; top: 20px; left: 30px;" onclick="closeForm()">Close</button>
-                                &emsp;&emsp;
-                                <button type="submit" class="btn btn-success" style="position: relative; background-color: #c879af !important; top: 20px; left: 20px;">Add</button>
-
-                            </form>
-                        </div>
+                     
                         <table class="table table-striped" id="table1" style="padding-top: 16px;">
                             <thead>
                                 <tr style="background-color: #b85197;">
@@ -207,7 +160,7 @@
                                     <th style="color: #fff;" scope="col">Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="termsrow">
                             @php $i=1; @endphp
                             @foreach ($salariesdata as $resource)
                                 @foreach ($resource->employeessalarydrafts as $b)
@@ -220,9 +173,7 @@
                                         <td>{{ $b->status }}</td>
                                         <td>
                                             <a data-toggle="edit_sal" data-task="{{ $b->id }}" href="{{ url('/editview/'.$b->id) }}"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
-                                            <!-- <button type="button" data-task="{{ $b->id }}" data-toggle="modal" data-target="#edit_modal1" id="editBtn" style="border: none; background: none !important;"><img src="{{ asset('images/300-min.png') }}" alt=""></button> -->
-
-                                            <!-- <button type="button" data-task="{{ $b->id }}" id="deleteBtn"><img src="{{ asset('images/400-min.png') }}" alt=""></a></button> -->
+                                           
                                              <a href="{{ url('/hrEmployeeSalaries/'.$b->id) }}"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
                                         
                                         </td>
@@ -235,68 +186,75 @@
     
 </div>
 </div>
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="edit_modal">
-        <div class="modal-dialog modal-dialog-centered" id="edit_modal" data="toggle" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Salary </h4>
-                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                </div>
-                <div id="div_table alert alert-danger"></div>
-                <div class="modal-body" id="render_model">
-                </div>
+<!-- Add Popup -->
+<div class="modal fade" id="add_modal">
+    <div class="modal-dialog modal-dialog-centered" id="add_modal" data="toggle" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <div class="modal-body">
+​
             </div>
         </div>
     </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="edit_modal">
+    <div class="modal-dialog modal-dialog-centered" id="edit_modal" data="toggle" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Salary </h4>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <div id="div_table alert alert-danger"></div>
+            <div class="modal-body" id="render_model">
+            </div>
+        </div>
+    </div>
+</div>
     <!-- bootstrap datepicker -->
 <script src="{{ asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 
 <script type="text/javascript">
 
-   
-//------------- Add Form validation------------------------    
-$(document).ready(function() {
-
-  $('#addEmployeesSalaries').submit(function(e) {
-    e.preventDefault();
-    var date = $('#date').val();
-    var salary = $('#salary').val();
-    var fine = $('#fine').val();
-    var total_sal = $('#total_sal').val();
-    var receive = $('#receive').val();
-    var pending = $('#pending').val();
-    var comments = $('#comments').val();
-
-    $(".error").remove();
-
-    if (date.length < 1) {
-        $('#date').after('<span class="error">This Date field is required</span>');
-    }   
-    if (salary.length < 1) {
-        $('#salary').after('<span class="error">This salary field is required</span>');
-    }   
-    if (fine.length < 1) {
-        $('#fine').after('<span class="error">This fine field is required</span>');
-    }   receive
-    if (total_sal.length < 1) {
-        $('#total_sal').after('<span class="error">This Total field is required</span>');
-    }  
-    if (receive.length < 1) {
-        $('#receive').after('<span class="error">This Receive field is required</span>');
-    } 
-    if (pending.length < 1) {
-        $('#pending').after('<span class="error">This Pending field is required</span>');
-    }
-    if (comments.length < 1) {
-        $('#comments').after('<span class="error">This Comments field is required</span>');
-    }
-    
-  });
-
+$(document).ready(function(){
+    $("select.drop_select").change(function(){
+        var selectedMonth = $(this).children("option:selected").val();
+         var str = '';
+          var counter = 1;
+         $.ajax({
+            url : '/getmonth',
+            type: 'get',
+            data : { 'date' : selectedMonth },
+            dataType: 'json',
+            success: function($result){
+                //console.log($result);
+                $('tbody').empty();                
+                if ($result.length>0)
+                {
+                    $.each($result,function (i,item) {
+                    //console.log(item.employee.name);
+                    $('tbody').append("<tr><th scope='row'>"+counter+++"</th><td>"+item.employee.name+"</td><td>"+item.employee.salary+"</td><td>"+item.date+"</td><td>"+item.fine+"</td><td>"+item.status+"</td><td>"+'<a data-toggle="edit_sal" href="/editview/'+item.id+'"><img src="/images/300-min.png" ></a>&nbsp;<a href="/hrEmployeeSalaries/'+item.id+'"><img src="/images/400-min.png"></a>'+"</td></tr> ");
+                   });
+                }
+                else
+                {
+                   $('tbody').append( "<tr><td colspan='6' class='text-center'>"+'No data available in table'+"</td><td>");
+                }
+                
+                //$('#termsrow').html(str);
+            }, error:function(e){
+                console.log(e);
+            }
+        });
+        
+    });
 });
+   
+  
 
 //----------------- Salaries Show Hide button -------------------
   $(document).ready(function(){  
@@ -314,80 +272,14 @@ $(document).ready(function() {
 
   //-------------------------------------------
   
-    $('#name').click(function(event){
-        event.preventDefault();
-        var name = $('#name').val();
-
-        $.ajax({
-            url : '/getsalary',
-            type: 'get',
-            data : { 'name' : name },
-            dataType: 'json',
-            success: function(response){
-                $('#salary').val(response);
-
-            }, error:function(e){
-                console.log(e);
-            }
-        });
-
-    });
-    //----------------------------------------
-    $('#fine').change(function(event){
-        event.preventDefault();
-
-        var salary = parseInt($('#salary').val());
-        var fine = parseInt($('#fine').val());
-        var total =  salary - fine;
-        $('#total_sal').val(total);
-
-    });
-    //-----------------------------------------
-    $('#receive').change(function(event){
-        event.preventDefault();
-        var total = parseInt($('#total_sal').val());
-        var receive = parseInt($('#receive').val());
-        var pending =  total - receive;
-        $('#pending').val(pending);
-
-    });
+  
     //------------------------------------------
     $(document).ready(function () {
         $(function () {
             $('#table1').DataTable()
-            $('#table2').DataTable({
-                'paging'      : true,
-                'lengthChange': true,
-                'searching'   : true,
-                'ordering'    : true,
-                'info'        : true,
-                'autoWidth'   : true
-            })
         })
     });
-    //-------------------------------------------
-    $('#addEmployeesSalaries').submit(function () {
-       
-        var str = '';
-        event.preventDefault();
-        $.ajax({
-            url         : '/add_employee_salaries',
-            type        : 'post',
-            data        : $('#addEmployeesSalaries').serialize(),
-            dataType    : 'json',
-            success     : function ($result) {
-                console.log($result);
-                str = '<div class="alert alert-success alert-dismissable">Record added Successfully<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
-                $('#flash_message_success').html(str);
-                $('#flash_message_success').fadeOut(15000);
-                $('#mysection').empty();
-                $('#mysection').load('/hrEmployeeSalaries');
-                //$('#add_modal').modal('toggle');
-            },
-            error        : function (result) {
-            }
-        })
-    });
+    
     //---------------------------------------------------------
     
     function openForm() {
@@ -398,30 +290,12 @@ $(document).ready(function() {
         document.getElementById("myForm").style.display = "none";
     }
 
-
-const $menu = $('#myForm');
-
-$(document).mouseup(e => {
-   if (!$menu.is(e.target) // if the target of the click isn't the container...
-   && $menu.has(e.target).length === 0) // ... nor a descendant of the container
-   {
-     $menu.removeClass('is-active');
-  }
- });
-
-$('#addEmployeesSalaries').on('click', () => {
-  $menu.toggleClass('is-active');
-});
-
-
-
     //-----------------------------------------------------------
      //Date picker
-    $('#date').datepicker({
-        autoclose: true
-    })
-
-   
+    // $('#date').datepicker({
+    //     autoclose: true
+    // })   
+    
     //---------------------Edit form Modal Popup-----------------
     $(document).ready(function () {
         $(document).on('click','a[data-toggle=edit_sal]',function (event) {
@@ -431,6 +305,13 @@ $('#addEmployeesSalaries').on('click', () => {
 
         });
     });
-
+    //---------------------Add form Modal Popup-----------------
+    $(document).ready(function () {
+        $(document).on('click','a[data-toggle=add_new]',function (e) {
+            e.preventDefault();
+            $('#add_modal').find('.modal-body').load($(this).attr('href'));
+            $('#add_modal').modal('show');
+        });
+    });
 </script>
 @endsection

@@ -151,8 +151,10 @@ Route::get('hr_home',function(){
 return view('hr/hr_home');
 
 });
-
+//------------------------ Waqas Routes ----------------------------
 Route::get('/getsalary','HrEmployeeSalariesController@getSalary');
+
+Route::get('/add_employee_salaries_create','HrEmployeeSalariesController@addEmployeesSalariesCreate');
 
 Route::post('/add_employee_salaries','HrEmployeeSalariesController@addEmployeesSalaries');
 
@@ -162,7 +164,7 @@ Route::post('/hrEmployeeSalaries/update_employeesalary','HrEmployeeSalariesContr
 
 Route::get('/hrEmployeeSalaries/{id}','HrEmployeeSalariesController@deleteHrEmployeeSalaries');
 
-
+Route::get('/getmonth','HrEmployeeSalariesController@getMonth');
 
 //Route::get('/home', 'HomeController@index')->name('home');
 //route hr_dasboard -- direct root
