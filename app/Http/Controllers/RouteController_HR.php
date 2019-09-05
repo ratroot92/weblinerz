@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\HrEmpolyeeSalaries;
 use App\EmployeesSalaryDrafts;
+use App\EmployeesDocuments;
+use App\EmployeesReports;
 use App\employee;
 use DB;
 
@@ -21,7 +23,14 @@ public function returnHrMaster(){
 }
 
 public function returnHrEmplyoyee(){
-        return view('hr.Employees.employees_home');
+
+            $lastempployee = employee::orderBy('created_at', 'desc')->first();
+            if ($lastempployee != null) {
+                $lastempployee_id              = $lastempployee->id + 1;
+            } else {
+                $lastempployee_id              = 1;
+            }
+        return view('hr.Employees.employees_home',compact('lastempployee_id'));
 }
 
 
@@ -53,15 +62,14 @@ public function returnemployeeDashboard(){
     return view('employees.employeedashboard.employeeMaster');
 }
 
-
-
-public function returnclocklogin(){
-    return view('employees.clockin.clock_login');
+public function returnemployeeDocuments(){
+    $employeesDocuments = EmployeesDocuments::all();    
+    return view('hr.Employees.Documents.index')->with(compact('employeesDocuments'));
 }
 
-
-public function returnclocksignup(){
-    return view('employees.clockin.signup');
+public function returnemployeeReports(){
+    $employeesReports = EmployeesReports::all();    
+    return view('hr.Employees.Reports.index')->with(compact('employeesReports'));
 }
 
 

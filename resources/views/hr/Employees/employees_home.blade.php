@@ -131,13 +131,13 @@
 <form    enctype="multipart/form-data" id="submit_form" name="submit_form" action={{route('add_employee_ajax')}} >
  @csrf
 
- <!--
+
 <span class="font-weight-bold ">Employee ID</span>
-<input class="inp col-md-12" type="number"  id="id"   name="id" />
+<input class="inp col-md-12" type="number"  id="id" value="{{$lastempployee_id}}"  name="id" readonly required/>
 @if($errors->has('id'))
 <div class=" alert alert-danger  font-weight-bold  m-0 p-0" style="font-size:11px;" >&spades;{{ $errors->first('id') }}</div>
 @endif
--->
+
 
 
 <div class="row">
@@ -363,9 +363,11 @@ $('#div_table').empty().append(data);
  }
 else{
   $('#displayMessage').show();
+
 $.each(data.error, function(i, v){
 $('#displayMessage').append('<p>&spades;'+v+'</p>');
 });
+
 $('#displayMessage').fadeOut(15000);
 }//end of success function
  },

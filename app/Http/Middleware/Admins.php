@@ -22,5 +22,5 @@ class Admins
 
         return $next($request);
 
-}
+    }
 }

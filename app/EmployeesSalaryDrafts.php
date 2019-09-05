@@ -12,4 +12,13 @@ class EmployeesSalaryDrafts extends Model
     {
         return $this->belongsTo('App\employee');
     }
+
+//     public function employee_files()
+//     {
+//       return $this->belongsTo('App\EmployeeUpload');
+//     }
+//    public function employee_files()
+//    {
+//        return $this->belongsTo('App\EmployeeUpload', 'employee_id', 'id');
+//    }
 }

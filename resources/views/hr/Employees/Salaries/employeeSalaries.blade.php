@@ -114,11 +114,9 @@
 
 <div class="table-responsive" id="navigatable_div_1">
                     <div class="checkbox">
-                    <label>
-                        <input type="checkbox" class="chek">
-                        <!-- <button type="submit" class="btn btn-secondary"  data-toggle="dropdown">&nbsp; &nbsp; Months &nbsp; &nbsp;<i class="fa fa-caret-down"></i></button> -->
+                    <label>                       
                         <div class="form-group">
-                            <!-- <label for="sel1">Select list (select one):</label> -->
+                            
                             <select class="form-control drop_select" id="sel1" style="border: none; box-shadow: none;">
                                 <option>Please Select</option>
                                 <option value='01'>January</option>
@@ -145,7 +143,7 @@
                         <input type="checkbox" id="checkbox2" value="1"> Salaries Pending
                     </label>                            &emsp;&emsp;&emsp;&emsp;&emsp;
                     <!-- <button type="button" class="btn btn-success">Export In Excel</button> -->
-                    <a data-toggle="add_new" href="{{ url('/add_employee_salaries_create') }}" class="btn btn-primary add_left_button">Add New</a>
+                    <a data-toggle="add_new" href="{{ url('/add_employee_salaries_create') }}" class="btn btn-primary add_left_button">Make Draft</a>
                     </div>
                      
                         <table class="table table-striped" id="table1" style="padding-top: 16px;">
@@ -172,9 +170,11 @@
                                         <td>{{ $b->fine }} &emsp;</td>
                                         <td>{{ $b->status }}</td>
                                         <td>
+                                            <a href="{{ url('/view-detail/'.$b->id) }}"><img src="{{ asset('images/2-min.png') }}" alt=""></a>
+
                                             <a data-toggle="edit_sal" data-task="{{ $b->id }}" href="{{ url('/editview/'.$b->id) }}"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
-                                           
-                                             <a href="{{ url('/hrEmployeeSalaries/'.$b->id) }}"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
+
+                                            <a href="{{ url('/hrEmployeeSalaries/'.$b->id) }}"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
                                         
                                         </td>
                                     </tr>
@@ -238,7 +238,7 @@ $(document).ready(function(){
                 {
                     $.each($result,function (i,item) {
                     //console.log(item.employee.name);
-                    $('tbody').append("<tr><th scope='row'>"+counter+++"</th><td>"+item.employee.name+"</td><td>"+item.employee.salary+"</td><td>"+item.date+"</td><td>"+item.fine+"</td><td>"+item.status+"</td><td>"+'<a data-toggle="edit_sal" href="/editview/'+item.id+'"><img src="/images/300-min.png" ></a>&nbsp;<a href="/hrEmployeeSalaries/'+item.id+'"><img src="/images/400-min.png"></a>'+"</td></tr> ");
+                    $('tbody').append("<tr><th scope='row'>"+counter+++"</th><td>"+item.employee.name+"</td><td>"+item.employee.salary+"</td><td>"+item.date+"</td><td>"+item.fine+"</td><td>"+item.status+"</td><td>"+'<a href="view-detail/'+item.id+'"><img src="/images/2-min.png" alt=""></a> <a data-toggle="edit_sal" href="/editview/'+item.id+'"><img src="/images/300-min.png" ></a>&nbsp;<a href="/hrEmployeeSalaries/'+item.id+'"><img src="/images/400-min.png"></a>'+"</td></tr> ");
                    });
                 }
                 else
@@ -272,7 +272,7 @@ $(document).ready(function(){
                 {
                     $.each($result,function (i,item) {
                     //console.log(item.employee.name);
-                    $('tbody').append("<tr><th scope='row'>"+counter+++"</th><td>"+item.employee.name+"</td><td>"+item.employee.salary+"</td><td>"+item.date+"</td><td>"+item.fine+"</td><td>"+item.status+"</td><td>"+'<a data-toggle="edit_sal" href="/editview/'+item.id+'"><img src="/images/300-min.png" ></a>&nbsp;<a href="/hrEmployeeSalaries/'+item.id+'"><img src="/images/400-min.png"></a>'+"</td></tr> ");
+                    $('tbody').append("<tr><th scope='row'>"+counter+++"</th><td>"+item.employee.name+"</td><td>"+item.employee.salary+"</td><td>"+item.date+"</td><td>"+item.fine+"</td><td>"+item.status+"</td><td>"+'<a href="view-detail/'+item.id+'"><img src="/images/2-min.png" alt=""></a>&nbsp;<a data-toggle="edit_sal" href="/editview/'+item.id+'"><img src="/images/300-min.png" ></a>&nbsp;<a href="/hrEmployeeSalaries/'+item.id+'"><img src="/images/400-min.png"></a>'+"</td></tr> ");
                    });
                 }
                 else
@@ -305,7 +305,7 @@ $(document).ready(function(){
                 {
                     $.each($result,function (i,item) {
                     //console.log(item.employee.name);
-                    $('tbody').append("<tr><th scope='row'>"+counter+++"</th><td>"+item.employee.name+"</td><td>"+item.employee.salary+"</td><td>"+item.date+"</td><td>"+item.fine+"</td><td>"+item.status+"</td><td>"+'<a data-toggle="edit_sal" href="/editview/'+item.id+'"><img src="/images/300-min.png" ></a>&nbsp;<a href="/hrEmployeeSalaries/'+item.id+'"><img src="/images/400-min.png"></a>'+"</td></tr> ");
+                    $('tbody').append("<tr><th scope='row'>"+counter+++"</th><td>"+item.employee.name+"</td><td>"+item.employee.salary+"</td><td>"+item.date+"</td><td>"+item.fine+"</td><td>"+item.status+"</td><td>"+'<a href="view-detail/'+item.id+'"><img src="/images/2-min.png" alt=""></a>&nbsp;<a data-toggle="edit_sal" href="/editview/'+item.id+'"><img src="/images/300-min.png" ></a>&nbsp;<a href="/hrEmployeeSalaries/'+item.id+'"><img src="/images/400-min.png"></a>'+"</td></tr> ");
                    });
                 }
                 else

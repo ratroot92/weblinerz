@@ -134,7 +134,8 @@ class HrEmployeeSalariesController extends Controller
           
     }
 
-    public function getSalariesCleared(Request $request) {
+    public function getSalariesCleared(Request $request) 
+    {
         $pending = $request->pending;
         $salariesCleared = EmployeesSalaryDrafts::where('pending',  $pending)
                             ->with('employee')
@@ -144,13 +145,32 @@ class HrEmployeeSalariesController extends Controller
 
     }
 
-    public function getSalariesPending(Request $request) {
+    public function getSalariesPending(Request $request) 
+    {
         $pending = $request->pending;
         $salariesPending = EmployeesSalaryDrafts::where('pending','>', 0)
                             ->with('employee')
                             ->get();
         //echo '<pre>'; print_r($salariesPending); echo '</pre>'; die();
         return response()->json($salariesPending);
+    }
+
+    public function getViewDetails(Request $request, $id) 
+    {
+        $emp_sal = EmployeesSalaryDrafts::findOrFail($id);
+        
+        if ($emp_sal->pending == 0) {
+            $datapending = 'Cleared';
+        }
+
+        if ($emp_sal->pending > 0) {
+            $datapending = 'Pending';
+        }
+        //dd($employeesdata);
+        return view('hr.Employees.Salaries.view_details',[
+            'emp_sal' => $emp_sal,
+            'datapending' => $datapending
+        ]);
     }
 
 }

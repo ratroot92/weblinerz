@@ -11,7 +11,7 @@ use App\Http\Controllers\employee_login_controller;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
+//Auth::routes();
 //routes under admin guard
 Route::get('/hr/auth/login', function(){
     return view('hr/auth/login');
@@ -20,12 +20,13 @@ Route::get('/hr/auth/login', function(){
 
 Route::post('loginAdmin', 'hr_login_controller@loginAdmin')->name('loginAdmin');
 
-Route::middleware(['admin'])->group(function () {
+Route::group(['middleware' => 'admin'], function () {
     Route::get('/hrDashboard', 'RouteController_HR@returnHrDashboard'); //take me to hrdashboard
 
 
 
 });
+
 Route::get('hrHome', function () {
     return view('hr.Dashboard.hrDashboard');
 })->name('hrHome');//take me to hr_dashboard
@@ -35,7 +36,7 @@ Route::get('hrHome', function () {
 
 
 
-Route::get('/adminLogout', 'Admin\LoginController@logout')->name('adminLogout');
+Route::post('/adminLogout', 'Admin\LoginController@logout');
 Route::get('/showLoginForm', 'Admin\LoginController@showLoginForm')->name('showLoginForm');
 // Route::post('/loginAdmin', 'Admin\LoginController@loginAdmin')->name('loginAdmin');
 Route::get('/registerAdmin', 'Admin\LoginController@registerAdmin')->name('registerAdmin');
@@ -152,6 +153,8 @@ return view('hr/hr_home');
 
 });
 //------------------------ Waqas Routes ----------------------------
+// Salaries Routes
+
 Route::get('/getsalary','HrEmployeeSalariesController@getSalary');
 
 Route::get('/add_employee_salaries_create','HrEmployeeSalariesController@addEmployeesSalariesCreate');
@@ -169,6 +172,37 @@ Route::get('/getmonth','HrEmployeeSalariesController@getMonth');
 Route::get('/getsalariescleared','HrEmployeeSalariesController@getSalariesCleared');
 // Salaries Pending
 Route::get('/getsalariespending','HrEmployeeSalariesController@getSalariesPending');
+// View Button Route
+Route::get('/view-detail/{id}','HrEmployeeSalariesController@getViewDetails');
+
+// Employees Documents Routes
+
+Route::get('/employeedocuments','RouteController_HR@returnemployeeDocuments');
+
+Route::get('/add_employee_documents_create','EmployeesDocumentsController@addEmployeesDocumentsCreate');
+
+Route::post('/add_employee_documents','EmployeesDocumentsController@addEmployeesDocuments');
+
+Route::get('/editview/{id}','EmployeesDocumentsController@editHrEmployeeDocuments');
+
+Route::post('/employeedocuments/update_employeedocument','EmployeesDocumentsController@updateHrEmployeeDocuments');
+
+Route::get('/employeedocuments/{id}','EmployeesDocumentsController@deleteHrEmployeeDocuments');
+
+// Employees Reports Routes
+
+Route::get('/employeereports','RouteController_HR@returnemployeeReports');
+
+Route::get('/add_employee_reports_create','EmployeesReportsController@addEmployeesReportsCreate');
+
+Route::post('/add_employee_reports','EmployeesReportsController@addEmployeesReports');
+
+Route::get('/editview/{id}','EmployeesReportsController@editHrEmployeeReports');
+
+Route::post('/employeereports/update_employeereport','EmployeesReportsController@updateHrEmployeeReports');
+
+Route::get('/employeereports/{id}','EmployeesReportsController@deleteHrEmployeeReports');
+
 
 //Route::get('/home', 'HomeController@index')->name('home');
 //route hr_dasboard -- direct root

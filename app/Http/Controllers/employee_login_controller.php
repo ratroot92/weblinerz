@@ -69,7 +69,7 @@ return Redirect()->route('employee_login')->with('message','Invalid Email and Pa
 
 
 			$upload=new EmployeeUpload;
-			$upload->employee_id=$request->id;
+			$upload->employee_id=$request->input('id');
 			$upload->file_name=$filename;
 			$upload->file_path=$file;
 			$upload->save();
@@ -77,7 +77,7 @@ return Redirect()->route('employee_login')->with('message','Invalid Email and Pa
 
 
 $employee = new employee;
-$employee->id = $request->id;
+$employee->id = $request->input('id');
 $employee->name = $request->name;
 $employee->email = $request->email;
 $employee->password = $request->password;
