@@ -108,7 +108,7 @@ margin: 0px;
 <i class="fas fa-bell text-white font-weight-bold ml-1 icon"></i>
 </div>
 <div class="float-right mt-2">
- <a href="{{URL::to('/adminLogout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title=""><button type="button" class="btn btn-outline-warning " ><i class="fas fa-sign-out-alt"></i>Logout</button>
+ <a href="{{url('/adminLogout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title=""><button type="button" class="btn btn-outline-warning " ><i class="fas fa-sign-out-alt"></i>Logout</button>
  </a>
 <form id="logout-form" action="{{ url('/adminLogout') }}" method="POST" style="display: none;">
     @csrf

@@ -203,6 +203,11 @@ Route::post('/employeereports/update_employeereport','EmployeesReportsController
 
 Route::get('/employeereports/{id}','EmployeesReportsController@deleteHrEmployeeReports');
 
+// Employees Complaints Routes
+ 
+Route::get('/hrEmployeeComplaints/{id}','EmployeesComplaintsController@editHrEmployeeComplaints');
+
+Route::get('/complaintsdata','EmployeesComplaintsController@complaintsData');
 
 //Route::get('/home', 'HomeController@index')->name('home');
 //route hr_dasboard -- direct root

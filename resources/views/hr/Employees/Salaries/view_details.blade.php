@@ -96,7 +96,7 @@
 	<div class="col-md-6 padd">
 		<img src="{{ asset('Employee_Files/Files/'.$emp_sal->employee_files) }}" width="100px;" height="100px;" alt="">
 	</div>
-<?php// echo '<pre>'; print_r($emp_sal->employee); echo '</pre>'; die();?>
+
 	<div class="col-md-6">
 		<p>Name: {{ $emp_sal->employee->name }} </p>
 		<p>ID:  {{ $emp_sal->employee->id }}</p>

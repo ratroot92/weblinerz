@@ -33,67 +33,8 @@
 <div class="row p-1">
 <!-- start of card -->
 <div class="col-md-3 col-xs-6 col-sm-12  text-center p-1">
-<div class="bg-dark outer">
-<a href="{{ url('/hrEmployeeContract') }} " class="anchor" >
-<div class="inner  " >
-<img src="{{ asset('images/21.png') }}" class="img_hr mt-4" alt="">
-<p class="text-white font-weight-bold " >Contracts</p>
-</div>
-
-</a>
-</div>
+    
 </div><!-- end of card -->
-
-
-<!-- start of card -->
-<div class="col-md-3 col-xs-6 col-sm-12  text-center p-1">
-<div class="bg-warning outer">
-<a href="{{ url('/hrEmployeeSalaries') }}" class="anchor">
-<div class="inner  " >
-<img src="{{ asset('images/21.png') }}" class="img_hr mt-4" alt="">
-<p class="text-white font-weight-bold anchor">Salaries</p>
-</div>
-
-</a>
-</div>
-</div><!-- end of card -->
-
-
-<!-- start of card -->
-<div class="col-md-3 col-xs-6 col-sm-12  text-center p-1">
-<div class="bg-primary outer">
-<a href="{{ url('/hrEmployeeComplaints') }}" class="anchor">
-<div class="inner  " >
-<img src="{{ asset('images/21.png') }}" class="img_hr mt-4" alt="">
-<p class="text-white font-weight-bold anchor">Complaints</p>
-</div>
-
-</a>
-</div>
-</div><!-- end of card -->
-
-
-
-<!-- start of card -->
-<div class="col-md-3 col-xs-6 col-sm-12  text-center p-1">
-<div class="bg-danger outer">
-<a href="{{ url('/hrEmployeeAttendence') }}" class="anchor">
-<div class="inner  " >
-<img src="{{ asset('images/21.png') }}" class="img_hr mt-4" alt="">
-<p class="text-white font-weight-bold anchor">Attendence</p>
-</div>
-
-</a>
-</div>
-</div><!-- end of card -->
-
-
-
-
-
-
-
-
 
 </div>
 
@@ -101,99 +42,71 @@
 
 
 <div class="row mt-5">
-<div class="col-md-12">
-<button class="btn btn-secondary float-left"><i class=" text-white font-weight-bold fas fa-arrow-down mr-2" id="navigatable_btn_1"></i>Complaints </button>
+<div class="col-md-4">
 
 
-<div class="table-responsive" id="navigatable_div_1">
-    <table class="table table-striped" id="table1" style="padding-top: 16px;">
-                                <thead>
-                                    <tr style="background-color: #b85197;">
-                                        <th style="color: #fff;" scope="col">Sr</th>
-                                        <th style="color: #fff;" scope="col">Name</th>
-                                        <th style="color: #fff;" scope="col">Salary</th>
-                                        <th style="color: #fff;" scope="col">Fine</th>
-                                        <th style="color: #fff;" scope="col">status</th>
-                                        <th style="color: #fff;" scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                        <th scope="row">1</th>
-                                        <td>Ali</td>
-                                        <td>25000</td>
-                                        <td>120</td>
-                                        <td>ACTIVE</td>
-                                       
-                                        <td>
-                                            <a data-toggle="edit_sal" href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
-                                            
-                                             <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
-                                        
-                                        </td>
-                                    </tr>
-                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Ali</td>
-                                        <td>25000</td>
-                                        <td>120</td>
-                                        <td>ACTIVE</td>
-                                       
-                                        <td>
-                                            <a data-toggle="edit_sal" href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
-                                            
-                                             <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
-                                        
-                                        </td>
-                                    </tr>
-                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Ali</td>
-                                        <td>25000</td>
-                                        <td>120</td>
-                                        <td>ACTIVE</td>
-                                       
-                                        <td>
-                                            <a data-toggle="edit_sal" href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
-                                            
-                                             <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
-                                        
-                                        </td>
-                                    </tr>
-                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Ali</td>
-                                        <td>25000</td>
-                                        <td>120</td>
-                                        <td>ACTIVE</td>
-                                       
-                                        <td>
-                                            <a data-toggle="edit_sal" href="#"><img src="{{ asset('images/300-min.png') }}" alt=""></a>
-                                            
-                                             <a href="#"><img src="{{ asset('images/400-min.png') }}" alt=""></a>
-                                        
-                                        </td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-</div>
+    <div class="table-responsive" id="navigatable_div_1">
+        <h5>All Employees</h5>
+        <table border="1" class="table table-striped" id="table1" style="padding-top: 16px;">
+            <thead>
+                <tr style="background-color: #b85197;">
+                    <th style="color: #fff;" scope="col">Sr</th>
+                    <th style="color: #fff;" scope="col">Name</th>                
+                </tr>
+            </thead>
+            <tbody>
+            @php $i=1; @endphp    
+            @foreach ($employeeData as $empData)  
+                <tr>
+                    <th scope="row">{{ $i++ }}</th>
+                    <td>
+                        <a data-task-id="{{ $empData->id }}" href="{{ url('/hrEmployeeComplaints/'.$empData->id) }}">{{ $empData->name }}</a>
+                    </td>   
+                </tr>          
+            @endforeach
+            </tbody>
+        </table>
+    </div>
 
 </div>
+    <div class="col-md-8">
+        <div class="table-responsive" id="navigatable_div_1">
+            <h5>All Complaints</h5>
+            <div id="complaints">
+                <img src="images/1.jpg" width="700px; height=100px; " alt="" style="border: 1px solid #000;">
+            </div>
+        
+        </div>
+    </div>    
 </div>
 <script type="text/javascript">
-  $(document).ready(function(){  
-    var btn1 = document.getElementById("navigatable_btn_1");
-    btn1.addEventListener('click', function() {  
-        var div_1 = document.getElementById("navigatable_div_1");
-        if (div_1.style.display === "none") {
-            div_1.style.display = "block";
-        } else {
-            div_1.style.display = "none";
+
+$('table td a').click(function(event){
+   
+    event.preventDefault();
+    var id =  $(this).data("task-id");
+
+    $.ajax({
+        url : '/complaintsdata',
+        type: 'get',
+        data : { 'id' : id },
+        dataType: 'json',
+        success: function(response)
+        {
+            $('#complaints').empty(); 
+            if (response.length > 0)
+            {                    
+                $.each(response,function (i,item) 
+                {
+                    $('#complaints').append("<h5>Complaints ID: &nbsp;"+item.id+"</h5>"+"<h5>Complaints Name:&nbsp;"+item.name+"</h5>"+"<h5>Complaints Description:&nbsp;"+item.description+"</h5>"+"<h5>Complaints Description:&nbsp;"+item.status+"</h5>"+"<select class='form-control' style='width: 200px;'><option value='CEO'>CEO</option><option value='TeamLead'>Teamlead</option><option value='Project-Manager'>Project Manager</option></select>");               
+                });
+            }
+
+        }, error:function(e){
+            console.log(e);
         }
     });
 
-  });
-    
+});
 </script>
 @endsection

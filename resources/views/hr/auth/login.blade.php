@@ -25,7 +25,8 @@
             <div class="vertical-align-middle auth-main">
                 <div class="auth-box">
                     <div class="top">
-                        <img src="http://www.wrraptheme.com/templates/lucid/hr/html/assets/images/logo-white.svg" alt="Lucid">
+                       <!--  <img src="http://www.wrraptheme.com/templates/lucid/hr/html/assets/images/logo-white.svg" alt="Lucid"> -->
+                       <h2 style="color: #fff;">Weblinerz</h2>
                     </div>
                     <div class="card">
                         <div class="header">
@@ -76,7 +77,7 @@
                                     </label>
                                 </div>
 
-                                <input type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</input>
+                                <input type="submit" class="btn btn-primary btn-lg btn-block">LOGIN
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="bottom">
                                     <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="page-forgot-password.html">Forgot password?</a></span>

@@ -45,7 +45,9 @@ public function returnHrEmployeeSalaries(){
 }
 
 public function returnHrEmployeeComplaints(){
-        return view('hr.Employees.Complaints.employeeComplaints');
+        $employeeData = employee::all();
+        //echo '<pre>'; print_r($employeeData); echo '</pre>'; die();
+        return view('hr.Employees.Complaints.employeeComplaints')->with(compact('employeeData'));
 }
 
 
