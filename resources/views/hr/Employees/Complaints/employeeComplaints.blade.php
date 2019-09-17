@@ -6,7 +6,7 @@
 
 @section('content')
 
-
+<link rel="stylesheet" href="{{ asset('dist/css/custom.css') }}">
 
 
 
@@ -73,9 +73,47 @@
         <div class="table-responsive" id="navigatable_div_1">
             <h5>All Complaints</h5>
             <div id="complaints">
-                <img src="images/1.jpg" width="700px; height=100px; " alt="" style="border: 1px solid #000;">
-            </div>
-        
+                <div class="row m-0 p-0">
+                    <div class="col-md-12 m-0 p-0">
+                        <h6 style="text-align: center;">Complaint Title</h6>
+                    </div>
+
+                    <div class="col-md-6 m-0 p-0">
+                        <p>Complaint ID:</p>
+                        <p>Complaint Title:</p>
+                        <p>Complaint Description:</p>                        
+                    </div>
+                    
+                     <div class="col-md-6 m-0 p-0">                   
+                        <p>Date:</p>
+                        <p>Status:</p>
+                    </div>
+
+                </div>
+                
+                <hr>
+                <div class="row m-0 p-0">
+                     <div class="col-md-12 m-0 p-0">                        
+                        <textarea name="comments" id="comments" rows="3" cols="90"></textarea>
+                    </div>
+                </div>
+                <hr>
+
+                 <div class="row m-0 p-0">
+                     <div class="col-md-6 m-0 p-0">
+                        <button type="submit" class="btn btn-secondary">Solve & Close</button>
+                    </div>
+                    <div class="col-md-6 m-0 p-0">
+                        Assign To
+                        <select class='form-control' style='width: 200px;'>
+                            <option value='CEO'>CEO</option>
+                            <option value='TeamLead'>Teamlead</option>
+                            <option value='Project-Manager'>Project Manager</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- <img src="images/1.jpg" width="700px; height=100px; " alt="" style="border: 1px solid #000;"> -->
+            </div>        
         </div>
     </div>    
 </div>
@@ -98,7 +136,7 @@ $('table td a').click(function(event){
             {                    
                 $.each(response,function (i,item) 
                 {
-                    $('#complaints').append("<h5>Complaints ID: &nbsp;"+item.id+"</h5>"+"<h5>Complaints Name:&nbsp;"+item.name+"</h5>"+"<h5>Complaints Description:&nbsp;"+item.description+"</h5>"+"<h5>Complaints Description:&nbsp;"+item.status+"</h5>"+"<select class='form-control' style='width: 200px;'><option value='CEO'>CEO</option><option value='TeamLead'>Teamlead</option><option value='Project-Manager'>Project Manager</option></select>");               
+                    // $('#complaints').append("<h5>Complaints ID: &nbsp;"+item.id+"</h5>"+"<h5>Complaints Title:&nbsp;"+item.title+"</h5>"+"<h5>Complaints Description:&nbsp;"+item.description+"</h5>"+"<h5>Complaints status:&nbsp;"+item.status+"</h5>"+"<select class='form-control' style='width: 200px;'><option value='CEO'>CEO</option><option value='TeamLead'>Teamlead</option><option value='Project-Manager'>Project Manager</option></select>");               
                 });
             }
 

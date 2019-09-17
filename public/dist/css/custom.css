@@ -355,3 +355,6 @@ left: 198px;
 .btn.btn-primary.add_report_button {
     left: 826px;
 }
+hr {
+    border-top: 2px solid rgba(0,0,0,.1);
+}

@@ -16,7 +16,8 @@ class CreateEmployeesComplaintsTable extends Migration
         Schema::create('employees_complaints', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('employee_id')->unsigned();
-            $table->string('name');
+            $table->string('title');
+            $table->string('date');
             $table->string('description');
             $table->string('status');
             $table->timestamps();
